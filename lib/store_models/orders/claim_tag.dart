@@ -1,10 +1,13 @@
 class ClaimTag {
-  String? id;
-  String? value;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  DateTime? deletedAt;
-  Map<String, dynamic>? metadata;
+  /// Tag id
+  final String? id;
+
+  /// Tag value
+  final String? value;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? deletedAt;
+  final Map<String, dynamic>? metadata;
 
   ClaimTag({
     this.id,
@@ -15,13 +18,15 @@ class ClaimTag {
     this.metadata,
   });
 
-  ClaimTag.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    value = json['value'];
-    createdAt = DateTime.tryParse(json['created_at'] ?? '');
-    updatedAt = DateTime.tryParse(json['updated_at'] ?? '');
-    deletedAt = DateTime.tryParse(json['deleted_at'] ?? '');
-    metadata = json['metadata'] ;
+  factory ClaimTag.fromJson(Map<String, dynamic> json) {
+    return ClaimTag(
+      value: json['value'],
+      id: json['id'],
+      createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
+      updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
+      deletedAt: DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
+      metadata: json['metadata'] as Map<String, dynamic>?,
+    );
   }
 
   Map<String, dynamic> toJson() {

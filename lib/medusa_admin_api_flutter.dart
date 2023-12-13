@@ -52,16 +52,15 @@ class MedusaAdmin {
       _dio.options.headers["Authorization"] = "Bearer ${config.apiKey}";
     }
 
-    _dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (options, handler) async {
+    _dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? cookie = prefs.getString('Cookie');
-      if (cookie != null && cookie.isNotEmpty) {
+      if (cookie?.isNotEmpty ?? false) {
         options.headers['Cookie'] = cookie;
       }
       return handler.next(options);
     }));
-    if(config.enableDebugging ?? kDebugMode){
+    if (config.enableDebugging ?? kDebugMode) {
       _dio.interceptors.add(LogInterceptor());
     }
   }

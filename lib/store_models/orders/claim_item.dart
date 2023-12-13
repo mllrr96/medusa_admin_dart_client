@@ -1,72 +1,72 @@
 import '../store/index.dart';
 
 class ClaimItem {
-  String? id;
-  List<ClaimImage>? images;
-  String? claimOrderId;
-  ClaimOrder? claimOrder;
-  String? itemId;
-  LineItem? item;
-  String? variantId;
-  ClaimReason? reason;
-  ProductVariant? variant;
-  String? note;
-  int? quantity;
-  List<ClaimTag>? tags;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  DateTime? deletedAt;
-  Map<String, dynamic>? metadata;
+  /// The id of the claim item.
+  final String? id;
+
+  /// A list of image url's that will be associated with the claim
+  final List<ClaimImage>? images;
+  final ClaimOrder? claimOrder;
+
+  /// The id of the line item that will be claimed.
+  final String? itemId;
+
+  ///
+  final LineItem? item;
+  final String? variantId;
+
+  /// The reason for the claim
+  final ClaimReason? reason;
+  final ProductVariant? variant;
+
+  /// Short text describing the claim item in further detail.
+  final String? note;
+
+  /// The number of items that will be returned
+  final int? quantity;
+
+  /// A list o tags to add to the claim item
+  final List<ClaimTag>? tags;
+
+  /// An optional set of key-value pairs to hold additional information.
+  final Map<String, dynamic>? metadata;
 
   ClaimItem({
     this.id,
     this.images,
-    required this.claimOrderId,
     this.claimOrder,
-    required this.itemId,
+    this.itemId,
     this.item,
-    required this.variantId,
+    this.variantId,
+    this.reason,
     this.variant,
-    required this.reason,
     this.note,
-    required this.quantity,
+    this.quantity,
     this.tags,
-    this.createdAt,
-    this.updatedAt,
-    this.deletedAt,
     this.metadata,
   });
 
-  ClaimItem.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    if (json['images'] != null) {
-      images = <ClaimImage>[];
-      json['images'].forEach((e) => images!.add(ClaimImage.fromJson(e)));
-    }
-    claimOrderId = json['claim_order_id'];
-    claimOrder = json['claim_order'] != null ? ClaimOrder.fromJson(json['claim_order']) : null;
-    itemId = json['item_id'];
-    item = json['item'] != null ? LineItem.fromJson(json['item']) : null;
-    variantId = json['variant_id'];
-    variant = json['variant'] != null ? ProductVariant.fromJson(json['item']) : null;
-    reason = json['reason'] != null ? ClaimReason.values.firstWhere((e) => e.value == json['reason']) : null;
-    note = json['note'];
-    quantity = json['quantity'];
-    if (json['tags'] != null) {
-      tags = <ClaimTag>[];
-      json['tags'].forEach((e) => tags!.add(ClaimTag.fromJson(e)));
-    }
-    createdAt = DateTime.tryParse(json['created_at'] ?? '');
-    updatedAt = DateTime.tryParse(json['updated_at'] ?? '');
-    deletedAt = DateTime.tryParse(json['deleted_at'] ?? '');
-    metadata = json['metadata'];
+  factory ClaimItem.fromJson(Map<String, dynamic> json) {
+    return ClaimItem(
+      id: json['id'],
+      images: json['images'].map((e) => ClaimImage.fromJson(e)).toList(),
+      claimOrder: json['claim_order'] != null ? ClaimOrder.fromJson(json['claim_order']) : null,
+      itemId: json['item_id'],
+      item: json['item'] != null ? LineItem.fromJson(json['item']) : null,
+      variantId: json['variant_id'],
+      variant: json['variant'] != null ? ProductVariant.fromJson(json['item']) : null,
+      reason: json['reason'] != null ? ClaimReason.values.firstWhere((e) => e.value == json['reason']) : null,
+      note: json['note'],
+      quantity: json['quantity'],
+      tags: json['tags'].map((e) => ClaimTag.fromJson(e)).toList(),
+      metadata: json['metadata'],
+    );
   }
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
     json['id'] = id;
     json['images'] = images?.map((e) => e.toJson()).toList();
-    json['claim_order_id'] = claimOrderId;
     json['claim_order'] = claimOrder?.toJson();
     json['item_id'] = itemId;
     json['item'] = item?.toJson();
@@ -75,9 +75,6 @@ class ClaimItem {
     json['reason'] = reason?.value;
     json['note'] = note;
     json['tags'] = tags?.map((e) => e.toJson()).toList();
-    json['created_at'] = createdAt.toString();
-    json['updated_at'] = updatedAt.toString();
-    json['deleted_at'] = deletedAt.toString();
     json['metadata'] = metadata;
     return json;
   }

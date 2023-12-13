@@ -3,9 +3,11 @@
 import 'claim_item.dart';
 
 class ClaimImage {
+  /// Image id
   String? id;
   String? claimItemId;
   ClaimItem? claimItem;
+  /// Image url
   String? url;
   DateTime? createdAt;
   DateTime? updatedAt;
