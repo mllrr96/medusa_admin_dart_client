@@ -12,11 +12,15 @@ dependencies:
     sdk: flutter
   dio: ^5.3.3
   shared_preferences: ^2.2.2
+  copy_with_extension: ^5.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  copy_with_extension_gen: ^5.0.4
+  build_runner: ^2.4.7
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
