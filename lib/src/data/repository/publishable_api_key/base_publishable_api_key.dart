@@ -1,0 +1,80 @@
+
+
+import '../../models/index.dart';
+import '../../models/response_models/publishable_api_keys.dart';
+import '../../models/response_models/sales_channel_res.dart';
+
+abstract class BasePublishableApiKey {
+  Future<UserRetrievePublishableApiKeysRes?> retrievePublishableApiKeys({
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// Retrieve the Publishable Api Key.
+  Future<PublishableApiKey?> retrievePublishableApiKey({
+    required String id,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// Updates a PublishableApiKey.
+  Future<PublishableApiKey?> updatePublishableApiKey({
+    /// The ID of the PublishableApiKey.
+    required String id,
+
+    /// A title to update for the key.
+    String? title,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// Creates a PublishableApiKey.
+  Future<PublishableApiKey?> createPublishableApiKey({
+    /// A title for the publishable api key.
+    required String title,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// Deletes a PublishableApiKeys
+  Future<PublishableApiKey?> deletePublishableApiKey({
+    /// The ID of the PublishableApiKeys to delete.
+    required String id,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// Revokes a PublishableApiKey.
+  Future<PublishableApiKey?> revokePublishableApiKey({
+    /// The ID of the PublishableApiKey.
+    required String id,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// List PublishableApiKey's SalesChannels
+  Future<UserSalesChannelRetrieveAllRes?> retrieveSalesChannels({
+    /// The ID of the Publishable Api Key.
+    required String id,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// List PublishableApiKey's SalesChannels
+  Future<PublishableApiKey?> addSalesChannels({
+    /// The ID of the Publishable Api Key.
+    required String id,
+    required List<String> salesChannelsIds,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// List PublishableApiKey's SalesChannels
+  Future<UserDeletePublishableApiKeyRes?> deleteSalesChannels({
+    /// The ID of the Publishable Api Key.
+    required String id,
+    required List<String> salesChannelsIds,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+}

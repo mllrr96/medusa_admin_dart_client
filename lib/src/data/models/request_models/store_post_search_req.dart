@@ -1,18 +1,16 @@
 class StorePostSearchReq {
-  final String? q;
-  final int? offset;
-  final int? limit;
-  final dynamic filter;
+  String? q;
+  int? offset;
+  int? limit;
+  dynamic filter;
 
   StorePostSearchReq({this.q, this.offset, this.limit, this.filter});
 
-  factory StorePostSearchReq.fromJson(Map<String, dynamic> json) {
-    return StorePostSearchReq(
-      q: json['q'],
-      offset: json['offset'],
-      limit: json['limit'],
-      filter: json['filter'],
-    );
+  StorePostSearchReq.fromJson(Map<String, dynamic> json) {
+    q = json['q'];
+    offset = json['offset'];
+    limit = json['limit'];
+    filter = json['filter'];
   }
 
   Map<String, dynamic> toJson() {

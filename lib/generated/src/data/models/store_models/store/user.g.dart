@@ -25,7 +25,7 @@ abstract class _$UserCWProxy {
 
   User metadata(Map<String, dynamic>? metadata);
 
-  User role(UserRoles? role);
+  User role(UserRole? role);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `User(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -43,7 +43,7 @@ abstract class _$UserCWProxy {
     DateTime? updatedAt,
     DateTime? deletedAt,
     Map<String, dynamic>? metadata,
-    UserRoles? role,
+    UserRole? role,
   });
 }
 
@@ -81,7 +81,7 @@ class _$UserCWProxyImpl implements _$UserCWProxy {
   User metadata(Map<String, dynamic>? metadata) => this(metadata: metadata);
 
   @override
-  User role(UserRoles? role) => this(role: role);
+  User role(UserRole? role) => this(role: role);
 
   @override
 
@@ -143,7 +143,7 @@ class _$UserCWProxyImpl implements _$UserCWProxy {
       role: role == const $CopyWithPlaceholder()
           ? _value.role
           // ignore: cast_nullable_to_non_nullable
-          : role as UserRoles?,
+          : role as UserRole?,
     );
   }
 }

@@ -1,35 +1,62 @@
-import '../store_models/store/index.dart';
+import '../index.dart';
 
-class StoreRegionsListRes {
+class UserRegionsRes {
   final List<Region>? regions;
-  StoreRegionsListRes({this.regions});
-  factory StoreRegionsListRes.fromJson(json) {
-    return StoreRegionsListRes(
+  final int? limit;
+  final int? offset;
+  final int? count;
+  UserRegionsRes({this.regions, this.limit, this.offset, this.count});
+  factory UserRegionsRes.fromJson(json) {
+    return UserRegionsRes(
       regions: json['regions'] != null
-          ? (json['regions'] as List).map((i) => Region.fromJson(i)).toList()
+          ? List<Region>.from(json['regions'].map((x) => Region.fromJson(x)))
           : null,
+      limit: json['limit'],
+      offset: json['offset'],
+      count: json['count'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['regions'] = regions?.map((e) => e.toJson()).toList();
-    return data;
   }
 }
 
-class StoreRegionsRes {
-  final Region? region;
-  StoreRegionsRes({this.region});
-  factory StoreRegionsRes.fromJson(json) {
-    return StoreRegionsRes(
-      region: json["region"] != null ? Region.fromJson(json["region"]) : null,
-    );
-  }
+class UserRegionRes {
+  Region? region;
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['region'] = region?.toJson();
-    return data;
+  UserRegionRes.fromJson(json) {
+    if (json['region'] != null) {
+      region = Region.fromJson(json['region']);
+    }
+  }
+}
+
+class UserRetrieveFulfillmentOptionsRes {
+  List<FulfillmentOption>? fulfillmentOptions;
+
+  UserRetrieveFulfillmentOptionsRes.fromJson(json) {
+    if (json['fulfillment_options'] == null) return;
+    fulfillmentOptions = <FulfillmentOption>[];
+    json['fulfillment_options']
+        .forEach((v) => fulfillmentOptions?.add(FulfillmentOption.fromJson(v)));
+  }
+}
+
+class UserDeleteRegionRes {
+  /// The ID of the deleted Region.
+  final String? id;
+
+  /// The type of the object that was deleted.
+  ///
+  /// Default: "region"
+  final String? object;
+
+  /// Whether or not the region were deleted.
+  final bool deleted;
+
+  UserDeleteRegionRes({required this.deleted, this.id, this.object});
+
+  factory UserDeleteRegionRes.fromJson(json) {
+    return UserDeleteRegionRes(
+        deleted: json['deleted'] ?? false,
+        id: json['id'],
+        object: json['object']);
   }
 }

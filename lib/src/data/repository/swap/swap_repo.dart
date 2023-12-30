@@ -1,0 +1,188 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
+
+import '../../models/index.dart';
+import '../../models/response_models/swap.dart';
+import 'base_swap.dart';
+
+class SwapRepository extends BaseSwap {
+  SwapRepository(Dio dio) : _dio = dio;
+  final Dio _dio;
+
+  /// Cancels a Swap
+  @override
+  Future<Order?> cancelSwap({
+    /// The ID of the Order.
+    required String id,
+
+    /// The ID of the Swap to cancel.
+    required String swapId,
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.post(
+        '/orders/$id/swaps/$swapId/cancel',
+        queryParameters: queryParams,
+      );
+      if (response.statusCode == 200) {
+        return Order?.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Creates a Swap.
+  ///
+  /// Swaps are used to handle Return of previously purchased goods and Fulfillment of replacements simultaneously.
+  @override
+  Future<Order?> createSwap({
+    /// The ID of the Order.
+    required String id,
+    required UserCreateSwapSwapReq userCreateSwapSwapReq,
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.post(
+        '/order/$id/swaps',
+        data: userCreateSwapSwapReq.toJson(),
+        queryParameters: queryParams,
+      );
+      if (response.statusCode == 200) {
+        return Order.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Registers a Swap Fulfillment as shipped.
+  @override
+  Future<Order?> createSwapShipment({
+    /// The ID of the Order.
+    required String id,
+
+    /// The ID of the Swap.
+    required String swapId,
+    required UserCreateSwapShipmentSwapReq userCreateSwapShipmentSwapReq,
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.post(
+        '/orders/$id/swaps/$swapId/shipments',
+        data: userCreateSwapShipmentSwapReq.toJson(),
+        queryParameters: queryParams,
+      );
+      if (response.statusCode == 200) {
+        return Order.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// When there are differences between the returned and shipped Products in a Swap, the difference must be processed.
+  /// Either a Refund will be issued or a Payment will be captured.
+  @override
+  Future<Order?> processSwapPayment({
+    /// The ID of the Order.
+    required String id,
+
+    /// The ID of the Swap.
+    required String swapId,
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.post(
+        '/orders/$id/swaps/$swapId/process-payment',
+        queryParameters: queryParams,
+      );
+      if (response.statusCode == 200) {
+        return Order.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Retrieves a Swap.
+  @override
+  Future<Swap?> retrieveSwap({
+    /// The ID of the Swap.
+    required String swapId,
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.get(
+        '/swaps/$swapId',
+        queryParameters: queryParams,
+      );
+      if (response.statusCode == 200) {
+        return Swap.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Retrieves a list of Swaps.
+  @override
+  Future<UserRetrieveSwapsRes?> retrieveSwaps({
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.get(
+        '/swaps',
+        queryParameters: queryParams,
+      );
+      if (response.statusCode == 200) {
+        return UserRetrieveSwapsRes.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+}

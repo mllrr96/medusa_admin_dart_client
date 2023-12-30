@@ -124,25 +124,26 @@ enum DiscountConditionOperator {
   const DiscountConditionOperator(this.value);
 }
 
-enum UserRoles {
+enum UserRole {
   admin('admin'),
   member('member'),
   developer('developer');
 
   final String value;
 
-  const UserRoles(this.value);
+  const UserRole(this.value);
 
-  factory UserRoles.fromString(String value) {
+  factory UserRole.fromString(String value) {
     if (value == 'admin') {
-      return UserRoles.admin;
+      return UserRole.admin;
     } else if (value == 'developer') {
-      return UserRoles.developer;
+      return UserRole.developer;
     } else {
-      return UserRoles.member;
+      return UserRole.member;
     }
   }
 }
+
 
 enum DraftOrderStatus {
   open('open'),
@@ -234,15 +235,25 @@ enum ShippingOptionPriceType {
   const ShippingOptionPriceType(this.value);
 }
 
+
 enum PriceListType {
-  sale,
-  override,
+  sale('sale'),
+  override('override');
+
+  final String value;
+
+  const PriceListType(this.value);
 }
 
 enum PriceListStatus {
-  active,
-  draft,
+  active('active'),
+  draft('draft');
+
+  final String value;
+
+  const PriceListStatus(this.value);
 }
+
 
 enum OrderEditItemChangeType {
   itemAdd('item_add'),

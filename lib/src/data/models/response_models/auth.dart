@@ -1,34 +1,17 @@
-import '../store_models/store/index.dart';
+import '../index.dart';
 
-class StoreAuthRes {
-  final Customer? customer;
+class UserAuthRes {
+  final User? user;
 
-  StoreAuthRes({this.customer});
+  UserAuthRes({this.user});
 
-  factory StoreAuthRes.fromJson(Map<String, dynamic> json) => StoreAuthRes(
-      customer: json['customer'] != null
-          ? Customer.fromJson(json['customer'])
-          : null);
+  factory UserAuthRes.fromJson(Map<String, dynamic> json) {
+    return UserAuthRes(user: json['user'] != null ? User.fromJson(json['user']) : null);
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data["customer"] = customer?.toJson();
-    return data;
-  }
-}
-
-class StoreGetAuthEmailRes {
-  final bool exists;
-
-  StoreGetAuthEmailRes({required this.exists});
-
-  factory StoreGetAuthEmailRes.fromJson(Map<String, dynamic> json) {
-    return StoreGetAuthEmailRes(exists: json['exists']);
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['exists'] = exists;
+    data["user"] = user?.toJson();
     return data;
   }
 }

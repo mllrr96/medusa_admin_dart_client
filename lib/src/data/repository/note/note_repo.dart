@@ -1,0 +1,148 @@
+import 'dart:developer';
+import 'package:dio/dio.dart';
+
+import '../../../../medusa_admin.dart';
+import '../../models/response_models/note.dart';
+import 'base_note.dart';
+
+class NoteRepository extends BaseNote {
+  NoteRepository(Dio dio) : _dio = dio;
+  final Dio _dio;
+
+  /// Creates a Note which can be associated with any resource as required.
+  @override
+  Future<Note?> createNote({
+    /// The ID of the resource which the Note relates to.
+    required String resourceId,
+
+    /// The type of resource which the Note relates to.
+    required String resourceType,
+
+    /// The content of the Note to create.
+    required String value,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.post('/notes', data: {
+        'resource_id': resourceId,
+        'resource_type': resourceType,
+        'value': value,
+      });
+      if (response.statusCode == 200) {
+        return Note.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Deletes a Note
+  @override
+  Future<UserDeleteNoteRes?> deleteNote({
+    /// The ID of the Note to delete.
+    required String id,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.delete(
+        '/notes/$id',
+      );
+      if (response.statusCode == 200) {
+        return UserDeleteNoteRes.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Retrieves a single note using its id
+  @override
+  Future<Note?> retrieveNote({
+    /// The ID of the note to retrieve.
+    required String id,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.get(
+        '/notes/$id',
+      );
+      if (response.statusCode == 200) {
+        return Note.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Retrieves a single note using its id
+  @override
+  Future<UserNotesRes?> retrieveNotes({
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.get(
+        '/notes',
+        queryParameters: queryParameters,
+      );
+      if (response.statusCode == 200) {
+        return UserNotesRes.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Updates a Note associated with some resource
+  @override
+  Future<Note?> updateNote({
+    /// The ID of the Note to update
+    required String id,
+
+    /// The updated description of the Note.
+    required String value,
+    Map<String, dynamic>? customHeaders,
+  }) async {
+    try {
+      if (customHeaders != null) {
+        _dio.options.headers.addAll(customHeaders);
+      }
+      final response = await _dio.post(
+        '/notes/$id',
+        data: {'value': value},
+      );
+      if (response.statusCode == 200) {
+        return Note.fromJson(response.data);
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+}

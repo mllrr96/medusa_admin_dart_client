@@ -3,7 +3,7 @@ import '../../../enum/enums.dart';
 class Invite {
   String? id;
   String? userEmail;
-  UserRoles role = UserRoles.member;
+  UserRole role = UserRole.member;
   bool? accepted;
   String? token;
   DateTime? expiresAt;
@@ -15,7 +15,7 @@ class Invite {
   Invite({
     this.id,
     required this.userEmail,
-    this.role = UserRoles.member,
+    this.role = UserRole.member,
     this.accepted,
     this.token,
     this.expiresAt,
@@ -28,7 +28,7 @@ class Invite {
   Invite.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userEmail = json['user_email'];
-    role = UserRoles.values.firstWhere((e) => e.value == (json['role'] ?? ''));
+    role = UserRole.values.firstWhere((e) => e.value == (json['role'] ?? ''));
     accepted = json['accepted'];
     token = json['token'];
     expiresAt = json['expires_at'];

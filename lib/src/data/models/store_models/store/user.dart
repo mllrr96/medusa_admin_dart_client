@@ -34,7 +34,7 @@ class User {
   /// Default: "member"
   ///
   /// Enum: "admin" "member" "developer"
-  final UserRoles? role;
+  final UserRole? role;
 
   /// An optional key-value map with additional details
   ///
@@ -51,7 +51,7 @@ class User {
     this.updatedAt,
     this.deletedAt,
     this.metadata,
-    this.role = UserRoles.member,
+    this.role = UserRole.member,
   });
 
  factory User.fromJson(Map<String, dynamic> json) {
@@ -64,7 +64,7 @@ class User {
       createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
       updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
       deletedAt: DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
-      role: UserRoles.fromString(json['role']),
+      role: UserRole.fromString(json['role']),
       metadata: json['metadata'],
    );
   }
