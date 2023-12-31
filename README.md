@@ -1,39 +1,50 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Flutter Medusa Admin Package
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+### Description
+An easy way to communicate with your [Medusa](https://medusajs.com/) server, this package is used in [Medusa Admin Flutter](https://github.com/mllrr96/Medusa-Admin-Flutter)
 
-## Features
+## Set up Project
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+### Prerequisites
+Before you start with the tutorial make sure you have
 
-## Getting started
+- [Flutter](https://flutter.dev/) 
+- [Dart](https://dart.dev/get-dart) 
+- [Medusa server](https://docs.medusajs.com/quickstart/quick-start/) v14 or greater installed on your machine
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
 
-## Usage
+### Installation
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Add Dependency of the package in your pubspec.yaml file:
 
-```dart
-const like = 'sample';
+```bash
+  medusa_admin_flutter:
+    git:
+      url: https://github.com/mllrr96/Medusa_Admin_API_Flutter.git
+      ref: main
 ```
 
-## Additional information
+### USAGE
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Import Medusa as a default import and initialize it:
+
+
+```dart
+import 'package:medusa_admin_flutter/medusa_admin.dart';
+var MedusaAdmin medusaAdmin = MedusaAdmin.initialize(
+   config: MedusaConfig(baseUrl: 'MEDUSA_SERVER_URL'),
+);
+
+UserProductsListRes? productsListRes = await medusaAdmin.productsRepository.retrieveAll();
+```
+
+## Example Demo
+
+![Medusa Admin Flutter](https://github.com/mllrr96/Medusa-Admin-Flutter)
+
+## Resources
+
+- [Medusa’s GitHub repository](https://github.com/medusajs/medusa)
+- [Medusa Documentation](https://docs.medusajs.com/)
