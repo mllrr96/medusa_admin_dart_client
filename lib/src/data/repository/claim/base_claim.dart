@@ -13,13 +13,45 @@ abstract class BaseClaim {
   });
 
   /// Registers a Claim Fulfillment as shipped.
-  Future<Order?> createClaimShipment({
+  Future<Order?> createClaimFulfillment({
     /// The ID of the Order.
     required String id,
 
     /// The ID of the Claim.
     required String claimId,
-    required UserCreateClaimShipmentReq userCreateClaimShipmentReq,
+    required UserCreateClaimFulfillmentReq userCreateClaimFulfillmentReq,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  /// Cancel a claim's fulfillment and change its fulfillment status to canceled.
+  Future<Order?> cancelClaimFulfillment({
+    /// The ID of the Order.
+    required String id,
+
+    /// The ID of the Claim.
+    required String claimId,
+
+    /// The id of the fulfillment.
+    required String fulfillmentId,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? customHeaders,
+  });
+
+  ///
+  /// Create a shipment for the claim and mark its fulfillment as shipped.
+  ///
+  /// This changes the claim's fulfillment status to either partially_shipped
+  ///
+  /// or shipped, depending on whether all the items were shipped.
+  ///
+  Future<Order?> shipClaimFulfillment({
+    /// The ID of the Order.
+    required String id,
+
+    /// The ID of the Claim.
+    required String claimId,
+    required ShipClaimFulfillmentReq shipClaimFulfillmentReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

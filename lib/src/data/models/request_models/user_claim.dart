@@ -1,13 +1,55 @@
 import '../../enum/enums.dart';
 import '../index.dart';
 
-class UserCreateClaimShipmentReq {
-  /// The ID of the Fulfillment.
+class ShipClaimFulfillmentReq {
+  /// The id of the fulfillment.
   final String fulfillmentId;
-
-  /// The tracking numbers for the shipment.
+  /// An array of tracking numbers for the shipment.
   final List<String>? trackingNumbers;
-  UserCreateClaimShipmentReq({required this.fulfillmentId, this.trackingNumbers});
+  ShipClaimFulfillmentReq(
+      {required this.fulfillmentId, required this.trackingNumbers});
+
+  Map<String, dynamic> toJson() {
+    var json = <String, dynamic>{};
+    json['fulfillment_id'] = fulfillmentId;
+    if (trackingNumbers != null) {
+      json['tracking_numbers'] = trackingNumbers;
+    }
+    return json;
+  }
+}
+
+class UserCreateClaimFulfillmentReq {
+  /// The id of the fulfillment's location.
+  final String? locationId;
+
+  /// If set to true no notification will be send related to this Swap.
+  final bool? noNotification;
+
+  /// An optional set of key-value pairs to hold additional information.
+  final Map<String, dynamic>? metadata;
+  UserCreateClaimFulfillmentReq({
+    this.locationId,
+    this.metadata,
+    this.noNotification,
+  });
+
+  Map<String, dynamic> toJson() {
+    var json = <String, dynamic>{};
+
+    if (metadata != null) {
+      json['metadata'] = metadata;
+    }
+    if (locationId != null) {
+      json['location_id'] = locationId;
+    }
+
+    if (noNotification != null) {
+      json['no_notification'] = noNotification;
+    }
+
+    return json;
+  }
 }
 
 class UserCreateClaimReq {
@@ -59,11 +101,13 @@ class UserCreateClaimReq {
       json['return_shipping'] = returnShipping!.toJson();
     }
     if (additionalItems != null) {
-      json['additional_items'] = additionalItems!.map((e) => e.toJson()).toList();
+      json['additional_items'] =
+          additionalItems!.map((e) => e.toJson()).toList();
     }
 
     if (shippingMethods != null) {
-      json['shipping_methods'] = shippingMethods!.map((e) => e.toJson()).toList();
+      json['shipping_methods'] =
+          shippingMethods!.map((e) => e.toJson()).toList();
     }
 
     if (shippingAddress != null) {
@@ -95,15 +139,20 @@ class UserUpdateClaimReq {
 
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
-  UserUpdateClaimReq({this.claimItems, this.shippingMethods, this.metadata, this.noNotification});
+  UserUpdateClaimReq(
+      {this.claimItems,
+      this.shippingMethods,
+      this.metadata,
+      this.noNotification});
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
     if (claimItems != null) {
       json['claim_items'] = claimItems?.map((e) => e.toJson()).toList();
     }
     if (shippingMethods != null) {
-      json['shipping_methods'] = shippingMethods?.map((e) => e.toJson()).toList();
+      json['shipping_methods'] =
+          shippingMethods?.map((e) => e.toJson()).toList();
     }
     if (noNotification != null) {
       json['no_notification'] = noNotification;
