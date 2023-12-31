@@ -6,7 +6,7 @@ import 'base_orders.dart';
 class OrdersRepository extends BaseOrders {
   OrdersRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
+  static const _orders = '/orders';
   /// Retrieves an order
   @override
   Future<Order?> retrieveOrder({
@@ -20,7 +20,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.get('/orders/$id', queryParameters: queryParameters);
+          await _dio.get('$_orders/$id', queryParameters: queryParameters);
       if (response.statusCode == 200) {
         return Order.fromJson(response.data);
       } else {
@@ -43,7 +43,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/orders',
+        _orders,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -80,7 +80,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/shipping-methods',
+        '$_orders/$id/shipping-methods',
         data: {
           'price': price,
           'option_id': optionId,
@@ -112,7 +112,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/archive',
+        '$_orders/$id/archive',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -129,7 +129,7 @@ class OrdersRepository extends BaseOrders {
   /// Registers an Order as canceled. This triggers a flow that will cancel any created Fulfillments and Payments,
   /// may fail if the Payment or Fulfillment Provider is unable to cancel the Payment/Fulfillment.
   @override
-  Future<Order> cancelOrder({
+  Future<Order?> cancelOrder({
     /// The ID of the Order.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -140,7 +140,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/cancel',
+        '$_orders/$id/cancel',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -167,7 +167,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/capture',
+        '$_orders/$id/capture',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -194,7 +194,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/complete',
+        '$_orders/$id/complete',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -230,7 +230,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/shipment',
+        '$_orders/$id/shipment',
         data: {
           'fulfillment_id': fulfillmentId,
           if (trackingNumbers != null) 'tracking_numbers': trackingNumbers,
@@ -263,7 +263,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/refund',
+        '$_orders/$id/refund',
         data: userCreateRefundOrdersReq.toJson(),
         queryParameters: queryParameters,
       );
@@ -300,7 +300,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/line-items/$lineItemId/reservations',
+        '$_orders/$id/line-items/$lineItemId/reservations',
         data: {
           'location_id': locationId,
           if (quantity != null) 'quantity': quantity,
@@ -332,7 +332,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/return',
+        '$_orders/$id/return',
         data: userRequestReturnOrdersReq.toJson(),
         queryParameters: queryParameters,
       );
@@ -360,7 +360,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/orders/$id/reservations',
+        '$_orders/$id/reservations',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -387,7 +387,7 @@ class OrdersRepository extends BaseOrders {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id',
+        '$_orders/$id',
         data: userUpdateOrderReq.toJson(),
         queryParameters: queryParameters,
       );
