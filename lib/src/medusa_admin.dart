@@ -6,111 +6,158 @@ import 'data/repository/index.dart';
 import 'medusa_admin_config.dart';
 
 class MedusaAdmin {
-  final Dio _dio = Dio();
+  MedusaAdmin._({
+    required MedusaConfig config,
+    required this.authRepository,
+    required this.claimRepository,
+    required this.collectionRepository,
+    required this.customerRepository,
+    required this.currencyRepository,
+    required this.customerGroupRepository,
+    required this.discountRepository,
+    required this.discountConditionRepository,
+    required this.draftOrderRepository,
+    required this.fulfillmentRepository,
+    required this.giftCardRepository,
+    required this.inventoryItemsRepository,
+    required this.inviteRepository,
+    required this.noteRepository,
+    required this.notificationRepository,
+    required this.orderRepository,
+    required this.orderEditRepository,
+    required this.paymentRepository,
+    required this.paymentCollectionRepository,
+    required this.priceListRepository,
+    required this.productsRepository,
+    required this.productTagRepository,
+    required this.productTypeRepository,
+    required this.productCategoryRepository,
+    required this.productVariantRepository,
+    required this.publishableApiKeyRepository,
+    required this.regionsRepository,
+    required this.reservationRepository,
+    required this.returnRepository,
+    required this.returnReasonRepository,
+    required this.salesChannelRepository,
+    required this.shippingOptions,
+    required this.shippingProfileRepository,
+    required this.stockLocationRepository,
+    required this.storeRepository,
+    required this.swapRepository,
+    required this.taxRateRepository,
+    required this.uploadRepository,
+    required this.userRepository,
+  });
 
-  MedusaAdmin(Config config) {
-    _setupApiClient(config);
-    authRepository = AuthRepository(_dio);
-    claimRepository = ClaimRepository(_dio);
-    collectionRepository = CollectionRepository(_dio);
-    customerRepository = CustomerRepository(_dio);
-    currencyRepository = CurrencyRepository(_dio);
-    customerGroupRepository = CustomerGroupRepository(_dio);
-    discountRepository = DiscountRepository(_dio);
-    discountConditionRepository = DiscountConditionRepository(_dio);
-    draftOrderRepository = DraftOrderRepository(_dio);
-    fulfillmentRepository = FulfillmentRepository(_dio);
-    giftCardRepository = GiftCardRepository(_dio);
-    inventoryItemsRepository = InventoryItemsRepository(_dio);
-    inviteRepository = InviteRepository(_dio);
-    noteRepository = NoteRepository(_dio);
-    notificationRepository = NotificationRepository(_dio);
-    orderRepository = OrdersRepository(_dio);
-    orderEditRepository = OrderEditRepository(_dio);
-    paymentRepository = PaymentRepository(_dio);
-    paymentCollectionRepository = PaymentCollectionRepository(_dio);
-    priceListRepository = PriceListRepository(_dio);
-    productsRepository = ProductsRepository(_dio);
-    productTagRepository = ProductTagRepository(_dio);
-    productTypeRepository = ProductTypeRepository(_dio);
-    productCategoryRepository = ProductCategoryRepository(_dio);
-    productVariantRepository = ProductVariantRepository(_dio);
-    publishableApiKeyRepository = PublishableApiKeyRepository(_dio);
-    regionsRepository = RegionsRepository(_dio);
-    reservationRepository = ReservationRepository(_dio);
-    returnRepository = ReturnRepository(_dio);
-    returnReasonRepository = ReturnReasonRepository(_dio);
-    salesChannelRepository = SalesChannelRepository(_dio);
-    shippingOptions = ShippingOptionsRepository(_dio);
-    shippingProfileRepository = ShippingProfileRepository(_dio);
-    stockLocationRepository = StockLocationRepository(_dio);
-    storeRepository = StoreRepository(_dio);
-    swapRepository = SwapRepository(_dio);
-    taxRateRepository = TaxRateRepository(_dio);
-    uploadRepository = UploadRepository(_dio);
-    userRepository = UserRepository(_dio);
-  }
-
-  late AuthRepository authRepository;
-  late ClaimRepository claimRepository;
-  late CollectionRepository collectionRepository;
-  late CustomerRepository customerRepository;
-  late CurrencyRepository currencyRepository;
-  late CustomerGroupRepository customerGroupRepository;
-  late DiscountRepository discountRepository;
-  late DiscountConditionRepository discountConditionRepository;
-  late DraftOrderRepository draftOrderRepository;
-  late FulfillmentRepository fulfillmentRepository;
-  late GiftCardRepository giftCardRepository;
-  late InventoryItemsRepository inventoryItemsRepository;
-  late InviteRepository inviteRepository;
-  late NoteRepository noteRepository;
-  late NotificationRepository notificationRepository;
-  late OrdersRepository orderRepository;
-  late OrderEditRepository orderEditRepository;
-  late PaymentRepository paymentRepository;
-  late PaymentCollectionRepository paymentCollectionRepository;
-  late PriceListRepository priceListRepository;
-  late ProductsRepository productsRepository;
-  late ProductTagRepository productTagRepository;
-  late ProductTypeRepository productTypeRepository;
-  late ProductCategoryRepository productCategoryRepository;
-  late ProductVariantRepository productVariantRepository;
-  late PublishableApiKeyRepository publishableApiKeyRepository;
-  late RegionsRepository regionsRepository;
-  late ReservationRepository reservationRepository;
-  late ReturnRepository returnRepository;
-  late ReturnReasonRepository returnReasonRepository;
-  late SalesChannelRepository salesChannelRepository;
-  late ShippingOptionsRepository shippingOptions;
-  late ShippingProfileRepository shippingProfileRepository;
-  late StockLocationRepository stockLocationRepository;
-  late StoreRepository storeRepository;
-  late SwapRepository swapRepository;
-  late TaxRateRepository taxRateRepository;
-  late UploadRepository uploadRepository;
-  late UserRepository userRepository;
-
-  void _setupApiClient(Config config) {
-    _dio.options = BaseOptions(baseUrl: config.baseUrl, headers: {
+  factory MedusaAdmin.initialize(
+      {required MedusaConfig config, SharedPreferences? prefs}) {
+    final Dio dio = Dio();
+    dio.options = BaseOptions(baseUrl: config.baseUrl, headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
     });
     if (config.apiKey != null) {
-      _dio.options.headers["Authorization"] = "Bearer ${config.apiKey}";
+      dio.options.headers["Authorization"] = "Bearer ${config.apiKey}";
     }
 
-    _dio.interceptors
+    dio.interceptors
         .add(InterceptorsWrapper(onRequest: (options, handler) async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? cookie = prefs.getString('Cookie');
-      if (cookie?.isNotEmpty ?? false) {
-        options.headers['Cookie'] = cookie;
-      }
+      SharedPreferences sharedPreferences =
+          prefs ?? await SharedPreferences.getInstance();
+      try {
+        final String? cookie =
+            sharedPreferences.getString('medusa_admin_cookie');
+        if (cookie?.isNotEmpty ?? false) {
+          options.headers['Cookie'] = cookie;
+        }
+      } catch (_) {}
       return handler.next(options);
     }));
     if (config.enableDebugging ?? kDebugMode) {
-      _dio.interceptors.add(LogInterceptor());
+      dio.interceptors.add(LogInterceptor());
     }
+
+    return MedusaAdmin._(
+      config: config,
+      authRepository: AuthRepository(dio),
+      claimRepository: ClaimRepository(dio),
+      collectionRepository: CollectionRepository(dio),
+      customerRepository: CustomerRepository(dio),
+      currencyRepository: CurrencyRepository(dio),
+      customerGroupRepository: CustomerGroupRepository(dio),
+      discountRepository: DiscountRepository(dio),
+      discountConditionRepository: DiscountConditionRepository(dio),
+      draftOrderRepository: DraftOrderRepository(dio),
+      fulfillmentRepository: FulfillmentRepository(dio),
+      giftCardRepository: GiftCardRepository(dio),
+      inventoryItemsRepository: InventoryItemsRepository(dio),
+      inviteRepository: InviteRepository(dio),
+      noteRepository: NoteRepository(dio),
+      notificationRepository: NotificationRepository(dio),
+      orderRepository: OrdersRepository(dio),
+      orderEditRepository: OrderEditRepository(dio),
+      paymentRepository: PaymentRepository(dio),
+      paymentCollectionRepository: PaymentCollectionRepository(dio),
+      priceListRepository: PriceListRepository(dio),
+      productsRepository: ProductsRepository(dio),
+      productTagRepository: ProductTagRepository(dio),
+      productTypeRepository: ProductTypeRepository(dio),
+      productCategoryRepository: ProductCategoryRepository(dio),
+      productVariantRepository: ProductVariantRepository(dio),
+      publishableApiKeyRepository: PublishableApiKeyRepository(dio),
+      regionsRepository: RegionsRepository(dio),
+      reservationRepository: ReservationRepository(dio),
+      returnRepository: ReturnRepository(dio),
+      returnReasonRepository: ReturnReasonRepository(dio),
+      salesChannelRepository: SalesChannelRepository(dio),
+      shippingOptions: ShippingOptionsRepository(dio),
+      shippingProfileRepository: ShippingProfileRepository(dio),
+      stockLocationRepository: StockLocationRepository(dio),
+      storeRepository: StoreRepository(dio),
+      swapRepository: SwapRepository(dio),
+      taxRateRepository: TaxRateRepository(dio),
+      uploadRepository: UploadRepository(dio),
+      userRepository: UserRepository(dio),
+    );
   }
+
+  final AuthRepository authRepository;
+  final ClaimRepository claimRepository;
+  final CollectionRepository collectionRepository;
+  final CustomerRepository customerRepository;
+  final CurrencyRepository currencyRepository;
+  final CustomerGroupRepository customerGroupRepository;
+  final DiscountRepository discountRepository;
+  final DiscountConditionRepository discountConditionRepository;
+  final DraftOrderRepository draftOrderRepository;
+  final FulfillmentRepository fulfillmentRepository;
+  final GiftCardRepository giftCardRepository;
+  final InventoryItemsRepository inventoryItemsRepository;
+  final InviteRepository inviteRepository;
+  final NoteRepository noteRepository;
+  final NotificationRepository notificationRepository;
+  final OrdersRepository orderRepository;
+  final OrderEditRepository orderEditRepository;
+  final PaymentRepository paymentRepository;
+  final PaymentCollectionRepository paymentCollectionRepository;
+  final PriceListRepository priceListRepository;
+  final ProductsRepository productsRepository;
+  final ProductTagRepository productTagRepository;
+  final ProductTypeRepository productTypeRepository;
+  final ProductCategoryRepository productCategoryRepository;
+  final ProductVariantRepository productVariantRepository;
+  final PublishableApiKeyRepository publishableApiKeyRepository;
+  final RegionsRepository regionsRepository;
+  final ReservationRepository reservationRepository;
+  final ReturnRepository returnRepository;
+  final ReturnReasonRepository returnReasonRepository;
+  final SalesChannelRepository salesChannelRepository;
+  final ShippingOptionsRepository shippingOptions;
+  final ShippingProfileRepository shippingProfileRepository;
+  final StockLocationRepository stockLocationRepository;
+  final StoreRepository storeRepository;
+  final SwapRepository swapRepository;
+  final TaxRateRepository taxRateRepository;
+  final UploadRepository uploadRepository;
+  final UserRepository userRepository;
 }

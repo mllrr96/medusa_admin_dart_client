@@ -26,7 +26,7 @@ class AuthRepository extends BaseAuth {
         String? cookie =
             response.headers['set-cookie']?.firstOrNull?.split(';').firstOrNull;
         if (cookie != null) {
-          await prefs.setString('Cookie', cookie);
+          await prefs.setString('medusa_admin_cookie', cookie);
         }
         return User.fromJson(response.data);
       } else {
