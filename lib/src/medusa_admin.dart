@@ -52,7 +52,14 @@ class MedusaAdmin {
   factory MedusaAdmin.initialize(
       {required MedusaConfig config, SharedPreferences? prefs}) {
     final Dio dio = Dio();
-    dio.options = BaseOptions(baseUrl: config.baseUrl, headers: {
+    String baseURL = '';
+    if (config.baseUrl.endsWith('/admin')) {
+      baseURL = config.baseUrl;
+    } else {
+      baseURL = '${config.baseUrl}/admin';
+    }
+
+    dio.options = BaseOptions(baseUrl: baseURL, headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
     });

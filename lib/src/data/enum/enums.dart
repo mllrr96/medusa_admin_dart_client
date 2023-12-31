@@ -133,7 +133,7 @@ enum UserRole {
 
   const UserRole(this.value);
 
-  factory UserRole.fromString(String value) {
+  factory UserRole.fromString(String? value) {
     if (value == 'admin') {
       return UserRole.admin;
     } else if (value == 'developer') {
