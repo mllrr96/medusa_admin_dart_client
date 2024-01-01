@@ -5,7 +5,7 @@ class UserCurrencyRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserCurrencyRes({this.currencies, this.limit, this.offset, this.count});
+  const UserCurrencyRes({this.currencies, this.limit, this.offset, this.count});
   factory UserCurrencyRes.fromJson(json) {
     return UserCurrencyRes(
       currencies: json['currencies'] != null

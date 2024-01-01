@@ -1,22 +1,11 @@
 import '../index.dart';
 
-class UserInventoryItemRes {
-  final InventoryItem? inventoryItem;
-
-  UserInventoryItemRes(this.inventoryItem);
-  factory UserInventoryItemRes.fromJson(Map<String, dynamic> json) {
-    return UserInventoryItemRes(json['inventory_item'] != null
-        ? InventoryItem.fromJson(json['inventory_item'])
-        : null);
-  }
-}
-
 class UserInventoryItemsRes {
   final List<InventoryItem>? inventoryItems;
   final int? limit;
   final int? offset;
   final int? count;
-  UserInventoryItemsRes(
+  const UserInventoryItemsRes(
       {this.inventoryItems, this.limit, this.offset, this.count});
   factory UserInventoryItemsRes.fromJson(Map<String, dynamic> json) {
     return UserInventoryItemsRes(
@@ -38,7 +27,7 @@ class UserStockLevelsOfLocationRes {
   /// The id of the location
   final String? id;
 
-  UserStockLevelsOfLocationRes({
+  const UserStockLevelsOfLocationRes({
     this.id,
     this.locationLevels,
   });
@@ -70,7 +59,7 @@ class UserDeleteInventoryItemRes {
 
   /// Whether or not the Inventory Item was deleted.
   final bool deleted;
-  UserDeleteInventoryItemRes({required this.deleted, this.id, this.object});
+  const UserDeleteInventoryItemRes({required this.deleted, this.id, this.object});
   factory UserDeleteInventoryItemRes.fromJson(json) {
     return UserDeleteInventoryItemRes(
         deleted: json['deleted'] ?? false,

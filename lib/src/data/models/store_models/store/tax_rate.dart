@@ -54,7 +54,7 @@ class TaxRate {
   /// The count of shipping options
   final int? shippingOptionCount;
 
-  TaxRate({
+ const TaxRate({
     this.id,
     this.rate,
     this.code,

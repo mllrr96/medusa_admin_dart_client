@@ -48,7 +48,7 @@ class PaymentSession {
   /// The date with timezone at which the resource was updated.
   final DateTime? updatedAt;
 
-  PaymentSession({
+  const PaymentSession({
     this.id,
     required this.cartId,
     this.cart,

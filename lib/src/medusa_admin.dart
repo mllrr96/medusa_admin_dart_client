@@ -39,7 +39,7 @@ class MedusaAdmin {
     required this.returnRepository,
     required this.returnReasonRepository,
     required this.salesChannelRepository,
-    required this.shippingOptions,
+    required this.shippingOptionsRepository,
     required this.shippingProfileRepository,
     required this.stockLocationRepository,
     required this.storeRepository,
@@ -117,7 +117,7 @@ class MedusaAdmin {
       returnRepository: ReturnRepository(dio),
       returnReasonRepository: ReturnReasonRepository(dio),
       salesChannelRepository: SalesChannelRepository(dio),
-      shippingOptions: ShippingOptionsRepository(dio),
+      shippingOptionsRepository: ShippingOptionsRepository(dio),
       shippingProfileRepository: ShippingProfileRepository(dio),
       stockLocationRepository: StockLocationRepository(dio),
       storeRepository: StoreRepository(dio),
@@ -159,7 +159,7 @@ class MedusaAdmin {
   final ReturnRepository returnRepository;
   final ReturnReasonRepository returnReasonRepository;
   final SalesChannelRepository salesChannelRepository;
-  final ShippingOptionsRepository shippingOptions;
+  final ShippingOptionsRepository shippingOptionsRepository;
   final ShippingProfileRepository shippingProfileRepository;
   final StockLocationRepository stockLocationRepository;
   final StoreRepository storeRepository;

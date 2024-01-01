@@ -3,7 +3,7 @@ class FulfillmentOption {
   final String? providerId;
 
   // final FulfillmentOptions? options;
-  FulfillmentOption({this.providerId});
+  const FulfillmentOption({this.providerId});
 
   factory FulfillmentOption.fromJson(Map<String, dynamic> json) {
     return FulfillmentOption(providerId: json['provider_id']);

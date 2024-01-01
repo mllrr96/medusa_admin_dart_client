@@ -43,7 +43,7 @@ class ProductOptionValue {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  ProductOptionValue({
+  const ProductOptionValue({
     this.id,
     required this.value,
     required this.optionId,

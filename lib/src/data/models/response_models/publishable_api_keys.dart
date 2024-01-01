@@ -5,7 +5,7 @@ class UserRetrievePublishableApiKeysRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrievePublishableApiKeysRes(
+  const  UserRetrievePublishableApiKeysRes(
       {this.keys, this.limit, this.offset, this.count});
   factory UserRetrievePublishableApiKeysRes.fromJson(
       Map<String, dynamic> json) {
@@ -21,16 +21,6 @@ class UserRetrievePublishableApiKeysRes {
   }
 }
 
-class UserPublishableApiKeyRes {
-  final PublishableApiKey? key;
-  UserPublishableApiKeyRes(this.key);
-  factory UserPublishableApiKeyRes.fromJson(Map<String, dynamic> json) {
-    return UserPublishableApiKeyRes(json['publishable_api_key'] == null
-        ? null
-        : PublishableApiKey.fromJson(json['publishable_api_key']));
-  }
-}
-
 class UserDeletePublishableApiKeyRes {
   /// The ID of the deleted PublishableApiKey.
   final String? id;
@@ -43,7 +33,7 @@ class UserDeletePublishableApiKeyRes {
   /// Whether the PublishableApiKeys was deleted successfully or not.
   final bool deleted;
 
-  UserDeletePublishableApiKeyRes({
+  const UserDeletePublishableApiKeyRes({
     required this.deleted,
     this.id,
     this.object,

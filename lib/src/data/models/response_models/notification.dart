@@ -5,7 +5,7 @@ class UserRetrieveNotificationsRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveNotificationsRes(
+  const  UserRetrieveNotificationsRes(
       {this.notifications, this.limit, this.offset, this.count});
   factory UserRetrieveNotificationsRes.fromJson(Map<String, dynamic> json) {
 
@@ -18,17 +18,5 @@ class UserRetrieveNotificationsRes {
       offset: json['offset'],
       count: json['count'],
     );
-  }
-}
-
-class UserNotificationsRes {
-  final Notification? notification;
-
-  UserNotificationsRes(this.notification);
-
-  factory UserNotificationsRes.fromJson(Map<String, dynamic> json) {
-    return UserNotificationsRes(json['notification'] != null
-        ? Notification.fromJson(json['notification'])
-        : null);
   }
 }

@@ -1,30 +1,11 @@
 import '../index.dart';
 
-class UserDraftOrderRes {
-  final DraftOrder? draftOrder;
-
-  UserDraftOrderRes(this.draftOrder);
-
-  factory UserDraftOrderRes.fromJson(Map<String, dynamic> json) =>
-      UserDraftOrderRes(DraftOrder.fromJson(json['draft_order']));
-}
-
-class UserRegisterPaymentRes {
-  final Order? order;
-
-  UserRegisterPaymentRes(this.order);
-
-  factory UserRegisterPaymentRes.fromJson(Map<String, dynamic> json) =>
-      UserRegisterPaymentRes(
-          json['order'] != null ? Order.fromJson(json['order']) : null);
-}
-
 class UserDraftOrdersRes {
   final List<DraftOrder>? draftOrders;
   final int? limit;
   final int? offset;
   final int? count;
-  UserDraftOrdersRes({this.draftOrders, this.limit, this.offset, this.count});
+  const UserDraftOrdersRes({this.draftOrders, this.limit, this.offset, this.count});
   factory UserDraftOrdersRes.fromJson(Map<String, dynamic> json) {
     return UserDraftOrdersRes(
       draftOrders: json['draft_orders'] != null
@@ -50,7 +31,7 @@ class UserDeleteDraftOrderRes {
   /// Whether the draft order was deleted successfully or not.
   final bool deleted;
 
-  UserDeleteDraftOrderRes({
+  const  UserDeleteDraftOrderRes({
     required this.deleted,
     this.id,
     this.object,

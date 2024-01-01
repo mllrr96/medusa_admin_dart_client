@@ -1,15 +1,3 @@
-
-import '../index.dart';
-
-class UserPaymentRes {
-  final Payment? payment;
-
-  UserPaymentRes(this.payment);
-
-  factory UserPaymentRes.fromJson(Map<String, dynamic> json) =>
-      UserPaymentRes(json['payment'] != null ? Payment.fromJson(json['payment']) : null);
-}
-
 class UserCreateRefundPaymentRes {
   /// The amount to refund.
   final int amount;
@@ -20,7 +8,7 @@ class UserCreateRefundPaymentRes {
   /// A note with additional details about the Refund.
   final String? note;
 
-  UserCreateRefundPaymentRes({
+  const UserCreateRefundPaymentRes({
     required this.amount,
     required this.reason,
     this.note,

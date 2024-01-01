@@ -26,7 +26,7 @@ class ProductTag {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  ProductTag({
+  const ProductTag({
     this.id,
     required this.value,
     this.createdAt,

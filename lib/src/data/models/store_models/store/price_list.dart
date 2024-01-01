@@ -19,7 +19,7 @@ class PriceList {
   final DateTime? updatedAt;
   final DateTime? deletedAt;
 
-  PriceList({
+  const  PriceList({
     this.id,
     this.name,
     this.description,

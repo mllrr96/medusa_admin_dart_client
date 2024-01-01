@@ -60,7 +60,7 @@ class BatchJob {
   /// The date with timezone at which the resource was deleted.
   final DateTime? deletedAt;
 
-  BatchJob({
+  const  BatchJob({
     this.id,
     this.type,
     this.status,

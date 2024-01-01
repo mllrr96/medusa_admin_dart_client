@@ -14,7 +14,7 @@ class DiscountConditionProduct {
   final DateTime? updatedAt;
   final Map<String, dynamic>? metadata;
 
-  DiscountConditionProduct({
+  const DiscountConditionProduct({
     required this.productId,
     required this.conditionId,
     this.product,
@@ -24,18 +24,19 @@ class DiscountConditionProduct {
     this.metadata,
   });
 
- factory DiscountConditionProduct.fromJson(Map<String, dynamic> json) {
-   return DiscountConditionProduct(
-     productId: json['product_id'],
-     conditionId: json['condition_id'],
-     product: json['product'] != null ? Product.fromJson(json['product']) : null,
-     discountCondition: json['discount_condition'] != null
-         ? DiscountCondition.fromJson(json['discount_condition'])
-         : null,
-     createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
-     updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
-     metadata: json['metadata'],
-   );
+  factory DiscountConditionProduct.fromJson(Map<String, dynamic> json) {
+    return DiscountConditionProduct(
+      productId: json['product_id'],
+      conditionId: json['condition_id'],
+      product:
+          json['product'] != null ? Product.fromJson(json['product']) : null,
+      discountCondition: json['discount_condition'] != null
+          ? DiscountCondition.fromJson(json['discount_condition'])
+          : null,
+      createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
+      updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
+      metadata: json['metadata'],
+    );
   }
 
   Map<String, dynamic> toJson() {

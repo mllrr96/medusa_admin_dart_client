@@ -180,7 +180,7 @@ class Order {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Order({
+  const  Order({
     this.id,
     this.status = OrderStatus.pending,
     this.fulfillmentStatus = FulfillmentStatus.notFulfilled,

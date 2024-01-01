@@ -14,7 +14,7 @@ class PaymentProvider {
   /// Default: true
   final bool isInstalled;
 
-  PaymentProvider({
+  const  PaymentProvider({
     required this.id,
     this.isInstalled = true,
   });

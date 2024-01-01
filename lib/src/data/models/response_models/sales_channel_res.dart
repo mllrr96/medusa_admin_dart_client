@@ -5,7 +5,7 @@ class UserSalesChannelRetrieveAllRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserSalesChannelRetrieveAllRes({
+  const UserSalesChannelRetrieveAllRes({
     this.salesChannels,
     this.limit,
     this.offset,
@@ -29,7 +29,7 @@ class UserRetrieveStockLocationsRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveStockLocationsRes(
+  const UserRetrieveStockLocationsRes(
       {this.stockLocations, this.limit, this.offset, this.count});
   factory UserRetrieveStockLocationsRes.fromJson(json) {
     return UserRetrieveStockLocationsRes(
@@ -53,87 +53,53 @@ class UserSalesChannelRetrieveRes {
   }
 }
 
-class UserAddProductsToSalesChannelRes {
-  SalesChannel? salesChannel;
-  UserAddProductsToSalesChannelRes.fromJson(Map<String, dynamic> json) {
-    if (json['sales_channel'] == null) return;
-    salesChannel = SalesChannel.fromJson(json['sales_channel']);
-  }
-}
-
-class UserRemoveProductsFromSalesChannelRes {
-  SalesChannel? salesChannel;
-  UserRemoveProductsFromSalesChannelRes.fromJson(Map<String, dynamic> json) {
-    if (json['sales_channel'] == null) return;
-    salesChannel = SalesChannel.fromJson(json['sales_channel']);
-  }
-}
-
-class UserAssociateStockLocationToSalesChannelRes {
-  SalesChannel? salesChannel;
-  UserAssociateStockLocationToSalesChannelRes.fromJson(
-      Map<String, dynamic> json) {
-    if (json['sales_channel'] == null) return;
-    salesChannel = SalesChannel.fromJson(json['sales_channel']);
-  }
-}
-
 class UserRemoveStockLocationFromSalesChannelRes {
   /// The ID of the deleted Product.
-  String? id;
+  final String? id;
 
   /// Whether or not the items were deleted.
   ///
   /// Default: true
-  bool? deleted;
+  final bool? deleted;
 
   /// The type of the object that was deleted.
   ///
   /// Default: "product"
-  String? object;
+  final String? object;
 
-  UserRemoveStockLocationFromSalesChannelRes.fromJson(
+  const UserRemoveStockLocationFromSalesChannelRes(
+      {this.id, this.deleted, this.object});
+
+  factory UserRemoveStockLocationFromSalesChannelRes.fromJson(
       Map<String, dynamic> json) {
-    id = json['id'];
-    deleted = json['deleted'] ?? false;
-    object = json['object'];
-  }
-}
-
-class UserSalesChannelUpdateRes {
-  SalesChannel? salesChannel;
-  UserSalesChannelUpdateRes.fromJson(Map<String, dynamic> json) {
-    if (json['sales_channel'] != null) {
-      salesChannel = SalesChannel.fromJson(json['sales_channel']);
-    }
-  }
-}
-
-class UserCreateSalesChannelRes {
-  SalesChannel? salesChannel;
-  UserCreateSalesChannelRes.fromJson(Map<String, dynamic> json) {
-    if (json['sales_channel'] == null) return;
-    salesChannel = SalesChannel.fromJson(json['sales_channel']);
+    return UserRemoveStockLocationFromSalesChannelRes(
+      id: json['id'],
+      deleted: json['deleted'],
+      object: json['object'],
+    );
   }
 }
 
 class UserSalesChannelDeleteRes {
   /// The ID of the deleted user.
-  String? id;
+  final String? id;
 
   /// The type of the object that was deleted.
   ///
   /// Default: "sales-channel"
-  String? object;
+  final String? object;
 
   /// Whether or not the items were deleted.
   ///
   /// Default: true
-  bool? deleted;
+  final bool? deleted;
 
-  UserSalesChannelDeleteRes.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    object = json['object'];
-    deleted = json['deleted'];
+  const UserSalesChannelDeleteRes({this.id, this.object, this.deleted});
+  factory UserSalesChannelDeleteRes.fromJson(Map<String, dynamic> json) {
+    return UserSalesChannelDeleteRes(
+      id: json['id'],
+      object: json['object'],
+      deleted: json['deleted'],
+    );
   }
 }

@@ -79,7 +79,7 @@ class ShippingOption {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  ShippingOption({
+  const ShippingOption({
     this.id,
     required this.name,
     required this.regionId,

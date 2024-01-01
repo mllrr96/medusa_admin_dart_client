@@ -5,7 +5,8 @@ class UserProductsListRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserProductsListRes({this.products, this.limit, this.offset, this.count});
+  const UserProductsListRes(
+      {this.products, this.limit, this.offset, this.count});
   factory UserProductsListRes.fromJson(json) {
     return UserProductsListRes(
       products: json['products'] != null
@@ -15,21 +16,6 @@ class UserProductsListRes {
       offset: json['offset'],
       count: json['count'],
     );
-  }
-}
-
-class UserProductsRes {
-  Product? product;
-
-  UserProductsRes.fromJson(json) {
-    product =
-        json["product"] != null ? Product.fromJson(json["product"]) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['product'] = product?.toJson();
-    return data;
   }
 }
 
@@ -49,50 +35,25 @@ class UserPostSearchRes {
   }
 }
 
-class UserVariantsRes {
-  List<ProductVariant>? variants;
-
-  UserVariantsRes.fromJson(json) {
-    if (json['variants'] != null) {
-      variants = <ProductVariant>[];
-      json['variants'].forEach((v) {
-        variants?.add(ProductVariant.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['variants'] = variants?.map((e) => e.toJson()).toList() ?? [];
-    return data;
-  }
-}
-
 class UserDeleteProductRes {
   /// The ID of the deleted Product.
-  String? id;
+  final String? id;
 
   /// Whether or not the items were deleted.
   ///
   /// Default: true
-  bool? deleted;
+  final bool? deleted;
 
   /// The type of the object that was deleted.
   ///
   /// Default: "product"
-  String? object;
-
-  UserDeleteProductRes.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    deleted = json['deleted'];
-    object = json['object'];
-  }
-}
-
-class UserUpdateProductRes {
-  Product? product;
-
-  UserUpdateProductRes.fromJson(Map<String, dynamic> json) {
-    product = Product.fromJson(json['product']);
+  final String? object;
+  const UserDeleteProductRes({this.id, this.deleted, this.object});
+  factory UserDeleteProductRes.fromJson(Map<String, dynamic> json) {
+    return UserDeleteProductRes(
+      id: json['id'],
+      deleted: json['deleted'],
+      object: json['object'],
+    );
   }
 }

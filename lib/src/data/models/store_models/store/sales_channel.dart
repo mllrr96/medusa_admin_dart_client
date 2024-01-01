@@ -34,7 +34,7 @@ class SalesChannel {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  SalesChannel({
+  const SalesChannel({
     this.id,
     required this.name,
     this.description,

@@ -56,7 +56,7 @@ class ProductCategory {
   /// The date with timezone at which the resource was updated.
   final DateTime? updatedAt;
 
-  ProductCategory({
+  const ProductCategory({
     this.id,
     this.name,
     this.handle,

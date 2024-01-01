@@ -1,21 +1,11 @@
 import '../index.dart';
 
-class UserTaxRateRes {
-  final TaxRate? taxRate;
-  UserTaxRateRes(this.taxRate);
-
-  factory UserTaxRateRes.fromJson(Map<String, dynamic> json) {
-    return UserTaxRateRes(
-        json['tax_rate'] != null ? TaxRate.fromJson(json['tax_rate']) : null);
-  }
-}
-
 class UserRetrieveTaxRatesRes {
   final List<TaxRate>? taxRates;
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveTaxRatesRes({this.taxRates, this.limit, this.offset, this.count});
+  const UserRetrieveTaxRatesRes({this.taxRates, this.limit, this.offset, this.count});
   factory UserRetrieveTaxRatesRes.fromJson(Map<String, dynamic> json) {
     return UserRetrieveTaxRatesRes(
       taxRates: json['tax_rates'] != null
@@ -40,7 +30,7 @@ class UserDeleteTaxRateRes {
 
   /// Whether or not the Order Edit Item Change was deleted.
   final bool deleted;
-  UserDeleteTaxRateRes({required this.deleted, this.id, this.object});
+  const UserDeleteTaxRateRes({required this.deleted, this.id, this.object});
   factory UserDeleteTaxRateRes.fromJson(json) {
     return UserDeleteTaxRateRes(
         deleted: json['deleted'] ?? false,

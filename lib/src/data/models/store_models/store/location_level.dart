@@ -23,7 +23,7 @@ class LocationLevel {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  LocationLevel({
+  const LocationLevel({
     this.id,
     this.stockedQuantity,
     this.reservedQuantity,

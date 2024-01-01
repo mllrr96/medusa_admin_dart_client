@@ -5,7 +5,7 @@ class CustomersRes {
   final int? limit;
   final int? offset;
   final int? count;
-  CustomersRes({this.customers, this.limit, this.offset, this.count});
+  const CustomersRes({this.customers, this.limit, this.offset, this.count});
   factory CustomersRes.fromJson(json) {
     return CustomersRes(
       customers: json['customers'] != null
@@ -16,15 +16,5 @@ class CustomersRes {
       offset: json['offset'],
       count: json['count'],
     );
-  }
-}
-
-class CustomerRes {
-  Customer? customer;
-
-  CustomerRes.fromJson(json) {
-    if (json['customer'] != null) {
-      customer = Customer.fromJson(json['customer']);
-    }
   }
 }

@@ -10,7 +10,7 @@ class ReturnItem {
   /// The note to add to the item being swapped.
   final String? note;
 
-  ReturnItem({this.itemId, this.quantity, this.reasonId, this.note});
+  const ReturnItem({this.itemId, this.quantity, this.reasonId, this.note});
 
   factory ReturnItem.fromJson(Map<String, dynamic> json) {
     return ReturnItem(

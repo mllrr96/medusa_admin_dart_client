@@ -153,7 +153,7 @@ class LineItem {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  LineItem({
+  const LineItem({
     this.id,
     this.cartId,
     this.cart,

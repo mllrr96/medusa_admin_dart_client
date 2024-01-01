@@ -13,7 +13,7 @@ class DiscountConditionCustomerGroup {
   final DateTime? updatedAt;
   final Map<String, dynamic>? metadata;
 
-  DiscountConditionCustomerGroup({
+  const DiscountConditionCustomerGroup({
     required this.customerGroupId,
     required this.conditionId,
     this.customerGroup,

@@ -5,7 +5,7 @@ class UserRetrieveCustomerGroupsRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveCustomerGroupsRes(
+  const UserRetrieveCustomerGroupsRes(
       {this.customerGroups, this.limit, this.offset, this.count});
   factory UserRetrieveCustomerGroupsRes.fromJson(Map<String, dynamic> json) {
     return UserRetrieveCustomerGroupsRes(
@@ -20,20 +20,12 @@ class UserRetrieveCustomerGroupsRes {
   }
 }
 
-class UserAddCustomersRes {
-  CustomerGroup? customerGroup;
-
-  UserAddCustomersRes.fromJson(Map<String, dynamic> json) {
-    customerGroup = CustomerGroup.fromJson(json['customer_group']);
-  }
-}
-
 class UserRetrieveCustomersRes {
   final List<Customer>? customers;
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveCustomersRes(
+  const UserRetrieveCustomersRes(
       {this.customers, this.limit, this.offset, this.count});
   factory UserRetrieveCustomersRes.fromJson(Map<String, dynamic> json) {
     return UserRetrieveCustomersRes(
@@ -56,30 +48,6 @@ class UserRetrieveCustomerGroupRes {
   }
 }
 
-class UserUpdateCustomerGroupRes {
-  CustomerGroup? customerGroup;
-
-  UserUpdateCustomerGroupRes.fromJson(Map<String, dynamic> json) {
-    customerGroup = CustomerGroup.fromJson(json['customer_group']);
-  }
-}
-
-class UserRemoveCustomersRes {
-  CustomerGroup? customerGroup;
-
-  UserRemoveCustomersRes.fromJson(Map<String, dynamic> json) {
-    customerGroup = CustomerGroup.fromJson(json['customer_group']);
-  }
-}
-
-class UserCreateCustomerGroupRes {
-  CustomerGroup? customerGroup;
-
-  UserCreateCustomerGroupRes.fromJson(Map<String, dynamic> json) {
-    customerGroup = CustomerGroup.fromJson(json['customer_group']);
-  }
-}
-
 class UserDeleteCustomerGroupRes {
   /// The ID of the deleted Order Edit Item Change.
   final String? id;
@@ -91,7 +59,7 @@ class UserDeleteCustomerGroupRes {
 
   /// Whether or not the Order Edit Item Change was deleted.
   final bool deleted;
-  UserDeleteCustomerGroupRes({required this.deleted, this.id, this.object});
+  const UserDeleteCustomerGroupRes({required this.deleted, this.id, this.object});
   factory UserDeleteCustomerGroupRes.fromJson(json) {
     return UserDeleteCustomerGroupRes(
         deleted: json['deleted'] ?? false,

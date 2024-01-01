@@ -71,7 +71,7 @@ class Discount {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Discount({
+  const Discount({
     this.id,
     required this.code,
     required this.isDynamic,

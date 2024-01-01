@@ -33,7 +33,7 @@ class CustomerGroup {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  CustomerGroup({
+  const CustomerGroup({
     this.id,
     required this.name,
     this.customers,

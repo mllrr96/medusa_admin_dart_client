@@ -83,7 +83,7 @@ class Address {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Address({
+  const Address({
     this.id,
     this.customerId,
     this.customer,

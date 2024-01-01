@@ -72,7 +72,8 @@ class Payment {
 
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
-  Payment({
+
+  const Payment({
     this.id,
     this.swapId,
     this.swap,

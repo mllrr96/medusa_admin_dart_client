@@ -6,7 +6,7 @@ part '../../../../../generated/src/data/models/store_models/store/discount_condi
 
 @CopyWith()
 class DiscountConditionProductTag {
-  final  String? productTagId;
+  final String? productTagId;
   final String? conditionId;
   final ProductTag? productTag;
   final DiscountCondition? discountCondition;
@@ -14,7 +14,7 @@ class DiscountConditionProductTag {
   final DateTime? updatedAt;
   final Map<String, dynamic>? metadata;
 
-  DiscountConditionProductTag({
+  const DiscountConditionProductTag({
     required this.productTagId,
     required this.conditionId,
     this.productTag,
@@ -24,20 +24,20 @@ class DiscountConditionProductTag {
     this.metadata,
   });
 
- factory DiscountConditionProductTag.fromJson(Map<String, dynamic> json) {
-   return DiscountConditionProductTag(
-     productTagId: json['product_tag_id'],
-     conditionId: json['condition_id'],
-     productTag: json['product_tag'] != null
-         ? ProductTag.fromJson(json['product_tag'])
-         : null,
-     discountCondition: json['discount_condition'] != null
-         ? DiscountCondition.fromJson(json['discount_condition'])
-         : null,
-     createdAt: DateTime.tryParse(json['created_at'] ?? ''),
-     updatedAt: DateTime.tryParse(json['updated_at'] ?? ''),
-     metadata: json['metadata'] ,
-   );
+  factory DiscountConditionProductTag.fromJson(Map<String, dynamic> json) {
+    return DiscountConditionProductTag(
+      productTagId: json['product_tag_id'],
+      conditionId: json['condition_id'],
+      productTag: json['product_tag'] != null
+          ? ProductTag.fromJson(json['product_tag'])
+          : null,
+      discountCondition: json['discount_condition'] != null
+          ? DiscountCondition.fromJson(json['discount_condition'])
+          : null,
+      createdAt: DateTime.tryParse(json['created_at'] ?? ''),
+      updatedAt: DateTime.tryParse(json['updated_at'] ?? ''),
+      metadata: json['metadata'],
+    );
   }
 
   Map<String, dynamic> toJson() {

@@ -79,7 +79,7 @@ class OrderEdit {
   /// The details of the cloned items from the original order with the new changes. once the order edit is confirmed, these line items are associated with the original order.
   final List<LineItem>? items;
 
-  OrderEdit({
+  const OrderEdit({
     this.id,
     required this.orderId,
     required this.order,

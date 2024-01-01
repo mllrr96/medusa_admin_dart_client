@@ -14,7 +14,7 @@ class ClaimTag {
   final DateTime? deletedAt;
   final Map<String, dynamic>? metadata;
 
-  ClaimTag({
+  const ClaimTag({
     this.id,
     required this.value,
     this.createdAt,

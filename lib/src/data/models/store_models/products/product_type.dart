@@ -26,7 +26,7 @@ class ProductType {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  ProductType({
+  const ProductType({
     this.id,
     required this.value,
     this.createdAt,

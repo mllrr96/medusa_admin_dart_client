@@ -1,51 +1,12 @@
 import '../index.dart';
 
-class UserUpdateUserRes {
-  User? user;
-
-  UserUpdateUserRes.fromJson(Map<String, dynamic> json) {
-    if (json['user'] != null) {
-      user = User.fromJson(json['user']);
-    }
-  }
-}
-
-class UserRetrieveUserRes {
-  User? user;
-
-  UserRetrieveUserRes.fromJson(Map<String, dynamic> json) {
-    if (json['user'] != null) {
-      user = User.fromJson(json['user']);
-    }
-  }
-}
-
-class UserResetPasswordRes {
-  User? user;
-
-  UserResetPasswordRes.fromJson(Map<String, dynamic> json) {
-    if (json['user'] != null) {
-      user = User.fromJson(json['user']);
-    }
-  }
-}
-
-class UserCreateUserRes {
-  User? user;
-
-  UserCreateUserRes.fromJson(Map<String, dynamic> json) {
-    if (json['user'] != null) {
-      user = User.fromJson(json['user']);
-    }
-  }
-}
-
 class UserRetrieveUserListRes {
   final List<User>? userList;
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveUserListRes({this.userList, this.limit, this.offset, this.count});
+  const UserRetrieveUserListRes(
+      {this.userList, this.limit, this.offset, this.count});
   factory UserRetrieveUserListRes.fromJson(Map<String, dynamic> json) {
     return UserRetrieveUserListRes(
       userList: json['users'] != null
@@ -60,21 +21,24 @@ class UserRetrieveUserListRes {
 
 class UserDeleteUserRes {
   /// The ID of the deleted user.
-  String? id;
+  final String? id;
 
   /// The type of the object that was deleted.
   ///
   /// Default: "user"
-  String? object;
+  final String? object;
 
   /// Whether or not the items were deleted.
   ///
   /// Default: true
-  bool? deleted;
+  final bool? deleted;
 
-  UserDeleteUserRes.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    object = json['object'];
-    deleted = json['deleted'];
+  const UserDeleteUserRes({this.id, this.object, this.deleted});
+  factory UserDeleteUserRes.fromJson(Map<String, dynamic> json) {
+    return UserDeleteUserRes(
+      id: json['id'],
+      object: json['object'],
+      deleted: json['deleted'],
+    );
   }
 }

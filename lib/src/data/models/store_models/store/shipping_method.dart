@@ -82,7 +82,7 @@ class ShippingMethod {
   /// feature flag
   final bool? includesTax;
 
-  ShippingMethod({
+  const  ShippingMethod({
     this.id,
     required this.shippingOptionId,
     this.shippingOption,

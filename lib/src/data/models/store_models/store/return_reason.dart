@@ -43,7 +43,7 @@ class ReturnReason {
   final ReturnReason? parentReturnReason;
   final List<ReturnReason>? returnReasonChildren;
 
-  ReturnReason({
+  const ReturnReason({
     this.id,
     this.description,
     required this.label,

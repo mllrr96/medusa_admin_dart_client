@@ -7,34 +7,38 @@ part '../../../../../generated/src/data/models/store_models/store/money_amount.g
 @CopyWith()
 class MoneyAmount {
   /// The ID of the price.
- final String? id;
-
+  final String? id;
 
   /// The 3 character ISO currency code for which the price will be used.
   ///
   /// Only required if region_id is not provided.
- final String? currencyCode;
- final Currency? currency;
-  /// The amount to charge for the Product Variant.
- final int? amount;
-  /// The minimum quantity for which the price will be used.
- final int? minQuantity;
-  /// The maximum quantity for which the price will be used.
- final int? maxQuantity;
- final String? priceListId;
- final List<PriceList>? priceList;
-  /// The ID of the Variant for which the price is used.
- final String? variantId;
- final  ProductVariant? variant;
-  /// The ID of the Region for which the price is used. Only required if currency_code is not provided.
- final String? regionId;
- final Region? region;
- final DateTime? createdAt;
- final DateTime? deletedAt;
- final DateTime? updatedAt;
- final Map<String, dynamic>? metadata;
+  final String? currencyCode;
+  final Currency? currency;
 
-  MoneyAmount({
+  /// The amount to charge for the Product Variant.
+  final int? amount;
+
+  /// The minimum quantity for which the price will be used.
+  final int? minQuantity;
+
+  /// The maximum quantity for which the price will be used.
+  final int? maxQuantity;
+  final String? priceListId;
+  final List<PriceList>? priceList;
+
+  /// The ID of the Variant for which the price is used.
+  final String? variantId;
+  final ProductVariant? variant;
+
+  /// The ID of the Region for which the price is used. Only required if currency_code is not provided.
+  final String? regionId;
+  final Region? region;
+  final DateTime? createdAt;
+  final DateTime? deletedAt;
+  final DateTime? updatedAt;
+  final Map<String, dynamic>? metadata;
+
+  const MoneyAmount({
     this.id,
     this.currencyCode,
     this.currency,
@@ -53,24 +57,28 @@ class MoneyAmount {
     this.metadata,
   });
 
- factory MoneyAmount.fromJson(Map<String, dynamic> json) {
-   return MoneyAmount(
+  factory MoneyAmount.fromJson(Map<String, dynamic> json) {
+    return MoneyAmount(
       id: json['id'],
       currencyCode: json['currency_code'],
-      currency: json['currency'] != null ? Currency.fromJson(json['currency']) : null,
+      currency:
+          json['currency'] != null ? Currency.fromJson(json['currency']) : null,
       amount: json['amount'],
       minQuantity: json['min_quantity'],
       maxQuantity: json['max_quantity'],
       priceListId: json['price_list_id'],
       variantId: json['variant_id'],
-      variant: json['variant'] != null ? ProductVariant.fromJson(json['variant']) : null,
+      variant: json['variant'] != null
+          ? ProductVariant.fromJson(json['variant'])
+          : null,
       regionId: json['region_id'],
-      region: json['region'] != null ? Region.fromJson(json['region_id']) : null,
+      region:
+          json['region'] != null ? Region.fromJson(json['region_id']) : null,
       createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
       updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
       deletedAt: DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
       metadata: json['metadata'],
-   );
+    );
   }
 
   Map<String, dynamic> toJson() {

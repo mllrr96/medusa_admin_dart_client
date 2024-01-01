@@ -1,17 +1,5 @@
 import '../index.dart';
 
-class UserPriceListRes {
-  final PriceList? priceList;
-
-  UserPriceListRes(this.priceList);
-
-  factory UserPriceListRes.fromJson(Map<String, dynamic> json) {
-    return UserPriceListRes(json['price_list'] != null
-        ? PriceList.fromJson(json['price_list'])
-        : null);
-  }
-}
-
 class UserDeletePricesRes {
   final List<String>? ids;
 
@@ -22,7 +10,7 @@ class UserDeletePricesRes {
 
   /// Whether or not the items were deleted.
   final bool deleted;
-  UserDeletePricesRes({required this.deleted, this.ids, this.object});
+  const UserDeletePricesRes({required this.deleted, this.ids, this.object});
   factory UserDeletePricesRes.fromJson(json) {
     return UserDeletePricesRes(
         deleted: json['deleted'] ?? false,
@@ -42,7 +30,7 @@ class UserDeleteProductPricesRes {
 
   /// Whether or not the items were deleted.
   final bool deleted;
-  UserDeleteProductPricesRes({required this.deleted, this.ids, this.object});
+  const  UserDeleteProductPricesRes({required this.deleted, this.ids, this.object});
   factory UserDeleteProductPricesRes.fromJson(json) {
     return UserDeleteProductPricesRes(
         deleted: json['deleted'] ?? false,
@@ -62,7 +50,7 @@ class UserDeleteVariantPricesRes {
 
   /// Whether or not the items were deleted.
   final bool deleted;
-  UserDeleteVariantPricesRes({required this.deleted, this.ids, this.object});
+  const UserDeleteVariantPricesRes({required this.deleted, this.ids, this.object});
   factory UserDeleteVariantPricesRes.fromJson(json) {
     return UserDeleteVariantPricesRes(
         deleted: json['deleted'] ?? false,
@@ -82,7 +70,7 @@ class UserDeletePriceListRes {
 
   /// Whether or not the items were deleted.
   final bool deleted;
-  UserDeletePriceListRes({required this.deleted, this.id, this.object});
+  const UserDeletePriceListRes({required this.deleted, this.id, this.object});
   factory UserDeletePriceListRes.fromJson(json) {
     return UserDeletePriceListRes(
         deleted: json['deleted'] ?? false,
@@ -96,7 +84,7 @@ class UserPriceListsRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserPriceListsRes({this.priceLists, this.limit, this.offset, this.count});
+  const  UserPriceListsRes({this.priceLists, this.limit, this.offset, this.count});
   factory UserPriceListsRes.fromJson(Map<String, dynamic> json) {
     return UserPriceListsRes(
       priceLists: json['price_lists'] != null
@@ -115,7 +103,7 @@ class UserPriceListsProductsRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserPriceListsProductsRes(
+  const UserPriceListsProductsRes(
       {this.products, this.limit, this.offset, this.count});
   factory UserPriceListsProductsRes.fromJson(Map<String, dynamic> json) {
     return UserPriceListsProductsRes(

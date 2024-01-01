@@ -1,15 +1,16 @@
 import '../index.dart';
 
 class UserRetrieveInvitesRes {
-  List<Invite>? invites;
+  final List<Invite>? invites;
 
-  UserRetrieveInvitesRes(this.invites);
+  const UserRetrieveInvitesRes(this.invites);
 
-  UserRetrieveInvitesRes.fromJson(Map<String, dynamic> json) {
-    if (json['invites'] != null) {
-      invites = <Invite>[];
-      json['invites'].forEach((v) => invites!.add(Invite.fromJson(v)));
-    }
+ factory UserRetrieveInvitesRes.fromJson(Map<String, dynamic> json) {
+    return UserRetrieveInvitesRes(
+      json['invites'] != null
+          ? List<Invite>.from(json['invites'].map((x) => Invite.fromJson(x)))
+          : null,
+    );
   }
 }
 
@@ -24,7 +25,7 @@ class UserDeleteInvitesRes{
 
   /// Whether or not the Invite was deleted.
   final bool deleted;
-  UserDeleteInvitesRes({required this.deleted, this.id, this.object});
+  const UserDeleteInvitesRes({required this.deleted, this.id, this.object});
   factory UserDeleteInvitesRes.fromJson(json) {
     return UserDeleteInvitesRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
   }

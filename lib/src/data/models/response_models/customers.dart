@@ -2,7 +2,7 @@ import '../index.dart';
 
 class StoreCustomersRes {
   final Customer? customer;
-  StoreCustomersRes({required this.customer});
+  const StoreCustomersRes({required this.customer});
   factory StoreCustomersRes.fromJson(Map<String, dynamic> json) {
     return StoreCustomersRes(
       customer:
@@ -21,7 +21,7 @@ class StoreCustomersRes {
 
 class StoreCustomersListOrdersRes {
   final List<Order>? orders;
-  StoreCustomersListOrdersRes(this.orders);
+  const StoreCustomersListOrdersRes(this.orders);
   factory StoreCustomersListOrdersRes.fromJson(json) {
     if (json['orders'] != null) {
       var orders = <Order>[];

@@ -5,7 +5,7 @@ class UserRegionsRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserRegionsRes({this.regions, this.limit, this.offset, this.count});
+  const  UserRegionsRes({this.regions, this.limit, this.offset, this.count});
   factory UserRegionsRes.fromJson(json) {
     return UserRegionsRes(
       regions: json['regions'] != null
@@ -15,27 +15,6 @@ class UserRegionsRes {
       offset: json['offset'],
       count: json['count'],
     );
-  }
-}
-
-class UserRegionRes {
-  Region? region;
-
-  UserRegionRes.fromJson(json) {
-    if (json['region'] != null) {
-      region = Region.fromJson(json['region']);
-    }
-  }
-}
-
-class UserRetrieveFulfillmentOptionsRes {
-  List<FulfillmentOption>? fulfillmentOptions;
-
-  UserRetrieveFulfillmentOptionsRes.fromJson(json) {
-    if (json['fulfillment_options'] == null) return;
-    fulfillmentOptions = <FulfillmentOption>[];
-    json['fulfillment_options']
-        .forEach((v) => fulfillmentOptions?.add(FulfillmentOption.fromJson(v)));
   }
 }
 
@@ -51,7 +30,7 @@ class UserDeleteRegionRes {
   /// Whether or not the region were deleted.
   final bool deleted;
 
-  UserDeleteRegionRes({required this.deleted, this.id, this.object});
+  const UserDeleteRegionRes({required this.deleted, this.id, this.object});
 
   factory UserDeleteRegionRes.fromJson(json) {
     return UserDeleteRegionRes(

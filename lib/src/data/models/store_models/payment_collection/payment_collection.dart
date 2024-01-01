@@ -66,7 +66,7 @@ class PaymentCollection {
   /// The details of the payments created as part of the payment collection.
   final List<Payment>? payments;
 
-  PaymentCollection({
+  const PaymentCollection({
     this.id,
     this.description,
     this.amount,

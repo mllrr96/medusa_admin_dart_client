@@ -2,7 +2,7 @@ class ReturnShipping {
   final String? optionId;
   final int? price;
 
-  ReturnShipping({this.optionId, this.price});
+  const ReturnShipping({this.optionId, this.price});
 
   factory ReturnShipping.fromJson(Map<String, dynamic> json) {
     return ReturnShipping(optionId: json['option_id'], price:json['price'] );

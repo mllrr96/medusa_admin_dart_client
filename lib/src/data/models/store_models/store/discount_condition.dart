@@ -22,7 +22,7 @@ class DiscountCondition {
   final DateTime? deletedAt;
   final Map<String, dynamic>? metadata;
 
-  DiscountCondition({
+  const DiscountCondition({
     this.id,
     required this.type,
     required this.operator,

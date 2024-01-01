@@ -5,7 +5,7 @@ class UserRetrieveProductTypesRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveProductTypesRes(
+  const  UserRetrieveProductTypesRes(
       {this.productTypes, this.limit, this.offset, this.count});
   factory UserRetrieveProductTypesRes.fromJson(Map<String, dynamic> json) {
     return UserRetrieveProductTypesRes(

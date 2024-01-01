@@ -80,7 +80,7 @@ class Swap {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Swap({
+  const Swap({
     this.id,
     this.fulfillmentStatus,
     this.paymentStatus,

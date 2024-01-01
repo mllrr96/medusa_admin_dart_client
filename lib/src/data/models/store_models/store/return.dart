@@ -72,7 +72,7 @@ class Return {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Return({
+  const Return({
     this.id,
     this.status = ReturnStatus.requested,
     this.items,

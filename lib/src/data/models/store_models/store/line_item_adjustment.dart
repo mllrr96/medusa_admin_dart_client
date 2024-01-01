@@ -39,7 +39,7 @@ class LineItemAdjustment {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  LineItemAdjustment({
+  const LineItemAdjustment({
     this.id,
     required this.itemId,
     this.item,

@@ -56,7 +56,7 @@ class GiftCard {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  GiftCard({
+  const GiftCard({
     this.id,
     required this.code,
     required this.value,

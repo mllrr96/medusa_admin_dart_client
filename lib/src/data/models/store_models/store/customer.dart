@@ -62,7 +62,7 @@ class Customer {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Customer({
+  const Customer({
     required this.email,
     this.id,
     this.firstName,

@@ -5,7 +5,7 @@ class UserCollectionsRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserCollectionsRes({this.collections, this.limit, this.offset, this.count});
+  const UserCollectionsRes({this.collections, this.limit, this.offset, this.count});
   factory UserCollectionsRes.fromJson(json) {
     return UserCollectionsRes(
       collections: json['collections'] != null

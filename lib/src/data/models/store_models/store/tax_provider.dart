@@ -14,7 +14,7 @@ class TaxProvider {
   /// Default: true
   final bool isInstalled;
 
-  TaxProvider({
+  const TaxProvider({
     this.id,
     this.isInstalled = true,
   });

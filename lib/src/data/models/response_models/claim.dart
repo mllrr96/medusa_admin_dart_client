@@ -3,7 +3,7 @@ import '../index.dart';
 
 class UserCancelClaimRes {
   final Order? order;
-  UserCancelClaimRes(this.order);
+  const UserCancelClaimRes(this.order);
 
   factory UserCancelClaimRes.fromJson(Map<String, dynamic> json) {
     return UserCancelClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
@@ -12,7 +12,7 @@ class UserCancelClaimRes {
 
 class UserCreateClaimShipmentRes {
   final Order? order;
-  UserCreateClaimShipmentRes(this.order);
+  const UserCreateClaimShipmentRes(this.order);
 
   factory UserCreateClaimShipmentRes.fromJson(Map<String, dynamic> json) {
     return UserCreateClaimShipmentRes(json['order'] != null ? Order.fromJson(json['order']) : null);
@@ -21,7 +21,7 @@ class UserCreateClaimShipmentRes {
 
 class UserCreateClaimRes {
   final Order? order;
-  UserCreateClaimRes(this.order);
+  const  UserCreateClaimRes(this.order);
 
   factory UserCreateClaimRes.fromJson(Map<String, dynamic> json) {
     return UserCreateClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
@@ -30,7 +30,7 @@ class UserCreateClaimRes {
 
 class UserUpdateClaimRes {
   final Order? order;
-  UserUpdateClaimRes(this.order);
+  const UserUpdateClaimRes(this.order);
 
   factory UserUpdateClaimRes.fromJson(Map<String, dynamic> json) {
     return UserUpdateClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);

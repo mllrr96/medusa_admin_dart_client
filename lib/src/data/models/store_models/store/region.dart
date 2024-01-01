@@ -75,7 +75,7 @@ class Region {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Region({
+  const Region({
     this.id,
     required this.name,
     required this.currencyCode,

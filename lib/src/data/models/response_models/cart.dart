@@ -2,7 +2,7 @@ import '../index.dart';
 
 class StoreCartsRes {
   final Cart? cart;
-  StoreCartsRes({this.cart});
+  const StoreCartsRes({this.cart});
   factory StoreCartsRes.fromJson(Map<String, dynamic> json) {
     return StoreCartsRes(
       cart: json['cart'] != null ? Cart.fromJson(json['cart']) : null,
@@ -21,7 +21,7 @@ class StoreCompleteCartRes {
   final Order? order;
   final Swap? swap;
   final String? type;
-  StoreCompleteCartRes({this.cart, this.order, this.swap, this.type});
+  const StoreCompleteCartRes({this.cart, this.order, this.swap, this.type});
   factory StoreCompleteCartRes.fromJson(Map<String, dynamic> json) {
     return StoreCompleteCartRes(
       cart: json['cart'] != null ? Cart.fromJson(json['cart']) : null,

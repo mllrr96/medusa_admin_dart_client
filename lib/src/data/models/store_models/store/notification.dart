@@ -50,7 +50,7 @@ class Notification {
   /// The date with timezone at which the resource was updated.
   final DateTime? updatedAt;
 
-  Notification({
+  const Notification({
     this.id,
     this.eventName,
     required this.resourceType,

@@ -2,7 +2,7 @@ import '../index.dart';
 
 class StoreCollectionsRes {
   final ProductCollection? collection;
-  StoreCollectionsRes({required this.collection});
+  const StoreCollectionsRes({required this.collection});
   factory StoreCollectionsRes.fromJson(Map<String, dynamic> json) {
     return StoreCollectionsRes(
       collection: json['collection'] != null
@@ -22,7 +22,7 @@ class StoreCollectionsRes {
 
 class StoreCollectionsListRes {
   final List<ProductCollection>? collections;
-  StoreCollectionsListRes(this.collections);
+  const StoreCollectionsListRes(this.collections);
 
   factory StoreCollectionsListRes.fromJson(json) {
     if (json['collections'] != null) {
@@ -32,7 +32,7 @@ class StoreCollectionsListRes {
       });
       return StoreCollectionsListRes(collections);
     }
-    return StoreCollectionsListRes(null);
+    return const StoreCollectionsListRes(null);
   }
 
   Map<String, dynamic> toJson() {

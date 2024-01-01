@@ -41,7 +41,7 @@ class User {
   /// Example: {"car":"white"}
   final Map<String, dynamic>? metadata;
 
-  User( {
+  const User( {
     this.id,
     required this.email,
     this.firstName,

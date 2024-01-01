@@ -42,7 +42,7 @@ class DiscountRule {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  DiscountRule({
+  const DiscountRule({
     this.id,
     required this.type,
     this.description,

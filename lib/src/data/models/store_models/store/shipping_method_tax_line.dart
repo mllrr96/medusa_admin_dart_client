@@ -42,7 +42,7 @@ class ShippingMethodTaxLine {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  ShippingMethodTaxLine({
+  const ShippingMethodTaxLine({
     this.id,
     required this.shippingMethodId,
     this.shippingMethod,

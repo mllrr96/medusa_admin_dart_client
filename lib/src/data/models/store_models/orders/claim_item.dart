@@ -40,7 +40,7 @@ class ClaimItem {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  ClaimItem({
+  const ClaimItem({
     this.id,
     this.images,
     this.claimOrder,

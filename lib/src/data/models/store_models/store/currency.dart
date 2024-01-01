@@ -29,7 +29,7 @@ class Currency {
   /// Default: false
   final bool? includeTax;
 
-  Currency({
+  const Currency({
     this.code,
     this.symbol,
     this.symbolNative,

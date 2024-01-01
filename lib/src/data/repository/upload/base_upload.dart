@@ -3,12 +3,12 @@ import 'dart:io';
 import '../../models/response_models/upload.dart';
 
 abstract class BaseUpload {
-  Future<UserUploadFileRes?> uploadProtectedFile({
+  Future<List<String>?> uploadProtectedFile({
     required List<String> files,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserUploadFileRes?> uploadFile({
+  Future<List<String>?> uploadFile({
     required List<File> files,
     Map<String, dynamic>? customHeaders,
   });
@@ -18,7 +18,7 @@ abstract class BaseUpload {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserGetFileUrlRes?> getFileUrl({
+  Future<String> getFileUrl({
     required String fileKey,
     Map<String, dynamic>? customHeaders,
   });

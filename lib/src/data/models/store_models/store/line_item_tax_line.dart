@@ -42,7 +42,7 @@ class LineItemTaxLine {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  LineItemTaxLine({
+  const LineItemTaxLine({
     this.id,
     required this.itemId,
     this.item,

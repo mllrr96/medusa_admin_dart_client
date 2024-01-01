@@ -57,7 +57,7 @@ class DraftOrder {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  DraftOrder({
+  const DraftOrder({
     this.id,
     this.status,
     this.displayId,

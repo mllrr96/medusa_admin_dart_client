@@ -39,7 +39,7 @@ class GiftCardTransaction {
   /// The tax rate of the transaction
   final num? taxRate;
 
-  GiftCardTransaction({
+  const GiftCardTransaction({
     this.id,
     required this.giftCardId,
     this.giftCard,

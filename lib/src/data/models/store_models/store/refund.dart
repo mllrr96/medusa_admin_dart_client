@@ -33,9 +33,9 @@ class Refund {
   final DateTime? updatedAt;
 
   /// An optional key-value map with additional details
-  Map<String, dynamic>? metadata;
+  final Map<String, dynamic>? metadata;
 
-  Refund({
+  const Refund({
     this.id,
     required this.orderId,
     required this.amount,

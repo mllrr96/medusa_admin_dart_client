@@ -115,7 +115,7 @@ class ProductVariant {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  ProductVariant({
+  const ProductVariant({
     this.id,
     this.title,
     this.productId,

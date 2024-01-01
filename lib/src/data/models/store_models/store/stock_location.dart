@@ -15,9 +15,9 @@ class StockLocation {
   final Address? address;
 
   /// An optional key-value map with additional details
-  Map<String, dynamic>? metadata;
+  final Map<String, dynamic>? metadata;
 
-  StockLocation({
+  const StockLocation({
     this.name,
     this.addressId,
     this.address,

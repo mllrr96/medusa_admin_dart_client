@@ -36,7 +36,7 @@ class UploadRepository extends BaseUpload {
 
   /// Creates a pre-signed download url for a file
   @override
-  Future<UserGetFileUrlRes?> getFileUrl({
+  Future<String> getFileUrl({
     /// key of the file to obtain the download link for
     required String fileKey,
     Map<String, dynamic>? customHeaders,
@@ -48,7 +48,7 @@ class UploadRepository extends BaseUpload {
       final response =
           await _dio.post('/uploads/download-url', data: {'file_key': fileKey});
       if (response.statusCode == 200) {
-        return UserGetFileUrlRes.fromJson(response.data);
+        return response.data['download_url'];
       } else {
         throw response;
       }
@@ -60,7 +60,7 @@ class UploadRepository extends BaseUpload {
 
   /// Uploads at least one file to the specific file service that is installed in Medusa.
   @override
-  Future<UserUploadFileRes?> uploadFile({
+  Future<List<String>?> uploadFile({
     required List<File> files,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -82,7 +82,12 @@ class UploadRepository extends BaseUpload {
 
       final response = await _dio.post('/uploads', data: formData);
       if (response.statusCode == 200) {
-        return UserUploadFileRes.fromJson(response.data);
+        List<String> urls = [];
+
+        for (var e in List<Map<String, dynamic>>.from(response.data['uploads'])) {
+          urls.add(e['url']);
+        }
+        return urls;
       } else {
         throw response;
       }
@@ -94,7 +99,7 @@ class UploadRepository extends BaseUpload {
 
   /// Uploads at least one file with ACL or a non-public bucket to the specific file service that is installed in Medusa.
   @override
-  Future<UserUploadFileRes?> uploadProtectedFile({
+  Future<List<String>?> uploadProtectedFile({
     required List<String> files,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -105,7 +110,12 @@ class UploadRepository extends BaseUpload {
       final response =
           await _dio.post('/uploads/download-url', data: {'files': files});
       if (response.statusCode == 200) {
-        return UserUploadFileRes.fromJson(response.data);
+        List<String> urls = [];
+
+        for (var e in List<Map<String, dynamic>>.from(response.data['uploads'])) {
+          urls.add(e['url']);
+        }
+        return urls;
       } else {
         throw response;
       }

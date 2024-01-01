@@ -1,50 +1,27 @@
 import '../index.dart';
 
-class UserCreateShippingOptionRes {
-  UserCreateShippingOptionRes({required this.shippingOption});
-  final ShippingOption shippingOption;
-
-  factory UserCreateShippingOptionRes.fromJson(Map<String, dynamic> json) {
-    return UserCreateShippingOptionRes(
-        shippingOption: ShippingOption.fromJson(json['shipping_option']));
-  }
-}
-
 class UserDeleteShippingOptionRes {
   /// The ID of the deleted Collection
-  String? id;
+  final String? id;
 
   /// The type of the object that was deleted.
   ///
   /// Default: "shipping-option"
-  String? object;
+  final String? object;
 
   /// Whether the collection was deleted successfully or not.
   ///
   /// Default: true
-  bool? deleted;
+  final bool? deleted;
 
-  UserDeleteShippingOptionRes.fromJson(json) {
-    id = json['id'];
-    object = json['object'];
-    deleted = json['deleted'];
+  const UserDeleteShippingOptionRes({this.id, this.object, this.deleted});
+  factory UserDeleteShippingOptionRes.fromJson(json) {
+    return UserDeleteShippingOptionRes(
+      id: json['id'],
+      object: json['object'],
+      deleted: json['deleted'],
+    );
   }
-}
-
-class UserUpdateShippingOptionRes {
-  UserUpdateShippingOptionRes({required this.shippingOption});
-  final ShippingOption shippingOption;
-  factory UserUpdateShippingOptionRes.fromJson(Map<String, dynamic> json) =>
-      UserUpdateShippingOptionRes(
-          shippingOption: ShippingOption.fromJson(json['shipping_option']));
-}
-
-class UserRetrieveShippingOptionRes {
-  UserRetrieveShippingOptionRes({required this.shippingOption});
-  final ShippingOption shippingOption;
-  factory UserRetrieveShippingOptionRes.fromJson(Map<String, dynamic> json) =>
-      UserRetrieveShippingOptionRes(
-          shippingOption: ShippingOption.fromJson(json['shipping_option']));
 }
 
 class UserRetrieveAllShippingOptionRes {
@@ -52,7 +29,7 @@ class UserRetrieveAllShippingOptionRes {
   final int? limit;
   final int? offset;
   final int? count;
-  UserRetrieveAllShippingOptionRes(
+  const UserRetrieveAllShippingOptionRes(
       {this.shippingOptions, this.limit, this.offset, this.count});
   factory UserRetrieveAllShippingOptionRes.fromJson(json) {
     return UserRetrieveAllShippingOptionRes(

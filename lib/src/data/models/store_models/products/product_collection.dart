@@ -36,7 +36,7 @@ class ProductCollection {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  ProductCollection({
+  const  ProductCollection({
     this.id,
     required this.title,
     this.handle,

@@ -1,6 +1,6 @@
 class StoreCustomersListPaymentMethodsRes {
   final List<PaymentMethod>? paymentMethods;
-  StoreCustomersListPaymentMethodsRes({this.paymentMethods});
+  const StoreCustomersListPaymentMethodsRes({this.paymentMethods});
   factory StoreCustomersListPaymentMethodsRes.fromJson(json) {
     return StoreCustomersListPaymentMethodsRes(
       paymentMethods: json['payment_methods'] != null
@@ -21,7 +21,7 @@ class StoreCustomersListPaymentMethodsRes {
 class PaymentMethod {
   final String? providerId;
   final Map<String, dynamic>? data;
-  PaymentMethod({
+  const PaymentMethod({
     this.providerId,
     this.data,
   });

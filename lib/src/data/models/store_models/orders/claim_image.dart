@@ -16,7 +16,7 @@ class ClaimImage {
   final DateTime? deletedAt;
   final DateTime? metadata;
 
-  ClaimImage({
+  const ClaimImage({
     this.id,
     this.claimItemId,
     this.claimItem,

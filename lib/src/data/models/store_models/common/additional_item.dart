@@ -5,7 +5,7 @@ class AdditionalItem {
   /// The quantity of the variant.
   final int? quantity;
 
-  AdditionalItem({
+  const AdditionalItem({
     required this.variantId,
     required this.quantity,
   });

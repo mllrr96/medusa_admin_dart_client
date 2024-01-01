@@ -21,7 +21,7 @@ class Reservation {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  Reservation({
+  const Reservation({
     this.id,
     this.locationId,
     this.inventoryItemId,
