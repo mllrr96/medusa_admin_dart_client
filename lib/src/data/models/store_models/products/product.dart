@@ -149,9 +149,9 @@ class Product  {
       json['sales_channels'].forEach((e) => salesChannelsNew!.add(SalesChannel.fromJson(e)));
     }
     List<ProductTag>? tags;
-    if (json['tags'] != null) {
+    if (json['product_tags'] != null) {
       tags = [];
-      json['tags'].forEach((e) => tags!.add(ProductTag.fromJson(e)));
+      json['product_tags'].forEach((e) => tags!.add(ProductTag.fromJson(e)));
     }
     List<ImageData>? images;
     if (json['images'] != null) {
@@ -305,7 +305,7 @@ class Product  {
     }
 
     if (tags != null) {
-      json['tags'] = tags?.map((e) => e.toJson()).toList();
+      json['product_tags'] = tags?.map((e) => e.toJson()).toList();
     }
 
     if (externalId != null) {
@@ -316,7 +316,7 @@ class Product  {
       json['sales_channels'] = salesChannels?.map((e) => e.toJson()).toList();
     }
     if (tags != null) {
-      json['tags'] = tags?.map((e) => e.toJson()).toList();
+      json['product_tags'] = tags?.map((e) => e.toJson()).toList();
     }
 
     if (createdAt != null) {

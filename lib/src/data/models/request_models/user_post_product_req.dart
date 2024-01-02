@@ -99,7 +99,7 @@ class UserPostProductReq {
       for (var element in product.tags!) {
         tagsList.add(element.toJson());
       }
-      data['tags'] = tagsList;
+      data['product_tags'] = tagsList;
     }
     if (product.type != null) {
       List<Map<String, dynamic>> typeList = [];
@@ -252,7 +252,7 @@ class UserPostUpdateProductReq {
       for (var element in tags!) {
         tagsList.add(element.toJson(excludeDates: true));
       }
-      data['tags'] = tagsList;
+      data['product_tags'] = tagsList;
     }
     if (type != null) {
       List<Map<String, dynamic>> typeList = [];

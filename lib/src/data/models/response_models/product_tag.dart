@@ -8,9 +8,9 @@ class UserRetrieveProductTagsRes {
   const UserRetrieveProductTagsRes({this.tags, this.limit, this.offset, this.count});
   factory UserRetrieveProductTagsRes.fromJson(Map<String, dynamic> json) {
     return UserRetrieveProductTagsRes(
-      tags: json['tags'] != null
+      tags: json['product_tags'] != null
           ? List<ProductTag>.from(
-              json['tags'].map((x) => ProductTag.fromJson(x)))
+              json['product_tags'].map((x) => ProductTag.fromJson(x)))
           : null,
       limit: json['limit'],
       offset: json['offset'],

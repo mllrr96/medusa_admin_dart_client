@@ -67,7 +67,7 @@ class ClaimItem {
       reason: json['reason'] != null ? ClaimReason.values.firstWhere((e) => e.value == json['reason']) : null,
       note: json['note'],
       quantity: json['quantity'],
-      tags: json['tags'].map((e) => ClaimTag.fromJson(e)).toList(),
+      tags: json['product_tags'].map((e) => ClaimTag.fromJson(e)).toList(),
       metadata: json['metadata'],
     );
   }
@@ -83,7 +83,7 @@ class ClaimItem {
     json['variant'] = variant?.toJson();
     json['reason'] = reason?.value;
     json['note'] = note;
-    json['tags'] = tags?.map((e) => e.toJson()).toList();
+    json['product_tags'] = tags?.map((e) => e.toJson()).toList();
     json['metadata'] = metadata;
     return json;
   }
