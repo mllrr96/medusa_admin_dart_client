@@ -33,12 +33,24 @@ class ShippingOptionRequirement {
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json['id'] = id;
-    json['shipping_option_id'] = shippingOptionId;
-    json['shipping_option'] = shippingOption?.toJson();
-    json['type'] = type?.value;
-    json['amount'] = amount;
-    json['deleted_at'] = deletedAt.toString();
+    if (id != null) {
+      json['id'] = id;
+    }
+    if (shippingOptionId != null) {
+      json['shipping_option_id'] = shippingOptionId;
+    }
+    if (shippingOption != null) {
+      json['shipping_option'] = shippingOption?.toJson();
+    }
+    if (type != null) {
+      json['type'] = type?.value;
+    }
+    if (amount != null) {
+      json['amount'] = amount;
+    }
+    if (deletedAt != null) {
+      json['deleted_at'] = deletedAt.toString();
+    }
     return json;
   }
 }

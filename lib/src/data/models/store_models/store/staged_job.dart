@@ -1,25 +1,33 @@
 class StagedJob {
-  String? id;
-  String? eventName;
-  Map<String, dynamic> data = {};
+  final String? id;
+  final String? eventName;
+  final Map<String, dynamic>? data;
 
-  StagedJob({
+  const StagedJob({
     this.id,
     required this.eventName,
-    this.data = const {},
+    this.data,
   });
 
-  StagedJob.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    eventName = json['event_name'];
-    data = json['data'];
+  factory StagedJob.fromJson(Map<String, dynamic> json) {
+    return StagedJob(
+      id: json['id'],
+      eventName: json['event_name'],
+      data: json['data'],
+    );
   }
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json['id'] = id;
-    json['event_name'] = eventName;
-    json['data'] = data;
+    if (id != null) {
+      json['id'] = id;
+    }
+    if (eventName != null) {
+      json['event_name'] = eventName;
+    }
+    if (data != null) {
+      json['data'] = data;
+    }
     return json;
   }
 }
