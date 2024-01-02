@@ -20,7 +20,7 @@ class CustomerRepository extends BaseCustomer {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return CustomersRes.fromJson(response.data['customer']);
+        return CustomersRes.fromJson(response.data);
       } else {
         throw response;
       }

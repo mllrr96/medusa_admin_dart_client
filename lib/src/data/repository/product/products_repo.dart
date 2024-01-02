@@ -67,7 +67,7 @@ class ProductsRepository extends BaseProducts {
           await _dio.get('/variants', queryParameters: queryParameters);
       if (response.statusCode == 200) {
         return List<ProductVariant>.from(
-            response.data.map((i) => ProductVariant.fromJson(i)));
+            response.data['variants'].map((i) => ProductVariant.fromJson(i)));
       } else {
         throw response;
       }

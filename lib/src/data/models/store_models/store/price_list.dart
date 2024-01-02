@@ -19,7 +19,7 @@ class PriceList {
   final DateTime? updatedAt;
   final DateTime? deletedAt;
 
-  const  PriceList({
+  const PriceList({
     this.id,
     this.name,
     this.description,
@@ -39,10 +39,11 @@ class PriceList {
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      type: PriceListType.values.firstWhere((element) => json['type'] ?? '',
+      type: PriceListType.values.firstWhere(
+          (element) => element.value == json['type'],
           orElse: () => PriceListType.sale),
       status: PriceListStatus.values.firstWhere(
-          (element) => json['status'] ?? '',
+          (element) => element.value == json['status'],
           orElse: () => PriceListStatus.draft),
       startsAt: DateTime.tryParse(json['starts_at'] ?? ''),
       endsAt: DateTime.tryParse(json['ends_at'] ?? ''),

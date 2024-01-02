@@ -51,17 +51,11 @@ class DiscountCondition {
       discountRule: json['discount_rule'] != null
           ? DiscountRule.fromJson(json['discount_rule'])
           : null,
-      products: json['products'].map((e) => Product.fromJson(e)).toList(),
-      productTypes:
-          json['product_types'].map((e) => ProductType.fromJson(e)).toList(),
-      productTags:
-          json['product_tags'].map((e) => ProductTag.fromJson(e)).toList(),
-      productCollections: json['product_collections']
-          .map((e) => ProductCollection.fromJson(e))
-          .toList(),
-      customerGroups: json['customer_groups']
-          .map((e) => CustomerGroup.fromJson(e))
-          .toList(),
+      products: json['products']!=null ? List<Product>.from(json['products'].map((e) => Product.fromJson(e))): null,
+      productTypes: json['product_types']!=null ? List<ProductType>.from(json['product_types'].map((e) => ProductType.fromJson(e))): null,
+      productTags: json['product_tags']!=null ? List<ProductTag>.from(json['product_tags'].map((e) => ProductTag.fromJson(e))): null,
+      productCollections: json['product_collections']!=null ? List<ProductCollection>.from(json['product_collections'].map((e) => ProductCollection.fromJson(e))): null,
+      customerGroups: json['customer_groups']!=null ? List<CustomerGroup>.from(json['customer_groups'].map((e) => CustomerGroup.fromJson(e))): null,
       createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
       updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
       deletedAt: DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
