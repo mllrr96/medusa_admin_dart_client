@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/regions.dart';
 import 'base_regions.dart';
+import '../../models/index.dart';
 
 class RegionsRepository extends BaseRegions {
   RegionsRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _regions = '/regions';
 
   @override
   Future<UserRegionsRes?> retrieveAll(
@@ -18,7 +17,7 @@ class RegionsRepository extends BaseRegions {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.get('/regions', queryParameters: queryParameters);
+          await _dio.get(_regions, queryParameters: queryParameters);
       if (response.statusCode == 200) {
         return UserRegionsRes.fromJson(response.data);
       } else {
@@ -40,9 +39,9 @@ class RegionsRepository extends BaseRegions {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.get('/regions/$id', queryParameters: queryParams);
+          await _dio.get('$_regions/$id', queryParameters: queryParams);
       if (response.statusCode == 200) {
-        return Region.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -61,10 +60,10 @@ class RegionsRepository extends BaseRegions {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.post('/regions',
+      final response = await _dio.post(_regions,
           data: userCreateRegionReq.toJson(), queryParameters: queryParams);
       if (response.statusCode == 200) {
-        return Region.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -84,7 +83,7 @@ class RegionsRepository extends BaseRegions {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio
-          .post('/regions/$id/countries', data: {'country_code': countryCode});
+          .post('$_regions/$id/countries', data: {'country_code': countryCode});
       if (response.statusCode == 200) {
         return UserRegionsRes.fromJson(response.data);
       } else {
@@ -105,7 +104,7 @@ class RegionsRepository extends BaseRegions {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.post('/regions/$id/fulfillment-providers',
+      final response = await _dio.post('$_regions/$id/fulfillment-providers',
           data: {'provider_id': providerId});
       if (response.statusCode == 200) {
         return UserRegionsRes.fromJson(response.data);
@@ -127,7 +126,7 @@ class RegionsRepository extends BaseRegions {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.post('/regions/$id/payment-providers',
+      final response = await _dio.post('$_regions/$id/payment-providers',
           data: {'provider_id': providerId});
       if (response.statusCode == 200) {
         return UserRegionsRes.fromJson(response.data);
@@ -149,7 +148,7 @@ class RegionsRepository extends BaseRegions {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.delete('/regions/$id');
+      final response = await _dio.delete('$_regions/$id');
       if (response.statusCode == 200) {
         return UserDeleteRegionRes.fromJson(response.data);
       } else {
@@ -171,7 +170,7 @@ class RegionsRepository extends BaseRegions {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.delete('/regions/$id/fulfillment-providers/$providerId');
+          await _dio.delete('$_regions/$id/fulfillment-providers/$providerId');
       if (response.statusCode == 200) {
         return UserRegionsRes.fromJson(response.data);
       } else {
@@ -193,7 +192,7 @@ class RegionsRepository extends BaseRegions {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.delete('/regions/$id/payment-providers/$providerId');
+          await _dio.delete('$_regions/$id/payment-providers/$providerId');
       if (response.statusCode == 200) {
         return UserRegionsRes.fromJson(response.data);
       } else {
@@ -214,7 +213,7 @@ class RegionsRepository extends BaseRegions {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.delete('/regions/$id/countries/$countryCode');
+      final response = await _dio.delete('$_regions/$id/countries/$countryCode');
       if (response.statusCode == 200) {
         return UserRegionsRes.fromJson(response.data);
       } else {
@@ -236,10 +235,10 @@ class RegionsRepository extends BaseRegions {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.get('/regions/$id/fulfillment-options');
+      final response = await _dio.get('$_regions/$id/fulfillment-options');
       if (response.statusCode == 200) {
         return List<FulfillmentOption>.from(
-            response.data.map((x) => FulfillmentOption.fromJson(x)));
+            response.data['fulfillment_options'].map((x) => FulfillmentOption.fromJson(x)));
       } else {
         throw response;
       }
@@ -260,9 +259,9 @@ class RegionsRepository extends BaseRegions {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.post('/regions/$id', data: userUpdateRegionReq.toJson());
+          await _dio.post('$_regions/$id', data: userUpdateRegionReq.toJson());
       if (response.statusCode == 200) {
-        return Region.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }

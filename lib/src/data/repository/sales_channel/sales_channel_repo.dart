@@ -1,15 +1,13 @@
 import 'dart:developer';
-
-import '../../models/index.dart';
-import '../../models/response_models/sales_channel_res.dart';
 import 'base_sales_channel.dart';
 import 'package:dio/dio.dart';
+import '../../models/index.dart';
 
 class SalesChannelRepository extends BaseSalesChannel {
   SalesChannelRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
   static const String _salesChannel = '/sales-channels';
+
   @override
   Future<SalesChannel?> addProductsToSalesChannel({
     required String id,
@@ -29,7 +27,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         'product_ids': data,
       });
       if (response.statusCode == 200) {
-        return SalesChannel.fromJson(response.data);
+        return SalesChannel.fromJson(response.data['sales_channel']);
       } else {
         throw response;
       }
@@ -54,7 +52,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         'location_id': locationId,
       });
       if (response.statusCode == 200) {
-        return SalesChannel.fromJson(response.data);
+        return SalesChannel.fromJson(response.data['sales_channel']);
       } else {
         throw response;
       }
@@ -79,7 +77,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         data: userSalesChannelCreateReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return SalesChannel.fromJson(response.data);
+        return SalesChannel.fromJson(response.data['sales_channel']);
       } else {
         throw response;
       }
@@ -137,7 +135,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return SalesChannel.fromJson(response.data);
+        return SalesChannel.fromJson(response.data['sales_channel']);
       } else {
         throw response;
       }
@@ -191,7 +189,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return SalesChannel.fromJson(response.data);
+        return SalesChannel.fromJson(response.data['sales_channel']);
       } else {
         throw response;
       }
@@ -266,7 +264,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return SalesChannel.fromJson(response.data);
+        return SalesChannel.fromJson(response.data['sales_channel']);
       } else {
         throw response;
       }

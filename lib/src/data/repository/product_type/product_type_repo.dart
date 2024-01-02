@@ -1,11 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import '../../models/response_models/product_type.dart';
 import 'base_product_type.dart';
+import '../../models/response_models/product_type.dart';
 
 class ProductTypeRepository extends BaseProductType {
   ProductTypeRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _productTypes = '/product-types';
 
   @override
   Future<UserRetrieveProductTypesRes?> retrieveProductTypes({
@@ -17,7 +18,7 @@ class ProductTypeRepository extends BaseProductType {
     }
     try {
       final response = await _dio.get(
-        '/product-types',
+        _productTypes,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {

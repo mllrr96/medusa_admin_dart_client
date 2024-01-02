@@ -1,13 +1,14 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/return.dart';
 import 'base_return.dart';
+import '../../models/index.dart';
 
 class ReturnRepository extends BaseReturn {
   ReturnRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _orders = '/orders';
+  static const _returns = '/returns';
+
 
   @override
   Future<Order?> cancelReturn({
@@ -20,11 +21,11 @@ class ReturnRepository extends BaseReturn {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/return',
+        '$_orders/$id/return',
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -46,12 +47,12 @@ class ReturnRepository extends BaseReturn {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/returns/$id/receive',
+        '$_returns/$id/receive',
         data: userReceiveReturnOrderReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Return.fromJson(response.data);
+        return Return.fromJson(response.data['return']);
       } else {
         throw response;
       }
@@ -73,12 +74,12 @@ class ReturnRepository extends BaseReturn {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/return',
+        '$_orders/$id/return',
         data: userRequestReturnOrdersReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -98,7 +99,7 @@ class ReturnRepository extends BaseReturn {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/returns',
+        _returns,
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {

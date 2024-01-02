@@ -6,7 +6,8 @@ import 'base_fulfillment.dart';
 class FulfillmentRepository extends BaseFulfillment {
   FulfillmentRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
+  static const _orders = '/orders';
+  static const _fulfillments = '/fulfillments';
   /// Registers a claim's fulfillment as canceled.
   @override
   Future<Order?> cancelClaimFulfillment({
@@ -26,10 +27,10 @@ class FulfillmentRepository extends BaseFulfillment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/claims/$claimId/fulfillments/$fulfillmentId/cancel',
+        '$_orders/$id/claims/$claimId$_fulfillments/$fulfillmentId/cancel',
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -55,10 +56,10 @@ class FulfillmentRepository extends BaseFulfillment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/fulfillments/$fulfillmentId/cancel',
+        '$_orders/$id$_fulfillments/$fulfillmentId/cancel',
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -87,10 +88,10 @@ class FulfillmentRepository extends BaseFulfillment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/swaps/$swapId/fulfillments/$fulfillmentId/cancel',
+        '$_orders/$id/swaps/$swapId$_fulfillments/$fulfillmentId/cancel',
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -122,14 +123,14 @@ class FulfillmentRepository extends BaseFulfillment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/claims/$claimId/fulfillments',
+        '$_orders/$id/claims/$claimId$_fulfillments',
         data: {
           if (metadata != null) 'metadata': metadata,
           if (noNotification != null) 'no_notification': noNotification,
         },
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -153,11 +154,11 @@ class FulfillmentRepository extends BaseFulfillment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/fulfillment',
+        '$_orders/$id/fulfillment',
         data: userCreateFulfillmentReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -189,14 +190,14 @@ class FulfillmentRepository extends BaseFulfillment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/swaps/$swapId/fulfillments',
+        '$_orders/$id/swaps/$swapId$_fulfillments',
         data: {
           if (metadata != null) 'metadata': metadata,
           if (noNotification != null) 'no_notification': noNotification,
         },
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }

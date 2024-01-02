@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../../../medusa_admin.dart';
-import '../../models/response_models/note.dart';
 import 'base_note.dart';
+import '../../../../medusa_admin.dart';
 
 class NoteRepository extends BaseNote {
   NoteRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _notes = '/notes';
 
   /// Creates a Note which can be associated with any resource as required.
   @override
@@ -26,13 +25,13 @@ class NoteRepository extends BaseNote {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.post('/notes', data: {
+      final response = await _dio.post(_notes, data: {
         'resource_id': resourceId,
         'resource_type': resourceType,
         'value': value,
       });
       if (response.statusCode == 200) {
-        return Note.fromJson(response.data);
+        return Note.fromJson(response.data['note']);
       } else {
         throw response;
       }
@@ -54,7 +53,7 @@ class NoteRepository extends BaseNote {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/notes/$id',
+        '$_notes/$id',
       );
       if (response.statusCode == 200) {
         return UserDeleteNoteRes.fromJson(response.data);
@@ -79,10 +78,10 @@ class NoteRepository extends BaseNote {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/notes/$id',
+        '$_notes/$id',
       );
       if (response.statusCode == 200) {
-        return Note.fromJson(response.data);
+        return Note.fromJson(response.data['note']);
       } else {
         throw response;
       }
@@ -103,7 +102,7 @@ class NoteRepository extends BaseNote {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/notes',
+        _notes,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -132,11 +131,11 @@ class NoteRepository extends BaseNote {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/notes/$id',
+        '$_notes/$id',
         data: {'value': value},
       );
       if (response.statusCode == 200) {
-        return Note.fromJson(response.data);
+        return Note.fromJson(response.data['note']);
       } else {
         throw response;
       }

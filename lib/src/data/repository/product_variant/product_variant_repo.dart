@@ -1,8 +1,7 @@
 import 'dart:developer';
-import '../../models/index.dart';
-import '../../models/response_models/product_variant.dart';
 import 'base_product_variant.dart';
 import 'package:dio/dio.dart';
+import '../../models/index.dart';
 
 class ProductVariantRepository extends BaseProductVariant {
   ProductVariantRepository(Dio dio) : _dio = dio;
@@ -41,7 +40,7 @@ class ProductVariantRepository extends BaseProductVariant {
       }
       final response = await _dio.get('$_variants/$id/inventory');
       if (response.statusCode == 200) {
-        return ProductVariant.fromJson(response.data);
+        return ProductVariant.fromJson(response.data['product_variant']);
       } else {
         throw response;
       }

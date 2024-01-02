@@ -1,8 +1,7 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import '../../models/index.dart';
-import '../../models/response_models/return_reason.dart';
 import 'base_return_reason.dart';
+import '../../models/index.dart';
 
 class ReturnReasonRepository extends BaseReturnReason {
   ReturnReasonRepository(Dio dio) : _dio = dio;
@@ -24,7 +23,7 @@ class ReturnReasonRepository extends BaseReturnReason {
         data: userCreateReturnReasonReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return ReturnReason.fromJson(response.data);
+        return ReturnReason.fromJson(response.data['return_reason']);
       } else {
         throw response;
       }
@@ -70,7 +69,7 @@ class ReturnReasonRepository extends BaseReturnReason {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return ReturnReason.fromJson(response.data);
+        return ReturnReason.fromJson(response.data['return_reason']);
       } else {
         throw response;
       }
@@ -121,7 +120,7 @@ class ReturnReasonRepository extends BaseReturnReason {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return ReturnReason.fromJson(response.data);
+        return ReturnReason.fromJson(response.data['return_reason']);
       } else {
         throw response;
       }

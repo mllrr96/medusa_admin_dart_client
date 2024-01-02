@@ -1,13 +1,13 @@
 import 'dart:developer';
-
-import '../../models/index.dart';
-import '../../models/response_models/order_edit.dart';
 import 'base_order_edit.dart';
 import 'package:dio/dio.dart';
+import '../../models/index.dart';
 
 class OrderEditRepository extends BaseOrderEdit {
   OrderEditRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _orderEdits = '/order-edits';
+
   /// Create an OrderEdit LineItem
   @override
   Future<OrderEdit?> addLineItem({
@@ -21,11 +21,11 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.post(
-        '/order-edits/$id/items',
+        '$_orderEdits/$id/items',
         data: userAddLineItemReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -47,10 +47,10 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.post(
-        '/order-edits/$id/cancel',
+        '$_orderEdits/$id/cancel',
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -72,10 +72,10 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.post(
-        '/order-edits/$id/confirm',
+        '$_orderEdits/$id/confirm',
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -100,14 +100,14 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.post(
-        '/order-edits',
+        _orderEdits,
         data: {
           'order_id': id,
           if (internalNote != null) 'internal_note': internalNote,
         },
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -132,10 +132,10 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.delete(
-        '/order-edits/$id/items/$itemId',
+        '$_orderEdits/$id/items/$itemId',
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -158,7 +158,7 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.delete(
-        '/order-edits/$id/changes/$changeId',
+        '$_orderEdits/$id/changes/$changeId',
       );
       if (response.statusCode == 200) {
         return UserDeleteLineItemChangeRes.fromJson(response.data);
@@ -186,7 +186,7 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.delete(
-        '/order-edits/$id',
+        '$_orderEdits/$id',
       );
       if (response.statusCode == 200) {
         return UserDeleteOrderEditRes.fromJson(response.data);
@@ -211,10 +211,10 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.post(
-        '/order-edits/$id/request',
+        '$_orderEdits/$id/request',
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -235,7 +235,7 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.get(
-        '/order-edits',
+        _orderEdits,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -261,11 +261,11 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.get(
-        '/order-edits/$id',
+        '$_orderEdits/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -289,13 +289,13 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.post(
-        '/order-edits/$id',
+        '$_orderEdits/$id',
         data: {
           'internal_note': internalNote,
         },
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }
@@ -323,13 +323,13 @@ class OrderEditRepository extends BaseOrderEdit {
     }
     try {
       final response = await _dio.post(
-        '/order-edits/$id/items/$itemId',
+        '$_orderEdits/$id/items/$itemId',
         data: {
           'quantity': quantity,
         },
       );
       if (response.statusCode == 200) {
-        return OrderEdit.fromJson(response.data);
+        return OrderEdit.fromJson(response.data['order_edit']);
       } else {
         throw response;
       }

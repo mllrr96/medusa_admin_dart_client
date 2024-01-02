@@ -1,14 +1,13 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-
-import '../../models/response_models/upload.dart';
 import 'base_upload.dart';
+import '../../models/response_models/upload.dart';
 
 class UploadRepository extends BaseUpload {
   UploadRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _uploads = '/uploads';
 
   /// Removes an uploaded file using the installed file service
   @override
@@ -22,7 +21,7 @@ class UploadRepository extends BaseUpload {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.delete('/uploads', data: {'file_key': fileKey});
+          await _dio.delete(_uploads, data: {'file_key': fileKey});
       if (response.statusCode == 200) {
         return UserDeleteFileRes.fromJson(response.data);
       } else {
@@ -46,7 +45,7 @@ class UploadRepository extends BaseUpload {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.post('/uploads/download-url', data: {'file_key': fileKey});
+          await _dio.post('$_uploads/download-url', data: {'file_key': fileKey});
       if (response.statusCode == 200) {
         return response.data['download_url'];
       } else {
@@ -80,7 +79,7 @@ class UploadRepository extends BaseUpload {
 
       FormData formData = FormData.fromMap({"files": multipartFiles});
 
-      final response = await _dio.post('/uploads', data: formData);
+      final response = await _dio.post(_uploads, data: formData);
       if (response.statusCode == 200) {
         List<String> urls = [];
 
@@ -108,7 +107,7 @@ class UploadRepository extends BaseUpload {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.post('/uploads/download-url', data: {'files': files});
+          await _dio.post('$_uploads/download-url', data: {'files': files});
       if (response.statusCode == 200) {
         List<String> urls = [];
 

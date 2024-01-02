@@ -1,10 +1,7 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/stock_location.dart';
 import 'base_stock_location.dart';
+import '../../models/index.dart';
 
 class StockLocationRepository extends BaseStockLocation {
   StockLocationRepository(Dio dio) : _dio = dio;
@@ -23,7 +20,7 @@ class StockLocationRepository extends BaseStockLocation {
       final response = await _dio.post(_stockLocation,
           data: userCreateStockLocationReq.toJson());
       if (response.statusCode == 200) {
-        return StockLocation.fromJson(response.data);
+        return StockLocation.fromJson(response.data['stock_location']);
       } else {
         throw response;
       }
@@ -68,7 +65,7 @@ class StockLocationRepository extends BaseStockLocation {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return StockLocation.fromJson(response.data);
+        return StockLocation.fromJson(response.data['stock_location']);
       } else {
         throw response;
       }
@@ -94,7 +91,7 @@ class StockLocationRepository extends BaseStockLocation {
         data: userUpdateStockLocationReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return StockLocation.fromJson(response.data);
+        return StockLocation.fromJson(response.data['stock_location']);
       } else {
         throw response;
       }

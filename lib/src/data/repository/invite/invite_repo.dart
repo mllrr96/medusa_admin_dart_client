@@ -1,13 +1,13 @@
 import 'dart:developer';
-import '../../enum/enums.dart';
-import '../../models/index.dart';
-import '../../models/response_models/invite.dart';
 import 'base_invite.dart';
 import 'package:dio/dio.dart';
+import '../../enum/enums.dart';
+import '../../models/index.dart';
 
 class InviteRepository extends BaseInvite {
   InviteRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const String _invites = '/invites';
 
   /// Accepts an Invite and creates a corresponding user
   @override
@@ -20,7 +20,7 @@ class InviteRepository extends BaseInvite {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/invites/accept',
+        '$_invites/accept',
         data: userAcceptInvitationReq.toJson(),
       );
       if (response.statusCode == 200) {
@@ -49,7 +49,7 @@ class InviteRepository extends BaseInvite {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/invites',
+        _invites,
         data: {
           'user': email,
           'role': role.value,
@@ -78,7 +78,7 @@ class InviteRepository extends BaseInvite {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/invites/$inviteId',
+        '$_invites/$inviteId',
       );
       if (response.statusCode == 200) {
         return UserDeleteInvitesRes.fromJson(response.data);
@@ -103,7 +103,7 @@ class InviteRepository extends BaseInvite {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/invites/$inviteId/resend',
+        '$_invites/$inviteId/resend',
       );
       if (response.statusCode == 200) {
         return true;
@@ -126,7 +126,7 @@ class InviteRepository extends BaseInvite {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/invites',
+        _invites,
       );
       if (response.statusCode == 200) {
         return UserRetrieveInvitesRes.fromJson(response.data);

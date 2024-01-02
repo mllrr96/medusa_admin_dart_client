@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/price_list.dart';
 import 'base_price_list.dart';
+import '../../models/index.dart';
 
 class PriceListRepository extends BasePriceList {
   PriceListRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _priceLists = '/price-lists';
 
   /// Creates a Price List
   @override
@@ -20,11 +19,11 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/price-lists',
+        _priceLists,
         data: userCreatePriceListReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return PriceList.fromJson(response.data);
+        return PriceList.fromJson(response.data['price_list']);
       } else {
         throw response;
       }
@@ -46,7 +45,7 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/price-lists/$id',
+        '$_priceLists/$id',
       );
       if (response.statusCode == 200) {
         return UserDeletePriceListRes.fromJson(response.data);
@@ -74,7 +73,7 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/price-lists/$id/prices/batch',
+        '$_priceLists/$id/prices/batch',
         data: {
           'price_ids': priceIds,
         },
@@ -105,7 +104,7 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/price-lists/$id/products/$productId/prices',
+        '$_priceLists/$id/products/$productId/prices',
       );
       if (response.statusCode == 200) {
         return UserDeleteProductPricesRes.fromJson(response.data);
@@ -133,7 +132,7 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/price-lists/$id/variants/$variantId/prices',
+        '$_priceLists/$id/variants/$variantId/prices',
       );
       if (response.statusCode == 200) {
         return UserDeleteVariantPricesRes.fromJson(response.data);
@@ -159,11 +158,11 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/price-lists/$id',
+        '$_priceLists/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return PriceList.fromJson(response.data);
+        return PriceList.fromJson(response.data['price_list']);
       } else {
         throw response;
       }
@@ -186,7 +185,7 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/price-lists/$id/products',
+        '$_priceLists/$id/products',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -211,7 +210,7 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/price-lists',
+        _priceLists,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -238,11 +237,11 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/price-lists/$id',
+        '$_priceLists/$id',
         data: userUpdatePriceListReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return PriceList.fromJson(response.data);
+        return PriceList.fromJson(response.data['price_list']);
       } else {
         throw response;
       }
@@ -265,11 +264,11 @@ class PriceListRepository extends BasePriceList {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/price-lists/$id/prices/batch',
+        '$_priceLists/$id/prices/batch',
         data: userUpdatePricesReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return PriceList.fromJson(response.data);
+        return PriceList.fromJson(response.data['price_list']);
       } else {
         throw response;
       }

@@ -1,9 +1,7 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/shipping_option_res.dart';
 import 'base_shipping_options.dart';
+import '../../models/index.dart';
 
 class ShippingOptionsRepository extends BaseShippingOptions {
   ShippingOptionsRepository(Dio dio) : _dio = dio;
@@ -23,7 +21,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
       final response = await _dio.post(_shippingOptions,
           data: userCreateShippingOptionReq.toJson());
       if (response.statusCode == 200) {
-        return (ShippingOption.fromJson(response.data));
+        return ShippingOption.fromJson(response.data['shipping_option']);
       } else {
         throw response;
       }
@@ -47,7 +45,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
         '$_shippingOptions/$id',
       );
       if (response.statusCode == 200) {
-        return UserDeleteShippingOptionRes.fromJson(response.data);
+        return UserDeleteShippingOptionRes.fromJson(response.data['shipping_option']);
       } else {
         throw response;
       }
@@ -73,7 +71,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return ShippingOption.fromJson(response.data);
+        return ShippingOption.fromJson(response.data['shipping_option']);
       } else {
         throw response;
       }
@@ -124,7 +122,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
         data: userUpdateShippingOptionReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return ShippingOption.fromJson(response.data);
+        return ShippingOption.fromJson(response.data['shipping_option']);
       } else {
         throw response;
       }

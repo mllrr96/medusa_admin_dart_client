@@ -1,18 +1,16 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/swap.dart';
 import 'base_swap.dart';
+import '../../models/index.dart';
 
 class SwapRepository extends BaseSwap {
   SwapRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _swaps = '/swaps';
 
   /// Cancels a Swap
   @override
-  Future<Order?> cancelSwap({
+  Future<Order> cancelSwap({
     /// The ID of the Order.
     required String id,
 
@@ -26,11 +24,11 @@ class SwapRepository extends BaseSwap {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/swaps/$swapId/cancel',
+        '/orders/$id$_swaps/$swapId/cancel',
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Order?.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -56,12 +54,12 @@ class SwapRepository extends BaseSwap {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/order/$id/swaps',
+        '/order/$id$_swaps',
         data: userCreateSwapSwapReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -88,12 +86,12 @@ class SwapRepository extends BaseSwap {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/swaps/$swapId/shipments',
+        '/orders/$id$_swaps/$swapId/shipments',
         data: userCreateSwapShipmentSwapReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -120,11 +118,11 @@ class SwapRepository extends BaseSwap {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/orders/$id/swaps/$swapId/process-payment',
+        '/orders/$id$_swaps/$swapId/process-payment',
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -147,11 +145,11 @@ class SwapRepository extends BaseSwap {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/swaps/$swapId',
+        '$_swaps/$swapId',
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Swap.fromJson(response.data);
+        return Swap.fromJson(response.data['swap']);
       } else {
         throw response;
       }
@@ -172,7 +170,7 @@ class SwapRepository extends BaseSwap {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/swaps',
+        _swaps,
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {

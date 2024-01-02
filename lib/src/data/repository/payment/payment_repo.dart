@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/payment.dart';
 import 'base_payment.dart';
+import '../../models/index.dart';
 
 class PaymentRepository extends BasePayment {
   PaymentRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _payments = '/payments';
 
   /// Captures a Payment.
   @override
@@ -21,10 +20,10 @@ class PaymentRepository extends BasePayment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/payments/$id/capture',
+        '$_payments/$id/capture',
       );
       if (response.statusCode == 200) {
-        return Payment.fromJson(response.data);
+        return Payment.fromJson(response.data['payment']);
       } else {
         throw response;
       }
@@ -46,7 +45,7 @@ class PaymentRepository extends BasePayment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/payments/$id/capture',
+        '$_payments/$id/capture',
       );
       if (response.statusCode == 200) {
         return UserCreateRefundPaymentRes.fromJson(response.data);
@@ -71,10 +70,10 @@ class PaymentRepository extends BasePayment {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/payments/$id',
+        '$_payments/$id',
       );
       if (response.statusCode == 200) {
-        return Payment.fromJson(response.data);
+        return Payment.fromJson(response.data['payment']);
       } else {
         throw response;
       }

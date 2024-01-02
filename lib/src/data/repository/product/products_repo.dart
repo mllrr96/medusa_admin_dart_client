@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/products.dart';
 import 'base_products.dart';
+import '../../models/index.dart';
 
 class ProductsRepository extends BaseProducts {
   ProductsRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _products = '/products';
 
   /// Retrieves a list of products
   @override
@@ -19,7 +18,7 @@ class ProductsRepository extends BaseProducts {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/products',
+        _products,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -43,9 +42,9 @@ class ProductsRepository extends BaseProducts {
         _dio.options.headers.addAll(customHeaders);
       }
       final response =
-          await _dio.get('/products/$id', queryParameters: queryParameters);
+          await _dio.get('$_products/$id', queryParameters: queryParameters);
       if (response.statusCode == 200) {
-        return Product.fromJson(response.data);
+        return Product.fromJson(response.data['product']);
       } else {
         throw response;
       }
@@ -86,7 +85,7 @@ class ProductsRepository extends BaseProducts {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.post('/products/search', data: req);
+      final response = await _dio.post('$_products/search', data: req);
       if (response.statusCode == 200) {
         return UserPostSearchRes.fromJson(response.data);
       } else {
@@ -107,7 +106,7 @@ class ProductsRepository extends BaseProducts {
     }
     try {
       final response =
-          await _dio.post('/products', data: userPostProductReq.toJson());
+          await _dio.post(_products, data: userPostProductReq.toJson());
       if (response.statusCode == 200) {
         return Product.fromJson(response.data['product']);
       } else {
@@ -126,7 +125,7 @@ class ProductsRepository extends BaseProducts {
       _dio.options.headers.addAll(customHeaders);
     }
     try {
-      final response = await _dio.delete('/products/$id');
+      final response = await _dio.delete('$_products/$id');
       if (response.statusCode == 200) {
         return UserDeleteProductRes.fromJson(response.data);
       } else {
@@ -147,10 +146,10 @@ class ProductsRepository extends BaseProducts {
       _dio.options.headers.addAll(customHeaders);
     }
     try {
-      final response = await _dio.post('/products/$id',
+      final response = await _dio.post('$_products/$id',
           data: userPostUpdateProductReq.toJson());
       if (response.statusCode == 200) {
-        return Product.fromJson(response.data);
+        return Product.fromJson(response.data['product']);
       } else {
         throw response;
       }

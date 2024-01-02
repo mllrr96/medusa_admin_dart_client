@@ -1,14 +1,13 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/discount_condition.dart';
 import 'base_discount_condition.dart';
+import '../../models/index.dart';
 
 class DiscountConditionRepository extends BaseDiscountCondition {
   DiscountConditionRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
+  static const _discounts = '/discounts';
+  static const _conditions = '/conditions';
   @override
   Future<Discount?> addBatchResources({
     required String discountId,
@@ -22,13 +21,13 @@ class DiscountConditionRepository extends BaseDiscountCondition {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/discounts/$discountId/conditions/$conditionId/batch',
+        '$_discounts/$discountId$_conditions/$conditionId/batch',
         data: {
           'resources': itemIds,
         },
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -50,11 +49,11 @@ class DiscountConditionRepository extends BaseDiscountCondition {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/discounts/$discountId/conditions',
+        '$_discounts/$discountId$_conditions',
         data: userCreateConditionReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -77,13 +76,13 @@ class DiscountConditionRepository extends BaseDiscountCondition {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/discounts/$discountId/conditions/$conditionId/batch',
+        '$_discounts/$discountId$_conditions/$conditionId/batch',
         data: {
           'resources': itemIds,
         },
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -105,7 +104,7 @@ class DiscountConditionRepository extends BaseDiscountCondition {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/discounts/$discountId/conditions/$conditionId',
+        '$_discounts/$discountId$_conditions/$conditionId',
       );
       if (response.statusCode == 200) {
         return UserDeleteDiscountConditionRes.fromJson(response.data);
@@ -130,11 +129,11 @@ class DiscountConditionRepository extends BaseDiscountCondition {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/discounts/$discountId/conditions/$conditionId',
+        '$_discounts/$discountId$_conditions/$conditionId',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return DiscountCondition.fromJson(response.data);
+        return DiscountCondition.fromJson(response.data['discount_condition']);
       } else {
         throw response;
       }

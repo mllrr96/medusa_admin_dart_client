@@ -8,7 +8,7 @@ import 'base_auth.dart';
 class AuthRepository extends BaseAuth {
   AuthRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
+  static const String _auth = '/auth';
   /// Authenticates a user using email and password combination
   @override
   Future<User?> signIn({
@@ -20,7 +20,7 @@ class AuthRepository extends BaseAuth {
     }
     _dio.options.connectTimeout = const Duration(seconds: 10);
     try {
-      final response = await _dio.post('/auth', data: req);
+      final response = await _dio.post(_auth, data: req);
       if (response.statusCode == 200) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         String? cookie =
@@ -28,7 +28,7 @@ class AuthRepository extends BaseAuth {
         if (cookie != null) {
           await prefs.setString('medusa_admin_cookie', cookie);
         }
-        return User.fromJson(response.data);
+        return User.fromJson(response.data['user']);
       } else {
         throw response;
       }
@@ -47,7 +47,7 @@ class AuthRepository extends BaseAuth {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.delete('/auth');
+      final response = await _dio.delete(_auth);
       if (response.statusCode == 200) {
         return true;
       } else {
@@ -70,10 +70,10 @@ class AuthRepository extends BaseAuth {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/auth',
+        _auth
       );
       if (response.statusCode == 200) {
-        return User.fromJson(response.data);
+        return User.fromJson(response.data['user']);
       } else {
         throw response;
       }

@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/reservation.dart';
 import 'base_reservation.dart';
+import '../../models/index.dart';
 
 class ReservationRepository extends BaseReservation {
   ReservationRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _reservations = '/reservations';
 
   @override
   Future<Reservation?> createReservation({
@@ -20,12 +19,12 @@ class ReservationRepository extends BaseReservation {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/reservations',
+        _reservations,
         data: reservation.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Reservation.fromJson(response.data);
+        return Reservation.fromJson(response.data['reservation']);
       } else {
         throw response;
       }
@@ -46,7 +45,7 @@ class ReservationRepository extends BaseReservation {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/reservations/$id',
+        '$_reservations/$id',
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
@@ -71,11 +70,11 @@ class ReservationRepository extends BaseReservation {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/reservations/$id',
+        '$_reservations/$id',
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Reservation.fromJson(response.data);
+        return Reservation.fromJson(response.data['reservation']);
       } else {
         throw response;
       }
@@ -97,12 +96,12 @@ class ReservationRepository extends BaseReservation {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/reservations/$id',
+        '$_reservations/$id',
         data: userUpdateReservationReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return Reservation.fromJson(response.data);
+        return Reservation.fromJson(response.data['reservation']);
       } else {
         throw response;
       }

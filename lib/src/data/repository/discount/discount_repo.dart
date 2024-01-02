@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import '../../models/index.dart';
-import '../../models/response_models/discount.dart';
 import 'base_discount.dart';
+import '../../models/index.dart';
 
 class DiscountRepository extends BaseDiscount {
   DiscountRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
+  static const _discounts = '/discounts';
   @override
   Future<Discount?> addRegion({
     required String id,
@@ -19,10 +18,10 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.post(
-        '/discounts/$id/regions/$regionId',
+        '$_discounts/$id/regions/$regionId',
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -42,11 +41,11 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.post(
-        '/discounts',
+        _discounts,
         data: userCreateDiscountReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -68,7 +67,7 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.post(
-        '/discounts/$id/dynamic-codes',
+        '$_discounts/$id/dynamic-codes',
         data: userCreateDynamicCodeDiscountReq.toJson(),
       );
       if (response.statusCode == 200) {
@@ -92,7 +91,7 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.delete(
-        '/discounts/$id',
+        '$_discounts/$id',
       );
       if (response.statusCode == 200) {
         return UserDeleteDiscountRes.fromJson(response.data);
@@ -117,10 +116,10 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.delete(
-        '/discounts/$id/dynamic-codes/$dynamicCode',
+        '$_discounts/$id/dynamic-codes/$dynamicCode',
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -141,10 +140,10 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.get(
-        '/discounts/code/$code',
+        '$_discounts/code/$code',
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -165,10 +164,10 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.delete(
-        '/discounts/$id/regions/$regionId',
+        '$_discounts/$id/regions/$regionId',
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -189,11 +188,11 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.get(
-        '/discounts/$id',
+        '$_discounts/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }
@@ -213,7 +212,7 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.get(
-        '/discounts',
+        _discounts,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -240,7 +239,7 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.post(
-        '/discounts',
+        _discounts,
         data: userUpdateConditionDiscountReq.toJson(),
         queryParameters: queryParameters,
       );
@@ -267,12 +266,12 @@ class DiscountRepository extends BaseDiscount {
     }
     try {
       final response = await _dio.post(
-        '/discounts/$id',
+        '$_discounts/$id',
         data: userUpdateDiscountReq.toJson(),
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Discount.fromJson(response.data);
+        return Discount.fromJson(response.data['discount']);
       } else {
         throw response;
       }

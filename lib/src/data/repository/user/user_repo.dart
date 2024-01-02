@@ -1,14 +1,12 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/user.dart';
 import 'base_user.dart';
+import '../../models/index.dart';
 
 class UserRepository extends BaseUser {
   UserRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _users = '/users';
 
   @override
   Future<User?> create({
@@ -20,11 +18,11 @@ class UserRepository extends BaseUser {
     }
     try {
       final response = await _dio.post(
-        '/users',
+        _users,
         data: userCreateUserReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return User.fromJson(response.data);
+        return User.fromJson(response.data['user']);
       } else {
         throw response;
       }
@@ -44,7 +42,7 @@ class UserRepository extends BaseUser {
     }
     try {
       final response = await _dio.delete(
-        '/users/$id',
+        '$_users/$id',
       );
       if (response.statusCode == 200) {
         return UserDeleteUserRes.fromJson(response.data);
@@ -67,7 +65,7 @@ class UserRepository extends BaseUser {
     }
     try {
       final response = await _dio.post(
-        '/users/password-token',
+        '$_users/password-token',
         data: {'email': email},
       );
       if (response.statusCode == 200 || response.statusCode == 204) {
@@ -91,11 +89,11 @@ class UserRepository extends BaseUser {
     }
     try {
       final response = await _dio.post(
-        '/users/reset-password',
+        '$_users/reset-password',
         data: userResetPasswordReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return User.fromJson(response.data);
+        return User.fromJson(response.data['user']);
       } else {
         throw response;
       }
@@ -115,10 +113,10 @@ class UserRepository extends BaseUser {
     }
     try {
       final response = await _dio.get(
-        '/users/$id',
+        '$_users/$id',
       );
       if (response.statusCode == 200) {
-        return User.fromJson(response.data);
+        return User.fromJson(response.data['user']);
       } else {
         throw response;
       }
@@ -137,7 +135,7 @@ class UserRepository extends BaseUser {
     }
     try {
       final response = await _dio.get(
-        '/users',
+        _users,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -162,11 +160,11 @@ class UserRepository extends BaseUser {
     }
     try {
       final response = await _dio.post(
-        '/users/$id',
+        '$_users/$id',
         data: userUpdateUserReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return User.fromJson(response.data);
+        return User.fromJson(response.data['user']);
       } else {
         throw response;
       }

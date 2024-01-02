@@ -1,14 +1,13 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
 import 'base_store.dart';
+import '../../models/index.dart';
 
 class StoreRepository extends BaseStore {
   StoreRepository(Dio dio) : _dio = dio;
   final Dio _dio;
   static const String _store = '/store';
+
   @override
   Future<Store?> retrieve(
       {Map<String, dynamic>? customHeaders,
@@ -19,7 +18,7 @@ class StoreRepository extends BaseStore {
     try {
       final response = await _dio.get(_store, queryParameters: queryParameters);
       if (response.statusCode == 200) {
-        return Store.fromJson(response.data);
+        return Store.fromJson(response.data['store']);
       } else {
         throw response;
       }
@@ -39,7 +38,7 @@ class StoreRepository extends BaseStore {
     try {
       final response = await _dio.post(_store, data: storePostReq.toJson());
       if (response.statusCode == 200) {
-        return Store.fromJson(response.data);
+        return Store.fromJson(response.data['store']);
       } else {
         throw response;
       }
@@ -62,7 +61,7 @@ class StoreRepository extends BaseStore {
       );
       if (response.statusCode == 200) {
         return List<PaymentProvider>.from(
-            response.data.map((x) => PaymentProvider.fromJson(x)));
+            response.data['payment_providers'].map((x) => PaymentProvider.fromJson(x)));
       } else {
         throw response;
       }
@@ -85,7 +84,7 @@ class StoreRepository extends BaseStore {
       );
       if (response.statusCode == 200) {
         return List<TaxProvider>.from(
-            response.data.map((x) => TaxProvider.fromJson(x)));
+            response.data['tax_providers'].map((x) => TaxProvider.fromJson(x)));
       } else {
         throw response;
       }
@@ -106,7 +105,7 @@ class StoreRepository extends BaseStore {
         '$_store/currencies/$code',
       );
       if (response.statusCode == 200) {
-        return Store.fromJson(response.data);
+        return Store.fromJson(response.data['store']);
       } else {
         throw response;
       }
@@ -123,7 +122,7 @@ class StoreRepository extends BaseStore {
         '$_store/currencies/$code',
       );
       if (response.statusCode == 200) {
-        return Store.fromJson(response.data);
+        return Store.fromJson(response.data['store']);
       } else {
         throw response;
       }

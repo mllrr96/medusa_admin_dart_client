@@ -1,8 +1,7 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import '../../models/index.dart';
-import '../../models/response_models/shipping_profile.dart';
 import 'base_shipping_profile.dart';
+import '../../models/index.dart';
 
 class ShippingProfileRepository extends BaseShippingProfile {
   ShippingProfileRepository(Dio dio) : _dio = dio;
@@ -22,7 +21,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
       final response = await _dio.post(_shippingProfile,
           data: userCreateShippingProfileReq.toJson());
       if (response.statusCode == 200) {
-        return ShippingProfile.fromJson(response.data);
+        return ShippingProfile.fromJson(response.data['shipping_profile']);
       } else {
         throw response;
       }
@@ -72,7 +71,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return ShippingProfile.fromJson(response.data);
+        return ShippingProfile.fromJson(response.data['shipping_profile']);
       } else {
         throw response;
       }
@@ -124,7 +123,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
         data: userUpdateShippingProfileReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return ShippingProfile.fromJson(response.data);
+        return ShippingProfile.fromJson(response.data['shipping_profile']);
       } else {
         throw response;
       }

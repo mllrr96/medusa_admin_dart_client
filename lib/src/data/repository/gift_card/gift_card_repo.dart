@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import '../../models/index.dart';
-import '../../models/response_models/gift_card.dart';
 import 'base_gift_card.dart';
+import '../../models/index.dart';
 
 class GiftCardRepository extends BaseGiftCard {
   GiftCardRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _giftCards = '/gift-cards';
 
   /// Creates a Gift Card that can redeemed by its unique code. The Gift Card is only valid within 1 region.
   @override
@@ -19,11 +19,11 @@ class GiftCardRepository extends BaseGiftCard {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/gift-cards',
+        _giftCards,
         data: userCreateGiftCardReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return GiftCard.fromJson(response.data);
+        return GiftCard.fromJson(response.data['gift_card']);
       } else {
         throw response;
       }
@@ -45,7 +45,7 @@ class GiftCardRepository extends BaseGiftCard {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/gift-cards/$id',
+        '$_giftCards/$id',
       );
       if (response.statusCode == 200) {
         return UserDeleteGiftCardRes.fromJson(response.data);
@@ -70,10 +70,10 @@ class GiftCardRepository extends BaseGiftCard {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/gift-cards/$id',
+        '$_giftCards/$id',
       );
       if (response.statusCode == 200) {
-        return GiftCard.fromJson(response.data);
+        return GiftCard.fromJson(response.data['gift_card']);
       } else {
         throw response;
       }
@@ -94,7 +94,7 @@ class GiftCardRepository extends BaseGiftCard {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/gift-cards',
+        _giftCards,
       );
       if (response.statusCode == 200) {
         return UserGiftCardsRes.fromJson(response.data);
@@ -120,11 +120,11 @@ class GiftCardRepository extends BaseGiftCard {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/gift-cards/$id',
+        '$_giftCards/$id',
         data: userUpdateGiftCardReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return GiftCard.fromJson(response.data);
+        return GiftCard.fromJson(response.data['gift_card']);
       } else {
         throw response;
       }

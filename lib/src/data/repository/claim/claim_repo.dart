@@ -9,7 +9,7 @@ class ClaimRepository extends BaseClaim {
   ClaimRepository(Dio dio) : _dio = dio;
   final Dio _dio;
   static const _claims = '/claims';
-  static const _orders = '/claims';
+  static const _orders = '/orders';
   @override
   Future<Order?> cancelClaim({
     required String id,
@@ -26,7 +26,7 @@ class ClaimRepository extends BaseClaim {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -52,7 +52,7 @@ class ClaimRepository extends BaseClaim {
         data: userCreateClaimReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -80,7 +80,7 @@ class ClaimRepository extends BaseClaim {
         data: userUpdateClaimReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -108,7 +108,7 @@ class ClaimRepository extends BaseClaim {
         data: userCreateClaimFulfillmentReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -135,7 +135,7 @@ class ClaimRepository extends BaseClaim {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -163,7 +163,7 @@ class ClaimRepository extends BaseClaim {
         data: shipClaimFulfillmentReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }

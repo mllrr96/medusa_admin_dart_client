@@ -1,14 +1,12 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/product_tag.dart';
 import 'base_product_tag.dart';
+import '../../models/index.dart';
 
 class ProductTagRepository extends BaseProductTag {
   ProductTagRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _productTags = '/product-tags';
 
   @override
   Future<UserRetrieveProductTagsRes?> retrieveProductTags({
@@ -20,7 +18,7 @@ class ProductTagRepository extends BaseProductTag {
     }
     try {
       final response = await _dio.get(
-        '/product-tags',
+        _productTags,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -34,26 +32,4 @@ class ProductTagRepository extends BaseProductTag {
     }
   }
 
-  @override
-  Future<List<ProductTag>?> retrieveTagsUsageNumber({
-    Map<String, dynamic>? customHeaders,
-  }) async {
-    if (customHeaders != null) {
-      _dio.options.headers.addAll(customHeaders);
-    }
-    try {
-      final response = await _dio.get(
-        '/products/tag-usage',
-      );
-      if (response.statusCode == 200) {
-        return List<ProductTag>.from(
-            response.data.map((x) => ProductTag.fromJson(x)));
-      } else {
-        throw response;
-      }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
-      rethrow;
-    }
-  }
 }

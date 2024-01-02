@@ -1,14 +1,12 @@
 import 'dart:developer';
-
+import 'customer_group_base.dart';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
-import '../../models/response_models/customer_group.dart';
-import 'customer_group_base.dart';
 
 class CustomerGroupRepository extends BaseCustomerGroup {
   CustomerGroupRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
+  static const _groups = '/customer-groups';
   @override
   Future<CustomerGroup?> addCustomers({
     required String id,
@@ -26,14 +24,14 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       }
 
       final response = await _dio.post(
-        '/customer-groups/$id/customers/batch',
+        '$_groups/$id/customers/batch',
         data: {
           'customer_ids': data,
         },
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return CustomerGroup.fromJson(response.data);
+        return CustomerGroup.fromJson(response.data['customer_group']);
       } else {
         throw response;
       }
@@ -55,7 +53,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/customer-groups',
+        _groups,
         queryParameters: queryParameters,
         data: {
           'name': name,
@@ -63,7 +61,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         },
       );
       if (response.statusCode == 200) {
-        return CustomerGroup.fromJson(response.data);
+        return CustomerGroup.fromJson(response.data['customer_group']);
       } else {
         throw response;
       }
@@ -84,7 +82,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/customer-groups/$id',
+        '$_groups/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -118,14 +116,14 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         data.add({'id': id});
       }
       final response = await _dio.delete(
-        '/customer-groups/$id/customers/batch',
+        '$_groups/$id/customers/batch',
         data: {
           'customer_ids': data,
         },
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return CustomerGroup.fromJson(response.data);
+        return CustomerGroup.fromJson(response.data['customer_group']);
       } else {
         throw response;
       }
@@ -146,11 +144,11 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/customer-groups/$id',
+        '$_groups/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return CustomerGroup.fromJson(response.data);
+        return CustomerGroup.fromJson(response.data['customer_group']);
       } else {
         throw response;
       }
@@ -170,7 +168,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/customer-groups',
+        _groups,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -197,7 +195,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/customer-groups/$id/customers',
+        '$_groups/$id/customers',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -224,7 +222,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/customer-groups/$id',
+        '$_groups/$id',
         queryParameters: queryParameters,
         data: {
           'name': name,
@@ -232,7 +230,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         },
       );
       if (response.statusCode == 200) {
-        return CustomerGroup.fromJson(response.data);
+        return CustomerGroup.fromJson(response.data['customer_group']);
       } else {
         throw response;
       }

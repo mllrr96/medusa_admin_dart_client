@@ -7,6 +7,8 @@ import 'base_payment_collection.dart';import 'package:dio/dio.dart';
 class PaymentCollectionRepository extends BasePaymentCollection {
   PaymentCollectionRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _paymentCollections = '/payment-collections';
+
   /// Deletes a Payment Collection
   @override
   Future<UserDeletePaymentCollectionRes?> deletePaymentCollection({
@@ -19,7 +21,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/payment-collections/$id',
+        '$_paymentCollections/$id',
       );
       if (response.statusCode == 200) {
         return UserDeletePaymentCollectionRes.fromJson(response.data);
@@ -44,7 +46,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-         '/payment-collections/$id/authorize',
+         '$_paymentCollections/$id/authorize',
       );
       if (response.statusCode == 200) {
         return UserRetrieveNotificationsRes.fromJson(response.data);
@@ -70,11 +72,11 @@ class PaymentCollectionRepository extends BasePaymentCollection {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-         '/payment-collections/$id',
+         '$_paymentCollections/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return PaymentCollection.fromJson(response.data);
+        return PaymentCollection.fromJson(response.data['payment_collection']);
       } else {
         throw response;
       }
@@ -101,7 +103,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.post( '/payment-collections/$id', data: {
+      final response = await _dio.post( '$_paymentCollections/$id', data: {
         if (metadata != null) 'metadata': metadata,
         if (description != null) 'description': description,
       });

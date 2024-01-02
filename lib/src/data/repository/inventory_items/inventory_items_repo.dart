@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import '../../models/index.dart';
-import '../../models/response_models/inventory_items.dart';
 import 'base_inventory_items.dart';
+import '../../models/index.dart';
 
 class InventoryItemsRepository extends BaseInventoryItems {
   InventoryItemsRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const String _inventory = '/inventory-items';
 
   /// Creates an Inventory Location Level for a given Inventory Item.
   @override
@@ -23,12 +23,12 @@ class InventoryItemsRepository extends BaseInventoryItems {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/inventory-items/$id/location-levels',
+        '$_inventory/$id/location-levels',
         data: userCreateInventoryLocationForInventoryItemReq.toJson(),
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return InventoryItem.fromJson(response.data);
+        return InventoryItem.fromJson(response.data['inventory_item']);
       } else {
         throw response;
       }
@@ -49,7 +49,7 @@ class InventoryItemsRepository extends BaseInventoryItems {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.delete('/inventory-items/$id');
+      final response = await _dio.delete('$_inventory/$id');
       if (response.statusCode == 200) {
         return UserDeleteInventoryItemRes.fromJson(response.data);
       } else {
@@ -77,11 +77,11 @@ class InventoryItemsRepository extends BaseInventoryItems {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/inventory-items/$id/location-levels/$locationId',
+        '$_inventory/$id/location-levels/$locationId',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return InventoryItem.fromJson(response.data);
+        return InventoryItem.fromJson(response.data['inventory_item']);
       } else {
         throw response;
       }
@@ -104,7 +104,7 @@ class InventoryItemsRepository extends BaseInventoryItems {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/inventory-items/$id/location-levels',
+        '$_inventory/$id/location-levels',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -131,11 +131,11 @@ class InventoryItemsRepository extends BaseInventoryItems {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/inventory-items/$id',
+        '$_inventory/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return InventoryItem.fromJson(response.data);
+        return InventoryItem.fromJson(response.data['inventory_item']);
       } else {
         throw response;
       }
@@ -156,7 +156,7 @@ class InventoryItemsRepository extends BaseInventoryItems {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/inventory-items',
+        _inventory,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -184,12 +184,12 @@ class InventoryItemsRepository extends BaseInventoryItems {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/inventory-items',
+        _inventory,
         data: userUpdateInventoryItemReq.toJson(),
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return InventoryItem.fromJson(response.data);
+        return InventoryItem.fromJson(response.data['inventory_item']);
       } else {
         throw response;
       }
@@ -221,7 +221,7 @@ class InventoryItemsRepository extends BaseInventoryItems {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/inventory-items/$id/location-levels/$locationId',
+        '$_inventory/$id/location-levels/$locationId',
         data: {
           if (stockedQuantity != null) 'stocked_quantity': stockedQuantity,
           if (incomingQuantity != null) 'incoming_quantity': incomingQuantity,
@@ -229,7 +229,7 @@ class InventoryItemsRepository extends BaseInventoryItems {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return InventoryItem.fromJson(response.data);
+        return InventoryItem.fromJson(response.data['inventory_item']);
       } else {
         throw response;
       }

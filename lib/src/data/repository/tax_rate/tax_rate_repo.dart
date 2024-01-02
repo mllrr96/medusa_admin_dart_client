@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-
-import '../../models/index.dart';
-import '../../models/response_models/tax_rate.dart';
 import 'base_tax_rate.dart';
+import '../../models/index.dart';
 
 class TaxRateRepository extends BaseTaxRate {
   TaxRateRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _taxRates = '/tax-rates';
 
   /// Associates a Tax Rate with a list of Products
   @override
@@ -25,12 +24,12 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/tax-rates/$id/products/batch',
+        '$_taxRates/$id/products/batch',
         data: {'products': productIds},
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -56,12 +55,12 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/tax-rates/$id/products/batch',
+        '$_taxRates/$id/products/batch',
         data: {'product_types': productTypeIds},
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -87,12 +86,12 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/tax-rates/$id/products/batch',
+        '$_taxRates/$id/products/batch',
         data: {'shipping_options': shippingOptionIds},
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -114,12 +113,12 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/tax-rates',
+        _taxRates,
         data: userCreateTaxRateReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -141,7 +140,7 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/tax-rates/$id',
+        '$_taxRates/$id',
       );
       if (response.statusCode == 200) {
         return UserDeleteTaxRateRes.fromJson(response.data);
@@ -170,11 +169,11 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/tax-rates/$id/products/batch',
+        '$_taxRates/$id/products/batch',
         data: {'products': productIds},
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -200,11 +199,11 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/tax-rates/$id/product-types/batch',
+        '$_taxRates/$id/product-types/batch',
         data: {'product-types': productTypeIds},
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -227,11 +226,11 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/tax-rates/$id/shipping_options/batch',
+        '$_taxRates/$id/shipping_options/batch',
         data: {'shipping_options': shippingOptionIds},
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -254,11 +253,11 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/tax-rates/$id',
+        '$_taxRates/$id',
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }
@@ -279,7 +278,7 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/tax-rates',
+        _taxRates,
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
@@ -307,12 +306,12 @@ class TaxRateRepository extends BaseTaxRate {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/tax-rates',
+        _taxRates,
         data: userUpdateTaxRateReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return TaxRate.fromJson(response.data);
+        return TaxRate.fromJson(response.data['tax_rate']);
       } else {
         throw response;
       }

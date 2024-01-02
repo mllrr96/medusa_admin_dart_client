@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
-import '../../models/response_models/draft_order.dart';
 import 'base_draft_order.dart';
 
 class DraftOrderRepository extends BaseDraftOrder {
   DraftOrderRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-
+  static const _draftOrders = '/draft-orders';
   /// Creates a Draft Order
   @override
   Future<DraftOrder?> createDraftOrder({
@@ -18,10 +17,10 @@ class DraftOrderRepository extends BaseDraftOrder {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.post('/draft-orders',
+      final response = await _dio.post(_draftOrders,
           data: userCreateDraftOrderReq.toJson());
       if (response.statusCode == 200) {
-        return DraftOrder.fromJson(response.data);
+        return DraftOrder.fromJson(response.data['draft_order']);
       } else {
         throw response;
       }
@@ -44,10 +43,10 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-          '/draft-orders/$id/line-items',
+          '$_draftOrders/$id/line-items',
           data: userCreateLineItemReq.toJson());
       if (response.statusCode == 200) {
-        return DraftOrder.fromJson(response.data);
+        return DraftOrder.fromJson(response.data['draft_order']);
       } else {
         throw response;
       }
@@ -69,7 +68,7 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/draft-orders/$id',
+        '$_draftOrders/$id',
       );
       if (response.statusCode == 200) {
         return UserDeleteDraftOrderRes.fromJson(response.data);
@@ -97,10 +96,10 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.delete(
-        '/draft-orders/$id/line-items/$lineId',
+        '$_draftOrders/$id/line-items/$lineId',
       );
       if (response.statusCode == 200) {
-        return DraftOrder.fromJson(response.data);
+        return DraftOrder.fromJson(response.data['draft_order']);
       } else {
         throw response;
       }
@@ -122,10 +121,10 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/draft-orders/$id/pay',
+        '$_draftOrders/$id/pay',
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -148,11 +147,11 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/draft-orders/$id',
+        '$_draftOrders/$id',
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return DraftOrder.fromJson(response.data);
+        return DraftOrder.fromJson(response.data['draft_order']);
       } else {
         throw response;
       }
@@ -173,7 +172,7 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get(
-        '/draft-orders',
+        _draftOrders,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -200,11 +199,11 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/draft-orders/$id',
+        '$_draftOrders/$id',
         data: userUpdateDraftOrderReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return DraftOrder.fromJson(response.data);
+        return DraftOrder.fromJson(response.data['draft_order']);
       } else {
         throw response;
       }
@@ -230,11 +229,11 @@ class DraftOrderRepository extends BaseDraftOrder {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post(
-        '/draft-orders/$id/line-items/$lineId',
+        '$_draftOrders/$id/line-items/$lineId',
         data: userUpdateLineItemReq.toJson(),
       );
       if (response.statusCode == 200) {
-        return DraftOrder.fromJson(response.data);
+        return DraftOrder.fromJson(response.data['draft_order']);
       } else {
         throw response;
       }

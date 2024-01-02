@@ -6,6 +6,8 @@ import 'base_collection.dart';
 class CollectionRepository extends BaseCollection {
   CollectionRepository(Dio dio) : _dio = dio;
   final Dio _dio;
+  static const _collections = '/collections';
+
   @override
   Future<ProductCollection?> retrieve({
     required String id,
@@ -16,9 +18,9 @@ class CollectionRepository extends BaseCollection {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.get('/store/collections/$id');
+      final response = await _dio.get('$_collections/$id');
       if (response.statusCode == 200) {
-        return ProductCollection.fromJson(response.data);
+        return ProductCollection.fromJson(response.data['collection']);
       } else {
         throw response;
       }
@@ -38,7 +40,7 @@ class CollectionRepository extends BaseCollection {
     }
     try {
       final response = await _dio.get(
-        '/collections',
+        _collections,
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
@@ -63,12 +65,12 @@ class CollectionRepository extends BaseCollection {
     }
     try {
       final response = await _dio.post(
-        '/collections',
+        _collections,
         data: userCreateCollectionReq.toJson(),
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return ProductCollection.fromJson(response.data);
+        return ProductCollection.fromJson(response.data['collection']);
       } else {
         throw response;
       }
@@ -90,12 +92,12 @@ class CollectionRepository extends BaseCollection {
     }
     try {
       final response = await _dio.post(
-        '/collections/$id',
+        '$_collections/$id',
         data: userCreateCollectionReq.toJson(),
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return ProductCollection.fromJson(response.data);
+        return ProductCollection.fromJson(response.data['collection']);
       } else {
         throw response;
       }
@@ -116,12 +118,12 @@ class CollectionRepository extends BaseCollection {
     }
     try {
       final response = await _dio.post(
-        '/collections/${userCollectionUpdateProductsReq.collectionId}/products/batch',
+        '$_collections/${userCollectionUpdateProductsReq.collectionId}/products/batch',
         data: {'product_ids': userCollectionUpdateProductsReq.productsIds},
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return ProductCollection.fromJson(response.data);
+        return ProductCollection.fromJson(response.data['collection']);
       } else {
         throw response;
       }
@@ -142,7 +144,7 @@ class CollectionRepository extends BaseCollection {
     }
     try {
       final response = await _dio.delete(
-        '/collections/${userCollectionRemoveProductsReq.collectionId}/products/batch',
+        '$_collections/${userCollectionRemoveProductsReq.collectionId}/products/batch',
         data: {'product_ids': userCollectionRemoveProductsReq.productsIds},
         queryParameters: queryParameters,
       );
@@ -166,7 +168,7 @@ class CollectionRepository extends BaseCollection {
       _dio.options.headers.addAll(customHeaders);
     }
     try {
-      final response = await _dio.delete('/collections/$id');
+      final response = await _dio.delete('$_collections/$id');
       if (response.statusCode == 200) {
         return UserDeleteCollectionRes.fromJson(response.data);
       } else {
