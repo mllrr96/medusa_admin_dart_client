@@ -48,16 +48,19 @@ class ProductCollection {
   });
 
   factory ProductCollection.fromJson(Map<String, dynamic> json) {
-    List<Product>? products;
-    if (json['products'] != null) {
-      products = <Product>[];
-      json['products'].forEach((e) => products!.add(Product.fromJson(json['products'])));
-    }
+    // List<Product>? products;
+    // if (json['products'] != null) {
+    //   products = <Product>[];
+    //   json['products'].forEach((e) => products!.add(Product.fromJson(json['products'])));
+    // }
     return ProductCollection(
       id: json['id'],
       title: json['title'],
       handle: json['handle'],
-      products: products,
+      products: json['products'] != null
+          ? List<Product>.from(
+              json['products'].map((x) => Product.fromJson(x)))
+          : null,
       createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
       updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
       deletedAt: DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
