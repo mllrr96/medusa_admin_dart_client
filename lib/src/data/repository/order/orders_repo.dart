@@ -22,7 +22,7 @@ class OrdersRepository extends BaseOrders {
       final response =
           await _dio.get('$_orders/$id', queryParameters: queryParameters);
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -89,7 +89,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -116,7 +116,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -144,7 +144,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -171,7 +171,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -198,7 +198,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -239,7 +239,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -268,7 +268,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -308,7 +308,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Reservation.fromJson(response.data);
+        return Reservation.fromJson(response.data['reservation']);
       } else {
         throw response;
       }
@@ -337,7 +337,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
@@ -392,7 +392,7 @@ class OrdersRepository extends BaseOrders {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return Order.fromJson(response.data);
+        return Order.fromJson(response.data['order']);
       } else {
         throw response;
       }
