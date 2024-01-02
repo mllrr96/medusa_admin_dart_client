@@ -11,8 +11,8 @@ class UserAddLineItemReq {
   UserAddLineItemReq({required this.quantity, required this.variantId, this.metadata});
 
   Map<String, dynamic> toJson() => {
-        'variant_id': '',
-        'quantity': '',
-        if (metadata != null) 'metadata': '',
+        'variant_id': variantId,
+        'quantity': quantity,
+        if (metadata != null) 'metadata': metadata,
       };
 }

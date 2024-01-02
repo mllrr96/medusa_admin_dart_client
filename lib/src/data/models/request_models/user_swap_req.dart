@@ -1,5 +1,3 @@
-
-
 import '../index.dart';
 
 class UserCreateSwapShipmentSwapReq {

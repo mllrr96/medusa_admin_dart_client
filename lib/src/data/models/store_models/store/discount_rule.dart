@@ -76,19 +76,45 @@ class DiscountRule {
       metadata: json['metadata'],
     );
   }
-
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json['id'] = id;
-    json['type'] = type?.value;
-    json['description'] = description;
+
+    if (id != null) {
+      json['id'] = id;
+    }
+    if (type != null) {
+      json['type'] = type?.value;
+    }
+
+    if (description != null) {
+      json['description'] = description;
+    }
     json['value'] = value;
-    json['allocation'] = allocation?.value;
-    json['conditions'] = conditions?.map((e) => e.toJson()).toList();
-    json['created_at'] = createdAt.toString();
-    json['updated_at'] = updatedAt.toString();
-    json['deleted_at'] = deletedAt.toString();
-    json['metadata'] = metadata;
+
+    if (allocation != null) {
+      json['allocation'] = allocation?.value;
+    }
+
+    if (conditions != null) {
+      json['conditions'] = conditions?.map((e) => e.toJson()).toList();
+    }
+
+    if (createdAt != null) {
+      json['created_at'] = createdAt.toString();
+    }
+
+    if (updatedAt != null) {
+      json['updated_at'] = updatedAt.toString();
+    }
+
+    if (deletedAt != null) {
+      json['deleted_at'] = deletedAt.toString();
+    }
+
+    if (metadata != null) {
+      json['metadata'] = metadata;
+    }
+
     return json;
   }
 }

@@ -65,21 +65,49 @@ class DiscountCondition {
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json['id'] = id;
-    json['type'] = type?.value;
-    json['operator'] = operator?.value;
-    json['discount_rule_id'] = discountRuleId;
-    json['discount_rule'] = discountRule?.toJson();
-    json['products'] = products?.map((e) => e.toJson()).toList();
-    json['product_types'] = productTypes?.map((e) => e.toJson()).toList();
-    json['product_tags'] = productTags?.map((e) => e.toJson()).toList();
-    json['product_collections'] =
-        productCollections?.map((e) => e.toJson()).toList();
-    json['customer_groups'] = customerGroups?.map((e) => e.toJson()).toList();
-    json['created_at'] = createdAt.toString();
-    json['updated_at'] = updatedAt.toString();
-    json['deleted_at'] = deletedAt.toString();
-    json['metadata'] = metadata;
+    if (id != null) {
+      json['id'] = id;
+    }
+    // if (type != null) {
+    //   json['type'] = type?.value;
+    // }
+    if (operator != null) {
+      json['operator'] = operator?.value;
+    }
+    if (discountRuleId != null) {
+      json['discount_rule_id'] = discountRuleId;
+    }
+    if (discountRule != null) {
+      json['discount_rule'] = discountRule?.toJson();
+    }
+    if (products != null) {
+      json['products'] = products;
+    }
+    if (productTypes != null) {
+      json['product_types'] = productTypes;
+    }
+    if (productTags != null) {
+      json['product_tags'] = productTags;
+    }
+    if (productCollections != null) {
+      json['product_collections'] = productCollections;
+    }
+    if (customerGroups != null) {
+      json['customer_groups'] = customerGroups;
+    }
+    if (createdAt != null) {
+      json['created_at'] = createdAt.toString();
+    }
+    if (updatedAt != null) {
+      json['updated_at'] = updatedAt.toString();
+    }
+    if (deletedAt != null) {
+      json['deleted_at'] = deletedAt.toString();
+    }
+    if (metadata != null) {
+      json['metadata'] = metadata;
+    }
+
     return json;
   }
 }
