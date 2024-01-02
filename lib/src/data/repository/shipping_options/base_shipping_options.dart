@@ -10,7 +10,7 @@ abstract class BaseShippingOptions {
 
   Future<ShippingOption?>  update({
     required String id,
-    required UserUpdateShippingOptionReq userUpdateReturnReasonReq,
+    required UserUpdateShippingOptionReq userUpdateShippingOptionReq,
     Map<String, dynamic>? customHeaders,
   });
 

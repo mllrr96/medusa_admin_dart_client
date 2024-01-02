@@ -252,7 +252,7 @@ class SalesChannelRepository extends BaseSalesChannel {
   @override
   Future<SalesChannel?> update({
     required String id,
-    required UserSalesChannelUpdateReq userSalesChannelUpdateRes,
+    required UserSalesChannelUpdateReq userSalesChannelUpdateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -262,7 +262,7 @@ class SalesChannelRepository extends BaseSalesChannel {
     try {
       final response = await _dio.post(
         '$_salesChannel/$id',
-        data: userSalesChannelUpdateRes.toJson(),
+        data: userSalesChannelUpdateReq.toJson(),
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {

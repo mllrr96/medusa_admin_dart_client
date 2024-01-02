@@ -59,7 +59,7 @@ abstract class BaseSalesChannel {
   /// Updates a Sales Channel.
   Future<SalesChannel?> update({
     required String id,
-    required UserSalesChannelUpdateReq userSalesChannelUpdateRes,
+    required UserSalesChannelUpdateReq userSalesChannelUpdateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });

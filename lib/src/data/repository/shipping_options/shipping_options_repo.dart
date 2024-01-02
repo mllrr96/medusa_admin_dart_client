@@ -112,7 +112,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
   @override
   Future<ShippingOption?> update({
     required String id,
-    required UserUpdateShippingOptionReq userUpdateReturnReasonReq,
+    required UserUpdateShippingOptionReq userUpdateShippingOptionReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -121,7 +121,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
       }
       final response = await _dio.post(
         '$_shippingOptions/$id',
-        data: userUpdateReturnReasonReq.toJson(),
+        data: userUpdateShippingOptionReq.toJson(),
       );
       if (response.statusCode == 200) {
         return ShippingOption.fromJson(response.data);
