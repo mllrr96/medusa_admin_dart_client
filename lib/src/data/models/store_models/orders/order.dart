@@ -180,7 +180,7 @@ class Order {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  const  Order({
+  const Order({
     this.id,
     this.status = OrderStatus.pending,
     this.fulfillmentStatus = FulfillmentStatus.notFulfilled,
@@ -237,100 +237,50 @@ class Order {
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
-    List<Discount>? discounts;
-    List<GiftCard>? giftCards;
-    List<ShippingMethod>? shippingMethods;
-    List<Fulfillment>? fulfillments;
-    List<Return>? returns;
-    List<ClaimOrder>? claims;
-    List<Refund>? refunds;
-    List<Swap>? swaps;
-    List<LineItem>? items;
-    List<LineItem>? returnableItems;
-    List<GiftCardTransaction>? giftCardTransactions;
-    List<Payment>? payments;
-
-    if (json['discounts'] != null) {
-      discounts = <Discount>[];
-      json['discounts'].forEach((e) => discounts!.add(Discount.fromJson(e)));
-    }
-    if (json['payments'] != null) {
-      payments = <Payment>[];
-      json['payments'].forEach((e) => payments!.add(Payment.fromJson(e)));
-    }
-    if (json['gift_cards'] != null) {
-      giftCards = <GiftCard>[];
-      json['gift_cards'].forEach((e) => giftCards!.add(GiftCard.fromJson(e)));
-    }
-    if (json['shipping_methods'] != null) {
-      shippingMethods = <ShippingMethod>[];
-      json['shipping_methods'].forEach((e) => shippingMethods!.add(ShippingMethod.fromJson(e)));
-    }
-    if (json['fulfillments'] != null) {
-      fulfillments = <Fulfillment>[];
-      json['fulfillments'].forEach((e) => fulfillments!.add(Fulfillment.fromJson(e)));
-    }
-    if (json['returns'] != null) {
-      returns = <Return>[];
-      json['returns'].forEach((e) => returns!.add(Return.fromJson(e)));
-    }
-    if (json['claims'] != null) {
-      claims = <ClaimOrder>[];
-      json['claims'].forEach((e) => claims!.add(ClaimOrder.fromJson(e)));
-    }
-    if (json['refunds'] != null) {
-      refunds = <Refund>[];
-      json['refunds'].forEach((e) => refunds!.add(Refund.fromJson(e)));
-    }
-    if (json['swaps'] != null) {
-      swaps = <Swap>[];
-      json['swaps'].forEach((e) => swaps!.add(Swap.fromJson(e)));
-    }
-
-    if (json['items'] != null) {
-      items = <LineItem>[];
-      json['items'].forEach((e) => items!.add(LineItem.fromJson(e)));
-    }
-    if (json['returnable_items'] != null) {
-      returnableItems = <LineItem>[];
-      json['returnable_items'].forEach((e) => returnableItems!.add(LineItem.fromJson(e)));
-    }
-    if (json['gift_card_transactions'] != null) {
-      giftCardTransactions = <GiftCardTransaction>[];
-      json['gift_card_transactions'].forEach((e) => giftCardTransactions!.add(GiftCardTransaction.fromJson(e)));
-    }
-
     return Order(
       id: json['id'],
-      status:
-          OrderStatus.values.firstWhere((e) => e.value == (json['status'] ?? ''), orElse: () => OrderStatus.pending),
-      fulfillmentStatus: FulfillmentStatus.values.firstWhere((e) => e.value == (json['fulfillment_status'] ?? ''),
+      status: OrderStatus.values.firstWhere(
+          (e) => e.value == (json['status'] ?? ''),
+          orElse: () => OrderStatus.pending),
+      fulfillmentStatus: FulfillmentStatus.values.firstWhere(
+          (e) => e.value == (json['fulfillment_status'] ?? ''),
           orElse: () => FulfillmentStatus.notFulfilled),
-      paymentStatus: PaymentStatus.values
-          .firstWhere((e) => e.value == (json['payment_status'] ?? ''), orElse: () => PaymentStatus.notPaid),
+      paymentStatus: PaymentStatus.values.firstWhere(
+          (e) => e.value == (json['payment_status'] ?? ''),
+          orElse: () => PaymentStatus.notPaid),
       displayId: json['display_id'],
       cartId: json['cart_id'],
       cart: json['cart'] != null ? Cart.fromJson(json['cart']) : null,
       customerId: json['customer_id'],
-      customer: json['customer'] != null ? Customer.fromJson(json['customer']) : null,
+      customer:
+          json['customer'] != null ? Customer.fromJson(json['customer']) : null,
       email: json['email'],
       billingAddressId: json['billing_address_id'],
-      billingAddress: json['billing_address'] != null ? Address.fromJson(json['billing_address']) : null,
+      billingAddress: json['billing_address'] != null
+          ? Address.fromJson(json['billing_address'])
+          : null,
       shippingAddressId: json['shipping_address_id'],
-      shippingAddress: json['shipping_address'] != null ? Address.fromJson(json['shipping_address']) : null,
+      shippingAddress: json['shipping_address'] != null
+          ? Address.fromJson(json['shipping_address'])
+          : null,
       regionId: json['region_id'],
       region: json['region'] != null ? Region.fromJson(json['region']) : null,
       currencyCode: json['currency_code'],
-      currency: json['currency'] != null ? Currency.fromJson(json['currency']) : null,
+      currency:
+          json['currency'] != null ? Currency.fromJson(json['currency']) : null,
       taxRate: json['tax_rate'],
       draftOrderId: json['draft_order_id'],
-      draftOrder: json['draft_order'] != null ? DraftOrder.fromJson(json['draft_order']) : null,
+      draftOrder: json['draft_order'] != null
+          ? DraftOrder.fromJson(json['draft_order'])
+          : null,
       canceledAt: DateTime.tryParse(json['canceled_at'] ?? '')?.toLocal(),
       noNotification: json['no_notification'],
       idempotencyKey: json['idempotency_key'],
       externalId: json['external_id'],
       salesChannelId: json['sales_channel_id'],
-      salesChannel: json['sales_channel'] != null ? SalesChannel.fromJson(json['sales_channel']) : null,
+      salesChannel: json['sales_channel'] != null
+          ? SalesChannel.fromJson(json['sales_channel'])
+          : null,
       shippingTotal: json['shipping_total'],
       discountTotal: json['discount_total'],
       taxTotal: json['tax_total'],
@@ -341,18 +291,49 @@ class Order {
       refundableAmount: json['refundable_amount'],
       giftCardTotal: json['gift_card_total'],
       giftCardTaxTotal: json['gift_card_tax_total'],
-      returnableItems: returnableItems,
-      items: items,
-      giftCardTransactions: giftCardTransactions,
-      giftCards: giftCards,
-      swaps: swaps,
-      refunds: refunds,
-      returns: returns,
-      claims: claims,
-      fulfillments: fulfillments,
-      discounts: discounts,
-      payments: payments,
-      shippingMethods: shippingMethods,
+      returnableItems: json['returnable_items'] != null
+          ? List<LineItem>.from(
+              json['returnable_items'].map((x) => LineItem.fromJson(x)))
+          : null,
+      items: json['items'] != null
+          ? List<LineItem>.from(json['items'].map((x) => LineItem.fromJson(x)))
+          : null,
+      giftCardTransactions: json['gift_card_transactions'] != null
+          ? List<GiftCardTransaction>.from(json['gift_card_transactions']
+              .map((x) => GiftCardTransaction.fromJson(x)))
+          : null,
+      giftCards: json['gift_cards'] != null
+          ? List<GiftCard>.from(
+              json['gift_cards'].map((x) => GiftCard.fromJson(x)))
+          : null,
+      swaps: json['swaps'] != null
+          ? List<Swap>.from(json['swaps'].map((x) => Swap.fromJson(x)))
+          : null,
+      refunds: json['refunds'] != null
+          ? List<Refund>.from(json['refunds'].map((x) => Refund.fromJson(x)))
+          : null,
+      returns: json['returns'] != null
+          ? List<Return>.from(json['returns'].map((x) => Return.fromJson(x)))
+          : null,
+      claims: json['claims'] != null
+          ? List<ClaimOrder>.from(
+              json['claims'].map((x) => ClaimOrder.fromJson(x)))
+          : null,
+      fulfillments: json['fulfillments'] != null
+          ? List<Fulfillment>.from(
+              json['fulfillments'].map((x) => Fulfillment.fromJson(x)))
+          : null,
+      discounts: json['discounts'] != null
+          ? List<Discount>.from(
+              json['discounts'].map((x) => Discount.fromJson(x)))
+          : null,
+      payments: json['payments'] != null
+          ? List<Payment>.from(json['payments'].map((x) => Payment.fromJson(x)))
+          : null,
+      shippingMethods: json['shipping_methods'] != null
+          ? List<ShippingMethod>.from(
+              json['shipping_methods'].map((x) => ShippingMethod.fromJson(x)))
+          : null,
       rawDiscountTotal: json['raw_discount_total'],
       createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
       updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
@@ -392,7 +373,8 @@ class Order {
     json['draft_order_id'] = draftOrderId;
     json['draft_order'] = draftOrder?.toJson();
     json['items'] = items?.map((e) => e.toJson()).toList();
-    json['gift_card_transactions'] = giftCardTransactions?.map((e) => e.toJson()).toList();
+    json['gift_card_transactions'] =
+        giftCardTransactions?.map((e) => e.toJson()).toList();
     json['canceled_at'] = canceledAt.toString();
     json['no_notification'] = noNotification;
     json['idempotency_key'] = idempotencyKey;
@@ -412,5 +394,3 @@ class Order {
     return json;
   }
 }
-
-
