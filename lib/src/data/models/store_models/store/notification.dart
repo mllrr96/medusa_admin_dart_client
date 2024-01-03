@@ -4,7 +4,7 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 part '../../../../../generated/src/data/models/store_models/store/notification.g.dart';
 
 @CopyWith()
-class Notification {
+class Notification implements Comparable {
   /// The notification's id
   final String? id;
 
@@ -50,7 +50,7 @@ class Notification {
   /// The date with timezone at which the resource was updated.
   final DateTime? updatedAt;
 
-  const Notification({
+  Notification({
     this.id,
     this.eventName,
     required this.resourceType,
@@ -112,5 +112,36 @@ class Notification {
     json['updated_at'] = updatedAt.toString();
     json['parent_id'] = parentId;
     return json;
+  }
+
+  @override
+  int compareTo(other) {
+    if (createdAt == null || other == null || other.createdAt == null) {
+      return 0;
+    }
+
+    final a = createdAt;
+    DateTime? b;
+    if (other is OrderEdit) {
+      b = other.requestedAt ?? other.declinedAt ?? other.confirmedAt ?? other.canceledAt;
+    } else if (other is Note) {
+      b = other.createdAt;
+    } else if (other is Notification) {
+      b = other.createdAt;
+    } else if (other is Refund) {
+      b = other.createdAt;
+    }
+    if (a == null || b == null) {
+      return 0;
+    }
+
+    if (a.isAfter(b)) {
+      return -1;
+    }
+
+    if (a.isBefore(b)) {
+      return 1;
+    }
+    return 0;
   }
 }

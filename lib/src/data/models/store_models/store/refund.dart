@@ -1,10 +1,12 @@
 import '../../../enum/enums.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
+import 'index.dart';
+
 part '../../../../../generated/src/data/models/store_models/store/refund.g.dart';
 
 @CopyWith()
-class Refund {
+class Refund implements Comparable {
   /// The refund's id
   final String? id;
 
@@ -33,9 +35,9 @@ class Refund {
   final DateTime? updatedAt;
 
   /// An optional key-value map with additional details
-  final Map<String, dynamic>? metadata;
+  Map<String, dynamic>? metadata;
 
-  const Refund({
+  Refund({
     this.id,
     required this.orderId,
     required this.amount,
@@ -74,5 +76,36 @@ class Refund {
     json['updated_at'] = updatedAt.toString();
     json['metadata'] = metadata;
     return json;
+  }
+
+  @override
+  int compareTo(other) {
+    int compare(DateTime? a, DateTime? b) {
+      if (a == null || b == null) {
+        return 0;
+      }
+
+      if (a.isAfter(b)) {
+        return -1;
+      }
+
+      if (a.isBefore(b)) {
+        return 1;
+      }
+      return 0;
+    }
+
+    DateTime? b;
+    if (other is OrderEdit) {
+      b = other.requestedAt ?? other.declinedAt ?? other.confirmedAt ?? other.canceledAt;
+    } else if (other is Note) {
+      b = other.createdAt;
+    } else if (other is Notification) {
+      b = other.createdAt;
+    } else if (other is Refund) {
+      b = other.createdAt;
+    }
+
+    return compare(createdAt, b);
   }
 }

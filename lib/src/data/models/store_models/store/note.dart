@@ -1,19 +1,18 @@
+import 'index.dart';
 
-import 'user.dart';
+class Note implements Comparable{
+  final String? id;
+  final String? resourceType;
+  final String? resourceId;
+  final String? value;
+  final String? authorId;
+  final User? author;
+  final DateTime? createdAt;
+  final DateTime? deletedAt;
+  final DateTime? updatedAt;
+  final Map<String, dynamic>? metadata;
 
-class Note {
-  String? id;
-  String? resourceType;
-  String? resourceId;
-  String? value;
-  String? authorId;
-  User? author;
-  DateTime? createdAt;
-  DateTime? deletedAt;
-  DateTime? updatedAt;
-  Map<String, dynamic>? metadata;
-
-  Note({
+const  Note({
     this.id,
     required this.resourceType,
     required this.resourceId,
@@ -26,17 +25,29 @@ class Note {
     this.metadata,
   });
 
-  Note.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    resourceType = json['resource_type'];
-    resourceId = json['resource_id'];
-    value = json['value'];
-    authorId = json['author_id'];
-    author = json['author'] != null ? User.fromJson(json['author']) : null;
-    createdAt = DateTime.tryParse(json['created_at'] ?? '')?.toLocal();
-    updatedAt = DateTime.tryParse(json['updated_at'] ?? '')?.toLocal();
-    deletedAt = DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal();
-    metadata = json['metadata'];
+factory  Note.fromJson(Map<String, dynamic> json) {
+    // id = json['id'];
+    // resourceType = json['resource_type'];
+    // resourceId = json['resource_id'];
+    // value = json['value'];
+    // authorId = json['author_id'];
+    // author = json['author'] != null ? User.fromJson(json['author']) : null;
+    // createdAt = DateTime.tryParse(json['created_at'] ?? '')?.toLocal();
+    // updatedAt = DateTime.tryParse(json['updated_at'] ?? '')?.toLocal();
+    // deletedAt = DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal();
+    // metadata = json['metadata'];
+  return Note(
+    id: json['id'],
+    resourceType: json['resource_type'],
+    resourceId: json['resource_id'],
+    value: json['value'],
+    authorId: json['author_id'],
+    author : json['author'] != null ? User.fromJson(json['author']) : null,
+    createdAt : DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
+    updatedAt : DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
+    deletedAt : DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
+    metadata : json['metadata'],
+  );
   }
 
   Map<String, dynamic> toJson() {
@@ -53,4 +64,33 @@ class Note {
     json['metadata'] = metadata;
     return json;
   }
+
+  @override
+  int compareTo(other) {
+    final a = createdAt;
+    DateTime? b;
+    if (other is OrderEdit) {
+      b = other.requestedAt ?? other.declinedAt ?? other.confirmedAt ?? other.canceledAt;
+    } else if (other is Note) {
+      b = other.createdAt;
+    } else if (other is Notification) {
+      b = other.createdAt;
+    }else  if( other is Refund){
+      b= other.createdAt;
+    }
+
+    if (a == null || b == null) {
+      return 0;
+    }
+
+    if (a.isAfter(b)) {
+      return -1;
+    }
+
+    if (a.isBefore(b)) {
+      return 1;
+    }
+    return 0;
+  }
+
 }

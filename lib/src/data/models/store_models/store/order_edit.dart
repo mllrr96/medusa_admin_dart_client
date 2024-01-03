@@ -6,7 +6,7 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 part '../../../../../generated/src/data/models/store_models/store/order_edit.g.dart';
 
 @CopyWith()
-class OrderEdit {
+class OrderEdit implements Comparable {
   /// The order edit's id
   final String? id;
 
@@ -58,9 +58,6 @@ class OrderEdit {
   /// The id of the payment collection
   final String? paymentCollectionId;
 
-  // The details of the payment collection used to authorize additional payment if necessary.
-  // final PaymentCollection? paymentCollection;
-
   /// The total of subtotal
   final int? subtotal;
 
@@ -79,7 +76,7 @@ class OrderEdit {
   /// The details of the cloned items from the original order with the new changes. once the order edit is confirmed, these line items are associated with the original order.
   final List<LineItem>? items;
 
-  const OrderEdit({
+  OrderEdit({
     this.id,
     required this.orderId,
     required this.order,
@@ -100,7 +97,6 @@ class OrderEdit {
     this.differenceDue,
     this.items,
     this.status = OrderEditStatus.created,
-    // this.paymentCollection,
     this.paymentCollectionId,
     this.canceledAt,
     this.canceledBy,
@@ -141,8 +137,6 @@ class OrderEdit {
       total: json['total'],
       status: OrderEditStatus.values
           .firstWhere((e) => e.name == (json['status'] ?? ''), orElse: () => OrderEditStatus.created),
-      // paymentCollection:
-      // json['payment_collection'] != null ? PaymentCollection.fromJson(json['payment_collection']) : null,
       paymentCollectionId: json['payment_collection_id'],
     );
   }
@@ -166,12 +160,43 @@ class OrderEdit {
     json['tax_total'] = taxTotal;
     json['total'] = total;
     json['difference_due'] = differenceDue;
-    json['items'] = items?.map((e) => e.toJson()).toList();
+    json['items'] = items?.map((e) => e.toJson()).toList() ?? [];
     json['status'] = status.name;
     json['canceled_by'] = canceledBy;
     json['canceled_at'] = canceledAt.toString();
     json['payment_collection_id'] = paymentCollectionId;
     return json;
   }
-}
 
+  @override
+  int compareTo(other) {
+    int compare(DateTime? a, DateTime? b) {
+      if (a == null || b == null) {
+        return 0;
+      }
+
+      if (a.isAfter(b)) {
+        return -1;
+      }
+
+      if (a.isBefore(b)) {
+        return 1;
+      }
+      return 0;
+    }
+
+    DateTime? b;
+    if (other is OrderEdit) {
+      b = other.requestedAt ?? other.confirmedAt ?? other.declinedAt ?? other.canceledAt;
+    } else if (other is Note) {
+      b = other.createdAt;
+    } else if (other is Notification) {
+      b = other.createdAt;
+    } else if (other is Refund) {
+      b = other.createdAt;
+    }
+
+    return compare(requestedAt ?? confirmedAt ?? declinedAt ?? canceledAt, b);
+  }
+
+}
