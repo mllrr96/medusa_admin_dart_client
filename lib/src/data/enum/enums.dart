@@ -6,6 +6,20 @@ enum ClaimReason {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case ClaimReason.missingItem:
+        return 'Missing Item';
+      case ClaimReason.wrongItem:
+        return 'Wrong Item';
+      case ClaimReason.productFailure:
+        return 'Product Failure';
+      case ClaimReason.other:
+        return 'Other';
+    }
+  }
+
   const ClaimReason(this.value);
 }
 
@@ -31,6 +45,30 @@ enum FulfillmentStatus {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case FulfillmentStatus.canceled:
+        return 'Canceled';
+      case FulfillmentStatus.requiresAction:
+        return 'Requires Action';
+      case FulfillmentStatus.notFulfilled:
+        return 'Not Fulfilled';
+      case FulfillmentStatus.partiallyFulfilled:
+        return 'Partially Fulfilled';
+      case FulfillmentStatus.fulfilled:
+        return 'Fulfilled';
+      case FulfillmentStatus.partiallyShipped:
+        return 'Partially Shipped';
+      case FulfillmentStatus.shipped:
+        return 'Shipped';
+      case FulfillmentStatus.partiallyReturned:
+        return 'Partially Shipped';
+      case FulfillmentStatus.returned:
+        return 'Returned';
+    }
+  }
+
   const FulfillmentStatus(this.value);
 }
 
@@ -45,6 +83,26 @@ enum PaymentStatus {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case PaymentStatus.notPaid:
+        return 'Not Paid';
+      case PaymentStatus.awaiting:
+        return 'Awaiting';
+      case PaymentStatus.captured:
+        return 'Captured';
+      case PaymentStatus.partiallyRefunded:
+        return 'Partially Refunded';
+      case PaymentStatus.refunded:
+        return 'Refunded';
+      case PaymentStatus.canceled:
+        return 'Canceled';
+      case PaymentStatus.requiresAction:
+        return 'Requires Action';
+    }
+  }
+
   const PaymentStatus(this.value);
 }
 
@@ -56,6 +114,21 @@ enum OrderStatus {
   requiresAction('requires_action');
 
   final String value;
+  @override
+  String toString() {
+    switch (this) {
+      case OrderStatus.pending:
+        return 'Pending';
+      case OrderStatus.completed:
+        return 'Completed';
+      case OrderStatus.archived:
+        return 'Archived';
+      case OrderStatus.canceled:
+        return 'Canceled';
+      case OrderStatus.requiresAction:
+        return 'Requires Action';
+    }
+  }
 
   const OrderStatus(this.value);
 }
@@ -100,6 +173,26 @@ enum BatchJobStatus {
 
   const BatchJobStatus(this.value);
 
+  @override
+  String toString() {
+    switch (this) {
+      case BatchJobStatus.created:
+        return 'Created';
+      case BatchJobStatus.preProcessed:
+        return 'Pre Processed';
+      case BatchJobStatus.confirmed:
+        return 'Confirmed';
+      case BatchJobStatus.processing:
+        return 'Processing';
+      case BatchJobStatus.completed:
+        return 'Completed';
+      case BatchJobStatus.canceled:
+        return 'Canceled';
+      case BatchJobStatus.failed:
+        return 'Failed';
+    }
+  }
+
   final String value;
 }
 
@@ -111,6 +204,22 @@ enum DiscountConditionType {
   customerGroups('customer_groups');
 
   final String value;
+
+  @override
+  String toString() {
+    switch (this) {
+      case DiscountConditionType.products:
+        return 'Products';
+      case DiscountConditionType.productType:
+        return 'Product Type';
+      case DiscountConditionType.productCollections:
+        return 'Product Collections';
+      case DiscountConditionType.productTags:
+        return 'Product Tags';
+      case DiscountConditionType.customerGroups:
+        return 'Customer Groups';
+    }
+  }
 
   const DiscountConditionType(this.value);
 }
@@ -144,7 +253,6 @@ enum UserRole {
   }
 }
 
-
 enum DraftOrderStatus {
   open('open'),
   completed('completed');
@@ -177,6 +285,30 @@ enum SwapPaymentStatus {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case SwapPaymentStatus.notPaid:
+        return 'Not Paid';
+      case SwapPaymentStatus.awaiting:
+        return 'Awaiting';
+      case SwapPaymentStatus.captured:
+        return 'Captured';
+      case SwapPaymentStatus.confirmed:
+        return 'Confirmed';
+      case SwapPaymentStatus.canceled:
+        return 'Canceled';
+      case SwapPaymentStatus.differenceRefunded:
+        return 'Difference Refunded';
+      case SwapPaymentStatus.partiallyRefunded:
+        return 'Partially Refunded';
+      case SwapPaymentStatus.refunded:
+        return 'Refunded';
+      case SwapPaymentStatus.requiresAction:
+        return 'Requires Action';
+    }
+  }
+
   const SwapPaymentStatus(this.value);
 }
 
@@ -198,6 +330,22 @@ enum PaymentCollectionStatus {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case PaymentCollectionStatus.notPaid:
+        return 'Not Paid';
+      case PaymentCollectionStatus.awaiting:
+        return 'Awaiting';
+      case PaymentCollectionStatus.authorized:
+        return 'Authorized';
+      case PaymentCollectionStatus.canceled:
+        return 'Canceled';
+      case PaymentCollectionStatus.partiallyAuthorized:
+        return 'Partially Authorized';
+    }
+  }
+
   const PaymentCollectionStatus(this.value);
 }
 
@@ -211,6 +359,24 @@ enum SwapFulfillmentStatus {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case SwapFulfillmentStatus.notFulfilled:
+        return 'Not Fulfilled';
+      case SwapFulfillmentStatus.fulfilled:
+        return 'Fulfilled';
+      case SwapFulfillmentStatus.partiallyShipped:
+        return 'Partially Shipped';
+      case SwapFulfillmentStatus.shipped:
+        return 'Shipped';
+      case SwapFulfillmentStatus.canceled:
+        return 'Canceled';
+      case SwapFulfillmentStatus.requiresAction:
+        return 'Requires Action';
+    }
+  }
+
   const SwapFulfillmentStatus(this.value);
 }
 
@@ -223,6 +389,22 @@ enum PaymentSessionStatus {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case PaymentSessionStatus.authorized:
+        return 'Authorized';
+      case PaymentSessionStatus.pending:
+        return 'Pending';
+      case PaymentSessionStatus.requiresMore:
+        return 'Requires More';
+      case PaymentSessionStatus.error:
+        return 'Error';
+      case PaymentSessionStatus.canceled:
+        return 'Canceled';
+    }
+  }
+
   const PaymentSessionStatus(this.value);
 }
 
@@ -232,9 +414,18 @@ enum ShippingOptionPriceType {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case ShippingOptionPriceType.flatRate:
+        return 'Flat Rate';
+      case ShippingOptionPriceType.calculated:
+        return 'Calculated';
+    }
+  }
+
   const ShippingOptionPriceType(this.value);
 }
-
 
 enum PriceListType {
   sale('sale'),
@@ -254,13 +445,24 @@ enum PriceListStatus {
   const PriceListStatus(this.value);
 }
 
-
 enum OrderEditItemChangeType {
   itemAdd('item_add'),
   itemRemove('item_remove'),
   itemUpdate('item_update');
 
   final String value;
+
+  @override
+  String toString() {
+    switch (this) {
+      case OrderEditItemChangeType.itemAdd:
+        return 'Item Add';
+      case OrderEditItemChangeType.itemRemove:
+        return 'Item Remove';
+      case OrderEditItemChangeType.itemUpdate:
+        return 'Item Update';
+    }
+  }
 
   const OrderEditItemChangeType(this.value);
 }
@@ -281,6 +483,18 @@ enum ClaimPaymentStatus {
 
   final String value;
 
+  @override
+  String toString() {
+    switch (this) {
+      case ClaimPaymentStatus.na:
+        return 'NA';
+      case ClaimPaymentStatus.notRefunded:
+        return 'Not Refunded';
+      case ClaimPaymentStatus.refunded:
+        return 'Refunded';
+    }
+  }
+
   const ClaimPaymentStatus(this.value);
 }
 
@@ -296,6 +510,29 @@ enum ClaimFulfillmentStatus {
   requiresAction('requires_action');
 
   final String value;
+  @override
+  String toString() {
+    switch (this) {
+      case ClaimFulfillmentStatus.notFulfilled:
+        return 'Not Fulfilled';
+      case ClaimFulfillmentStatus.partiallyFulfilled:
+        return 'Partially Fulfilled';
+      case ClaimFulfillmentStatus.fulfilled:
+        return 'Fulfilled';
+      case ClaimFulfillmentStatus.partiallyShipped:
+        return 'Partially Shipped';
+      case ClaimFulfillmentStatus.shipped:
+        return 'Shipped';
+      case ClaimFulfillmentStatus.partiallyReturned:
+        return 'Partially Returned';
+      case ClaimFulfillmentStatus.returned:
+        return 'Returned';
+      case ClaimFulfillmentStatus.canceled:
+        return 'Canceled';
+      case ClaimFulfillmentStatus.requiresAction:
+        return 'Requires Action';
+    }
+  }
 
   const ClaimFulfillmentStatus(this.value);
 }
@@ -329,6 +566,18 @@ enum DiscountRuleType {
   freeShipping('free_shipping');
 
   final String value;
+
+  @override
+  String toString() {
+    switch (this) {
+      case DiscountRuleType.fixed:
+        return 'Fixed';
+      case DiscountRuleType.percentage:
+        return 'Percentage';
+      case DiscountRuleType.freeShipping:
+        return 'Free Shipping';
+    }
+  }
 
   const DiscountRuleType(this.value);
 }
