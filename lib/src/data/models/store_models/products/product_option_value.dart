@@ -70,19 +70,43 @@ class ProductOptionValue {
       metadata: json['metadata'],
     );
   }
-
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json['id'] = id;
     json['value'] = value;
-    json['option_id'] = optionId;
-    json['option'] = option?.toJson();
-    json['variant_id'] = variantId;
-    json['variant'] = variant?.toJson();
-    json['created_at'] = createdAt.toString();
-    json['updated_at'] = updatedAt.toString();
-    json['deleted_at'] = deletedAt.toString();
-    json['metadata'] = metadata;
+
+    if (id != null) {
+      json['id'] = id;
+    }
+    if (optionId != null) {
+      json['option_id'] = optionId;
+    }
+    if (option != null) {
+      json['option'] = option?.toJson();
+    }
+
+    if (variantId != null) {
+      json['variant_id'] = variantId;
+    }
+    if (variant != null) {
+      json['variant'] = variant?.toJson();
+    }
+    if (createdAt != null) {
+      json['created_at'] = createdAt.toString();
+    }
+    if (updatedAt != null) {
+      json['updated_at'] = updatedAt.toString();
+    }
+    if (deletedAt != null) {
+      json['deleted_at'] = deletedAt.toString();
+    }
+    if (metadata != null) {
+      json['metadata'] = metadata;
+    }
     return json;
+  }
+
+  @override
+  String toString(){
+    return 'id: $id \n value: $value \n option ID: $optionId \n variant ID: $variantId';
   }
 }

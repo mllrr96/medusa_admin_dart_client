@@ -83,8 +83,8 @@ class UserPostProductReq {
     if (product.options != null) {
       List<Map<String, dynamic>> optionsList = [];
 
-      for (var element in product.options!) {
-        optionsList.add({'title': element.title!});
+      for (ProductOption option in product.options!) {
+        optionsList.add({'title': option.title!});
       }
       data['options'] = optionsList;
     }
@@ -97,16 +97,13 @@ class UserPostProductReq {
     if (product.tags != null) {
       List<Map<String, dynamic>> tagsList = [];
       for (var element in product.tags!) {
-        tagsList.add(element.toJson());
+        tagsList.add(element.toJson(excludeDates: true));
       }
-      data['product_tags'] = tagsList;
+      data['tags'] = tagsList;
     }
     if (product.type != null) {
-      List<Map<String, dynamic>> typeList = [];
-      for (var element in product.tags!) {
-        typeList.add(element.toJson());
-      }
-      data['type'] = typeList;
+      final type = ProductType(value: product.type!.value, id: product.type!.id);
+      data['type'] = type.toJson();
     }
 
     data['status'] = product.status.name;
@@ -252,7 +249,7 @@ class UserPostUpdateProductReq {
       for (var element in tags!) {
         tagsList.add(element.toJson(excludeDates: true));
       }
-      data['product_tags'] = tagsList;
+      data['tags'] = tagsList;
     }
     if (type != null) {
       List<Map<String, dynamic>> typeList = [];
@@ -271,5 +268,4 @@ class UserPostUpdateProductReq {
     }
 
     return data;
-  }
-}
+  }}

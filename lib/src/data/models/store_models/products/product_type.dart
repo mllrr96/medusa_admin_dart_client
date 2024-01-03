@@ -48,12 +48,25 @@ class ProductType {
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json['id'] = id;
-    json['value'] = value;
-    json['created_at'] = createdAt.toString();
-    json['updated_at'] = updatedAt.toString();
-    json['deleted_at'] = deletedAt.toString();
-    json['metadata'] = metadata;
+    if (id != null) {
+      json['id'] = id;
+    }
+    if (value != null) {
+      json['value'] = value;
+    }
+    if (createdAt != null) {
+      json['created_at'] = createdAt.toString();
+    }
+    if (updatedAt != null) {
+      json['updated_at'] = updatedAt.toString();
+    }
+    if (deletedAt != null) {
+      json['deleted_at'] = deletedAt.toString();
+    }
+    if (metadata != null) {
+      json['metadata'] = metadata;
+    }
+
     return json;
   }
 }

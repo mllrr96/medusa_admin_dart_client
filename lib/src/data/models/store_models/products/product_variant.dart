@@ -190,11 +190,17 @@ class ProductVariant {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
+    Map<String, dynamic> data = <String, dynamic>{};
+    if (id != null) {
+      data['id'] = id;
+    }
     data['title'] = title;
-    data['product_id'] = productId;
-    data['product'] = product?.toJson();
+    if (productId != null) {
+      data['product_id'] = productId;
+    }
+    if (product != null) {
+      data['product'] = product?.toJson();
+    }
     if (prices != null) {
       data['prices'] = prices!.map((v) => v.toJson()).toList();
     }
@@ -202,7 +208,9 @@ class ProductVariant {
     data['barcode'] = barcode;
     data['ean'] = ean;
     data['upc'] = upc;
-    data['variant_rank'] = variantRank;
+    if (variantRank != null) {
+      data['variant_rank'] = variantRank;
+    }
     data['inventory_quantity'] = inventoryQuantity;
     data['allow_backorder'] = allowBackorder;
     data['manage_inventory'] = manageInventory;
@@ -217,8 +225,23 @@ class ProductVariant {
     if (options != null) {
       data['options'] = options!.map((v) => v.toJson()).toList();
     }
-    data['metadata'] = metadata;
+    if (metadata != null) {
+      data['metadata'] = metadata;
+    }
     return data;
+  }
+
+  @override
+  String toString() {
+    String getOptions() {
+      if (options?.isNotEmpty ?? false) {
+        return options!.map((e) => e.toString()).toList().toString();
+      } else {
+        return '';
+      }
+    }
+
+    return "id: $id \n title: $title \n product id: $productId \n options: ${getOptions()}";
   }
 }
 
