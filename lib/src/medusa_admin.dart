@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:medusa_admin_flutter/src/data/repository/batch_jobs/batch_jobs_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/repository/index.dart';
@@ -9,6 +10,7 @@ class MedusaAdmin {
   MedusaAdmin._({
     required MedusaConfig config,
     required this.authRepository,
+    required this.batchJobsRepository,
     required this.claimRepository,
     required this.collectionRepository,
     required this.customerRepository,
@@ -87,6 +89,7 @@ class MedusaAdmin {
     return MedusaAdmin._(
       config: config,
       authRepository: AuthRepository(dio),
+      batchJobsRepository: BatchJobsRepository(dio),
       claimRepository: ClaimRepository(dio),
       collectionRepository: CollectionRepository(dio),
       customerRepository: CustomerRepository(dio),
@@ -129,6 +132,7 @@ class MedusaAdmin {
   }
 
   final AuthRepository authRepository;
+  final BatchJobsRepository batchJobsRepository;
   final ClaimRepository claimRepository;
   final CollectionRepository collectionRepository;
   final CustomerRepository customerRepository;

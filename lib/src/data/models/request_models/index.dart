@@ -28,3 +28,4 @@ export 'user_shipping_profile_req.dart';
 export 'user_swap_req.dart';
 export 'user_tax_rate.dart';
 export 'user_user_req.dart';
+export 'batch_job_create_req.dart';
