@@ -28,19 +28,28 @@ Add Dependency of the package in your pubspec.yaml file:
 
 ### USAGE
 
-Import Medusa as a default import and initialize it:
-
+Import MedusaAdmim package
 
 ```dart
 import 'package:medusa_admin_flutter/medusa_admin.dart';
-var MedusaAdmin medusaAdmin = MedusaAdmin.initialize(
+```
+
+Initialize it:
+
+```dart
+MedusaAdmin medusaAdmin = MedusaAdmin.initialize(
    config: MedusaConfig(baseUrl: 'MEDUSA_SERVER_URL'),
 );
+```
 
+Get all products:
+
+```dart
 UserProductsListRes? productsListRes = await medusaAdmin.productsRepository.retrieveAll();
 ```
 
 ## Example Demo
+For more details on how to use the package check Medusa Admin Flutter which uses this package
 
 ![Medusa Admin Flutter](https://github.com/mllrr96/Medusa-Admin-Flutter)
 
