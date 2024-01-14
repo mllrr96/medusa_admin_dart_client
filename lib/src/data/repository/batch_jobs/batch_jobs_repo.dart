@@ -1,18 +1,14 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:medusa_admin_flutter/src/data/models/request_models/batch_job_create_req.dart';
-
 import 'package:medusa_admin_flutter/src/data/models/response_models/batch_jobs.dart';
-
 import 'package:medusa_admin_flutter/src/data/models/store_models/store/batch_job.dart';
-
 import 'base_batch_jobs.dart';
 
 class BatchJobsRepository extends BaseBatchJobs {
   BatchJobsRepository(Dio dio) : _dio = dio;
   final Dio _dio;
-  static const _batchJobs = '/batch_jobs';
+  static const _batchJobs = '/batch-jobs';
   @override
   Future<BatchJob?> cancelBatchJob(String id) async {
     try {

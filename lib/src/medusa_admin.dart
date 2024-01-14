@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:medusa_admin_flutter/src/data/repository/batch_jobs/batch_jobs_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/repository/index.dart';
