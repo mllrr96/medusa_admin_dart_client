@@ -26,7 +26,7 @@ class BatchJob {
   final User? createdByUser;
 
   /// The context of the batch job, the type of the batch job determines what the context should contain.
-  final dynamic context;
+  final Map<String, dynamic>? context;
 
   final BatchJobResult? result;
 
@@ -60,7 +60,7 @@ class BatchJob {
   /// The date with timezone at which the resource was deleted.
   final DateTime? deletedAt;
 
-  const  BatchJob({
+  const BatchJob({
     this.id,
     this.type,
     this.status,
@@ -83,15 +83,25 @@ class BatchJob {
   factory BatchJob.fromJson(Map<String, dynamic> json) {
     return BatchJob(
       id: json['id'],
-      type: json['type'] != null ? BatchJobType.values.firstWhere((e) => e.value == (json['type'] ?? '')) : null,
-      status: BatchJobStatus.values
-          .firstWhere((e) => e.value == (json['status'] ?? ''), orElse: () => BatchJobStatus.created),
+      type: json['type'] != null
+          ? BatchJobType.values
+              .where((e) => e.value == (json['type'] ?? ''))
+              .firstOrNull
+          : null,
+      status: BatchJobStatus.values.firstWhere(
+          (e) => e.value == (json['status'] ?? ''),
+          orElse: () => BatchJobStatus.created),
       createdBy: json['created_by'],
-      createdByUser: json['created_by_user'] != null ? User.fromJson(json['created_by_user']) : null,
+      createdByUser: json['created_by_user'] != null
+          ? User.fromJson(json['created_by_user'])
+          : null,
       context: json['context'],
-      result: json['result'] != null ? BatchJobResult.fromJson(json['result']) : null,
+      result: json['result'] != null
+          ? BatchJobResult.fromJson(json['result'])
+          : null,
       dryRun: json['dry_run'],
-      preProcessedAt: DateTime.tryParse(json['pre_processed_at'] ?? '')?.toLocal(),
+      preProcessedAt:
+          DateTime.tryParse(json['pre_processed_at'] ?? '')?.toLocal(),
       processingAt: DateTime.tryParse(json['processing_at'] ?? '')?.toLocal(),
       confirmedAt: DateTime.tryParse(json['confirmed_at'] ?? '')?.toLocal(),
       completedAt: DateTime.tryParse(json['completed_at'] ?? '')?.toLocal(),
@@ -124,8 +134,6 @@ class BatchJob {
   }
 }
 
-
-
 class BatchJobResult {
   final num? count;
   final num? advancementCount;
@@ -134,7 +142,7 @@ class BatchJobResult {
   final num? fileSize;
   final StatDescriptors? statDescriptors;
   final BatchJobError? error;
-  BatchJobResult(
+  const BatchJobResult(
       {this.count,
       this.advancementCount,
       this.progress,
@@ -150,8 +158,11 @@ class BatchJobResult {
       progress: json['progress'],
       fileKey: json['file_key'],
       fileSize: json['file_size'],
-      statDescriptors: json['stat_descriptors'] != null ? StatDescriptors.fromJson(json['stat_descriptors']) : null,
-      error: json['error'] != null ? BatchJobError.fromJson(json['error']) : null,
+      statDescriptors: json['stat_descriptors'] != null
+          ? StatDescriptors.fromJson(json['stat_descriptors'])
+          : null,
+      error:
+          json['error'] != null ? BatchJobError.fromJson(json['error']) : null,
     );
   }
 }
@@ -160,7 +171,7 @@ class StatDescriptors {
   final String? key;
   final String? name;
   final String? message;
-  StatDescriptors({this.key, this.name, this.message});
+  const StatDescriptors({this.key, this.name, this.message});
 
   factory StatDescriptors.fromJson(Map<String, dynamic> json) {
     return StatDescriptors(
