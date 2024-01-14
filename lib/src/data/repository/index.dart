@@ -37,3 +37,4 @@ export 'upload/upload_repo.dart';
 export 'user/user_repo.dart';
 export 'discount_condition/discount_condition_repo.dart';
 export 'order_edit/order_edit_repo.dart';
+export 'batch_jobs/batch_jobs_repo.dart';
