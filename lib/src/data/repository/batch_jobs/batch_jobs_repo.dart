@@ -44,7 +44,7 @@ class BatchJobsRepository extends BaseBatchJobs {
     try {
       final response =
           await _dio.post(_batchJobs, data: batchJobCreateReq.toJson());
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return BatchJob.fromJson(response.data['batch_job']);
       } else {
         throw response;

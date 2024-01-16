@@ -40,7 +40,7 @@ class AuthRepository extends BaseAuth {
 
   /// Removes authentication session and sign out
   @override
-  Future<bool> signOut({
+  Future<bool?> signOut({
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -51,12 +51,11 @@ class AuthRepository extends BaseAuth {
       if (response.statusCode == 200) {
         return true;
       } else {
-        log(response.toString());
-        return false;
+        throw response;
       }
-    } catch (error) {
-      log(error.toString());
-      return false;
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
     }
   }
 

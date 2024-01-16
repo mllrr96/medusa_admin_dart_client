@@ -155,11 +155,40 @@ enum RefundReason {
 
 enum BatchJobType {
   productImport('product-import'),
-  productExport('product-export');
+  productExport('product-export'),
+  orderExport('order-export'),
+  others('others');
 
   const BatchJobType(this.value);
 
   final String value;
+
+  @override
+  String toString() {
+    switch (this) {
+      case BatchJobType.productImport:
+        return 'Product Import';
+      case BatchJobType.productExport:
+        return 'Product Export';
+      case BatchJobType.orderExport:
+        return 'Order Export';
+      case BatchJobType.others:
+        return 'Others';
+    }
+  }
+
+  factory BatchJobType.fromString(String? value) {
+    if (value == 'product-import') {
+      return BatchJobType.productImport;
+    } else if (value == 'product-export') {
+      return BatchJobType.productExport;
+    } else if (value == 'order-export') {
+      return BatchJobType.orderExport;
+    } else {
+      return BatchJobType.others;
+    }
+  }
+
 }
 
 enum BatchJobStatus {

@@ -67,7 +67,6 @@ class UploadRepository extends BaseUpload {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      _dio.options.headers.addAll({'Content-Type': 'image/jpeg'});
 
       List<MultipartFile> multipartFiles = [];
 
@@ -99,15 +98,25 @@ class UploadRepository extends BaseUpload {
   /// Uploads at least one file with ACL or a non-public bucket to the specific file service that is installed in Medusa.
   @override
   Future<List<String>?> uploadProtectedFile({
-    required List<String> files,
+    required List<File> files,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response =
-          await _dio.post('$_uploads/download-url', data: {'files': files});
+
+      List<MultipartFile> multipartFiles = [];
+
+      for (var file in files) {
+        String fileName = file.path.split(Platform.pathSeparator).last;
+        multipartFiles
+            .add(await MultipartFile.fromFile(file.path, filename: fileName));
+      }
+
+      FormData formData = FormData.fromMap({"files": multipartFiles});
+
+      final response = await _dio.post('$_uploads/protected', data: formData);
       if (response.statusCode == 200) {
         List<String> urls = [];
 

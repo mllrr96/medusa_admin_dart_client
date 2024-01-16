@@ -4,7 +4,7 @@ import '../../models/response_models/upload.dart';
 
 abstract class BaseUpload {
   Future<List<String>?> uploadProtectedFile({
-    required List<String> files,
+    required List<File> files,
     Map<String, dynamic>? customHeaders,
   });
 

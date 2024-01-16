@@ -84,9 +84,7 @@ class BatchJob {
     return BatchJob(
       id: json['id'],
       type: json['type'] != null
-          ? BatchJobType.values
-              .where((e) => e.value == (json['type'] ?? ''))
-              .firstOrNull
+          ? BatchJobType.fromString(json['type'])
           : null,
       status: BatchJobStatus.values.firstWhere(
           (e) => e.value == (json['status'] ?? ''),
@@ -140,7 +138,7 @@ class BatchJobResult {
   final num? progress;
   final String? fileKey;
   final num? fileSize;
-  final StatDescriptors? statDescriptors;
+  final List<StatDescriptor>? statDescriptors;
   final BatchJobError? error;
   const BatchJobResult(
       {this.count,
@@ -159,7 +157,8 @@ class BatchJobResult {
       fileKey: json['file_key'],
       fileSize: json['file_size'],
       statDescriptors: json['stat_descriptors'] != null
-          ? StatDescriptors.fromJson(json['stat_descriptors'])
+          ? List<StatDescriptor>.from(
+              json['stat_descriptors'].map((x) => StatDescriptor.fromJson(x)))
           : null,
       error:
           json['error'] != null ? BatchJobError.fromJson(json['error']) : null,
@@ -167,14 +166,14 @@ class BatchJobResult {
   }
 }
 
-class StatDescriptors {
+class StatDescriptor {
   final String? key;
   final String? name;
   final String? message;
-  const StatDescriptors({this.key, this.name, this.message});
+  const StatDescriptor({this.key, this.name, this.message});
 
-  factory StatDescriptors.fromJson(Map<String, dynamic> json) {
-    return StatDescriptors(
+  factory StatDescriptor.fromJson(Map<String, dynamic> json) {
+    return StatDescriptor(
       key: json['key'],
       name: json['name'],
       message: json['message'],
@@ -184,12 +183,14 @@ class StatDescriptors {
 
 class BatchJobError {
   final String? message;
-  final dynamic code;
+  final String? code;
   BatchJobError({this.message, this.code});
   factory BatchJobError.fromJson(Map<String, dynamic> json) {
     return BatchJobError(
       message: json['message'],
-      code: json['code'],
+      code: json['code'] != null && json['code']! is String
+          ? json['code'].toString()
+          : json['code'],
     );
   }
 }

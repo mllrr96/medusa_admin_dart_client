@@ -54,16 +54,20 @@ class MedusaAdmin {
       {required MedusaConfig config, SharedPreferences? prefs}) {
     final Dio dio = Dio();
     String baseURL = '';
+    const cookieKey = 'medusa_admin_cookie';
     if (config.baseUrl.endsWith('/admin')) {
       baseURL = config.baseUrl;
     } else {
       baseURL = '${config.baseUrl}/admin';
     }
 
-    dio.options = BaseOptions(baseUrl: baseURL, headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    });
+    dio.options = BaseOptions(
+        baseUrl: baseURL,
+        // validateStatus: (status) => status! < 500,
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        });
     if (config.apiKey != null) {
       dio.options.headers["Authorization"] = "Bearer ${config.apiKey}";
     }
@@ -73,14 +77,27 @@ class MedusaAdmin {
       SharedPreferences sharedPreferences =
           prefs ?? await SharedPreferences.getInstance();
       try {
-        final String? cookie =
-            sharedPreferences.getString('medusa_admin_cookie');
+        final String? cookie = sharedPreferences.getString(cookieKey);
         if (cookie?.isNotEmpty ?? false) {
           options.headers['Cookie'] = cookie;
         }
       } catch (_) {}
       return handler.next(options);
-    }));
+    }, onError: (DioException e, handler) async {
+      SharedPreferences sharedPreferences =
+          prefs ?? await SharedPreferences.getInstance();
+      try {
+        // this will remove the cookie if the response is 401, this is a way
+        // to check if you are authenticated or not
+        // bool isAuthenticated = sharedPreferences.getString('medusa_admin_cookie') != null;
+        //
+        if (e.response?.statusCode == 401) {
+          await sharedPreferences.remove(cookieKey);
+        }
+      } catch (_) {}
+      return handler.next(e);
+    }
+    ));
     if (config.enableDebugging ?? kDebugMode) {
       dio.interceptors.add(LogInterceptor());
     }
