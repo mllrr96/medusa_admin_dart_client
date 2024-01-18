@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'data/repository/index.dart';
 import 'medusa_admin_config.dart';
 
 class MedusaAdmin {
   MedusaAdmin._({
     required MedusaConfig config,
+    this.interceptors,
     required this.authRepository,
     required this.batchJobsRepository,
     required this.claimRepository,
@@ -50,60 +48,40 @@ class MedusaAdmin {
     required this.userRepository,
   });
 
-  factory MedusaAdmin.initialize(
-      {required MedusaConfig config, SharedPreferences? prefs}) {
+  factory MedusaAdmin.initialize({
+    required MedusaConfig config,
+    // SharedPreferences? prefs,
+    // FlutterSecureStorage? securePrefs,
+    List<Interceptor>? interceptors,
+  }) {
     final Dio dio = Dio();
     String baseURL = '';
-    const cookieKey = 'medusa_admin_cookie';
+    // const cookieKey = 'medusa_admin_cookie';
+    // const jwtKey = 'medusa_admin_jwt';
+    // const tokenKey = 'medusa_admin_token';
     if (config.baseUrl.endsWith('/admin')) {
       baseURL = config.baseUrl;
     } else {
       baseURL = '${config.baseUrl}/admin';
     }
 
-    dio.options = BaseOptions(
-        baseUrl: baseURL,
-        // validateStatus: (status) => status! < 500,
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        });
-    if (config.apiKey != null) {
-      dio.options.headers["Authorization"] = "Bearer ${config.apiKey}";
+    dio.options = BaseOptions(baseUrl: baseURL, headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    });
+
+    if (config.authenticationType == AuthenticationType.token) {
+      assert(config.apiToken != null, 'Api Token must be provided');
+      dio.options.headers["x-medusa-access-token"] = config.apiToken;
     }
 
-    dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (options, handler) async {
-      SharedPreferences sharedPreferences =
-          prefs ?? await SharedPreferences.getInstance();
-      try {
-        final String? cookie = sharedPreferences.getString(cookieKey);
-        if (cookie?.isNotEmpty ?? false) {
-          options.headers['Cookie'] = cookie;
-        }
-      } catch (_) {}
-      return handler.next(options);
-    }, onError: (DioException e, handler) async {
-      SharedPreferences sharedPreferences =
-          prefs ?? await SharedPreferences.getInstance();
-      try {
-        // this will remove the cookie if the response is 401, this is a way
-        // to check if you are authenticated or not
-        // bool isAuthenticated = sharedPreferences.getString('medusa_admin_cookie') != null;
-        //
-        if (e.response?.statusCode == 401) {
-          await sharedPreferences.remove(cookieKey);
-        }
-      } catch (_) {}
-      return handler.next(e);
-    }
-    ));
-    if (config.enableDebugging ?? kDebugMode) {
-      dio.interceptors.add(LogInterceptor());
-    }
+    interceptors?.forEach((element) {
+      dio.interceptors.add(element);
+    });
 
     return MedusaAdmin._(
       config: config,
+      interceptors: interceptors,
       authRepository: AuthRepository(dio),
       batchJobsRepository: BatchJobsRepository(dio),
       claimRepository: ClaimRepository(dio),
@@ -187,4 +165,6 @@ class MedusaAdmin {
   final TaxRateRepository taxRateRepository;
   final UploadRepository uploadRepository;
   final UserRepository userRepository;
+
+  final List<Interceptor>? interceptors;
 }

@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^5.3.3
-  shared_preferences: ^2.2.2
   copy_with_extension: ^5.0.4
+
 
 dev_dependencies:
   flutter_test:
