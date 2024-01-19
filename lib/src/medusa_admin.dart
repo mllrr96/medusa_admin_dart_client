@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'data/repository/index.dart';
-import 'medusa_admin_config.dart';
 
 class MedusaAdmin {
   MedusaAdmin._({
-    required MedusaConfig config,
+    required this.baseUrl,
     this.interceptors,
     required this.authRepository,
     required this.batchJobsRepository,
@@ -49,20 +48,15 @@ class MedusaAdmin {
   });
 
   factory MedusaAdmin.initialize({
-    required MedusaConfig config,
-    // SharedPreferences? prefs,
-    // FlutterSecureStorage? securePrefs,
+    required String baseUrl,
     List<Interceptor>? interceptors,
   }) {
     final Dio dio = Dio();
     String baseURL = '';
-    // const cookieKey = 'medusa_admin_cookie';
-    // const jwtKey = 'medusa_admin_jwt';
-    // const tokenKey = 'medusa_admin_token';
-    if (config.baseUrl.endsWith('/admin')) {
-      baseURL = config.baseUrl;
+    if (baseUrl.endsWith('/admin')) {
+      baseURL = baseUrl;
     } else {
-      baseURL = '${config.baseUrl}/admin';
+      baseURL = '$baseUrl/admin';
     }
 
     dio.options = BaseOptions(baseUrl: baseURL, headers: {
@@ -70,17 +64,12 @@ class MedusaAdmin {
       "Content-Type": "application/json",
     });
 
-    if (config.authenticationType == AuthenticationType.token) {
-      assert(config.apiToken != null, 'Api Token must be provided');
-      dio.options.headers["x-medusa-access-token"] = config.apiToken;
-    }
-
     interceptors?.forEach((element) {
       dio.interceptors.add(element);
     });
 
     return MedusaAdmin._(
-      config: config,
+      baseUrl: baseUrl,
       interceptors: interceptors,
       authRepository: AuthRepository(dio),
       batchJobsRepository: BatchJobsRepository(dio),
@@ -125,6 +114,12 @@ class MedusaAdmin {
     );
   }
 
+  ///
+  /// Base url which is used to connect to medusa backend
+  ///
+  final String baseUrl;
+  final List<Interceptor>? interceptors;
+
   final AuthRepository authRepository;
   final BatchJobsRepository batchJobsRepository;
   final ClaimRepository claimRepository;
@@ -165,6 +160,4 @@ class MedusaAdmin {
   final TaxRateRepository taxRateRepository;
   final UploadRepository uploadRepository;
   final UserRepository userRepository;
-
-  final List<Interceptor>? interceptors;
 }
