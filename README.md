@@ -99,7 +99,7 @@ we are done with saving the JWT/cookie, let's add them to the header of our requ
 Add the interceptor to Medusa Admin initializer
 
 ```dart
-MedusaAdmin medusaAdmin = MedusaAdmin.initialize(baseUrl: 'MEDUSA_SERVER_URL, interceptors: [authInterceptor]);
+MedusaAdmin medusaAdmin = MedusaAdmin.initialize(baseUrl: 'MEDUSA_SERVER_URL', interceptors: [authInterceptor]);
 ```
 > **_NOTE:_** You can use whatever way to save and retrieve jwt/coookie, it's advised to encrypt such sensetive information and save them, I used [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage) in [Medusa Admin Flutter](https://github.com/mllrr96/Medusa-Admin-Flutter), [Hive](https://pub.dev/packages/hive) also provides encryption
 
