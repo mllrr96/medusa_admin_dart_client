@@ -48,7 +48,7 @@ UserProductsListRes? productsListRes = await medusaAdmin.productsRepository.retr
 ### NOTE:  
 This package will not save the jwt/cookie you get after signing in, you need to save it yourself and include it in the header via interceptors, below is an example on how to do it
 
-Medusa provides three methods to authenticate: JWT, Cookie, and API Token. Read more about it here [Authentication](https://docs.medusajs.com/api/admin#authentication) 
+Medusa provides three methods to authenticate: JWT, Cookie, and API Token. Read more about it  [here](https://docs.medusajs.com/api/admin#authentication) 
 
 The example covers all of the methods
 
