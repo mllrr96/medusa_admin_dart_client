@@ -52,14 +52,7 @@ class MedusaAdmin {
     List<Interceptor>? interceptors,
   }) {
     final Dio dio = Dio();
-    String baseURL = '';
-    if (baseUrl.endsWith('/admin')) {
-      baseURL = baseUrl;
-    } else {
-      baseURL = '$baseUrl/admin';
-    }
-
-    dio.options = BaseOptions(baseUrl: baseURL, headers: {
+    dio.options = BaseOptions(baseUrl: baseUrl, headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
     });
