@@ -1,7 +1,6 @@
 
 import '../../enum/enums.dart';
 import '../../models/index.dart';
-import '../../models/response_models/invite.dart';
 
 abstract class BaseInvite {
   Future<bool?> acceptInvitation({

@@ -1,11 +1,6 @@
 import '../payment_collection/index.dart';
 import 'index.dart';
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/cart.g.dart';
-
-@CopyWith()
 class Cart {
   /// Example: "cart_01G8ZH853Y6TFXWPG5EYE81X63"
   // The cart's id

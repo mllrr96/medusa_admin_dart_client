@@ -1,9 +1,4 @@
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/notification.g.dart';
-
-@CopyWith()
 class Notification implements Comparable {
   /// The notification's id
   final String? id;

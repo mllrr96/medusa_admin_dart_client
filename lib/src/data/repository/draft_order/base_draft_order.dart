@@ -1,6 +1,5 @@
 
 import '../../models/index.dart';
-import '../../models/response_models/draft_order.dart';
 
 abstract class BaseDraftOrder {
   Future<DraftOrder?> createDraftOrder({

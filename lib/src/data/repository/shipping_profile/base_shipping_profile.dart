@@ -1,7 +1,6 @@
 
 
 import '../../models/index.dart';
-import '../../models/response_models/shipping_profile.dart';
 
 abstract class BaseShippingProfile {
   Future<ShippingProfile?> create({

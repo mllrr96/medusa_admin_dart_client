@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/customer.dart';
 
 abstract class BaseCustomer {
   /// Retrieves a list of Customers

@@ -1,10 +1,5 @@
 import '../products/index.dart';
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/discount_condition_product_tag.g.dart';
-
-@CopyWith()
 class DiscountConditionProductTag {
   final String? productTagId;
   final String? conditionId;

@@ -1,6 +1,5 @@
 
 import '../../models/index.dart';
-import '../../models/response_models/return.dart';
 
 abstract class BaseReturn {
   /// Requests a Return. If applicable a return label will be created and other plugins notified.

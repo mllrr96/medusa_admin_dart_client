@@ -1,9 +1,4 @@
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/user.g.dart';
-
-@CopyWith()
 class User {
   /// The user's ID
   final String? id;

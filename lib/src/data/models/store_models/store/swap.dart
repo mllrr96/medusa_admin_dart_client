@@ -1,11 +1,6 @@
 import '../orders/index.dart';
 import 'index.dart';
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/swap.g.dart';
-
-@CopyWith()
 class Swap {
   /// The swap's id
   ///

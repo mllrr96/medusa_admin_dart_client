@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/products.dart';
 
 abstract class BaseProducts {
   Future<UserProductsListRes?> retrieveAll(

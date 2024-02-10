@@ -1,6 +1,5 @@
 
 import '../../models/index.dart';
-import '../../models/response_models/payment.dart';
 
 abstract class BasePayment {
   Future<Payment?> capturePayment({

@@ -1,10 +1,5 @@
 
 import 'region.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/country.g.dart';
-
-@CopyWith()
 class Country {
   /// The country's ID
   ///

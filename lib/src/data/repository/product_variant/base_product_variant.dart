@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/product_variant.dart';
 
 abstract class BaseProductVariant {
   /// Returns the available inventory of a Variant.

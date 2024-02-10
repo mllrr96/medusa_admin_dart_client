@@ -1,8 +1,3 @@
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/sales_channel.g.dart';
-
-@CopyWith()
 class SalesChannel {
   /// The sales channel's id
   ///

@@ -1,9 +1,5 @@
 import 'claim_item.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 
-part '../../../../../generated/src/data/models/store_models/orders/claim_image.g.dart';
-
-@CopyWith()
 class ClaimImage {
   /// Image id
   final String? id;

@@ -1,6 +1,5 @@
 
 import '../../models/index.dart';
-import '../../models/response_models/order_edit.dart';
 
 abstract class BaseOrderEdit {
   Future<OrderEdit?> addLineItem({

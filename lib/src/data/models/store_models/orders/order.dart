@@ -1,11 +1,6 @@
 import '../store/index.dart';
 import 'claim_order.dart';
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/orders/order.g.dart';
-
-@CopyWith()
 class Order {
   /// The order's id
   ///

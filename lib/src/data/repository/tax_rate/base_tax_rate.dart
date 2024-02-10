@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/tax_rate.dart';
 
 abstract class BaseTaxRate {
   Future<TaxRate?> createTaxRate({

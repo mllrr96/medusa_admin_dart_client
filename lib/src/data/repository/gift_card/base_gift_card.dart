@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/gift_card.dart';
 
 abstract class BaseGiftCard {
   Future<GiftCard?> createGiftCard({

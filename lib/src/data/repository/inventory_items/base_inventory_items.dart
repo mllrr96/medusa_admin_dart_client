@@ -1,7 +1,6 @@
 
 
 import '../../models/index.dart';
-import '../../models/response_models/inventory_items.dart';
 
 abstract class BaseInventoryItems {
   Future<InventoryItem?> createInventoryLocationForInventoryItem({

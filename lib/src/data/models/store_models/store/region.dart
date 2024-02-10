@@ -1,9 +1,4 @@
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/region.g.dart';
-
-@CopyWith()
 class Region {
   /// The region's ID
   final String? id;

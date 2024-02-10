@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/note.dart';
 
 abstract class BaseNote {
   Future<Note?> createNote({

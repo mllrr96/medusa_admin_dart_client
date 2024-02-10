@@ -1,7 +1,6 @@
 
 
 import '../../models/index.dart';
-import '../../models/response_models/stock_location.dart';
 
 abstract class BaseStockLocation {
   /// Creates a Stock Location.

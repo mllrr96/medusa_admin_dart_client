@@ -2,11 +2,6 @@ import '../store/index.dart';
 import 'claim_item.dart';
 import 'order.dart';
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/orders/claim_order.g.dart';
-
-@CopyWith()
 class ClaimOrder {
   final String? id;
   final ClaimType? type;

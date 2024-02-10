@@ -1,6 +1,5 @@
 
 import '../../models/index.dart';
-import '../../models/response_models/swap.dart';
 
 abstract class BaseSwap {
   Future<Order> cancelSwap({

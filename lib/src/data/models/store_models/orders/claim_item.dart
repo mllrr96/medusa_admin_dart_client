@@ -4,11 +4,6 @@ import '../store/index.dart';
 import 'claim_image.dart';
 import 'claim_order.dart';
 import 'claim_tag.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/orders/claim_item.g.dart';
-
-@CopyWith()
 class ClaimItem {
   /// The id of the claim item.
   final String? id;

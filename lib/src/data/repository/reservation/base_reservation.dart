@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/reservation.dart';
 
 abstract class BaseReservation {
   /// Creates a Reservation which can be associated with any resource as required.

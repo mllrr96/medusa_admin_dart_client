@@ -1,8 +1,3 @@
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/payment_provider.g.dart';
-
-@CopyWith()
 class PaymentProvider {
   /// The id of the payment provider as given by the payment service.
   ///

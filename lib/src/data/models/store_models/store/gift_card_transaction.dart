@@ -1,10 +1,5 @@
 import '../orders/index.dart';
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/gift_card_transaction.g.dart';
-
-@CopyWith()
 class GiftCardTransaction {
   /// The gift card transaction's id
   ///

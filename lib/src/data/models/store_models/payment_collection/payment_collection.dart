@@ -1,11 +1,6 @@
 import '../store/index.dart';
 import 'payment_session.dart';
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/payment_collection/payment_collection.g.dart';
-
-@CopyWith()
 class PaymentCollection {
   /// The payment collection's id
   ///

@@ -1,6 +1,5 @@
 
 import '../../models/index.dart';
-import '../../models/response_models/discount_condition.dart';
 
 abstract class BaseDiscountCondition {
   /// Add a batch of resources to a discount condition.

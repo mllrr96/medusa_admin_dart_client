@@ -1,10 +1,5 @@
 import 'country.dart';
 import 'customer.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/address.g.dart';
-
-@CopyWith()
 class Address {
   /// Id of the address
   ///
@@ -17,7 +12,7 @@ class Address {
   final String? customerId;
 
   /// The details of the customer.
-  final List<Customer>? customer;
+  final Customer? customer;
 
   /// Company name
   ///
@@ -105,16 +100,6 @@ class Address {
   });
 
   factory Address.fromJson(Map<String, dynamic> json) {
-    List<Customer>? customer;
-
-    if (json['customer'] != null) {
-      customer = <Customer>[];
-      json['customer'].forEach(
-        (element) => customer!.add(
-          Customer.fromJson(element),
-        ),
-      );
-    }
 
     return Address(
       id: json['id'],
@@ -122,7 +107,7 @@ class Address {
       company: json['company'],
       firstName: json['first_name'],
       lastName: json['last_name'],
-      customer: customer,
+      customer: json['customer'] != null ? Customer.fromJson(json['customer']) : null,
       address1: json['address_1'],
       address2: json['address_2'],
       city: json['city'],
@@ -150,7 +135,7 @@ class Address {
     }
 
     if (customer != null) {
-      json['customer'] = customer?.map((e) => e.toJson()).toList();
+      json['customer'] = customer?.toJson();
     }
 
     if (company != null) {

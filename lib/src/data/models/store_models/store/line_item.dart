@@ -1,11 +1,6 @@
 import '../orders/index.dart';
 import '../products/index.dart';
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/line_item.g.dart';
-
-@CopyWith()
 class LineItem {
   /// The line item's id
   ///

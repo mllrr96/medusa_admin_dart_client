@@ -1,8 +1,3 @@
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/tax_provider.g.dart';
-
-@CopyWith()
 class TaxProvider {
   /// The id of the tax provider as given by the tax service.
   ///

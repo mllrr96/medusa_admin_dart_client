@@ -1,10 +1,5 @@
 import 'index.dart';
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/shipping_option.g.dart';
-
-@CopyWith()
 class ShippingOption {
   /// The ID of the Shipping Option.
   final String? id;

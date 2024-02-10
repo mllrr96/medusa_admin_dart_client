@@ -1,9 +1,4 @@
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/line_item_adjustment.g.dart';
-
-@CopyWith()
 class LineItemAdjustment {
   /// The line item adjustment's id
   ///

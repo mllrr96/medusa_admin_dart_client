@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/price_list.dart';
 
 abstract class BasePriceList {
   Future<PriceList?> createPriceList({

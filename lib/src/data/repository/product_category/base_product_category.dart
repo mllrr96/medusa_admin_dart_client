@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/product_category.dart';
 
 abstract class BaseProductCategory {
   /// Assign a batch of products to a product category.

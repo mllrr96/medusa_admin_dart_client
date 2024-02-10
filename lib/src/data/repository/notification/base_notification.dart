@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/notification.dart';
 
 abstract class BaseNotification {
 

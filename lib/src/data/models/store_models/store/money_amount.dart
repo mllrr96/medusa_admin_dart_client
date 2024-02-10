@@ -1,10 +1,5 @@
 import '../products/index.dart';
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/money_amount.g.dart';
-
-@CopyWith()
 class MoneyAmount {
   /// The ID of the price.
   final String? id;

@@ -1,9 +1,4 @@
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/discount_condition_customer_group.g.dart';
-
-@CopyWith()
 class DiscountConditionCustomerGroup {
   final String? customerGroupId;
   final String? conditionId;

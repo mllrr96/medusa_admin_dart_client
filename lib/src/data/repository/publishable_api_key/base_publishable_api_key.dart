@@ -1,8 +1,6 @@
 
 
 import '../../models/index.dart';
-import '../../models/response_models/publishable_api_keys.dart';
-import '../../models/response_models/sales_channel_res.dart';
 
 abstract class BasePublishableApiKey {
   Future<UserRetrievePublishableApiKeysRes?> retrievePublishableApiKeys({

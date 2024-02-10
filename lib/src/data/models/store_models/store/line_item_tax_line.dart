@@ -1,9 +1,4 @@
 import 'line_item.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/line_item_tax_line.g.dart';
-
-@CopyWith()
 class LineItemTaxLine {
   /// The line item tax line's id
   ///

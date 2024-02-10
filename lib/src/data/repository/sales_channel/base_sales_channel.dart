@@ -1,7 +1,6 @@
 
 
 import '../../models/index.dart';
-import '../../models/response_models/sales_channel_res.dart';
 
 abstract class BaseSalesChannel {
   /// Retrieves a list of sales channels

@@ -1,10 +1,5 @@
 import '../store/index.dart';
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/products/product_variant.g.dart';
-
-@CopyWith()
 class ProductVariant {
   /// The product variant's id
   ///
@@ -101,7 +96,7 @@ class ProductVariant {
   final bool? purchasable;
 
   /// The details inventory items of the product variant.
-  final List<InventoryItem>? inventoryItews;
+  final List<InventoryItem>? inventoryItems;
 
   /// The date with timezone at which the resource was created.
   final DateTime? createdAt;
@@ -140,7 +135,7 @@ class ProductVariant {
     this.options,
     this.metadata,
     this.purchasable,
-    this.inventoryItews,
+    this.inventoryItems,
     this.createdAt,
     this.updatedAt,
     this.deletedAt,

@@ -1,7 +1,6 @@
 
 
 import '../../models/index.dart';
-import '../../models/response_models/regions.dart';
 
 abstract class BaseRegions {
   /// Retrieves a list of Regions.

@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/user.dart';
 
 abstract class BaseUser {
   /// Updates a User

@@ -31,7 +31,7 @@ class StoreCustomersListOrdersRes {
       return StoreCustomersListOrdersRes(orders);
     }
 
-    return StoreCustomersListOrdersRes(null);
+    return const StoreCustomersListOrdersRes(null);
   }
 
   Map<String, dynamic> toJson() {

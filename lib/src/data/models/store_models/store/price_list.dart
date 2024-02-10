@@ -1,10 +1,6 @@
 import '../../../enum/enums.dart';
 import 'index.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 
-part '../../../../../generated/src/data/models/store_models/store/price_list.g.dart';
-
-@CopyWith()
 class PriceList {
   final String? id;
   final String? name;

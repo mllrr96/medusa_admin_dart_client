@@ -1,11 +1,6 @@
 import '../orders/index.dart';
 import 'index.dart';
 import '../../../enum/enums.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-
-part '../../../../../generated/src/data/models/store_models/store/draft_order.g.dart';
-
-@CopyWith()
 class DraftOrder {
   /// The draft order's ID
   final String? id;

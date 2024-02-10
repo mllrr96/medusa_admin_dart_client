@@ -1,5 +1,4 @@
 import '../../models/index.dart';
-import '../../models/response_models/customer_group.dart';
 
 abstract class BaseCustomerGroup {
   /// Retrieve a list of customer groups.
