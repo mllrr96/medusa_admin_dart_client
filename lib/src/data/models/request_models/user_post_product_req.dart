@@ -102,7 +102,8 @@ class UserPostProductReq {
       data['tags'] = tagsList;
     }
     if (product.type != null) {
-      final type = ProductType(value: product.type!.value, id: product.type!.id);
+      final type =
+          ProductType(value: product.type!.value, id: product.type!.id);
       data['type'] = type.toJson();
     }
 
@@ -241,7 +242,7 @@ class UserPostUpdateProductReq {
     }
 
     if (salesChannels != null) {
-      data['sales_channels'] = salesChannels!.map((e) => {'id' : e.id}).toList();
+      data['sales_channels'] = salesChannels!.map((e) => {'id': e.id}).toList();
     }
 
     if (tags != null) {
@@ -252,11 +253,7 @@ class UserPostUpdateProductReq {
       data['tags'] = tagsList;
     }
     if (type != null) {
-      List<Map<String, dynamic>> typeList = [];
-      for (var element in tags!) {
-        typeList.add(element.toJson());
-      }
-      data['type'] = typeList;
+      data['type'] = type!.toJson();
     }
 
     if (status != null) {
@@ -268,4 +265,5 @@ class UserPostUpdateProductReq {
     }
 
     return data;
-  }}
+  }
+}
