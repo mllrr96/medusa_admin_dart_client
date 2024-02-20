@@ -23,7 +23,7 @@ class UserPostProductReq {
     }
 
     if (product.images != null) {
-      data['images'] = product.images;
+      data['images'] = product.images!.map((e) => e.id).toList();
     }
 
     if (product.thumbnail != null) {
