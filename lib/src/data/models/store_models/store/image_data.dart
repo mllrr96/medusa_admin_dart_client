@@ -1,10 +1,10 @@
 class ImageData {
-  String? id;
-  String? url;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  DateTime? deletedAt;
-  Map<String, dynamic>? metadata;
+  final String? id;
+  final String? url;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? deletedAt;
+  final Map<String, dynamic>? metadata;
 
   ImageData({
     this.id,
@@ -15,23 +15,37 @@ class ImageData {
     this.metadata,
   });
 
-  ImageData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    url = json['url'];
-    createdAt = DateTime.tryParse(json['created_at'] ?? '')?.toLocal();
-    updatedAt = DateTime.tryParse(json['updated_at'] ?? '')?.toLocal();
-    deletedAt = DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal();
-    metadata = json['metadata'] ;
+  factory ImageData.fromJson(Map<String, dynamic> json) {
+    return ImageData(
+      id: json['id'],
+      url: json['url'],
+      createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
+      updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
+      deletedAt: DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
+      metadata: json['metadata'],
+    );
   }
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
-    json['id'] = id;
-    json['url'] = url;
-    json['created_at'] = createdAt.toString();
-    json['updated_at'] = updatedAt.toString();
-    json['deleted_at'] = deletedAt.toString();
-    json['metadata'] = metadata;
+    if (id != null) {
+      json['id'] = id;
+    }
+    if (url != null) {
+      json['url'] = url;
+    }
+    if (createdAt != null) {
+      json['created_at'] = createdAt.toString();
+    }
+    if (updatedAt != null) {
+      json['updated_at'] = updatedAt.toString();
+    }
+    if (deletedAt != null) {
+      json['deleted_at'] = deletedAt.toString();
+    }
+    if (metadata != null) {
+      json['metadata'] = metadata;
+    }
     return json;
   }
 }
