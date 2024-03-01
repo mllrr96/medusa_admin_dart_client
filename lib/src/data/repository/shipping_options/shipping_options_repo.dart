@@ -45,7 +45,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
         '$_shippingOptions/$id',
       );
       if (response.statusCode == 200) {
-        return UserDeleteShippingOptionRes.fromJson(response.data['shipping_option']);
+        return UserDeleteShippingOptionRes.fromJson(response.data);
       } else {
         throw response;
       }
