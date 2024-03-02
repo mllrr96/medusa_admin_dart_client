@@ -35,7 +35,7 @@ abstract class BasePublishableApiKey {
   });
 
   /// Deletes a PublishableApiKeys
-  Future<PublishableApiKey?> deletePublishableApiKey({
+  Future<UserDeletePublishableApiKeyRes?> deletePublishableApiKey({
     /// The ID of the PublishableApiKeys to delete.
     required String id,
     Map<String, dynamic>? queryParameters,
