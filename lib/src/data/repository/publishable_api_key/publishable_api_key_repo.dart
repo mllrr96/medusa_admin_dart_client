@@ -95,7 +95,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
   }
 
   @override
-  Future<UserDeletePublishableApiKeyRes?> deleteSalesChannels({
+  Future<PublishableApiKey?> deleteSalesChannels({
     required String id,
     required List<String> salesChannelsIds,
     Map<String, dynamic>? queryParameters,
@@ -117,7 +117,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserDeletePublishableApiKeyRes.fromJson(response.data);
+        return PublishableApiKey.fromJson(response.data['publishable_api_key']);
       } else {
         throw response;
       }

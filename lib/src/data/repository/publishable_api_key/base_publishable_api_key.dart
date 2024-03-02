@@ -68,7 +68,7 @@ abstract class BasePublishableApiKey {
   });
 
   /// List PublishableApiKey's SalesChannels
-  Future<UserDeletePublishableApiKeyRes?> deleteSalesChannels({
+  Future<PublishableApiKey?> deleteSalesChannels({
     /// The ID of the Publishable Api Key.
     required String id,
     required List<String> salesChannelsIds,
