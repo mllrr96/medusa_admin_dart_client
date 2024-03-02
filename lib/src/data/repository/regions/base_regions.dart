@@ -10,7 +10,7 @@ abstract class BaseRegions {
   });
 
   /// Adds a Country to the list of Countries in a Region
-  Future<UserRegionsRes?> addCountryToRegion({
+  Future<Region?> addCountryToRegion({
     /// The ID of the Region.
     required String id,
 
@@ -20,7 +20,7 @@ abstract class BaseRegions {
   });
 
   /// Removes a Country from the list of Countries in a Region
-  Future<UserRegionsRes?> removeCountryFromRegion({
+  Future<Region?> removeCountryFromRegion({
     /// The ID of the Region.
     required String id,
 
@@ -30,7 +30,7 @@ abstract class BaseRegions {
   });
 
   /// Adds a Fulfillment Provider to a Region
-  Future<UserRegionsRes?> addFulfillmentProvider({
+  Future<Region?> addFulfillmentProvider({
     /// The ID of the Region.
     required String id,
 
@@ -40,7 +40,7 @@ abstract class BaseRegions {
   });
 
   /// Adds a Fulfillment Provider to a Region
-  Future<UserRegionsRes?> deleteFulfillmentProvider({
+  Future<Region?> deleteFulfillmentProvider({
     /// The ID of the Region.
     required String id,
 
@@ -50,7 +50,7 @@ abstract class BaseRegions {
   });
 
   /// Adds a Payment Provider to a Region
-  Future<UserRegionsRes?> addPaymentProvider({
+  Future<Region?> addPaymentProvider({
     /// The ID of the Region.
     required String id,
 
@@ -60,7 +60,7 @@ abstract class BaseRegions {
   });
 
   /// Adds a Payment Provider to a Region
-  Future<UserRegionsRes?> deletePaymentProvider({
+  Future<Region?> deletePaymentProvider({
     /// The ID of the Region.
     required String id,
 

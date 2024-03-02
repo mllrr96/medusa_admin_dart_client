@@ -74,7 +74,7 @@ class RegionsRepository extends BaseRegions {
   }
 
   @override
-  Future<UserRegionsRes?> addCountryToRegion(
+  Future<Region?> addCountryToRegion(
       {required String id,
       required String countryCode,
       Map<String, dynamic>? customHeaders}) async {
@@ -85,7 +85,7 @@ class RegionsRepository extends BaseRegions {
       final response = await _dio
           .post('$_regions/$id/countries', data: {'country_code': countryCode});
       if (response.statusCode == 200) {
-        return UserRegionsRes.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -96,7 +96,7 @@ class RegionsRepository extends BaseRegions {
   }
 
   @override
-  Future<UserRegionsRes?> addFulfillmentProvider(
+  Future<Region?> addFulfillmentProvider(
       {required String id,
       required String providerId,
       Map<String, dynamic>? customHeaders}) async {
@@ -107,7 +107,7 @@ class RegionsRepository extends BaseRegions {
       final response = await _dio.post('$_regions/$id/fulfillment-providers',
           data: {'provider_id': providerId});
       if (response.statusCode == 200) {
-        return UserRegionsRes.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -118,7 +118,7 @@ class RegionsRepository extends BaseRegions {
   }
 
   @override
-  Future<UserRegionsRes?> addPaymentProvider(
+  Future<Region?> addPaymentProvider(
       {required String id,
       required String providerId,
       Map<String, dynamic>? customHeaders}) async {
@@ -129,7 +129,7 @@ class RegionsRepository extends BaseRegions {
       final response = await _dio.post('$_regions/$id/payment-providers',
           data: {'provider_id': providerId});
       if (response.statusCode == 200) {
-        return UserRegionsRes.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -161,7 +161,7 @@ class RegionsRepository extends BaseRegions {
   }
 
   @override
-  Future<UserRegionsRes?> deleteFulfillmentProvider(
+  Future<Region?> deleteFulfillmentProvider(
       {required String id,
       required String providerId,
       Map<String, dynamic>? customHeaders}) async {
@@ -172,7 +172,7 @@ class RegionsRepository extends BaseRegions {
       final response =
           await _dio.delete('$_regions/$id/fulfillment-providers/$providerId');
       if (response.statusCode == 200) {
-        return UserRegionsRes.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -183,7 +183,7 @@ class RegionsRepository extends BaseRegions {
   }
 
   @override
-  Future<UserRegionsRes?> deletePaymentProvider(
+  Future<Region?> deletePaymentProvider(
       {required String id,
       required String providerId,
       Map<String, dynamic>? customHeaders}) async {
@@ -194,7 +194,7 @@ class RegionsRepository extends BaseRegions {
       final response =
           await _dio.delete('$_regions/$id/payment-providers/$providerId');
       if (response.statusCode == 200) {
-        return UserRegionsRes.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -205,7 +205,7 @@ class RegionsRepository extends BaseRegions {
   }
 
   @override
-  Future<UserRegionsRes?> removeCountryFromRegion(
+  Future<Region?> removeCountryFromRegion(
       {required String id,
       required String countryCode,
       Map<String, dynamic>? customHeaders}) async {
@@ -213,9 +213,10 @@ class RegionsRepository extends BaseRegions {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
-      final response = await _dio.delete('$_regions/$id/countries/$countryCode');
+      final response =
+          await _dio.delete('$_regions/$id/countries/$countryCode');
       if (response.statusCode == 200) {
-        return UserRegionsRes.fromJson(response.data);
+        return Region.fromJson(response.data['region']);
       } else {
         throw response;
       }
@@ -226,19 +227,18 @@ class RegionsRepository extends BaseRegions {
   }
 
   @override
-  Future<List<FulfillmentOption>?>
-      retrieveFulfillmentOptions(
-          {required String id,
-          Map<String, dynamic>? queryParams,
-          Map<String, dynamic>? customHeaders}) async {
+  Future<List<FulfillmentOption>?> retrieveFulfillmentOptions(
+      {required String id,
+      Map<String, dynamic>? queryParams,
+      Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.get('$_regions/$id/fulfillment-options');
       if (response.statusCode == 200) {
-        return List<FulfillmentOption>.from(
-            response.data['fulfillment_options'].map((x) => FulfillmentOption.fromJson(x)));
+        return List<FulfillmentOption>.from(response.data['fulfillment_options']
+            .map((x) => FulfillmentOption.fromJson(x)));
       } else {
         throw response;
       }
