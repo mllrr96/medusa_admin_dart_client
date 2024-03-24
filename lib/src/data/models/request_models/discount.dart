@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserCreateDiscountReq {
+class CreateDiscountReq {
   /// A unique code that will be used to redeem the Discount
   final String code;
 
@@ -35,7 +35,7 @@ class UserCreateDiscountReq {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  UserCreateDiscountReq({
+  CreateDiscountReq({
     required this.code,
     required this.rule,
     required this.regionsIds,
@@ -86,7 +86,7 @@ class UserCreateDiscountReq {
   }
 }
 
-class UserUpdateDiscountReq {
+class UpdateDiscountReq {
   /// A unique code that will be used to redeem the Discount
   final String? code;
 
@@ -123,7 +123,7 @@ class UserUpdateDiscountReq {
 
   final bool nullEndAt;
 
-  UserUpdateDiscountReq({
+  UpdateDiscountReq({
     this.code,
     this.rule,
     this.regionsIds,
@@ -185,7 +185,7 @@ class UserUpdateDiscountReq {
   }
 }
 
-class UserCreateDynamicCodeDiscountReq {
+class CreateDynamicCodeDiscountReq {
   /// A unique code that will be used to redeem the Discount
   final String code;
 
@@ -195,7 +195,7 @@ class UserCreateDynamicCodeDiscountReq {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  UserCreateDynamicCodeDiscountReq({required this.code, this.usageLimit, this.metadata});
+  CreateDynamicCodeDiscountReq({required this.code, this.usageLimit, this.metadata});
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
@@ -210,7 +210,7 @@ class UserCreateDynamicCodeDiscountReq {
   }
 }
 
-class UserUpdateConditionDiscountReq {
+class UpdateConditionDiscountReq {
   /// list of product IDs if the condition is applied on products.
   final List<String>? productIds;
 
@@ -226,7 +226,7 @@ class UserUpdateConditionDiscountReq {
   /// list of customer group IDs if the condition is applied on customer groups.
   final List<String>? customerGroupIds;
 
-  UserUpdateConditionDiscountReq({
+  UpdateConditionDiscountReq({
     this.collectionIds,
     this.customerGroupIds,
     this.productIds,

@@ -35,7 +35,7 @@ class PaymentRepository extends BasePayment {
 
   /// Issues a Refund.
   @override
-  Future<UserCreateRefundPaymentRes?> createRefund({
+  Future<CreateRefundPaymentRes?> createRefund({
     /// The ID of the Payment.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -48,7 +48,7 @@ class PaymentRepository extends BasePayment {
         '$_payments/$id/capture',
       );
       if (response.statusCode == 200) {
-        return UserCreateRefundPaymentRes.fromJson(response.data);
+        return CreateRefundPaymentRes.fromJson(response.data);
       } else {
         throw response;
       }

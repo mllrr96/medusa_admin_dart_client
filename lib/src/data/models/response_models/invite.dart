@@ -1,12 +1,12 @@
 import '../index.dart';
 
-class UserRetrieveInvitesRes {
+class RetrieveInvitesRes {
   final List<Invite>? invites;
 
-  const UserRetrieveInvitesRes(this.invites);
+  const RetrieveInvitesRes(this.invites);
 
- factory UserRetrieveInvitesRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveInvitesRes(
+ factory RetrieveInvitesRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveInvitesRes(
       json['invites'] != null
           ? List<Invite>.from(json['invites'].map((x) => Invite.fromJson(x)))
           : null,
@@ -14,7 +14,7 @@ class UserRetrieveInvitesRes {
   }
 }
 
-class UserDeleteInvitesRes{
+class DeleteInvitesRes{
   /// The ID of the deleted Invite.
   final String? id;
 
@@ -25,8 +25,8 @@ class UserDeleteInvitesRes{
 
   /// Whether or not the Invite was deleted.
   final bool deleted;
-  const UserDeleteInvitesRes({required this.deleted, this.id, this.object});
-  factory UserDeleteInvitesRes.fromJson(json) {
-    return UserDeleteInvitesRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
+  const DeleteInvitesRes({required this.deleted, this.id, this.object});
+  factory DeleteInvitesRes.fromJson(json) {
+    return DeleteInvitesRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
   }
 }

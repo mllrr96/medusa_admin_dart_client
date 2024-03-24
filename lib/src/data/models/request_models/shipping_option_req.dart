@@ -1,8 +1,8 @@
 
 import '../index.dart';
 
-class UserCreateShippingOptionReq {
-  UserCreateShippingOptionReq({required this.shippingOption});
+class CreateShippingOptionReq {
+  CreateShippingOptionReq({required this.shippingOption});
   final ShippingOption shippingOption;
 
   Map<String, dynamic> toJson() {
@@ -10,8 +10,8 @@ class UserCreateShippingOptionReq {
   }
 }
 
-class UserUpdateShippingOptionReq {
-  UserUpdateShippingOptionReq({required this.shippingOption});
+class UpdateShippingOptionReq {
+  UpdateShippingOptionReq({required this.shippingOption});
   final ShippingOption shippingOption;
 
   Map<String, dynamic> toJson() {

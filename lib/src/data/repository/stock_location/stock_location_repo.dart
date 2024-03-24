@@ -10,7 +10,7 @@ class StockLocationRepository extends BaseStockLocation {
 
   @override
   Future<StockLocation?> createStockLocation(
-      {required UserCreateStockLocationReq userCreateStockLocationReq,
+      {required CreateStockLocationReq userCreateStockLocationReq,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? customHeaders}) async {
     try {
@@ -31,7 +31,7 @@ class StockLocationRepository extends BaseStockLocation {
   }
 
   @override
-  Future<UserDeleteStockLocationRes?> deleteStockLocation(
+  Future<DeleteStockLocationRes?> deleteStockLocation(
       {required String id,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? customHeaders}) async {
@@ -41,7 +41,7 @@ class StockLocationRepository extends BaseStockLocation {
       }
       final response = await _dio.delete('$_stockLocation/$id');
       if (response.statusCode == 200) {
-        return UserDeleteStockLocationRes.fromJson(response.data);
+        return DeleteStockLocationRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -78,7 +78,7 @@ class StockLocationRepository extends BaseStockLocation {
   @override
   Future<StockLocation?> updateStockLocation(
       {required String id,
-        required UserUpdateStockLocationReq userUpdateStockLocationReq,
+        required UpdateStockLocationReq userUpdateStockLocationReq,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? customHeaders,
       }) async {

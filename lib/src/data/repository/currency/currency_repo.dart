@@ -8,7 +8,7 @@ class CurrencyRepository extends BaseCurrency {
   CurrencyRepository(Dio dio) : _dio = dio;
   final Dio _dio;
   @override
-  Future<UserCurrencyRes?> retrieve(
+  Future<CurrencyRes?> retrieve(
       {Map<String, dynamic>? customHeaders, Map<String, dynamic>? queryParameters}) async {
     if (customHeaders != null) {
       _dio.options.headers.addAll(customHeaders);
@@ -19,7 +19,7 @@ class CurrencyRepository extends BaseCurrency {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserCurrencyRes.fromJson(response.data);
+        return CurrencyRes.fromJson(response.data);
       } else {
         throw response;
       }

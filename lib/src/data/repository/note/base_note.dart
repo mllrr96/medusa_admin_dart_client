@@ -19,12 +19,12 @@ abstract class BaseNote {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteNoteRes?> deleteNote({
+  Future<DeleteNoteRes?> deleteNote({
     required String id,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserNotesRes?> retrieveNotes({
+  Future<NotesRes?> retrieveNotes({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

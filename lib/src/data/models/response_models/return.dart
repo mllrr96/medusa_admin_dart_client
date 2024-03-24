@@ -1,13 +1,13 @@
 import '../index.dart';
 
-class UserRetrieveReturnsRes {
+class RetrieveReturnsRes {
   final List<Return>? returns;
   final int? limit;
   final int? offset;
   final int? count;
-  const  UserRetrieveReturnsRes({this.returns, this.limit, this.offset, this.count});
-  factory UserRetrieveReturnsRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveReturnsRes(
+  const  RetrieveReturnsRes({this.returns, this.limit, this.offset, this.count});
+  factory RetrieveReturnsRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveReturnsRes(
       returns: json['returns'] != null
           ? List<Return>.from(json['returns'].map((x) => Return.fromJson(x)))
           : null,

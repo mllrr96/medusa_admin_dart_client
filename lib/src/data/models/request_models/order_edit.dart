@@ -1,4 +1,4 @@
-class UserAddLineItemReq {
+class AddLineItemReq {
   /// The ID of the variant ID to add
   final String variantId;
 
@@ -8,7 +8,7 @@ class UserAddLineItemReq {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  UserAddLineItemReq({required this.quantity, required this.variantId, this.metadata});
+  AddLineItemReq({required this.quantity, required this.variantId, this.metadata});
 
   Map<String, dynamic> toJson() => {
         'variant_id': variantId,

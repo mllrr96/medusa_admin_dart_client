@@ -35,7 +35,7 @@ class ReservationRepository extends BaseReservation {
   }
 
   @override
-  Future<UserDeleteReservationRes?> deleteReservation({
+  Future<DeleteReservationRes?> deleteReservation({
     required String id,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
@@ -49,7 +49,7 @@ class ReservationRepository extends BaseReservation {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return UserDeleteReservationRes.fromJson(response.data);
+        return DeleteReservationRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -87,7 +87,7 @@ class ReservationRepository extends BaseReservation {
   @override
   Future<Reservation?> updateReservation({
     required String id,
-    required UserUpdateReservationReq userUpdateReservationReq,
+    required UpdateReservationReq userUpdateReservationReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {

@@ -1,4 +1,4 @@
-class UserCreateTaxRateReq {
+class CreateTaxRateReq {
   /// A code to identify the tax type by
   final String code;
 
@@ -20,7 +20,7 @@ class UserCreateTaxRateReq {
   /// The IDs of the types of products associated with this tax rate
   final List<String>? productTypeIds;
 
-  UserCreateTaxRateReq({
+  CreateTaxRateReq({
     required this.code,
     required this.name,
     required this.regionId,
@@ -56,7 +56,7 @@ class UserCreateTaxRateReq {
   }
 }
 
-class UserUpdateTaxRateReq {
+class UpdateTaxRateReq {
   /// A code to identify the tax type by
   final String? code;
 
@@ -78,7 +78,7 @@ class UserUpdateTaxRateReq {
   /// The IDs of the types of products associated with this tax rate
   final List<String>? productTypeIds;
 
-  UserUpdateTaxRateReq({
+  UpdateTaxRateReq({
     this.code,
     this.name,
     this.regionId,

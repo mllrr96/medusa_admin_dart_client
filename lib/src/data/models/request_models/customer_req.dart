@@ -1,4 +1,4 @@
-class UserUpdateCustomerReq {
+class UpdateCustomerReq {
   /// The Customer's email.
   final String? email;
 
@@ -20,7 +20,7 @@ class UserUpdateCustomerReq {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  UserUpdateCustomerReq(
+  UpdateCustomerReq(
       {this.email, this.firstName, this.lastName, this.phone, this.password, this.groupIds, this.metadata});
 
   Map<String, dynamic> toJson() {
@@ -52,7 +52,7 @@ class UserUpdateCustomerReq {
   }
 }
 
-class UserCreateCustomerReq {
+class CreateCustomerReq {
   /// The Customer's email.
   final String email;
 
@@ -74,7 +74,7 @@ class UserCreateCustomerReq {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  UserCreateCustomerReq(
+  CreateCustomerReq(
       {required this.email,
       required this.firstName,
       required this.lastName,

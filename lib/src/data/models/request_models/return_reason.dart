@@ -1,5 +1,5 @@
-class UserCreateReturnReasonReq {
-  UserCreateReturnReasonReq({
+class CreateReturnReasonReq {
+  CreateReturnReasonReq({
     required this.label,
     required this.value,
      this.parentReturnReasonId,
@@ -23,8 +23,8 @@ class UserCreateReturnReasonReq {
   }
 }
 
-class UserUpdateReturnReasonReq {
-  UserUpdateReturnReasonReq({
+class UpdateReturnReasonReq {
+  UpdateReturnReasonReq({
     required this.label,
     required this.value,
     required this.description,

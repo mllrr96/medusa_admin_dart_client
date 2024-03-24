@@ -1,4 +1,4 @@
-class UserResetPasswordReq {
+class ResetPasswordReq {
   /// The Users email.
   final String email;
 
@@ -8,7 +8,7 @@ class UserResetPasswordReq {
   /// The token generated from the 'password-token' endpoint.
   final String token;
 
-  const UserResetPasswordReq({required this.email, required this.password, required this.token});
+  const ResetPasswordReq({required this.email, required this.password, required this.token});
 
   Map<String, dynamic> toJson() => {
         'email': email,

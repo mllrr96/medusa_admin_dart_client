@@ -3,22 +3,22 @@ import '../../models/index.dart';
 
 abstract class BaseDraftOrder {
   Future<DraftOrder?> createDraftOrder({
-    required UserCreateDraftOrderReq userCreateDraftOrderReq,
+    required CreateDraftOrderReq userCreateDraftOrderReq,
     Map<String, dynamic>? customHeaders,
   });
 
   Future<DraftOrder?> updateDraftOrder({
     required String id,
-    required UserUpdateDraftOrderReq userUpdateDraftOrderReq,
+    required UpdateDraftOrderReq userUpdateDraftOrderReq,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteDraftOrderRes?> deleteDraftOrder({
+  Future<DeleteDraftOrderRes?> deleteDraftOrder({
     required String id,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDraftOrdersRes?> retrieveDraftOrders({
+  Future<DraftOrdersRes?> retrieveDraftOrders({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -31,14 +31,14 @@ abstract class BaseDraftOrder {
 
   Future<DraftOrder?> createLineItem({
     required String id,
-    required UserCreateLineItemReq userCreateLineItemReq,
+    required CreateLineItemReq userCreateLineItemReq,
     Map<String, dynamic>? customHeaders,
   });
 
   Future<DraftOrder?> updateLineItem({
     required String id,
     required String lineId,
-    required UserUpdateLineItemReq userUpdateLineItemReq,
+    required UpdateLineItemReq userUpdateLineItemReq,
     Map<String, dynamic>? customHeaders,
   });
 

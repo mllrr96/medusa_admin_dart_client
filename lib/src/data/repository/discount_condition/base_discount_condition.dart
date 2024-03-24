@@ -36,7 +36,7 @@ abstract class BaseDiscountCondition {
   Future<Discount?> createDiscountCondition({
     /// The ID of the Discount.
     required String discountId,
-    required UserCreateConditionReq userCreateConditionReq,
+    required CreateConditionReq userCreateConditionReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -53,7 +53,7 @@ abstract class BaseDiscountCondition {
 
 
   /// Deletes a DiscountCondition
-  Future<UserDeleteDiscountConditionRes?> deleteDiscountCondition({
+  Future<DeleteDiscountConditionRes?> deleteDiscountCondition({
     /// The ID of the Discount.
     required String discountId,
     /// The ID of the DiscountCondition.

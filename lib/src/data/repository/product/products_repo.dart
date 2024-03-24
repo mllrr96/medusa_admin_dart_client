@@ -10,7 +10,7 @@ class ProductsRepository extends BaseProducts {
 
   /// Retrieves a list of products
   @override
-  Future<UserProductsListRes?> retrieveAll(
+  Future<ProductsListRes?> retrieveAll(
       {Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? customHeaders}) async {
     try {
@@ -22,7 +22,7 @@ class ProductsRepository extends BaseProducts {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserProductsListRes.fromJson(response.data);
+        return ProductsListRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -79,15 +79,15 @@ class ProductsRepository extends BaseProducts {
 
   /// Searches for products
   @override
-  Future<UserPostSearchRes?> search(
-      {StorePostSearchReq? req, Map<String, dynamic>? customHeaders}) async {
+  Future<PostSearchRes?> search(
+      {PostSearchReq? req, Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         _dio.options.headers.addAll(customHeaders);
       }
       final response = await _dio.post('$_products/search', data: req);
       if (response.statusCode == 200) {
-        return UserPostSearchRes.fromJson(response.data);
+        return PostSearchRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -99,7 +99,7 @@ class ProductsRepository extends BaseProducts {
 
   @override
   Future<Product?> add(
-      {required UserPostProductReq userPostProductReq,
+      {required PostProductReq userPostProductReq,
       Map<String, dynamic>? customHeaders}) async {
     if (customHeaders != null) {
       _dio.options.headers.addAll(customHeaders);
@@ -119,7 +119,7 @@ class ProductsRepository extends BaseProducts {
   }
 
   @override
-  Future<UserDeleteProductRes?> delete(
+  Future<DeleteProductRes?> delete(
       {required String id, Map<String, dynamic>? customHeaders}) async {
     if (customHeaders != null) {
       _dio.options.headers.addAll(customHeaders);
@@ -127,7 +127,7 @@ class ProductsRepository extends BaseProducts {
     try {
       final response = await _dio.delete('$_products/$id');
       if (response.statusCode == 200) {
-        return UserDeleteProductRes.fromJson(response.data);
+        return DeleteProductRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -139,7 +139,7 @@ class ProductsRepository extends BaseProducts {
 
   @override
   Future<Product?> update(
-      {required UserPostUpdateProductReq userPostUpdateProductReq,
+      {required PostUpdateProductReq userPostUpdateProductReq,
       required String id,
       Map<String, dynamic>? customHeaders}) async {
     if (customHeaders != null) {

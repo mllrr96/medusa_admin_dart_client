@@ -3,7 +3,7 @@ import '../../models/index.dart';
 abstract class BaseFulfillment {
   Future<Order?> createFulfillment({
     required String id,
-    required UserCreateFulfillmentReq userCreateFulfillmentReq,
+    required CreateFulfillmentReq userCreateFulfillmentReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

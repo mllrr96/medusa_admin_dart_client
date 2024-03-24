@@ -1,4 +1,4 @@
-class UserCreateRegionReq {
+class CreateRegionReq {
   /// The name of the Region
   final String name;
 
@@ -25,7 +25,7 @@ class UserCreateRegionReq {
   /// [EXPERIMENTAL] Tax included in prices of region
   final bool? includesTax;
 
-  UserCreateRegionReq({
+  CreateRegionReq({
     required this.name,
     required this.currencyCode,
     required this.taxRate,
@@ -54,7 +54,7 @@ class UserCreateRegionReq {
   }
 }
 
-class UserUpdateRegionReq {
+class UpdateRegionReq {
   /// The name of the Region
   final String? name;
 
@@ -92,7 +92,7 @@ class UserUpdateRegionReq {
   /// [EXPERIMENTAL] Tax included in prices of region
   final bool? includesTax;
 
-  UserUpdateRegionReq({
+  UpdateRegionReq({
     this.name,
     this.currencyCode,
     this.taxRate,

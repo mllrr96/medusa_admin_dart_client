@@ -2,7 +2,7 @@ import '../../models/index.dart';
 
 abstract class BaseCustomerGroup {
   /// Retrieve a list of customer groups.
-  Future<UserRetrieveCustomerGroupsRes?> retrieveCustomerGroups({
+  Future<RetrieveCustomerGroupsRes?> retrieveCustomerGroups({
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
@@ -40,7 +40,7 @@ abstract class BaseCustomerGroup {
     Map<String, dynamic>? queryParameters,
   });
 
-  Future<UserRetrieveCustomersRes?> retrieveCustomers({
+  Future<RetrieveCustomersRes?> retrieveCustomers({
     required String id,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
@@ -65,7 +65,7 @@ abstract class BaseCustomerGroup {
   });
 
   /// Deletes a CustomerGroup.
-  Future<UserDeleteCustomerGroupRes?> deleteCustomerGroup({
+  Future<DeleteCustomerGroupRes?> deleteCustomerGroup({
     /// Name of the customer group
     required String id,
     Map<String, dynamic>? customHeaders,

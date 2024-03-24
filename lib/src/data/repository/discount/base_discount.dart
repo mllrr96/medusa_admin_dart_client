@@ -24,13 +24,13 @@ abstract class BaseDiscount {
 
   /// Creates a Discount with a given set of rules that define how the Discount behaves.
   Future<Discount?> createDiscount({
-    required UserCreateDiscountReq userCreateDiscountReq,
+    required CreateDiscountReq userCreateDiscountReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Deletes a Discount.
-  Future<UserDeleteDiscountRes?> deleteDiscount({
+  Future<DeleteDiscountRes?> deleteDiscount({
     /// The ID of the Discount.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -48,13 +48,13 @@ abstract class BaseDiscount {
   Future<Discount?> updateDiscount({
     /// The ID of the Discount
     required String id,
-    required UserUpdateDiscountReq userUpdateDiscountReq,
+    required UpdateDiscountReq userUpdateDiscountReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Retrieves a list of Discounts
-  Future<UserRetrieveDiscountsRes?> retrieveDiscounts({
+  Future<RetrieveDiscountsRes?> retrieveDiscounts({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -70,10 +70,10 @@ abstract class BaseDiscount {
   /// Creates a dynamic unique code that can map to a parent Discount.
   ///
   /// This is useful if you want to automatically generate codes with the same behaviour.
-  Future<UserCreateDynamicCodeDiscountRes?> createDynamicCode({
+  Future<CreateDynamicCodeDiscountRes?> createDynamicCode({
     /// The ID of the Discount to create the dynamic code from.
     required String id,
-    required UserCreateDynamicCodeDiscountReq userCreateDynamicCodeDiscountReq,
+    required CreateDynamicCodeDiscountReq userCreateDynamicCodeDiscountReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -90,7 +90,7 @@ abstract class BaseDiscount {
   /// Updates a DiscountCondition.
   ///
   /// Only one of products, product_types, product_collections, product_tags, and customer_groups should be provided.
-  Future<UserRetrieveDiscountsRes?> updateCondition({
+  Future<RetrieveDiscountsRes?> updateCondition({
     /// The ID of the Product.
     required String discountId,
 
@@ -98,7 +98,7 @@ abstract class BaseDiscount {
     required String conditionId,
 
     /// Only one of products, product_types, product_collections, product_tags, and customer_groups should be provided.
-    required UserUpdateConditionDiscountReq userUpdateConditionDiscountReq,
+    required UpdateConditionDiscountReq userUpdateConditionDiscountReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

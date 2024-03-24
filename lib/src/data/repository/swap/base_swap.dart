@@ -14,14 +14,14 @@ abstract class BaseSwap {
     required String id,
 
     required String swapId,
-    required  UserCreateSwapShipmentSwapReq userCreateSwapShipmentSwapReq,
+    required  CreateSwapShipmentSwapReq userCreateSwapShipmentSwapReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
   Future<Order?>  createSwap({
     required String id,
-    required UserCreateSwapSwapReq userCreateSwapSwapReq,
+    required CreateSwapSwapReq userCreateSwapSwapReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
@@ -41,7 +41,7 @@ abstract class BaseSwap {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserRetrieveSwapsRes?> retrieveSwaps({
+  Future<RetrieveSwapsRes?> retrieveSwaps({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });

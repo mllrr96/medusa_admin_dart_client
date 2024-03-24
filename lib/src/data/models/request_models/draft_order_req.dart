@@ -1,8 +1,7 @@
-
 import '../../enum/enums.dart';
 import '../index.dart';
 
-class UserCreateDraftOrderReq {
+class CreateDraftOrderReq {
   /// The email of the customer of the draft order
   final String email;
 
@@ -38,7 +37,7 @@ class UserCreateDraftOrderReq {
   /// The optional key-value map with additional details about the Draft Order.
   final Map<String, dynamic>? metadata;
 
-  UserCreateDraftOrderReq({
+  CreateDraftOrderReq({
     required this.email,
     required this.regionId,
     required this.shippingMethods,
@@ -132,7 +131,7 @@ class UserCreateDraftOrderReq {
   }
 }
 
-class UserUpdateDraftOrderReq {
+class UpdateDraftOrderReq {
   /// The email of the customer of the draft order
   final String? email;
 
@@ -157,7 +156,7 @@ class UserUpdateDraftOrderReq {
   /// An optional flag passed to the resulting order to determine use of notifications.
   final bool? noNotification;
 
-  UserUpdateDraftOrderReq({
+  UpdateDraftOrderReq({
     this.email,
     this.regionId,
     this.countryCode,
@@ -204,7 +203,7 @@ class UserUpdateDraftOrderReq {
   }
 }
 
-class UserCreateLineItemReq {
+class CreateLineItemReq {
   /// The quantity of the Line Item.
   final int quantity;
 
@@ -222,7 +221,7 @@ class UserCreateLineItemReq {
   /// The optional key-value map with additional details about the Line Item.
   final Map<String, dynamic>? metadata;
 
-  UserCreateLineItemReq({
+  CreateLineItemReq({
     required this.quantity,
     this.metadata,
     this.variantId,
@@ -253,7 +252,7 @@ class UserCreateLineItemReq {
   }
 }
 
-class UserUpdateLineItemReq {
+class UpdateLineItemReq {
   /// The quantity of the Line Item.
   final int? quantity;
 
@@ -268,7 +267,7 @@ class UserUpdateLineItemReq {
   /// The optional key-value map with additional details about the Line Item.
   final Map<String, dynamic>? metadata;
 
-  UserUpdateLineItemReq({
+  UpdateLineItemReq({
     this.quantity,
     this.metadata,
     this.title,

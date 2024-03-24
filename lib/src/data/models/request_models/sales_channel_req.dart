@@ -1,4 +1,4 @@
-class UserSalesChannelUpdateReq {
+class SalesChannelUpdateReq {
   /// Name of the sales channel.
   String? name;
 
@@ -8,7 +8,7 @@ class UserSalesChannelUpdateReq {
   /// Indication of if the sales channel is active.
   bool? isDisabled;
 
-  UserSalesChannelUpdateReq({this.name, this.description, this.isDisabled});
+  SalesChannelUpdateReq({this.name, this.description, this.isDisabled});
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
@@ -26,7 +26,7 @@ class UserSalesChannelUpdateReq {
   }
 }
 
-class UserSalesChannelCreateReq {
+class SalesChannelCreateReq {
   /// Name of the sales channel.
   String name;
 
@@ -36,7 +36,7 @@ class UserSalesChannelCreateReq {
   /// Indication of if the sales channel is active.
   bool? isDisabled;
 
-  UserSalesChannelCreateReq({required this.name, this.description, this.isDisabled});
+  SalesChannelCreateReq({required this.name, this.description, this.isDisabled});
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

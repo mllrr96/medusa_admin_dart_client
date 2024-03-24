@@ -1,4 +1,4 @@
-import 'package:medusa_admin_flutter/src/data/models/index.dart';
+import '../store_models/store/batch_job.dart';
 
 class BatchJobsRes {
   final List<BatchJob>? batchJobs;

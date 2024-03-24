@@ -11,7 +11,7 @@ class ReturnReasonRepository extends BaseReturnReason {
 
   @override
   Future<ReturnReason?> create({
-    required UserCreateReturnReasonReq userCreateReturnReasonReq,
+    required CreateReturnReasonReq userCreateReturnReasonReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     if (customHeaders != null) {
@@ -34,7 +34,7 @@ class ReturnReasonRepository extends BaseReturnReason {
   }
 
   @override
-  Future<UserDeleteReturnReasonRes?>delete({
+  Future<DeleteReturnReasonRes?>delete({
     required String id,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -44,7 +44,7 @@ class ReturnReasonRepository extends BaseReturnReason {
     try {
       final response = await _dio.delete('$_returnReasons/$id');
       if (response.statusCode == 200) {
-        return UserDeleteReturnReasonRes.fromJson(response.data);
+        return DeleteReturnReasonRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -80,7 +80,7 @@ class ReturnReasonRepository extends BaseReturnReason {
   }
 
   @override
-  Future<UserRetrieveAllReturnReasonRes?> retrieveAll({
+  Future<RetrieveAllReturnReasonRes?> retrieveAll({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -93,7 +93,7 @@ class ReturnReasonRepository extends BaseReturnReason {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveAllReturnReasonRes.fromJson(response.data);
+        return RetrieveAllReturnReasonRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -106,7 +106,7 @@ class ReturnReasonRepository extends BaseReturnReason {
   @override
   Future<ReturnReason?> update({
     required String id,
-    required UserUpdateReturnReasonReq userUpdateReturnReasonReq,
+    required UpdateReturnReasonReq userUpdateReturnReasonReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {

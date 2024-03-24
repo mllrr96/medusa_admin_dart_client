@@ -4,7 +4,7 @@ abstract class BaseUser {
   /// Updates a User
   Future<User?> update({
     required String id,
-    required UserUpdateUserReq userUpdateUserReq,
+    required UpdateUserReq userUpdateUserReq,
     Map<String, dynamic>? customHeaders,
   });
 
@@ -14,12 +14,12 @@ abstract class BaseUser {
 
   /// Creates a User
   Future<User?> create({
-    required UserCreateUserReq userCreateUserReq,
+    required CreateUserReq userCreateUserReq,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Retrieves all users.
-  Future<UserRetrieveUserListRes?> retrieveAll(
+  Future<RetrieveUserListRes?> retrieveAll(
       {Map<String, dynamic>? customHeaders,
       Map<String, dynamic>? queryParameters});
 
@@ -29,11 +29,11 @@ abstract class BaseUser {
 
   /// Sets the password for a User given the correct token.
   Future<User?> resetPassword({
-    required UserResetPasswordReq userResetPasswordReq,
+    required ResetPasswordReq userResetPasswordReq,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Generates a password token for a User with a given email.
-  Future<UserDeleteUserRes?> delete(
+  Future<DeleteUserRes?> delete(
       {required String id, Map<String, dynamic>? customHeaders});
 }

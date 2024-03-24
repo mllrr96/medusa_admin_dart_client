@@ -36,7 +36,7 @@ class ProductCategoryRepository extends BaseProductCategory {
 
   @override
   Future<ProductCategory?> createProductCategory({
-    required UserCreateProductCategoryReq userCreateProductCategoryReq,
+    required CreateProductCategoryReq userCreateProductCategoryReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   }) async {
@@ -61,7 +61,7 @@ class ProductCategoryRepository extends BaseProductCategory {
   }
 
   @override
-  Future<UserDeleteProductCategoryRes?> deleteProductCategory({
+  Future<DeleteProductCategoryRes?> deleteProductCategory({
     required String id,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
@@ -75,7 +75,7 @@ class ProductCategoryRepository extends BaseProductCategory {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserDeleteProductCategoryRes.fromJson(response.data);
+        return DeleteProductCategoryRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -112,7 +112,7 @@ class ProductCategoryRepository extends BaseProductCategory {
   }
 
   @override
-  Future<UserRetrieveProductCategoriesRes?> retrieveProductCategories({
+  Future<RetrieveProductCategoriesRes?> retrieveProductCategories({
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   }) async {
@@ -125,7 +125,7 @@ class ProductCategoryRepository extends BaseProductCategory {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveProductCategoriesRes.fromJson(response.data);
+        return RetrieveProductCategoriesRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -163,7 +163,7 @@ class ProductCategoryRepository extends BaseProductCategory {
   @override
   Future<ProductCategory?> updateProductCategory({
     required String id,
-    required UserUpdateProductCategoryReq userUpdateProductCategoryReq,
+    required UpdateProductCategoryReq userUpdateProductCategoryReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   }) async {

@@ -43,7 +43,7 @@ class NoteRepository extends BaseNote {
 
   /// Deletes a Note
   @override
-  Future<UserDeleteNoteRes?> deleteNote({
+  Future<DeleteNoteRes?> deleteNote({
     /// The ID of the Note to delete.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -56,7 +56,7 @@ class NoteRepository extends BaseNote {
         '$_notes/$id',
       );
       if (response.statusCode == 200) {
-        return UserDeleteNoteRes.fromJson(response.data);
+        return DeleteNoteRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -93,7 +93,7 @@ class NoteRepository extends BaseNote {
 
   /// Retrieves a single note using its id
   @override
-  Future<UserNotesRes?> retrieveNotes({
+  Future<NotesRes?> retrieveNotes({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -106,7 +106,7 @@ class NoteRepository extends BaseNote {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserNotesRes.fromJson(response.data);
+        return NotesRes.fromJson(response.data);
       } else {
         throw response;
       }

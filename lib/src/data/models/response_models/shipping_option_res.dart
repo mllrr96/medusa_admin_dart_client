@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserDeleteShippingOptionRes {
+class DeleteShippingOptionRes {
   /// The ID of the deleted Collection
   final String? id;
 
@@ -14,9 +14,9 @@ class UserDeleteShippingOptionRes {
   /// Default: true
   final bool? deleted;
 
-  const UserDeleteShippingOptionRes({this.id, this.object, this.deleted});
-  factory UserDeleteShippingOptionRes.fromJson(json) {
-    return UserDeleteShippingOptionRes(
+  const DeleteShippingOptionRes({this.id, this.object, this.deleted});
+  factory DeleteShippingOptionRes.fromJson(json) {
+    return DeleteShippingOptionRes(
       id: json['id'],
       object: json['object'],
       deleted: json['deleted'],
@@ -24,15 +24,15 @@ class UserDeleteShippingOptionRes {
   }
 }
 
-class UserRetrieveAllShippingOptionRes {
+class RetrieveAllShippingOptionRes {
   final List<ShippingOption>? shippingOptions;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveAllShippingOptionRes(
+  const RetrieveAllShippingOptionRes(
       {this.shippingOptions, this.limit, this.offset, this.count});
-  factory UserRetrieveAllShippingOptionRes.fromJson(json) {
-    return UserRetrieveAllShippingOptionRes(
+  factory RetrieveAllShippingOptionRes.fromJson(json) {
+    return RetrieveAllShippingOptionRes(
       shippingOptions: json['shipping_options'] != null
           ? List<ShippingOption>.from(
               json['shipping_options'].map((x) => ShippingOption.fromJson(x)))

@@ -1,4 +1,4 @@
-class UserCreateRefundPaymentRes {
+class CreateRefundPaymentRes {
   /// The amount to refund.
   final int amount;
 
@@ -8,14 +8,14 @@ class UserCreateRefundPaymentRes {
   /// A note with additional details about the Refund.
   final String? note;
 
-  const UserCreateRefundPaymentRes({
+  const CreateRefundPaymentRes({
     required this.amount,
     required this.reason,
     this.note,
   });
 
-  factory UserCreateRefundPaymentRes.fromJson(Map<String, dynamic> json) {
-    return UserCreateRefundPaymentRes(amount: json['amount'], reason: json['reason'], note: json['note']);
+  factory CreateRefundPaymentRes.fromJson(Map<String, dynamic> json) {
+    return CreateRefundPaymentRes(amount: json['amount'], reason: json['reason'], note: json['note']);
   }
 
   Map<String, dynamic> toJson() {

@@ -19,7 +19,7 @@ abstract class BaseClaim {
 
     /// The ID of the Claim.
     required String claimId,
-    required UserCreateClaimFulfillmentReq userCreateClaimFulfillmentReq,
+    required CreateClaimFulfillmentReq userCreateClaimFulfillmentReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -60,7 +60,7 @@ abstract class BaseClaim {
   Future<Order?> createClaim({
     /// The ID of the Order.
     required String id,
-    required UserCreateClaimReq userCreateClaimReq,
+    required CreateClaimReq userCreateClaimReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -72,7 +72,7 @@ abstract class BaseClaim {
 
     /// The ID of the Claim.
     required String claimId,
-    required UserUpdateClaimReq userUpdateClaimReq,
+    required UpdateClaimReq userUpdateClaimReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

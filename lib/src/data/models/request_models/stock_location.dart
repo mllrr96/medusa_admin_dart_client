@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserCreateStockLocationReq {
+class CreateStockLocationReq {
   /// the name of the stock location
   final String name;
 
@@ -10,7 +10,7 @@ class UserCreateStockLocationReq {
   /// Represents a Stock Location Address Input
   final Address? address;
 
-  UserCreateStockLocationReq(
+  CreateStockLocationReq(
       {required this.name, this.address, this.addressId});
 
   Map<String, dynamic> toJson() {
@@ -26,7 +26,7 @@ class UserCreateStockLocationReq {
   }
 }
 
-class UserUpdateStockLocationReq {
+class UpdateStockLocationReq {
   /// the name of the stock location
   final String? name;
 
@@ -39,7 +39,7 @@ class UserUpdateStockLocationReq {
   /// An optional key-value map with additional details
   final Map<String, dynamic>? metadata;
 
-  UserUpdateStockLocationReq(
+  UpdateStockLocationReq(
       {this.name, this.address, this.addressId, this.metadata});
 
   Map<String, dynamic> toJson() {

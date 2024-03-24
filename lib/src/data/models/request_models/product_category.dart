@@ -1,4 +1,4 @@
-class UserCreateProductCategoryReq {
+class CreateProductCategoryReq {
   /// The name to identify the Product Category by.
   final String name;
 
@@ -14,7 +14,7 @@ class UserCreateProductCategoryReq {
   /// A flag to make product category visible/hidden in the store front
   final bool? isActive;
 
-  UserCreateProductCategoryReq({
+  CreateProductCategoryReq({
     required this.name,
     this.isInternal,
     this.isActive,
@@ -45,7 +45,7 @@ class UserCreateProductCategoryReq {
     return json;
   }
 }
-class UserUpdateProductCategoryReq {
+class UpdateProductCategoryReq {
   /// The name to identify the Product Category by.
   final String? name;
 
@@ -61,7 +61,7 @@ class UserUpdateProductCategoryReq {
   /// A flag to make product category visible/hidden in the store front
   final bool? isActive;
 
-  UserUpdateProductCategoryReq({
+  UpdateProductCategoryReq({
     this.name,
     this.isInternal,
     this.isActive,

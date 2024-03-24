@@ -19,7 +19,7 @@ class ShipClaimFulfillmentReq {
   }
 }
 
-class UserCreateClaimFulfillmentReq {
+class CreateClaimFulfillmentReq {
   /// The id of the fulfillment's location.
   final String? locationId;
 
@@ -28,7 +28,7 @@ class UserCreateClaimFulfillmentReq {
 
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
-  UserCreateClaimFulfillmentReq({
+  CreateClaimFulfillmentReq({
     this.locationId,
     this.metadata,
     this.noNotification,
@@ -52,7 +52,7 @@ class UserCreateClaimFulfillmentReq {
   }
 }
 
-class UserCreateClaimReq {
+class CreateClaimReq {
   /// The Claim Items that the Claim will consist of.
   final List<ClaimItem> claimItems;
 
@@ -81,7 +81,7 @@ class UserCreateClaimReq {
   final List<AdditionalItem>? additionalItems;
 
   final Address? shippingAddress;
-  UserCreateClaimReq({
+  CreateClaimReq({
     required this.claimType,
     required this.claimItems,
     this.returnShipping,
@@ -127,7 +127,7 @@ class UserCreateClaimReq {
   }
 }
 
-class UserUpdateClaimReq {
+class UpdateClaimReq {
   /// The Claim Items that the Claim will consist of.
   final List<ClaimItem>? claimItems;
 
@@ -139,7 +139,7 @@ class UserUpdateClaimReq {
 
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
-  UserUpdateClaimReq(
+  UpdateClaimReq(
       {this.claimItems,
       this.shippingMethods,
       this.metadata,

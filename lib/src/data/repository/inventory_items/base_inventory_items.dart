@@ -5,12 +5,12 @@ import '../../models/index.dart';
 abstract class BaseInventoryItems {
   Future<InventoryItem?> createInventoryLocationForInventoryItem({
     required String id,
-    required UserCreateInventoryLocationForInventoryItemReq userCreateInventoryLocationForInventoryItemReq,
+    required CreateInventoryLocationForInventoryItemReq userCreateInventoryLocationForInventoryItemReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserStockLevelsOfLocationRes?> listStockLevelsOfLocation({
+  Future<StockLevelsOfLocationRes?> listStockLevelsOfLocation({
     required String id,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
@@ -21,19 +21,19 @@ abstract class BaseInventoryItems {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
-  Future<UserDeleteInventoryItemRes?> deleteInventoryItem({
+  Future<DeleteInventoryItemRes?> deleteInventoryItem({
     required String id,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserInventoryItemsRes?> retrieveInventoryItems({
+  Future<InventoryItemsRes?> retrieveInventoryItems({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
 
   Future<InventoryItem?> updateInventoryItem({
     required String id,
-    required UserUpdateInventoryItemReq userUpdateInventoryItemReq,
+    required UpdateInventoryItemReq userUpdateInventoryItemReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

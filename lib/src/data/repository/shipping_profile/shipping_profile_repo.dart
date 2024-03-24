@@ -11,7 +11,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
   /// Creates a Shipping Profile
   @override
   Future<ShippingProfile?> create({
-    required UserCreateShippingProfileReq userCreateShippingProfileReq,
+    required CreateShippingProfileReq userCreateShippingProfileReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -33,7 +33,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
 
   /// Deletes a Shipping Profile.
   @override
-  Future<UserDeleteShippingProfileRes?> delete({
+  Future<DeleteShippingProfileRes?> delete({
     /// The ID of the Shipping Profile to delete.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -44,7 +44,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
       }
       final response = await _dio.delete('$_shippingProfile/$id');
       if (response.statusCode == 200) {
-        return UserDeleteShippingProfileRes.fromJson(response.data);
+        return DeleteShippingProfileRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -83,7 +83,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
 
   /// Retrieves a list of Shipping Profile.
   @override
-  Future<UserRetrieveAllShippingProfileRes?> retrieveAll({
+  Future<RetrieveAllShippingProfileRes?> retrieveAll({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -96,7 +96,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveAllShippingProfileRes.fromJson(response.data);
+        return RetrieveAllShippingProfileRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -111,7 +111,7 @@ class ShippingProfileRepository extends BaseShippingProfile {
   Future<ShippingProfile?> update({
     /// The ID of the Shipping Profile.
     required String id,
-    required UserUpdateShippingProfileReq userUpdateShippingProfileReq,
+    required UpdateShippingProfileReq userUpdateShippingProfileReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {

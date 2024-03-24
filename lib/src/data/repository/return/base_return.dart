@@ -6,7 +6,7 @@ abstract class BaseReturn {
   Future<Order?> requestReturn({
     /// The ID of the Order.
     required String id,
-    required UserRequestReturnOrdersReq userRequestReturnOrdersReq,
+    required RequestReturnOrdersReq userRequestReturnOrdersReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
@@ -23,13 +23,13 @@ abstract class BaseReturn {
   Future<Return?> receiveReturn({
     /// The ID of the Order.
     required String id,
-    required UserReceiveReturnOrderReq userReceiveReturnOrderReq,
+    required ReceiveReturnOrderReq userReceiveReturnOrderReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Retrieves a list of Returns
-  Future<UserRetrieveReturnsRes?> retrieveReturns({
+  Future<RetrieveReturnsRes?> retrieveReturns({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });

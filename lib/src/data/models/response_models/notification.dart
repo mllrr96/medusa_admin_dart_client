@@ -1,15 +1,15 @@
 import '../index.dart';
 
-class UserRetrieveNotificationsRes {
+class RetrieveNotificationsRes {
   final List<Notification>? notifications;
   final int? limit;
   final int? offset;
   final int? count;
-  const  UserRetrieveNotificationsRes(
+  const  RetrieveNotificationsRes(
       {this.notifications, this.limit, this.offset, this.count});
-  factory UserRetrieveNotificationsRes.fromJson(Map<String, dynamic> json) {
+  factory RetrieveNotificationsRes.fromJson(Map<String, dynamic> json) {
 
-    return UserRetrieveNotificationsRes(
+    return RetrieveNotificationsRes(
       notifications: json['notifications'] != null
           ? List<Notification>.from(
               json['notifications'].map((x) => Notification.fromJson(x)))

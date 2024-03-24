@@ -1,7 +1,7 @@
 import '../../models/index.dart';
 
 abstract class BaseProducts {
-  Future<UserProductsListRes?> retrieveAll(
+  Future<ProductsListRes?> retrieveAll(
       {Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? customHeaders});
 
@@ -13,18 +13,18 @@ abstract class BaseProducts {
       {Map<String, dynamic>? customHeaders,
       Map<String, dynamic>? queryParameters});
 
-  Future<UserPostSearchRes?> search(
-      {StorePostSearchReq? req, Map<String, dynamic>? customHeaders});
+  Future<PostSearchRes?> search(
+      {PostSearchReq? req, Map<String, dynamic>? customHeaders});
 
   Future<Product?> add(
-      {required UserPostProductReq userPostProductReq,
+      {required PostProductReq userPostProductReq,
       Map<String, dynamic>? customHeaders});
 
-  Future<UserDeleteProductRes?> delete(
+  Future<DeleteProductRes?> delete(
       {required String id, Map<String, dynamic>? customHeaders});
 
   Future<Product?> update(
-      {required UserPostUpdateProductReq userPostUpdateProductReq,
+      {required PostUpdateProductReq userPostUpdateProductReq,
       required String id,
       Map<String, dynamic>? customHeaders});
 }

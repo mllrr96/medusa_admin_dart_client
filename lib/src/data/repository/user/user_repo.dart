@@ -10,7 +10,7 @@ class UserRepository extends BaseUser {
 
   @override
   Future<User?> create({
-    required UserCreateUserReq userCreateUserReq,
+    required CreateUserReq userCreateUserReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     if (customHeaders != null) {
@@ -33,7 +33,7 @@ class UserRepository extends BaseUser {
   }
 
   @override
-  Future<UserDeleteUserRes?> delete({
+  Future<DeleteUserRes?> delete({
     required String id,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -45,7 +45,7 @@ class UserRepository extends BaseUser {
         '$_users/$id',
       );
       if (response.statusCode == 200) {
-        return UserDeleteUserRes.fromJson(response.data);
+        return DeleteUserRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -81,7 +81,7 @@ class UserRepository extends BaseUser {
 
   @override
   Future<User?> resetPassword({
-    required UserResetPasswordReq userResetPasswordReq,
+    required ResetPasswordReq userResetPasswordReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     if (customHeaders != null) {
@@ -127,7 +127,7 @@ class UserRepository extends BaseUser {
   }
 
   @override
-  Future<UserRetrieveUserListRes?> retrieveAll(
+  Future<RetrieveUserListRes?> retrieveAll(
       {Map<String, dynamic>? customHeaders,
       Map<String, dynamic>? queryParameters}) async {
     if (customHeaders != null) {
@@ -139,7 +139,7 @@ class UserRepository extends BaseUser {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveUserListRes.fromJson(response.data);
+        return RetrieveUserListRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -152,7 +152,7 @@ class UserRepository extends BaseUser {
   @override
   Future<User?> update({
     required String id,
-    required UserUpdateUserReq userUpdateUserReq,
+    required UpdateUserReq userUpdateUserReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     if (customHeaders != null) {

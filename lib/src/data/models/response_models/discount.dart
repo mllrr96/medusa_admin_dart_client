@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserDeleteDiscountRes {
+class DeleteDiscountRes {
   /// The ID of the deleted Order Edit Item Change.
   final String? id;
 
@@ -12,23 +12,23 @@ class UserDeleteDiscountRes {
   /// Whether the discount was deleted successfully or not.
   final bool deleted;
 
-  const UserDeleteDiscountRes({required this.deleted, this.id, this.object});
+  const DeleteDiscountRes({required this.deleted, this.id, this.object});
 
-  factory UserDeleteDiscountRes.fromJson(json) {
-    return UserDeleteDiscountRes(
+  factory DeleteDiscountRes.fromJson(json) {
+    return DeleteDiscountRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);
   }
 }
 
-class UserCreateDynamicCodeDiscountRes {
+class CreateDynamicCodeDiscountRes {
   final String? code;
   final num? usageLimit;
   final Map<String, dynamic>? metadata;
-  const UserCreateDynamicCodeDiscountRes({this.code, this.usageLimit, this.metadata});
-  factory UserCreateDynamicCodeDiscountRes.fromJson(Map<String, dynamic> json) {
-    return UserCreateDynamicCodeDiscountRes(
+  const CreateDynamicCodeDiscountRes({this.code, this.usageLimit, this.metadata});
+  factory CreateDynamicCodeDiscountRes.fromJson(Map<String, dynamic> json) {
+    return CreateDynamicCodeDiscountRes(
       code: json['code'],
       usageLimit: json['usage_limit'],
       metadata: json['metadata'],
@@ -36,15 +36,15 @@ class UserCreateDynamicCodeDiscountRes {
   }
 }
 
-class UserRetrieveDiscountsRes {
+class RetrieveDiscountsRes {
   final List<Discount>? discounts;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveDiscountsRes(
+  const RetrieveDiscountsRes(
       {this.discounts, this.limit, this.offset, this.count});
-  factory UserRetrieveDiscountsRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveDiscountsRes(
+  factory RetrieveDiscountsRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveDiscountsRes(
       discounts: json['discounts'] != null
           ? List<Discount>.from(
               json['discounts'].map((x) => Discount.fromJson(x)))

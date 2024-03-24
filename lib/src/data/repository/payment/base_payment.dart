@@ -12,7 +12,7 @@ abstract class BasePayment {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserCreateRefundPaymentRes?> createRefund({
+  Future<CreateRefundPaymentRes?> createRefund({
     required String id,
     Map<String, dynamic>? customHeaders,
   });

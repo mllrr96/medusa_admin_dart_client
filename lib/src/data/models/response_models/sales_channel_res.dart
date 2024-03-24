@@ -1,18 +1,18 @@
 import '../index.dart';
 
-class UserSalesChannelRetrieveAllRes {
+class SalesChannelRetrieveAllRes {
   final List<SalesChannel>? salesChannels;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserSalesChannelRetrieveAllRes({
+  const SalesChannelRetrieveAllRes({
     this.salesChannels,
     this.limit,
     this.offset,
     this.count,
   });
-  factory UserSalesChannelRetrieveAllRes.fromJson(json) {
-    return UserSalesChannelRetrieveAllRes(
+  factory SalesChannelRetrieveAllRes.fromJson(json) {
+    return SalesChannelRetrieveAllRes(
       salesChannels: json['sales_channels'] != null
           ? List<SalesChannel>.from(
               json['sales_channels'].map((x) => SalesChannel.fromJson(x)))
@@ -24,15 +24,15 @@ class UserSalesChannelRetrieveAllRes {
   }
 }
 
-class UserRetrieveStockLocationsRes {
+class RetrieveStockLocationsRes {
   final List<StockLocation>? stockLocations;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveStockLocationsRes(
+  const RetrieveStockLocationsRes(
       {this.stockLocations, this.limit, this.offset, this.count});
-  factory UserRetrieveStockLocationsRes.fromJson(json) {
-    return UserRetrieveStockLocationsRes(
+  factory RetrieveStockLocationsRes.fromJson(json) {
+    return RetrieveStockLocationsRes(
       stockLocations: json['stock_locations'] != null
           ? List<StockLocation>.from(
               json['stock_locations'].map((x) => StockLocation.fromJson(x)))
@@ -44,16 +44,16 @@ class UserRetrieveStockLocationsRes {
   }
 }
 
-class UserSalesChannelRetrieveRes {
+class SalesChannelRetrieveRes {
   SalesChannel? salesChannel;
-  UserSalesChannelRetrieveRes.fromJson(Map<String, dynamic> json) {
+  SalesChannelRetrieveRes.fromJson(Map<String, dynamic> json) {
     if (json['sales_channel'] != null) {
       salesChannel = SalesChannel.fromJson(json['sales_channel']);
     }
   }
 }
 
-class UserRemoveStockLocationFromSalesChannelRes {
+class RemoveStockLocationFromSalesChannelRes {
   /// The ID of the deleted Product.
   final String? id;
 
@@ -67,12 +67,12 @@ class UserRemoveStockLocationFromSalesChannelRes {
   /// Default: "product"
   final String? object;
 
-  const UserRemoveStockLocationFromSalesChannelRes(
+  const RemoveStockLocationFromSalesChannelRes(
       {this.id, this.deleted, this.object});
 
-  factory UserRemoveStockLocationFromSalesChannelRes.fromJson(
+  factory RemoveStockLocationFromSalesChannelRes.fromJson(
       Map<String, dynamic> json) {
-    return UserRemoveStockLocationFromSalesChannelRes(
+    return RemoveStockLocationFromSalesChannelRes(
       id: json['id'],
       deleted: json['deleted'],
       object: json['object'],
@@ -80,7 +80,7 @@ class UserRemoveStockLocationFromSalesChannelRes {
   }
 }
 
-class UserSalesChannelDeleteRes {
+class SalesChannelDeleteRes {
   /// The ID of the deleted user.
   final String? id;
 
@@ -94,9 +94,9 @@ class UserSalesChannelDeleteRes {
   /// Default: true
   final bool? deleted;
 
-  const UserSalesChannelDeleteRes({this.id, this.object, this.deleted});
-  factory UserSalesChannelDeleteRes.fromJson(Map<String, dynamic> json) {
-    return UserSalesChannelDeleteRes(
+  const SalesChannelDeleteRes({this.id, this.object, this.deleted});
+  factory SalesChannelDeleteRes.fromJson(Map<String, dynamic> json) {
+    return SalesChannelDeleteRes(
       id: json['id'],
       object: json['object'],
       deleted: json['deleted'],

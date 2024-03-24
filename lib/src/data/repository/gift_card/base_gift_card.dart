@@ -2,16 +2,16 @@ import '../../models/index.dart';
 
 abstract class BaseGiftCard {
   Future<GiftCard?> createGiftCard({
-    required UserCreateGiftCardReq userCreateGiftCardReq,
+    required CreateGiftCardReq userCreateGiftCardReq,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteGiftCardRes?> deleteGiftCard({
+  Future<DeleteGiftCardRes?> deleteGiftCard({
     required String id,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserGiftCardsRes?> retrieveGiftCards({
+  Future<GiftCardsRes?> retrieveGiftCards({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -23,7 +23,7 @@ abstract class BaseGiftCard {
 
   Future<GiftCard?> updateGiftCard({
     required String id,
-    required UserUpdateGiftCardReq userUpdateGiftCardReq,
+    required UpdateGiftCardReq userUpdateGiftCardReq,
     Map<String, dynamic>? customHeaders,
   });
 }

@@ -1,4 +1,4 @@
-class UserCreateInventoryLocationForInventoryItemReq {
+class CreateInventoryLocationForInventoryItemReq {
   /// the item location ID
   final String locationId;
 
@@ -8,7 +8,7 @@ class UserCreateInventoryLocationForInventoryItemReq {
   /// the incoming stock quantity of an inventory item at the given location ID
   final int? incomingQuantity;
 
-  UserCreateInventoryLocationForInventoryItemReq({
+  CreateInventoryLocationForInventoryItemReq({
     required this.locationId,
     required this.stockedQuantity,
     this.incomingQuantity,
@@ -26,7 +26,7 @@ class UserCreateInventoryLocationForInventoryItemReq {
   }
 }
 
-class UserUpdateInventoryItemReq {
+class UpdateInventoryItemReq {
   /// The Harmonized System code of the Inventory Item.
   /// May be used by Fulfillment Providers to pass customs information to shipping carriers.
   final String? hsCode;
@@ -58,7 +58,7 @@ class UserUpdateInventoryItemReq {
   /// Whether the item requires shipping.
   final bool? requiresShipping;
 
-  UserUpdateInventoryItemReq({
+  UpdateInventoryItemReq({
     this.length,
     this.material,
     this.height,
@@ -103,8 +103,8 @@ class UserUpdateInventoryItemReq {
     return json;
   }
 
-  factory UserUpdateInventoryItemReq.fromJson(Map<String, dynamic> json) {
-    return UserUpdateInventoryItemReq(
+  factory UpdateInventoryItemReq.fromJson(Map<String, dynamic> json) {
+    return UpdateInventoryItemReq(
       width: json['width'],
       height: json['height'],
       length: json['length'],

@@ -1,7 +1,7 @@
 import '../index.dart';
 
-class UserCreateSwapShipmentSwapReq {
-  UserCreateSwapShipmentSwapReq({required this.fulfillmentId, this.trackingNumbers, this.noNotification});
+class CreateSwapShipmentSwapReq {
+  CreateSwapShipmentSwapReq({required this.fulfillmentId, this.trackingNumbers, this.noNotification});
 
   /// The ID of the Fulfillment.
   final String fulfillmentId;
@@ -28,8 +28,8 @@ class UserCreateSwapShipmentSwapReq {
   }
 }
 
-class UserCreateSwapSwapReq {
-  UserCreateSwapSwapReq({
+class CreateSwapSwapReq {
+  CreateSwapSwapReq({
     required this.returnItems,
     this.additionalItems,
     this.allowBackOrder,

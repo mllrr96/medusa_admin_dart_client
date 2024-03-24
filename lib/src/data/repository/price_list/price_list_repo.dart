@@ -11,7 +11,7 @@ class PriceListRepository extends BasePriceList {
   /// Creates a Price List
   @override
   Future<PriceList?> createPriceList({
-    required UserCreatePriceListReq userCreatePriceListReq,
+    required CreatePriceListReq userCreatePriceListReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -35,7 +35,7 @@ class PriceListRepository extends BasePriceList {
 
   /// Deletes a Price List
   @override
-  Future<UserDeletePriceListRes?> deletePriceList({
+  Future<DeletePriceListRes?> deletePriceList({
     /// The ID of the Price List to delete.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -48,7 +48,7 @@ class PriceListRepository extends BasePriceList {
         '$_priceLists/$id',
       );
       if (response.statusCode == 200) {
-        return UserDeletePriceListRes.fromJson(response.data);
+        return DeletePriceListRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -60,7 +60,7 @@ class PriceListRepository extends BasePriceList {
 
   /// Batch delete prices that belong to a Price List
   @override
-  Future<UserDeletePricesRes?> deletePrices({
+  Future<DeletePricesRes?> deletePrices({
     /// The ID of the Price List that the Money Amounts (Prices) that will be deleted belongs to.
     required String id,
 
@@ -79,7 +79,7 @@ class PriceListRepository extends BasePriceList {
         },
       );
       if (response.statusCode == 200) {
-        return UserDeletePricesRes.fromJson(response.data);
+        return DeletePricesRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -91,7 +91,7 @@ class PriceListRepository extends BasePriceList {
 
   /// Delete all the prices related to a specific product in a price list
   @override
-  Future<UserDeleteProductPricesRes?> deleteProductPrices({
+  Future<DeleteProductPricesRes?> deleteProductPrices({
     /// The ID of the Price List that the Money Amounts that will be deleted belongs to.
     required String id,
 
@@ -107,7 +107,7 @@ class PriceListRepository extends BasePriceList {
         '$_priceLists/$id/products/$productId/prices',
       );
       if (response.statusCode == 200) {
-        return UserDeleteProductPricesRes.fromJson(response.data);
+        return DeleteProductPricesRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -119,7 +119,7 @@ class PriceListRepository extends BasePriceList {
 
   /// Delete all the prices related to a specific variant in a price list
   @override
-  Future<UserDeleteVariantPricesRes?> deleteVariantPrices({
+  Future<DeleteVariantPricesRes?> deleteVariantPrices({
     /// The ID of the Price List that the Money Amounts that will be deleted belongs to.
     required String id,
 
@@ -135,7 +135,7 @@ class PriceListRepository extends BasePriceList {
         '$_priceLists/$id/variants/$variantId/prices',
       );
       if (response.statusCode == 200) {
-        return UserDeleteVariantPricesRes.fromJson(response.data);
+        return DeleteVariantPricesRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -174,7 +174,7 @@ class PriceListRepository extends BasePriceList {
 
   /// Retrieves a list of Product that are part of a Price List
   @override
-  Future<UserPriceListsProductsRes?> retrievePriceListProducts({
+  Future<PriceListsProductsRes?> retrievePriceListProducts({
     /// ID of the price list.
     required String id,
     Map<String, dynamic>? queryParameters,
@@ -189,7 +189,7 @@ class PriceListRepository extends BasePriceList {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserPriceListsProductsRes.fromJson(response.data);
+        return PriceListsProductsRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -201,7 +201,7 @@ class PriceListRepository extends BasePriceList {
 
   /// Retrieves a list of Price Lists.
   @override
-  Future<UserPriceListsRes?> retrievePriceLists({
+  Future<PriceListsRes?> retrievePriceLists({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -214,7 +214,7 @@ class PriceListRepository extends BasePriceList {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserPriceListsRes.fromJson(response.data);
+        return PriceListsRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -229,7 +229,7 @@ class PriceListRepository extends BasePriceList {
   Future<PriceList?> updatePriceList({
     /// The ID of the Price List.
     required String id,
-    required UserUpdatePriceListReq userUpdatePriceListReq,
+    required UpdatePriceListReq userUpdatePriceListReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -256,7 +256,7 @@ class PriceListRepository extends BasePriceList {
   Future<PriceList?> updatePrices({
     /// The ID of the Price List to update prices for.
     required String id,
-    required UserUpdatePricesReq userUpdatePricesReq,
+    required UpdatePricesReq userUpdatePricesReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {

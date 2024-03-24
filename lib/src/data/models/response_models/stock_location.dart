@@ -1,4 +1,4 @@
-class UserDeleteStockLocationRes {
+class DeleteStockLocationRes {
   /// The ID of the deleted Order Edit Item Change.
   final String? id;
 
@@ -10,9 +10,9 @@ class UserDeleteStockLocationRes {
   /// Whether the discount was deleted successfully or not.
   final bool deleted;
 
-  const UserDeleteStockLocationRes({required this.deleted, this.id, this.object});
+  const DeleteStockLocationRes({required this.deleted, this.id, this.object});
 
-  factory UserDeleteStockLocationRes.fromJson(json) {
-    return UserDeleteStockLocationRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
+  factory DeleteStockLocationRes.fromJson(json) {
+    return DeleteStockLocationRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
   }
 }

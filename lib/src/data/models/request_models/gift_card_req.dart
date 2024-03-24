@@ -1,4 +1,4 @@
-class UserCreateGiftCardReq {
+class CreateGiftCardReq {
   /// The ID of the Region in which the Gift Card can be used.
   final String regionId;
 
@@ -14,7 +14,7 @@ class UserCreateGiftCardReq {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  UserCreateGiftCardReq({
+  CreateGiftCardReq({
     required this.regionId,
     this.value,
     this.metadata,
@@ -44,7 +44,7 @@ class UserCreateGiftCardReq {
   }
 }
 
-class UserUpdateGiftCardReq {
+class UpdateGiftCardReq {
   /// The value (excluding VAT) that the Gift Card should represent.
   final int? balance;
 
@@ -60,7 +60,7 @@ class UserUpdateGiftCardReq {
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
 
-  UserUpdateGiftCardReq({
+  UpdateGiftCardReq({
     this.regionId,
     this.isDisabled,
     this.endsAt,

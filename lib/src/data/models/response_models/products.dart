@@ -1,14 +1,14 @@
 import '../index.dart';
 
-class UserProductsListRes {
+class ProductsListRes {
   final List<Product>? products;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserProductsListRes(
+  const ProductsListRes(
       {this.products, this.limit, this.offset, this.count});
-  factory UserProductsListRes.fromJson(json) {
-    return UserProductsListRes(
+  factory ProductsListRes.fromJson(json) {
+    return ProductsListRes(
       products: json['products'] != null
           ? List<Product>.from(json['products'].map((x) => Product.fromJson(x)))
           : null,
@@ -19,10 +19,10 @@ class UserProductsListRes {
   }
 }
 
-class UserPostSearchRes {
+class PostSearchRes {
   List<dynamic>? hits;
 
-  UserPostSearchRes.fromJson(json) {
+  PostSearchRes.fromJson(json) {
     if (json['hits'] != null) {
       hits = json['hits'];
     }
@@ -35,7 +35,7 @@ class UserPostSearchRes {
   }
 }
 
-class UserDeleteProductRes {
+class DeleteProductRes {
   /// The ID of the deleted Product.
   final String? id;
 
@@ -48,9 +48,9 @@ class UserDeleteProductRes {
   ///
   /// Default: "product"
   final String? object;
-  const UserDeleteProductRes({this.id, this.deleted, this.object});
-  factory UserDeleteProductRes.fromJson(Map<String, dynamic> json) {
-    return UserDeleteProductRes(
+  const DeleteProductRes({this.id, this.deleted, this.object});
+  factory DeleteProductRes.fromJson(Map<String, dynamic> json) {
+    return DeleteProductRes(
       id: json['id'],
       deleted: json['deleted'],
       object: json['object'],

@@ -9,7 +9,7 @@ abstract class BaseReservation {
   });
 
   /// Deletes a Reservation.
-  Future<UserDeleteReservationRes?> deleteReservation({
+  Future<DeleteReservationRes?> deleteReservation({
     /// The ID of the Reservation to delete.
     required String id,
     Map<String, dynamic>? queryParams,
@@ -28,7 +28,7 @@ abstract class BaseReservation {
   Future<Reservation?>  updateReservation({
     /// The ID of the reservation to retrieve.
     required String id,
-    required UserUpdateReservationReq userUpdateReservationReq,
+    required UpdateReservationReq userUpdateReservationReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });

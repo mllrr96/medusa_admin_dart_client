@@ -51,7 +51,7 @@ class CustomerRepository extends BaseCustomer {
 
   @override
   Future<Customer?> create({
-    required UserCreateCustomerReq userCreateCustomerReq,
+    required CreateCustomerReq userCreateCustomerReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -77,7 +77,7 @@ class CustomerRepository extends BaseCustomer {
   @override
   Future<Customer?> update({
     required String id,
-    required UserUpdateCustomerReq userUpdateCustomerReq,
+    required UpdateCustomerReq userUpdateCustomerReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   }) async {

@@ -2,7 +2,7 @@
 import '../../enum/enums.dart';
 import '../index.dart';
 
-class UserCreatePriceListReq {
+class CreatePriceListReq {
   /// The name of the Price List
   final String name;
 
@@ -30,7 +30,7 @@ class UserCreatePriceListReq {
   /// [EXPERIMENTAL] Tax included in prices of price list
   final bool? includeTax;
 
-  UserCreatePriceListReq({
+  CreatePriceListReq({
     required this.name,
     required this.description,
     required this.type,
@@ -77,7 +77,7 @@ class UserCreatePriceListReq {
   }
 }
 
-class UserUpdatePriceListReq {
+class UpdatePriceListReq {
   /// The name of the Price List
   final String? name;
 
@@ -105,7 +105,7 @@ class UserUpdatePriceListReq {
   /// [EXPERIMENTAL] Tax included in prices of price list
   final bool? includeTax;
 
-  UserUpdatePriceListReq({
+  UpdatePriceListReq({
     this.name,
     this.description,
     this.type,
@@ -161,13 +161,13 @@ class UserUpdatePriceListReq {
   }
 }
 
-class UserUpdatePricesReq {
+class UpdatePricesReq {
   List<MoneyAmount> prices;
 
   /// If true the prices will replace all existing prices associated with the Price List.
   final bool? override;
 
-  UserUpdatePricesReq({required this.prices, this.override});
+  UpdatePricesReq({required this.prices, this.override});
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};

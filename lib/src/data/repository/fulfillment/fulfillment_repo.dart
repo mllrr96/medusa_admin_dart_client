@@ -145,7 +145,7 @@ class FulfillmentRepository extends BaseFulfillment {
   Future<Order?> createFulfillment({
     /// The ID of the Order.
     required String id,
-    required UserCreateFulfillmentReq userCreateFulfillmentReq,
+    required CreateFulfillmentReq userCreateFulfillmentReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {

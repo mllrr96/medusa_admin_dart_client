@@ -4,7 +4,7 @@ import '../../models/index.dart';
 
 abstract class BaseInvite {
   Future<bool?> acceptInvitation({
-    required UserAcceptInvitationReq userAcceptInvitationReq,
+    required AcceptInvitationReq userAcceptInvitationReq,
     Map<String, dynamic>? customHeaders,
   });
 
@@ -14,11 +14,11 @@ abstract class BaseInvite {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserRetrieveInvitesRes?> retrieveInvites({
+  Future<RetrieveInvitesRes?> retrieveInvites({
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteInvitesRes?> deleteInvite({
+  Future<DeleteInvitesRes?> deleteInvite({
     required String inviteId,
     Map<String, dynamic>? customHeaders,
   });

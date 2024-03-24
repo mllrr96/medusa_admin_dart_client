@@ -11,7 +11,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
   /// Creates a Shipping Option
   @override
   Future<ShippingOption?> create({
-    required UserCreateShippingOptionReq userCreateShippingOptionReq,
+    required CreateShippingOptionReq userCreateShippingOptionReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -33,7 +33,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
 
   /// Deletes a Shipping Option.
   @override
-  Future<UserDeleteShippingOptionRes?> delete({
+  Future<DeleteShippingOptionRes?> delete({
     required String id,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -45,7 +45,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
         '$_shippingOptions/$id',
       );
       if (response.statusCode == 200) {
-        return UserDeleteShippingOptionRes.fromJson(response.data);
+        return DeleteShippingOptionRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -83,7 +83,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
 
   /// Retrieves a list of Shipping Options.
   @override
-  Future<UserRetrieveAllShippingOptionRes?> retrieveAll({
+  Future<RetrieveAllShippingOptionRes?> retrieveAll({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -96,7 +96,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveAllShippingOptionRes.fromJson(response.data);
+        return RetrieveAllShippingOptionRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -110,7 +110,7 @@ class ShippingOptionsRepository extends BaseShippingOptions {
   @override
   Future<ShippingOption?> update({
     required String id,
-    required UserUpdateShippingOptionReq userUpdateShippingOptionReq,
+    required UpdateShippingOptionReq userUpdateShippingOptionReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {

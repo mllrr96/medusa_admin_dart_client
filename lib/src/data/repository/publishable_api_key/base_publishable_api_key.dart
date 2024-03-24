@@ -3,7 +3,7 @@
 import '../../models/index.dart';
 
 abstract class BasePublishableApiKey {
-  Future<UserRetrievePublishableApiKeysRes?> retrievePublishableApiKeys({
+  Future<RetrievePublishableApiKeysRes?> retrievePublishableApiKeys({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -35,7 +35,7 @@ abstract class BasePublishableApiKey {
   });
 
   /// Deletes a PublishableApiKeys
-  Future<UserDeletePublishableApiKeyRes?> deletePublishableApiKey({
+  Future<DeletePublishableApiKeyRes?> deletePublishableApiKey({
     /// The ID of the PublishableApiKeys to delete.
     required String id,
     Map<String, dynamic>? queryParameters,
@@ -51,7 +51,7 @@ abstract class BasePublishableApiKey {
   });
 
   /// List PublishableApiKey's SalesChannels
-  Future<UserSalesChannelRetrieveAllRes?> retrieveSalesChannels({
+  Future<SalesChannelRetrieveAllRes?> retrieveSalesChannels({
     /// The ID of the Publishable Api Key.
     required String id,
     Map<String, dynamic>? queryParameters,

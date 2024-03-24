@@ -1,8 +1,8 @@
 import '../../enum/enums.dart';
 import '../index.dart';
 
-class UserPostProductReq {
-  UserPostProductReq({required this.product});
+class PostProductReq {
+  PostProductReq({required this.product});
 
   final Product product;
 
@@ -114,8 +114,8 @@ class UserPostProductReq {
   }
 }
 
-class UserPostUpdateProductReq {
-  UserPostUpdateProductReq({
+class PostUpdateProductReq {
+  PostUpdateProductReq({
     this.title,
     this.description,
     this.subtitle,

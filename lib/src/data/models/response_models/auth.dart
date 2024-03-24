@@ -1,12 +1,12 @@
 import '../index.dart';
 
-class UserAuthRes {
+class AuthRes {
   final User? user;
 
-  const UserAuthRes({this.user});
+  const AuthRes({this.user});
 
-  factory UserAuthRes.fromJson(Map<String, dynamic> json) {
-    return UserAuthRes(user: json['user'] != null ? User.fromJson(json['user']) : null);
+  factory AuthRes.fromJson(Map<String, dynamic> json) {
+    return AuthRes(user: json['user'] != null ? User.fromJson(json['user']) : null);
   }
 
   Map<String, dynamic> toJson() {

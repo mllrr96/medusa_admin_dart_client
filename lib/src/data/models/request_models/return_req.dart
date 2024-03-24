@@ -1,7 +1,7 @@
 import '../index.dart';
 
-class UserReceiveReturnOrderReq {
-  UserReceiveReturnOrderReq({required this.items, this.refund});
+class ReceiveReturnOrderReq {
+  ReceiveReturnOrderReq({required this.items, this.refund});
 
   /// The Line Items that have been received.
   final List<AdditionalItem> items;

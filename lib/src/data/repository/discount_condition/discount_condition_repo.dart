@@ -40,7 +40,7 @@ class DiscountConditionRepository extends BaseDiscountCondition {
   @override
   Future<Discount?> createDiscountCondition({
     required String discountId,
-    required UserCreateConditionReq userCreateConditionReq,
+    required CreateConditionReq userCreateConditionReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -93,7 +93,7 @@ class DiscountConditionRepository extends BaseDiscountCondition {
   }
 
   @override
-  Future<UserDeleteDiscountConditionRes?> deleteDiscountCondition({
+  Future<DeleteDiscountConditionRes?> deleteDiscountCondition({
     required String discountId,
     required String conditionId,
     Map<String, dynamic>? queryParameters,
@@ -107,7 +107,7 @@ class DiscountConditionRepository extends BaseDiscountCondition {
         '$_discounts/$discountId$_conditions/$conditionId',
       );
       if (response.statusCode == 200) {
-        return UserDeleteDiscountConditionRes.fromJson(response.data);
+        return DeleteDiscountConditionRes.fromJson(response.data);
       } else {
         throw response;
       }

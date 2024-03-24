@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserDeleteLineItemChangeRes {
+class DeleteLineItemChangeRes {
   /// The ID of the deleted Order Edit Item Change.
   final String? id;
 
@@ -11,16 +11,16 @@ class UserDeleteLineItemChangeRes {
 
   /// Whether or not the Order Edit Item Change was deleted.
   final bool deleted;
-  const UserDeleteLineItemChangeRes({required this.deleted, this.id, this.object});
-  factory UserDeleteLineItemChangeRes.fromJson(json) {
-    return UserDeleteLineItemChangeRes(
+  const DeleteLineItemChangeRes({required this.deleted, this.id, this.object});
+  factory DeleteLineItemChangeRes.fromJson(json) {
+    return DeleteLineItemChangeRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);
   }
 }
 
-class UserDeleteOrderEditRes {
+class DeleteOrderEditRes {
   /// The ID of the deleted Order Edit.
   final String? id;
 
@@ -31,9 +31,9 @@ class UserDeleteOrderEditRes {
 
   /// Whether or not the Order Edit was deleted.
   final bool deleted;
-  const UserDeleteOrderEditRes({required this.deleted, this.id, this.object});
-  factory UserDeleteOrderEditRes.fromJson(json) {
-    return UserDeleteOrderEditRes(
+  const DeleteOrderEditRes({required this.deleted, this.id, this.object});
+  factory DeleteOrderEditRes.fromJson(json) {
+    return DeleteOrderEditRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);
@@ -41,15 +41,15 @@ class UserDeleteOrderEditRes {
 }
 
 
-class UserRetrieveAllOrderEditRes {
+class RetrieveAllOrderEditRes {
   final List<OrderEdit>? orderEdits;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveAllOrderEditRes(
+  const RetrieveAllOrderEditRes(
       {this.orderEdits, this.limit, this.offset, this.count});
-  factory UserRetrieveAllOrderEditRes.fromJson(json) {
-    return UserRetrieveAllOrderEditRes(
+  factory RetrieveAllOrderEditRes.fromJson(json) {
+    return RetrieveAllOrderEditRes(
       orderEdits: json['order_edits'] != null
           ? List<OrderEdit>.from(
               json['order_edits'].map((x) => OrderEdit.fromJson(x)))

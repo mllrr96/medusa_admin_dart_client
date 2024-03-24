@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserUpdateOrderReq {
+class UpdateOrderReq {
   /// the email for the order
   final String? email;
 
@@ -23,7 +23,7 @@ class UserUpdateOrderReq {
   final List<Discount>? discounts;
   // final Payment payment;
   final bool? noNotification;
-  UserUpdateOrderReq({
+  UpdateOrderReq({
     this.email,
     this.customerId,
     this.region,
@@ -72,7 +72,7 @@ class UserUpdateOrderReq {
   }
 }
 
-class UserCreateRefundOrdersReq {
+class CreateRefundOrdersReq {
   /// The amount to refund.
   final int amount;
 
@@ -84,7 +84,7 @@ class UserCreateRefundOrdersReq {
 
   /// If set to true no notification will be send related to this Refund.
   final bool? noNotification;
-  UserCreateRefundOrdersReq({
+  CreateRefundOrdersReq({
     required this.amount,
     required this.reason,
     this.note,
@@ -106,7 +106,7 @@ class UserCreateRefundOrdersReq {
   }
 }
 
-class UserRequestReturnOrdersReq {
+class RequestReturnOrdersReq {
   /// The Line Items that will be returned.
   final List<AdditionalItem> items;
 
@@ -125,7 +125,7 @@ class UserRequestReturnOrdersReq {
   /// The amount to refund.
   final int? refund;
 
-  UserRequestReturnOrdersReq({
+  RequestReturnOrdersReq({
     required this.items,
     this.returnShipping,
     this.note,

@@ -1,14 +1,14 @@
 import '../index.dart';
 
-class UserRetrieveCustomerGroupsRes {
+class RetrieveCustomerGroupsRes {
   final List<CustomerGroup>? customerGroups;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveCustomerGroupsRes(
+  const RetrieveCustomerGroupsRes(
       {this.customerGroups, this.limit, this.offset, this.count});
-  factory UserRetrieveCustomerGroupsRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveCustomerGroupsRes(
+  factory RetrieveCustomerGroupsRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveCustomerGroupsRes(
       customerGroups: json['customer_groups'] != null
           ? List<CustomerGroup>.from(
               json['customer_groups'].map((x) => CustomerGroup.fromJson(x)))
@@ -20,15 +20,15 @@ class UserRetrieveCustomerGroupsRes {
   }
 }
 
-class UserRetrieveCustomersRes {
+class RetrieveCustomersRes {
   final List<Customer>? customers;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveCustomersRes(
+  const RetrieveCustomersRes(
       {this.customers, this.limit, this.offset, this.count});
-  factory UserRetrieveCustomersRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveCustomersRes(
+  factory RetrieveCustomersRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveCustomersRes(
       customers: json['customers'] != null
           ? List<Customer>.from(
               json['customers'].map((x) => Customer.fromJson(x)))
@@ -40,15 +40,15 @@ class UserRetrieveCustomersRes {
   }
 }
 
-class UserRetrieveCustomerGroupRes {
+class RetrieveCustomerGroupRes {
   CustomerGroup? customerGroup;
 
-  UserRetrieveCustomerGroupRes.fromJson(Map<String, dynamic> json) {
+  RetrieveCustomerGroupRes.fromJson(Map<String, dynamic> json) {
     customerGroup = CustomerGroup.fromJson(json['customer_group']);
   }
 }
 
-class UserDeleteCustomerGroupRes {
+class DeleteCustomerGroupRes {
   /// The ID of the deleted Order Edit Item Change.
   final String? id;
 
@@ -59,9 +59,9 @@ class UserDeleteCustomerGroupRes {
 
   /// Whether or not the Order Edit Item Change was deleted.
   final bool deleted;
-  const UserDeleteCustomerGroupRes({required this.deleted, this.id, this.object});
-  factory UserDeleteCustomerGroupRes.fromJson(json) {
-    return UserDeleteCustomerGroupRes(
+  const DeleteCustomerGroupRes({required this.deleted, this.id, this.object});
+  factory DeleteCustomerGroupRes.fromJson(json) {
+    return DeleteCustomerGroupRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);

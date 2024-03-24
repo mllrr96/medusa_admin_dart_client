@@ -1,14 +1,14 @@
 import '../index.dart';
 
-class UserRetrieveAllReturnReasonRes {
+class RetrieveAllReturnReasonRes {
   final List<ReturnReason>? returnReasons;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveAllReturnReasonRes(
+  const RetrieveAllReturnReasonRes(
       {this.returnReasons, this.limit, this.offset, this.count});
-  factory UserRetrieveAllReturnReasonRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveAllReturnReasonRes(
+  factory RetrieveAllReturnReasonRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveAllReturnReasonRes(
       returnReasons: json['return_reasons'] != null
           ? List<ReturnReason>.from(
               json['return_reasons'].map((x) => ReturnReason.fromJson(x)))
@@ -20,7 +20,7 @@ class UserRetrieveAllReturnReasonRes {
   }
 }
 
-class UserDeleteReturnReasonRes {
+class DeleteReturnReasonRes {
   /// The ID of the deleted user.
   final String? id;
 
@@ -34,9 +34,9 @@ class UserDeleteReturnReasonRes {
   /// Default: true
   final bool? deleted;
 
-  const UserDeleteReturnReasonRes({this.id, this.object, this.deleted});
-  factory UserDeleteReturnReasonRes.fromJson(Map<String, dynamic> json) {
-    return UserDeleteReturnReasonRes(
+  const DeleteReturnReasonRes({this.id, this.object, this.deleted});
+  factory DeleteReturnReasonRes.fromJson(Map<String, dynamic> json) {
+    return DeleteReturnReasonRes(
       id: json['id'],
       object: json['object'],
       deleted: json['deleted'],

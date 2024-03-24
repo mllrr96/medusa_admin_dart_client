@@ -24,7 +24,7 @@ abstract class BaseProductCategory {
   Future<ProductCategory?> updateProductCategory({
     /// The ID of the Product Category.
     required String id,
-    required UserUpdateProductCategoryReq userUpdateProductCategoryReq,
+    required UpdateProductCategoryReq userUpdateProductCategoryReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
@@ -41,7 +41,7 @@ abstract class BaseProductCategory {
   });
 
   /// Deletes a ProductCategory.
-  Future<UserDeleteProductCategoryRes?> deleteProductCategory({
+  Future<DeleteProductCategoryRes?> deleteProductCategory({
     /// The ID of the Product Category.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -50,13 +50,13 @@ abstract class BaseProductCategory {
 
   /// Creates a Product Category.
   Future<ProductCategory?> createProductCategory({
-    required UserCreateProductCategoryReq userCreateProductCategoryReq,
+    required CreateProductCategoryReq userCreateProductCategoryReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
 
   /// Retrieve a list of product categories.
-  Future<UserRetrieveProductCategoriesRes?> retrieveProductCategories({
+  Future<RetrieveProductCategoriesRes?> retrieveProductCategories({
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });

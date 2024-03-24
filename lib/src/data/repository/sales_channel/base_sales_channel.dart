@@ -4,7 +4,7 @@ import '../../models/index.dart';
 
 abstract class BaseSalesChannel {
   /// Retrieves a list of sales channels
-  Future<UserSalesChannelRetrieveAllRes?> retrieveAll({
+  Future<SalesChannelRetrieveAllRes?> retrieveAll({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
@@ -47,7 +47,7 @@ abstract class BaseSalesChannel {
   });
 
   /// Removes a stock location to a Sales Channel.
-  Future<UserRemoveStockLocationFromSalesChannelRes?> removeStockLocationFromSalesChannel({
+  Future<RemoveStockLocationFromSalesChannelRes?> removeStockLocationFromSalesChannel({
     /// The ID of the Sales channel.
     required String id,
     /// The ID of the stock location
@@ -58,27 +58,27 @@ abstract class BaseSalesChannel {
   /// Updates a Sales Channel.
   Future<SalesChannel?> update({
     required String id,
-    required UserSalesChannelUpdateReq userSalesChannelUpdateReq,
+    required SalesChannelUpdateReq userSalesChannelUpdateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Creates a Sales Channel.
   Future<SalesChannel?> create({
-    required  UserSalesChannelCreateReq userSalesChannelCreateReq,
+    required  SalesChannelCreateReq userSalesChannelCreateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Deletes the sales channel.
-  Future<UserSalesChannelDeleteRes?> delete({
+  Future<SalesChannelDeleteRes?> delete({
     required String id,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Retrieves a list of stock locations
-  Future<UserRetrieveStockLocationsRes?> retrieveStockLocations({
+  Future<RetrieveStockLocationsRes?> retrieveStockLocations({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });

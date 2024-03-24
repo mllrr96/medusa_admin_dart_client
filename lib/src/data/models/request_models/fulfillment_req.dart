@@ -1,7 +1,7 @@
 
 import '../index.dart';
 
-class UserCreateFulfillmentReq {
+class CreateFulfillmentReq {
   /// The Line Items to include in the Fulfillment.
   final List<LineItem> items;
 
@@ -10,7 +10,7 @@ class UserCreateFulfillmentReq {
 
   /// An optional set of key-value pairs to hold additional information.
   final Map<String, dynamic>? metadata;
-  UserCreateFulfillmentReq({
+  CreateFulfillmentReq({
     required this.items,
     this.metadata,
     this.noNotification,

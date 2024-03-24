@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserDeleteProductCategoryRes {
+class DeleteProductCategoryRes {
   /// The ID of the deleted Order Edit Item Change.
   final String? id;
 
@@ -12,10 +12,10 @@ class UserDeleteProductCategoryRes {
   /// Whether the discount was deleted successfully or not.
   final bool deleted;
 
-  const UserDeleteProductCategoryRes({required this.deleted, this.id, this.object});
+  const DeleteProductCategoryRes({required this.deleted, this.id, this.object});
 
-  factory UserDeleteProductCategoryRes.fromJson(json) {
-    return UserDeleteProductCategoryRes(
+  factory DeleteProductCategoryRes.fromJson(json) {
+    return DeleteProductCategoryRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);
@@ -23,15 +23,15 @@ class UserDeleteProductCategoryRes {
 }
 
 
-class UserRetrieveProductCategoriesRes {
+class RetrieveProductCategoriesRes {
   final List<ProductCategory>? productCategories;
   final int? limit;
   final int? offset;
   final int? count;
-  const  UserRetrieveProductCategoriesRes(
+  const  RetrieveProductCategoriesRes(
       {this.productCategories, this.limit, this.offset, this.count});
-  factory UserRetrieveProductCategoriesRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveProductCategoriesRes(
+  factory RetrieveProductCategoriesRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveProductCategoriesRes(
       productCategories: json['product_categories'] != null
           ? List<ProductCategory>.from(json['product_categories']
               .map((x) => ProductCategory.fromJson(x)))
@@ -43,15 +43,15 @@ class UserRetrieveProductCategoriesRes {
   }
 }
 
-class UserRetrieveReservationsRes {
+class RetrieveReservationsRes {
   final List<Reservation>? reservations;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveReservationsRes(
+  const RetrieveReservationsRes(
       {this.reservations, this.limit, this.offset, this.count});
-  factory UserRetrieveReservationsRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveReservationsRes(
+  factory RetrieveReservationsRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveReservationsRes(
       reservations: json['reservations'] != null
           ? List<Reservation>.from(
               json['reservations'].map((x) => Reservation.fromJson(x)))

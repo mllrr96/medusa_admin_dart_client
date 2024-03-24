@@ -39,7 +39,7 @@ class ClaimRepository extends BaseClaim {
   @override
   Future<Order?> createClaim(
       {required String id,
-      required UserCreateClaimReq userCreateClaimReq,
+      required CreateClaimReq userCreateClaimReq,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? customHeaders}) async {
     if (customHeaders != null) {
@@ -66,7 +66,7 @@ class ClaimRepository extends BaseClaim {
   Future<Order?> updateClaim({
     required String id,
     required String claimId,
-    required UserUpdateClaimReq userUpdateClaimReq,
+    required UpdateClaimReq userUpdateClaimReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -94,7 +94,7 @@ class ClaimRepository extends BaseClaim {
   Future<Order?> createClaimFulfillment({
     required String id,
     required String claimId,
-    required UserCreateClaimFulfillmentReq userCreateClaimFulfillmentReq,
+    required CreateClaimFulfillmentReq userCreateClaimFulfillmentReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {

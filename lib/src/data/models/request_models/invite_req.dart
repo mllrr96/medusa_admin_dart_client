@@ -1,4 +1,4 @@
-class UserAcceptInvitationReq {
+class AcceptInvitationReq {
   /// the first name of the User
   final String firstName;
 
@@ -10,7 +10,7 @@ class UserAcceptInvitationReq {
 
   /// The invite token provided by the admin.
   final String token;
-  UserAcceptInvitationReq({
+  AcceptInvitationReq({
     required this.firstName,
     required this.lastName,
     required this.password,

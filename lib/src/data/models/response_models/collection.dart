@@ -1,13 +1,13 @@
 import '../store_models/products/index.dart';
 
-class UserCollectionsRes {
+class CollectionsRes {
   final List<ProductCollection>? collections;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserCollectionsRes({this.collections, this.limit, this.offset, this.count});
-  factory UserCollectionsRes.fromJson(json) {
-    return UserCollectionsRes(
+  const CollectionsRes({this.collections, this.limit, this.offset, this.count});
+  factory CollectionsRes.fromJson(json) {
+    return CollectionsRes(
       collections: json['collections'] != null
           ? List<ProductCollection>.from(
               json['collections'].map((x) => ProductCollection.fromJson(x)))
@@ -19,26 +19,26 @@ class UserCollectionsRes {
   }
 }
 
-class UserCollectionRes {
+class CollectionRes {
   ProductCollection? collection;
 
-  UserCollectionRes.fromJson(json) {
+  CollectionRes.fromJson(json) {
     if (json['collection'] != null) {
       collection = ProductCollection.fromJson(json['collection']);
     }
   }
 }
 
-class UserCreateCollectionRes {
+class CreateCollectionRes {
   ProductCollection? collection;
-  UserCreateCollectionRes.fromJson(json) {
+  CreateCollectionRes.fromJson(json) {
     if (json['collection'] != null) {
       collection = ProductCollection.fromJson(json['collection']);
     }
   }
 }
 
-class UserDeleteCollectionRes {
+class DeleteCollectionRes {
   /// The ID of the deleted Collection
   String? id;
 
@@ -50,23 +50,23 @@ class UserDeleteCollectionRes {
   /// Whether the collection was deleted successfully or not.
   bool? deleted;
 
-  UserDeleteCollectionRes.fromJson(json) {
+  DeleteCollectionRes.fromJson(json) {
     id = json['id'];
     object = json['object'];
     deleted = json['deleted'];
   }
 }
 
-class UserCollectionUpdateProductsRes {
+class CollectionUpdateProductsRes {
   ProductCollection? collection;
-  UserCollectionUpdateProductsRes.fromJson(json) {
+  CollectionUpdateProductsRes.fromJson(json) {
     if (json['collection'] != null) {
       collection = ProductCollection.fromJson(json['collection']);
     }
   }
 }
 
-class UserCollectionRemoveProductsRes {
+class CollectionRemoveProductsRes {
   /// The ID of the collection
   String? id;
 
@@ -78,7 +78,7 @@ class UserCollectionRemoveProductsRes {
   /// The IDs of the products removed from the collection
   List<String>? removedProducts;
 
-  UserCollectionRemoveProductsRes.fromJson(json) {
+  CollectionRemoveProductsRes.fromJson(json) {
     id = json['id'];
     object = json['object'];
     removedProducts = List<String>.from(json['removed_products']);

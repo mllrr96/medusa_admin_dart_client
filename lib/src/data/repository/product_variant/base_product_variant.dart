@@ -9,7 +9,7 @@ abstract class BaseProductVariant {
   });
 
   /// Retrieves a list of Product Variants
-  Future<UserRetrieveProductVariantsRes?> retrieveProductVariants({
+  Future<RetrieveProductVariantsRes?> retrieveProductVariants({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

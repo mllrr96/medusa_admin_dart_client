@@ -2,7 +2,7 @@ import '../../models/index.dart';
 
 abstract class BaseCollection {
   /// Retrieve a list of Product Collection.
-  Future<UserCollectionsRes?> retrieveAll({
+  Future<CollectionsRes?> retrieveAll({
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
@@ -16,7 +16,7 @@ abstract class BaseCollection {
 
   /// Creates a Product Collection.
   Future<ProductCollection?> create({
-    required UserCreateCollectionReq userCreateCollectionReq,
+    required CreateCollectionReq userCreateCollectionReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
@@ -24,27 +24,27 @@ abstract class BaseCollection {
   /// Updates a Product Collection.
   Future<ProductCollection?> update({
     required String id,
-    required UserCreateCollectionReq userCreateCollectionReq,
+    required CreateCollectionReq userCreateCollectionReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
 
   /// Deletes a Product Collection.
-  Future<UserDeleteCollectionRes?> delete({
+  Future<DeleteCollectionRes?> delete({
     required String id,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Updates products associated with a Product Collection
   Future<ProductCollection?> updateProducts({
-    required UserCollectionUpdateProductsReq userCollectionUpdateProductsReq,
+    required CollectionUpdateProductsReq userCollectionUpdateProductsReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
 
   /// Removes products associated with a Product Collection
-  Future<UserCollectionRemoveProductsRes?> removeProducts({
-    required UserCollectionRemoveProductsReq userCollectionRemoveProductsReq,
+  Future<CollectionRemoveProductsRes?> removeProducts({
+    required CollectionRemoveProductsReq userCollectionRemoveProductsReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });

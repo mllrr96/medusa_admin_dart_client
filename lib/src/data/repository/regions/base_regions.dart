@@ -4,7 +4,7 @@ import '../../models/index.dart';
 
 abstract class BaseRegions {
   /// Retrieves a list of Regions.
-  Future<UserRegionsRes?> retrieveAll({
+  Future<RegionsRes?> retrieveAll({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -79,20 +79,20 @@ abstract class BaseRegions {
   /// Updates a Region.
   Future<Region?> update({
     required String id,
-    required UserUpdateRegionReq userUpdateRegionReq,
+    required UpdateRegionReq userUpdateRegionReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Creates a Region
   Future<Region?> create({
-    required UserCreateRegionReq userCreateRegionReq,
+    required CreateRegionReq userCreateRegionReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
   /// Deletes a Region
-  Future<UserDeleteRegionRes?> delete({
+  Future<DeleteRegionRes?> delete({
     /// The ID of the Region.
     required String id,
     Map<String, dynamic>? queryParams,

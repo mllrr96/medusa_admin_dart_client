@@ -1,6 +1,6 @@
 import '../../enum/enums.dart';
 
-class UserCreateConditionReq {
+class CreateConditionReq {
   /// Operator of the condition
   final DiscountConditionOperator operator;
 
@@ -19,7 +19,7 @@ class UserCreateConditionReq {
   /// list of customer group IDs if the condition is applied on customer groups.
   final List<String>? customerGroupIds;
 
-  UserCreateConditionReq({
+  CreateConditionReq({
     required this.operator,
     this.customerGroupIds,
     this.productTypeIds,

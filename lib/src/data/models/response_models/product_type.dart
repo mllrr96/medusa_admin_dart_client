@@ -1,14 +1,14 @@
 import '../index.dart';
 
-class UserRetrieveProductTypesRes {
+class RetrieveProductTypesRes {
   final List<ProductType>? productTypes;
   final int? limit;
   final int? offset;
   final int? count;
-  const  UserRetrieveProductTypesRes(
+  const  RetrieveProductTypesRes(
       {this.productTypes, this.limit, this.offset, this.count});
-  factory UserRetrieveProductTypesRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveProductTypesRes(
+  factory RetrieveProductTypesRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveProductTypesRes(
       productTypes: json['product_types'] != null
           ? List<ProductType>.from(
               json['product_types'].map((x) => ProductType.fromJson(x)))

@@ -13,7 +13,7 @@ abstract class BaseUpload {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteFileRes?> deleteFile({
+  Future<DeleteFileRes?> deleteFile({
     required String fileKey,
     Map<String, dynamic>? customHeaders,
   });

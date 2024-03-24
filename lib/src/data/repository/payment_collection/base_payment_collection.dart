@@ -9,12 +9,12 @@ abstract class BasePaymentCollection {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeletePaymentCollectionRes?> deletePaymentCollection({
+  Future<DeletePaymentCollectionRes?> deletePaymentCollection({
     required String id,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserRetrieveNotificationsRes?> updatePaymentCollection({
+  Future<RetrieveNotificationsRes?> updatePaymentCollection({
     required String id,
 
     String? description,
@@ -22,7 +22,7 @@ abstract class BasePaymentCollection {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserRetrieveNotificationsRes?> markPaymentCollectionAuthorized({
+  Future<RetrieveNotificationsRes?> markPaymentCollectionAuthorized({
     required String id,
     Map<String, dynamic>? customHeaders,
   });

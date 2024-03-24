@@ -11,7 +11,7 @@ class UploadRepository extends BaseUpload {
 
   /// Removes an uploaded file using the installed file service
   @override
-  Future<UserDeleteFileRes?> deleteFile({
+  Future<DeleteFileRes?> deleteFile({
     /// key of the file to delete
     required String fileKey,
     Map<String, dynamic>? customHeaders,
@@ -23,7 +23,7 @@ class UploadRepository extends BaseUpload {
       final response =
           await _dio.delete(_uploads, data: {'file_key': fileKey});
       if (response.statusCode == 200) {
-        return UserDeleteFileRes.fromJson(response.data);
+        return DeleteFileRes.fromJson(response.data);
       } else {
         throw response;
       }

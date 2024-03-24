@@ -1,38 +1,37 @@
-
 import '../index.dart';
 
-class UserCancelClaimRes {
+class CancelClaimRes {
   final Order? order;
-  const UserCancelClaimRes(this.order);
+  const CancelClaimRes(this.order);
 
-  factory UserCancelClaimRes.fromJson(Map<String, dynamic> json) {
-    return UserCancelClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
+  factory CancelClaimRes.fromJson(Map<String, dynamic> json) {
+    return CancelClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
   }
 }
 
-class UserCreateClaimShipmentRes {
+class CreateClaimShipmentRes {
   final Order? order;
-  const UserCreateClaimShipmentRes(this.order);
+  const CreateClaimShipmentRes(this.order);
 
-  factory UserCreateClaimShipmentRes.fromJson(Map<String, dynamic> json) {
-    return UserCreateClaimShipmentRes(json['order'] != null ? Order.fromJson(json['order']) : null);
+  factory CreateClaimShipmentRes.fromJson(Map<String, dynamic> json) {
+    return CreateClaimShipmentRes(json['order'] != null ? Order.fromJson(json['order']) : null);
   }
 }
 
-class UserCreateClaimRes {
+class CreateClaimRes {
   final Order? order;
-  const  UserCreateClaimRes(this.order);
+  const  CreateClaimRes(this.order);
 
-  factory UserCreateClaimRes.fromJson(Map<String, dynamic> json) {
-    return UserCreateClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
+  factory CreateClaimRes.fromJson(Map<String, dynamic> json) {
+    return CreateClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
   }
 }
 
-class UserUpdateClaimRes {
+class UpdateClaimRes {
   final Order? order;
-  const UserUpdateClaimRes(this.order);
+  const UpdateClaimRes(this.order);
 
-  factory UserUpdateClaimRes.fromJson(Map<String, dynamic> json) {
-    return UserUpdateClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
+  factory UpdateClaimRes.fromJson(Map<String, dynamic> json) {
+    return UpdateClaimRes(json['order'] != null ? Order.fromJson(json['order']) : null);
   }
 }

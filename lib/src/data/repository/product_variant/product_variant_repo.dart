@@ -8,7 +8,7 @@ class ProductVariantRepository extends BaseProductVariant {
   final Dio _dio;
   static const _variants = '/variants';
   @override
-  Future<UserRetrieveProductVariantsRes?> retrieveProductVariants({
+  Future<RetrieveProductVariantsRes?> retrieveProductVariants({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -19,7 +19,7 @@ class ProductVariantRepository extends BaseProductVariant {
       final response =
           await _dio.get(_variants, queryParameters: queryParameters);
       if (response.statusCode == 200) {
-        return UserRetrieveProductVariantsRes.fromJson(response.data);
+        return RetrieveProductVariantsRes.fromJson(response.data);
       } else {
         throw response;
       }

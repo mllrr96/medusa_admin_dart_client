@@ -11,7 +11,7 @@ class AuthRepository extends BaseAuth {
   /// Authenticates a user using email and password combination and returns a user object.
   @override
   Future<User?> signIn({
-    required UserPostAuthReq req,
+    required PostAuthReq req,
     Map<String, dynamic>? customHeaders,
   }) async {
     if (customHeaders != null) {
@@ -34,7 +34,7 @@ class AuthRepository extends BaseAuth {
   /// Authenticates a user using email and password combination and returns a JWT token.
   @override
   Future<String?> signInJWT(
-      {required UserPostAuthReq req,
+      {required PostAuthReq req,
       Map<String, dynamic>? customHeaders}) async {
     if (customHeaders != null) {
       _dio.options.headers.addAll(customHeaders);
@@ -56,7 +56,7 @@ class AuthRepository extends BaseAuth {
   /// Authenticates a user using email and password combination and returns a cookie.
   @override
   Future<String?> signInCookie({
-    required UserPostAuthReq req,
+    required PostAuthReq req,
     Map<String, dynamic>? customHeaders,
   }) async {
     if (customHeaders != null) {

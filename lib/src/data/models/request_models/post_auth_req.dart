@@ -1,4 +1,4 @@
-class UserPostAuthReq {
+class PostAuthReq {
   /// description: email address of the customer
   /// [TYPE]: [String]
   /// required
@@ -9,12 +9,12 @@ class UserPostAuthReq {
   /// required
   String? password;
 
-  UserPostAuthReq({
+  PostAuthReq({
     this.email,
     this.password,
   });
 
-  UserPostAuthReq.fromJson(Map<String, dynamic> json) {
+  PostAuthReq.fromJson(Map<String, dynamic> json) {
     email = json['email'];
     password = json['password'];
   }

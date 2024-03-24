@@ -2,12 +2,12 @@ import '../../models/index.dart';
 
 abstract class BaseTaxRate {
   Future<TaxRate?> createTaxRate({
-    required UserCreateTaxRateReq userCreateTaxRateReq,
+    required CreateTaxRateReq userCreateTaxRateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserRetrieveTaxRatesRes?> retrieveTaxRates({
+  Future<RetrieveTaxRatesRes?> retrieveTaxRates({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
@@ -20,12 +20,12 @@ abstract class BaseTaxRate {
 
   Future<TaxRate?> updateTaxRate({
     required String id,
-    required UserUpdateTaxRateReq userUpdateTaxRateReq,
+    required UpdateTaxRateReq userUpdateTaxRateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteTaxRateRes?> deleteTaxRate({
+  Future<DeleteTaxRateRes?> deleteTaxRate({
     required String id,
     Map<String, dynamic>? customHeaders,
   });

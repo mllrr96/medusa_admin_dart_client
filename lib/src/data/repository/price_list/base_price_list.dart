@@ -2,28 +2,28 @@ import '../../models/index.dart';
 
 abstract class BasePriceList {
   Future<PriceList?> createPriceList({
-    required UserCreatePriceListReq userCreatePriceListReq,
+    required CreatePriceListReq userCreatePriceListReq,
     Map<String, dynamic>? customHeaders,
   });
 
   Future<PriceList?> updatePriceList({
     required String id,
-    required UserUpdatePriceListReq userUpdatePriceListReq,
+    required UpdatePriceListReq userUpdatePriceListReq,
     Map<String, dynamic>? customHeaders,
   });
 
   Future<PriceList?> updatePrices({
     required String id,
-    required UserUpdatePricesReq userUpdatePricesReq,
+    required UpdatePricesReq userUpdatePricesReq,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserPriceListsRes?> retrievePriceLists({
+  Future<PriceListsRes?> retrievePriceLists({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserPriceListsProductsRes?> retrievePriceListProducts({
+  Future<PriceListsProductsRes?> retrievePriceListProducts({
     required String id,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
@@ -35,24 +35,24 @@ abstract class BasePriceList {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeletePricesRes?> deletePrices({
+  Future<DeletePricesRes?> deletePrices({
     required String id,
     required List<String> priceIds,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeletePriceListRes?> deletePriceList({
+  Future<DeletePriceListRes?> deletePriceList({
     required String id,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteProductPricesRes?> deleteProductPrices({
+  Future<DeleteProductPricesRes?> deleteProductPrices({
     required String id,
     required String productId,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteVariantPricesRes?> deleteVariantPrices({
+  Future<DeleteVariantPricesRes?> deleteVariantPrices({
     required String id,
     required String variantId,
     Map<String, dynamic>? customHeaders,

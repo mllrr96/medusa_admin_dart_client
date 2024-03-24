@@ -1,6 +1,6 @@
 import '../../enum/enums.dart';
 
-class UserUpdateUserReq {
+class UpdateUserReq {
   String? firstName;
   String? lastName;
 
@@ -15,7 +15,7 @@ class UserUpdateUserReq {
   /// An optional set of key-value pairs with additional information.
   Map<String, dynamic>? metadata;
 
-  UserUpdateUserReq(
+  UpdateUserReq(
       {this.firstName, this.lastName, this.role, this.apiToken, this.metadata});
 
   Map<String, dynamic> toJson() {
@@ -44,7 +44,7 @@ class UserUpdateUserReq {
   }
 }
 
-class UserCreateUserReq {
+class CreateUserReq {
   /// Email address of the user
   final String email;
 
@@ -62,7 +62,7 @@ class UserCreateUserReq {
   /// Enum: "admin" "member" "developer"
   final UserRole? role;
 
-  const UserCreateUserReq({
+  const CreateUserReq({
     required this.email,
     required this.password,
     this.firstName,

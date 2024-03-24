@@ -4,7 +4,7 @@ import '../../models/index.dart';
 abstract class BaseOrderEdit {
   Future<OrderEdit?> addLineItem({
     required String id,
-    required UserAddLineItemReq userAddLineItemReq,
+    required AddLineItemReq userAddLineItemReq,
     Map<String, dynamic>? customHeaders,
   });
 
@@ -21,7 +21,7 @@ abstract class BaseOrderEdit {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteLineItemChangeRes?> deleteLineItemChange({
+  Future<DeleteLineItemChangeRes?> deleteLineItemChange({
     required String id,
     required String changeId,
     Map<String, dynamic>? customHeaders,
@@ -43,13 +43,13 @@ abstract class BaseOrderEdit {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteOrderEditRes?> deleteOrderEdit({
+  Future<DeleteOrderEditRes?> deleteOrderEdit({
     required String id,
     String? internalNote,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserRetrieveAllOrderEditRes?> retrieveAllOrderEdit({
+  Future<RetrieveAllOrderEditRes?> retrieveAllOrderEdit({
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });

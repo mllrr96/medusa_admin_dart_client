@@ -9,12 +9,12 @@ abstract class BaseOrders {
 
   Future<Order?> updateOrder({
     required String id,
-    required UserUpdateOrderReq userUpdateOrderReq,
+    required UpdateOrderReq userUpdateOrderReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
 
-  Future<UserRetrieveOrderReservationsRes?> retrieveOrderReservations({
+  Future<RetrieveOrderReservationsRes?> retrieveOrderReservations({
     required String id,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
@@ -71,21 +71,21 @@ abstract class BaseOrders {
     Map<String, dynamic>? queryParameters,
   });
 
-  Future<UserRetrieveOrdersRes?> retrieveOrders({
+  Future<RetrieveOrdersRes?> retrieveOrders({
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
 
   Future<Order?> createRefund({
     required String id,
-    required UserCreateRefundOrdersReq userCreateRefundOrdersReq,
+    required CreateRefundOrdersReq userCreateRefundOrdersReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
 
   Future<Order?> requestReturn({
     required String id,
-    required UserRequestReturnOrdersReq userRequestReturnOrdersReq,
+    required RequestReturnOrdersReq userRequestReturnOrdersReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });

@@ -9,7 +9,7 @@ class ProductTypeRepository extends BaseProductType {
   static const _productTypes = '/product-types';
 
   @override
-  Future<UserRetrieveProductTypesRes?> retrieveProductTypes({
+  Future<RetrieveProductTypesRes?> retrieveProductTypes({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -22,7 +22,7 @@ class ProductTypeRepository extends BaseProductType {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveProductTypesRes.fromJson(response.data);
+        return RetrieveProductTypesRes.fromJson(response.data);
       } else {
         throw response;
       }

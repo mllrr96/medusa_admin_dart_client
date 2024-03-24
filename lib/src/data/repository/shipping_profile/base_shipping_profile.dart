@@ -4,13 +4,13 @@ import '../../models/index.dart';
 
 abstract class BaseShippingProfile {
   Future<ShippingProfile?> create({
-    required UserCreateShippingProfileReq userCreateShippingProfileReq,
+    required CreateShippingProfileReq userCreateShippingProfileReq,
     Map<String, dynamic>? customHeaders,
   });
 
   Future<ShippingProfile?> update({
     required String id,
-    required UserUpdateShippingProfileReq userUpdateShippingProfileReq,
+    required UpdateShippingProfileReq userUpdateShippingProfileReq,
     Map<String, dynamic>? customHeaders,
   });
 
@@ -20,12 +20,12 @@ abstract class BaseShippingProfile {
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserRetrieveAllShippingProfileRes?> retrieveAll({
+  Future<RetrieveAllShippingProfileRes?> retrieveAll({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   });
 
-  Future<UserDeleteShippingProfileRes?> delete({
+  Future<DeleteShippingProfileRes?> delete({
     required String id,
     Map<String, dynamic>? customHeaders,
   });

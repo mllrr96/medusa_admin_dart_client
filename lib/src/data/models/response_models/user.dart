@@ -1,14 +1,14 @@
 import '../index.dart';
 
-class UserRetrieveUserListRes {
+class RetrieveUserListRes {
   final List<User>? userList;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveUserListRes(
+  const RetrieveUserListRes(
       {this.userList, this.limit, this.offset, this.count});
-  factory UserRetrieveUserListRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveUserListRes(
+  factory RetrieveUserListRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveUserListRes(
       userList: json['users'] != null
           ? List<User>.from(json['users'].map((x) => User.fromJson(x)))
           : null,
@@ -19,7 +19,7 @@ class UserRetrieveUserListRes {
   }
 }
 
-class UserDeleteUserRes {
+class DeleteUserRes {
   /// The ID of the deleted user.
   final String? id;
 
@@ -33,9 +33,9 @@ class UserDeleteUserRes {
   /// Default: true
   final bool? deleted;
 
-  const UserDeleteUserRes({this.id, this.object, this.deleted});
-  factory UserDeleteUserRes.fromJson(Map<String, dynamic> json) {
-    return UserDeleteUserRes(
+  const DeleteUserRes({this.id, this.object, this.deleted});
+  factory DeleteUserRes.fromJson(Map<String, dynamic> json) {
+    return DeleteUserRes(
       id: json['id'],
       object: json['object'],
       deleted: json['deleted'],

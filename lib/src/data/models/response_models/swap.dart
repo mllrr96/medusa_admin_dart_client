@@ -1,13 +1,13 @@
 import '../index.dart';
 
-class UserRetrieveSwapsRes {
+class RetrieveSwapsRes {
   final List<Swap>? swaps;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveSwapsRes({this.swaps, this.limit, this.offset, this.count});
-  factory UserRetrieveSwapsRes.fromJson(Map<String, dynamic> json) {
-    return UserRetrieveSwapsRes(
+  const RetrieveSwapsRes({this.swaps, this.limit, this.offset, this.count});
+  factory RetrieveSwapsRes.fromJson(Map<String, dynamic> json) {
+    return RetrieveSwapsRes(
       swaps: json['swaps'] != null
           ? List<Swap>.from(json['swaps'].map((x) => Swap.fromJson(x)))
           : null,

@@ -1,13 +1,13 @@
 import '../index.dart';
 
-class UserRegionsRes {
+class RegionsRes {
   final List<Region>? regions;
   final int? limit;
   final int? offset;
   final int? count;
-  const  UserRegionsRes({this.regions, this.limit, this.offset, this.count});
-  factory UserRegionsRes.fromJson(json) {
-    return UserRegionsRes(
+  const  RegionsRes({this.regions, this.limit, this.offset, this.count});
+  factory RegionsRes.fromJson(json) {
+    return RegionsRes(
       regions: json['regions'] != null
           ? List<Region>.from(json['regions'].map((x) => Region.fromJson(x)))
           : null,
@@ -18,7 +18,7 @@ class UserRegionsRes {
   }
 }
 
-class UserDeleteRegionRes {
+class DeleteRegionRes {
   /// The ID of the deleted Region.
   final String? id;
 
@@ -30,10 +30,10 @@ class UserDeleteRegionRes {
   /// Whether or not the region were deleted.
   final bool deleted;
 
-  const UserDeleteRegionRes({required this.deleted, this.id, this.object});
+  const DeleteRegionRes({required this.deleted, this.id, this.object});
 
-  factory UserDeleteRegionRes.fromJson(json) {
-    return UserDeleteRegionRes(
+  factory DeleteRegionRes.fromJson(json) {
+    return DeleteRegionRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);

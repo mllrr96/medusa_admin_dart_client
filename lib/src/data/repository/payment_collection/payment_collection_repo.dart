@@ -11,7 +11,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
 
   /// Deletes a Payment Collection
   @override
-  Future<UserDeletePaymentCollectionRes?> deletePaymentCollection({
+  Future<DeletePaymentCollectionRes?> deletePaymentCollection({
     /// The ID of the PaymentCollection to delete.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -24,7 +24,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
         '$_paymentCollections/$id',
       );
       if (response.statusCode == 200) {
-        return UserDeletePaymentCollectionRes.fromJson(response.data);
+        return DeletePaymentCollectionRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -36,7 +36,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
 
   /// Sets the status of PaymentCollection as Authorized.
   @override
-  Future<UserRetrieveNotificationsRes?> markPaymentCollectionAuthorized({
+  Future<RetrieveNotificationsRes?> markPaymentCollectionAuthorized({
     /// The ID of the PaymentCollection.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -49,7 +49,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
          '$_paymentCollections/$id/authorize',
       );
       if (response.statusCode == 200) {
-        return UserRetrieveNotificationsRes.fromJson(response.data);
+        return RetrieveNotificationsRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -88,7 +88,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
 
   /// Updates a PaymentCollection.
   @override
-  Future<UserRetrieveNotificationsRes?> updatePaymentCollection({
+  Future<RetrieveNotificationsRes?> updatePaymentCollection({
     /// The ID of the PaymentCollection.
     required String id,
 
@@ -108,7 +108,7 @@ class PaymentCollectionRepository extends BasePaymentCollection {
         if (description != null) 'description': description,
       });
       if (response.statusCode == 200) {
-        return UserRetrieveNotificationsRes.fromJson(response.data);
+        return RetrieveNotificationsRes.fromJson(response.data);
       } else {
         throw response;
       }

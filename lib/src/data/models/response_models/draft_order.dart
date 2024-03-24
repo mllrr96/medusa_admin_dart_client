@@ -1,13 +1,13 @@
 import '../index.dart';
 
-class UserDraftOrdersRes {
+class DraftOrdersRes {
   final List<DraftOrder>? draftOrders;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserDraftOrdersRes({this.draftOrders, this.limit, this.offset, this.count});
-  factory UserDraftOrdersRes.fromJson(Map<String, dynamic> json) {
-    return UserDraftOrdersRes(
+  const DraftOrdersRes({this.draftOrders, this.limit, this.offset, this.count});
+  factory DraftOrdersRes.fromJson(Map<String, dynamic> json) {
+    return DraftOrdersRes(
       draftOrders: json['draft_orders'] != null
           ? List<DraftOrder>.from(
               json['draft_orders'].map((x) => DraftOrder.fromJson(x)))
@@ -19,7 +19,7 @@ class UserDraftOrdersRes {
   }
 }
 
-class UserDeleteDraftOrderRes {
+class DeleteDraftOrderRes {
   /// The ID of the deleted Draft Order.
   final String? id;
 
@@ -31,14 +31,14 @@ class UserDeleteDraftOrderRes {
   /// Whether the draft order was deleted successfully or not.
   final bool deleted;
 
-  const  UserDeleteDraftOrderRes({
+  const  DeleteDraftOrderRes({
     required this.deleted,
     this.id,
     this.object,
   });
 
-  factory UserDeleteDraftOrderRes.fromJson(json) {
-    return UserDeleteDraftOrderRes(
+  factory DeleteDraftOrderRes.fromJson(json) {
+    return DeleteDraftOrderRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);

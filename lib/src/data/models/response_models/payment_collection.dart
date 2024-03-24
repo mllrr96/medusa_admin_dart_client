@@ -1,4 +1,4 @@
-class UserDeletePaymentCollectionRes {
+class DeletePaymentCollectionRes {
   /// The ID of the deleted Payment Collection.
   final String? id;
 
@@ -10,9 +10,9 @@ class UserDeletePaymentCollectionRes {
   /// Whether or not the Payment Collection was deleted.
   final bool deleted;
 
-  const UserDeletePaymentCollectionRes({required this.deleted, this.id, this.object});
+  const DeletePaymentCollectionRes({required this.deleted, this.id, this.object});
 
-  factory UserDeletePaymentCollectionRes.fromJson(json) {
-    return UserDeletePaymentCollectionRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
+  factory DeletePaymentCollectionRes.fromJson(json) {
+    return DeletePaymentCollectionRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
   }
 }

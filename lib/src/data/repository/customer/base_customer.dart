@@ -17,14 +17,14 @@ abstract class BaseCustomer {
   /// Updates a customer
   Future<Customer?> update({
     required String id,
-    required UserUpdateCustomerReq userUpdateCustomerReq,
+    required UpdateCustomerReq userUpdateCustomerReq,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   });
 
   /// Create a customer
   Future<Customer?> create({
-    required UserCreateCustomerReq userCreateCustomerReq,
+    required CreateCustomerReq userCreateCustomerReq,
 
     Map<String, dynamic>? customHeaders,
   });

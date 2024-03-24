@@ -1,6 +1,6 @@
 import '../index.dart';
 
-class UserDeleteDiscountConditionRes {
+class DeleteDiscountConditionRes {
   /// The ID of the deleted DiscountCondition
   final String? id;
 
@@ -15,15 +15,15 @@ class UserDeleteDiscountConditionRes {
   /// Represents a discount that can be applied to a cart for promotional purposes.
   final Discount? discount;
 
-  const UserDeleteDiscountConditionRes({
+  const DeleteDiscountConditionRes({
     required this.deleted,
     this.id,
     this.object,
     this.discount,
   });
 
-  factory UserDeleteDiscountConditionRes.fromJson(json) {
-    return UserDeleteDiscountConditionRes(
+  factory DeleteDiscountConditionRes.fromJson(json) {
+    return DeleteDiscountConditionRes(
       deleted: json['deleted'] ?? false,
       id: json['id'],
       object: json['object'],

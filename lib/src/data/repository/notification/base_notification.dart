@@ -2,7 +2,7 @@ import '../../models/index.dart';
 
 abstract class BaseNotification {
 
-  Future<UserRetrieveNotificationsRes?> retrieveNotifications({
+  Future<RetrieveNotificationsRes?> retrieveNotifications({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });

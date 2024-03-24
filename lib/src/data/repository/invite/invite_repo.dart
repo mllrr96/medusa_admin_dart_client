@@ -12,7 +12,7 @@ class InviteRepository extends BaseInvite {
   /// Accepts an Invite and creates a corresponding user
   @override
   Future<bool?> acceptInvitation({
-    required UserAcceptInvitationReq userAcceptInvitationReq,
+    required AcceptInvitationReq userAcceptInvitationReq,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -68,7 +68,7 @@ class InviteRepository extends BaseInvite {
 
   /// Deletes an Invite
   @override
-  Future<UserDeleteInvitesRes?> deleteInvite({
+  Future<DeleteInvitesRes?> deleteInvite({
     /// The ID of the Invite to delete.
     required String inviteId,
     Map<String, dynamic>? customHeaders,
@@ -81,7 +81,7 @@ class InviteRepository extends BaseInvite {
         '$_invites/$inviteId',
       );
       if (response.statusCode == 200) {
-        return UserDeleteInvitesRes.fromJson(response.data);
+        return DeleteInvitesRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -118,7 +118,7 @@ class InviteRepository extends BaseInvite {
 
   /// Lists all Invites
   @override
-  Future<UserRetrieveInvitesRes?> retrieveInvites({
+  Future<RetrieveInvitesRes?> retrieveInvites({
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
@@ -129,7 +129,7 @@ class InviteRepository extends BaseInvite {
         _invites,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveInvitesRes.fromJson(response.data);
+        return RetrieveInvitesRes.fromJson(response.data);
       } else {
         throw response;
       }

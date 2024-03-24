@@ -64,7 +64,7 @@ class SalesChannelRepository extends BaseSalesChannel {
 
   @override
   Future<SalesChannel?> create({
-    required UserSalesChannelCreateReq userSalesChannelCreateReq,
+    required SalesChannelCreateReq userSalesChannelCreateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -88,7 +88,7 @@ class SalesChannelRepository extends BaseSalesChannel {
   }
 
   @override
-  Future<UserSalesChannelDeleteRes?> delete({
+  Future<SalesChannelDeleteRes?> delete({
     required String id,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
@@ -102,7 +102,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return UserSalesChannelDeleteRes.fromJson(response.data);
+        return SalesChannelDeleteRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -146,7 +146,7 @@ class SalesChannelRepository extends BaseSalesChannel {
   }
 
   @override
-  Future<UserRemoveStockLocationFromSalesChannelRes?>
+  Future<RemoveStockLocationFromSalesChannelRes?>
       removeStockLocationFromSalesChannel({
     required String id,
     required String locationId,
@@ -163,7 +163,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         },
       );
       if (response.statusCode == 200) {
-        return UserRemoveStockLocationFromSalesChannelRes.fromJson(
+        return RemoveStockLocationFromSalesChannelRes.fromJson(
             response.data);
       } else {
         throw response;
@@ -200,7 +200,7 @@ class SalesChannelRepository extends BaseSalesChannel {
   }
 
   @override
-  Future<UserSalesChannelRetrieveAllRes?> retrieveAll({
+  Future<SalesChannelRetrieveAllRes?> retrieveAll({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -213,7 +213,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return UserSalesChannelRetrieveAllRes.fromJson(response.data);
+        return SalesChannelRetrieveAllRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -224,7 +224,7 @@ class SalesChannelRepository extends BaseSalesChannel {
   }
 
   @override
-  Future<UserRetrieveStockLocationsRes?> retrieveStockLocations({
+  Future<RetrieveStockLocationsRes?> retrieveStockLocations({
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -237,7 +237,7 @@ class SalesChannelRepository extends BaseSalesChannel {
         queryParameters: queryParams,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveStockLocationsRes.fromJson(response.data);
+        return RetrieveStockLocationsRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -250,7 +250,7 @@ class SalesChannelRepository extends BaseSalesChannel {
   @override
   Future<SalesChannel?> update({
     required String id,
-    required UserSalesChannelUpdateReq userSalesChannelUpdateReq,
+    required SalesChannelUpdateReq userSalesChannelUpdateReq,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? customHeaders,
   }) async {

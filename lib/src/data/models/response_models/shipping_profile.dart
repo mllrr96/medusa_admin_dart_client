@@ -1,15 +1,15 @@
 import '../index.dart';
 
-class UserRetrieveAllShippingProfileRes {
+class RetrieveAllShippingProfileRes {
   final List<ShippingProfile>? shippingProfiles;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserRetrieveAllShippingProfileRes(
+  const RetrieveAllShippingProfileRes(
       {this.shippingProfiles, this.limit, this.offset, this.count});
-  factory UserRetrieveAllShippingProfileRes.fromJson(
+  factory RetrieveAllShippingProfileRes.fromJson(
       Map<String, dynamic> json) {
-    return UserRetrieveAllShippingProfileRes(
+    return RetrieveAllShippingProfileRes(
       shippingProfiles: json['shipping_profiles'] != null
           ? List<ShippingProfile>.from(
               json['shipping_profiles'].map((x) => ShippingProfile.fromJson(x)))
@@ -21,7 +21,7 @@ class UserRetrieveAllShippingProfileRes {
   }
 }
 
-class UserDeleteShippingProfileRes {
+class DeleteShippingProfileRes {
   /// The ID of the deleted Shipping Profile.
   final String? id;
 
@@ -32,9 +32,9 @@ class UserDeleteShippingProfileRes {
 
   /// Whether or not the items were deleted.
   final bool deleted;
-  const  UserDeleteShippingProfileRes({required this.deleted, this.id, this.object});
-  factory UserDeleteShippingProfileRes.fromJson(json) {
-    return UserDeleteShippingProfileRes(
+  const  DeleteShippingProfileRes({required this.deleted, this.id, this.object});
+  factory DeleteShippingProfileRes.fromJson(json) {
+    return DeleteShippingProfileRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);

@@ -1,13 +1,13 @@
 
 import '../../enum/enums.dart';
 
-class UserCreateShippingProfileReq {
+class CreateShippingProfileReq {
   /// The name of the Shipping Profile
   final String name;
 
   /// The type of the Shipping Profile
   final ShippingProfileType shippingProfileType;
-  UserCreateShippingProfileReq({required this.name, required this.shippingProfileType});
+  CreateShippingProfileReq({required this.name, required this.shippingProfileType});
 
   Map<String, dynamic> toJson() {
     var json = <String, dynamic>{};
@@ -17,7 +17,7 @@ class UserCreateShippingProfileReq {
   }
 }
 
-class UserUpdateShippingProfileReq {
+class UpdateShippingProfileReq {
   /// The name of the Shipping Profile
   final String? name;
 
@@ -33,7 +33,7 @@ class UserUpdateShippingProfileReq {
   /// An optional array of shipping option ids to associate with the Shipping Profile
   final List<String>? shippingOptionIds;
 
-  UserUpdateShippingProfileReq({
+  UpdateShippingProfileReq({
     this.shippingProfileType,
     this.name,
     this.metadata,

@@ -1,14 +1,14 @@
 import '../index.dart';
 
-class UserInventoryItemsRes {
+class InventoryItemsRes {
   final List<InventoryItem>? inventoryItems;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserInventoryItemsRes(
+  const InventoryItemsRes(
       {this.inventoryItems, this.limit, this.offset, this.count});
-  factory UserInventoryItemsRes.fromJson(Map<String, dynamic> json) {
-    return UserInventoryItemsRes(
+  factory InventoryItemsRes.fromJson(Map<String, dynamic> json) {
+    return InventoryItemsRes(
       inventoryItems: json['inventory_items'] != null
           ? List<InventoryItem>.from(
               json['inventory_items'].map((x) => InventoryItem.fromJson(x)))
@@ -20,19 +20,19 @@ class UserInventoryItemsRes {
   }
 }
 
-class UserStockLevelsOfLocationRes {
+class StockLevelsOfLocationRes {
   /// List of stock levels at a given location
   final List<LocationLevel>? locationLevels;
 
   /// The id of the location
   final String? id;
 
-  const UserStockLevelsOfLocationRes({
+  const StockLevelsOfLocationRes({
     this.id,
     this.locationLevels,
   });
 
-  factory UserStockLevelsOfLocationRes.fromJson(Map<String, dynamic> json) {
+  factory StockLevelsOfLocationRes.fromJson(Map<String, dynamic> json) {
     List<LocationLevel>? locationLevels;
 
     if (json['location_levels'] != null) {
@@ -41,14 +41,14 @@ class UserStockLevelsOfLocationRes {
           ?.forEach((v) => locationLevels?.add(LocationLevel.fromJson(v)));
     }
 
-    return UserStockLevelsOfLocationRes(
+    return StockLevelsOfLocationRes(
       id: json['id'],
       locationLevels: locationLevels,
     );
   }
 }
 
-class UserDeleteInventoryItemRes {
+class DeleteInventoryItemRes {
   /// The ID of the deleted Inventory Item.
   final String? id;
 
@@ -59,9 +59,9 @@ class UserDeleteInventoryItemRes {
 
   /// Whether or not the Inventory Item was deleted.
   final bool deleted;
-  const UserDeleteInventoryItemRes({required this.deleted, this.id, this.object});
-  factory UserDeleteInventoryItemRes.fromJson(json) {
-    return UserDeleteInventoryItemRes(
+  const DeleteInventoryItemRes({required this.deleted, this.id, this.object});
+  factory DeleteInventoryItemRes.fromJson(json) {
+    return DeleteInventoryItemRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);

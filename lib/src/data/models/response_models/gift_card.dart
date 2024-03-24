@@ -1,14 +1,14 @@
 import '../index.dart';
 
-class UserGiftCardsRes {
+class GiftCardsRes {
   final List<GiftCard>? giftCards;
   final int? limit;
   final int? offset;
   final int? count;
-  const  UserGiftCardsRes({this.giftCards, this.limit, this.offset, this.count});
+  const  GiftCardsRes({this.giftCards, this.limit, this.offset, this.count});
 
-  factory UserGiftCardsRes.fromJson(Map<String, dynamic> json) {
-    return UserGiftCardsRes(
+  factory GiftCardsRes.fromJson(Map<String, dynamic> json) {
+    return GiftCardsRes(
       giftCards: json['gift_cards'] != null
           ? List<GiftCard>.from(
               json['gift_cards'].map((x) => GiftCard.fromJson(x)))
@@ -20,7 +20,7 @@ class UserGiftCardsRes {
   }
 }
 
-class UserDeleteGiftCardRes {
+class DeleteGiftCardRes {
   /// The ID of the deleted Gift Card
   final String? id;
 
@@ -31,9 +31,9 @@ class UserDeleteGiftCardRes {
 
   /// Whether the gift card was deleted successfully or not.
   final bool deleted;
-  const UserDeleteGiftCardRes({required this.deleted, this.id, this.object});
-  factory UserDeleteGiftCardRes.fromJson(json) {
-    return UserDeleteGiftCardRes(
+  const DeleteGiftCardRes({required this.deleted, this.id, this.object});
+  factory DeleteGiftCardRes.fromJson(json) {
+    return DeleteGiftCardRes(
         deleted: json['deleted'] ?? false,
         id: json['id'],
         object: json['object']);

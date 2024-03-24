@@ -5,7 +5,7 @@ import '../../models/index.dart';
 abstract class BaseStockLocation {
   /// Creates a Stock Location.
   Future<StockLocation?> createStockLocation({
-    required UserCreateStockLocationReq userCreateStockLocationReq,
+    required CreateStockLocationReq userCreateStockLocationReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
@@ -22,12 +22,12 @@ abstract class BaseStockLocation {
   Future<StockLocation?> updateStockLocation({
     /// The ID of the Stock Location.
     required String id,
-    required UserUpdateStockLocationReq userUpdateStockLocationReq,
+    required UpdateStockLocationReq userUpdateStockLocationReq,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   });
   /// Updates a Stock Location.
-  Future<UserDeleteStockLocationRes?> deleteStockLocation({
+  Future<DeleteStockLocationRes?> deleteStockLocation({
     /// The ID of the Stock Location.
     required String id,
     Map<String, dynamic>? queryParameters,

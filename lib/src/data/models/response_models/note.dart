@@ -1,14 +1,14 @@
 import '../index.dart';
 
 
-class UserNotesRes  {
+class NotesRes  {
   final List<Note>? notes;
   final int? limit;
   final int? offset;
   final int? count;
-  const UserNotesRes({this.notes, this.limit, this.offset, this.count});
-  factory UserNotesRes.fromJson(Map<String, dynamic> json) {
-    return UserNotesRes(
+  const NotesRes({this.notes, this.limit, this.offset, this.count});
+  factory NotesRes.fromJson(Map<String, dynamic> json) {
+    return NotesRes(
       notes: json['notes'] != null
           ? List<Note>.from(
               json['notes'].map((x) => Note.fromJson(x)))
@@ -20,7 +20,7 @@ class UserNotesRes  {
   }
 }
 
-class UserDeleteNoteRes {
+class DeleteNoteRes {
   /// The ID of the deleted Note.
   final String? id;
 
@@ -31,8 +31,8 @@ class UserDeleteNoteRes {
 
   /// Whether or not the Note was deleted.
   final bool deleted;
-  const UserDeleteNoteRes({required this.deleted, this.id, this.object});
-  factory UserDeleteNoteRes.fromJson(json) {
-    return UserDeleteNoteRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
+  const DeleteNoteRes({required this.deleted, this.id, this.object});
+  factory DeleteNoteRes.fromJson(json) {
+    return DeleteNoteRes(deleted: json['deleted'] ?? false, id: json['id'], object: json['object']);
   }
 }

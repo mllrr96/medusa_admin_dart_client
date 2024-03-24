@@ -72,7 +72,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
   }
 
   @override
-  Future<UserDeleteCustomerGroupRes?> deleteCustomerGroup({
+  Future<DeleteCustomerGroupRes?> deleteCustomerGroup({
     required String id,
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
@@ -86,7 +86,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserDeleteCustomerGroupRes.fromJson(response.data);
+        return DeleteCustomerGroupRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -159,7 +159,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
   }
 
   @override
-  Future<UserRetrieveCustomerGroupsRes?> retrieveCustomerGroups({
+  Future<RetrieveCustomerGroupsRes?> retrieveCustomerGroups({
     Map<String, dynamic>? customHeaders,
     Map<String, dynamic>? queryParameters,
   }) async {
@@ -172,7 +172,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveCustomerGroupsRes.fromJson(response.data);
+        return RetrieveCustomerGroupsRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -184,7 +184,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
 
   /// Retrieves a list of customers in a customer group
   @override
-  Future<UserRetrieveCustomersRes?> retrieveCustomers({
+  Future<RetrieveCustomersRes?> retrieveCustomers({
     /// The ID of the customer group.
     required String id,
     Map<String, dynamic>? customHeaders,
@@ -199,7 +199,7 @@ class CustomerGroupRepository extends BaseCustomerGroup {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveCustomersRes.fromJson(response.data);
+        return RetrieveCustomersRes.fromJson(response.data);
       } else {
         throw response;
       }

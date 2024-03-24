@@ -70,7 +70,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
   }
 
   @override
-  Future<UserDeletePublishableApiKeyRes?> deletePublishableApiKey({
+  Future<DeletePublishableApiKeyRes?> deletePublishableApiKey({
     required String id,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
@@ -84,7 +84,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserDeletePublishableApiKeyRes.fromJson(response.data);
+        return DeletePublishableApiKeyRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -153,7 +153,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
   }
 
   @override
-  Future<UserRetrievePublishableApiKeysRes?> retrievePublishableApiKeys({
+  Future<RetrievePublishableApiKeysRes?> retrievePublishableApiKeys({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -166,7 +166,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserRetrievePublishableApiKeysRes.fromJson(response.data);
+        return RetrievePublishableApiKeysRes.fromJson(response.data);
       } else {
         throw response;
       }
@@ -177,7 +177,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
   }
 
   @override
-  Future<UserSalesChannelRetrieveAllRes?>
+  Future<SalesChannelRetrieveAllRes?>
   retrieveSalesChannels({
     required String id,
     Map<String, dynamic>? queryParameters,
@@ -192,7 +192,7 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserSalesChannelRetrieveAllRes.fromJson(response.data);
+        return SalesChannelRetrieveAllRes.fromJson(response.data);
       } else {
         throw response;
       }

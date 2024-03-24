@@ -36,7 +36,7 @@ class NotificationRepository extends BaseNotification {
 
   /// Retrieves a list of Notifications.
   @override
-  Future<UserRetrieveNotificationsRes?> retrieveNotifications({
+  Future<RetrieveNotificationsRes?> retrieveNotifications({
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? customHeaders,
   }) async {
@@ -49,7 +49,7 @@ class NotificationRepository extends BaseNotification {
         queryParameters: queryParameters,
       );
       if (response.statusCode == 200) {
-        return UserRetrieveNotificationsRes.fromJson(response.data);
+        return RetrieveNotificationsRes.fromJson(response.data);
       } else {
         throw response;
       }
