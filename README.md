@@ -1,6 +1,6 @@
 
 
-## Flutter Medusa Admin Package
+## Medusa Admin Dart Client
 
 ### Description
 An easy way to communicate with your [Medusa](https://medusajs.com/) server, this package is used in [Medusa Admin Flutter](https://github.com/mllrr96/Medusa-Admin-Flutter)
