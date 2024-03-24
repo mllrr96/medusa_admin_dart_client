@@ -15,7 +15,7 @@ class NotificationRepository extends BaseNotification {
     required String id,
 
     /// A new address or user identifier that the Notification should be sent to
-    required String to,
+    String? to,
     Map<String, dynamic>? customHeaders,
   }) async {
     try {
