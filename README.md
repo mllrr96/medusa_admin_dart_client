@@ -20,7 +20,7 @@ Before you start with the tutorial make sure you have
 Add Dependency of the package in your pubspec.yaml file:
 
 ```bash
-  medusa_admin_flutter:
+  medusa_admin_dart_client:
     git:
       url: https://github.com/mllrr96/Medusa_Admin_API_Flutter.git
       ref: main
