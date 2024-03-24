@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'customer_group_base.dart';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
@@ -35,8 +34,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -65,8 +64,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -90,8 +89,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -127,8 +126,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -152,8 +151,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -176,8 +175,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -203,8 +202,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -234,8 +233,8 @@ class CustomerGroupRepository extends BaseCustomerGroup {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

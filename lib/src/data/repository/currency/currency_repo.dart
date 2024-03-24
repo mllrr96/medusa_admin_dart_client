@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import '../../models/response_models/currency.dart';
 import 'base_currency.dart';
@@ -23,8 +22,8 @@ class CurrencyRepository extends BaseCurrency {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

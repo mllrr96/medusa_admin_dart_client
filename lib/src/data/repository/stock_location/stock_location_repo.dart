@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'base_stock_location.dart';
 import '../../models/index.dart';
@@ -24,8 +23,8 @@ class StockLocationRepository extends BaseStockLocation {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -45,8 +44,8 @@ class StockLocationRepository extends BaseStockLocation {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -69,8 +68,8 @@ class StockLocationRepository extends BaseStockLocation {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -95,8 +94,8 @@ class StockLocationRepository extends BaseStockLocation {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

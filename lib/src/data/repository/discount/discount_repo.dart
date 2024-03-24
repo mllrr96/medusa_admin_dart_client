@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'base_discount.dart';
 import '../../models/index.dart';
@@ -25,8 +24,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -49,8 +48,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -75,8 +74,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -98,8 +97,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -123,8 +122,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -147,8 +146,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -171,8 +170,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -196,8 +195,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -220,8 +219,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -248,8 +247,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -275,8 +274,8 @@ class DiscountRepository extends BaseDiscount {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'base_invite.dart';
 import 'package:dio/dio.dart';
 import '../../enum/enums.dart';
@@ -28,8 +27,8 @@ class InviteRepository extends BaseInvite {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -60,8 +59,8 @@ class InviteRepository extends BaseInvite {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -85,8 +84,8 @@ class InviteRepository extends BaseInvite {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -110,8 +109,8 @@ class InviteRepository extends BaseInvite {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -133,8 +132,8 @@ class InviteRepository extends BaseInvite {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

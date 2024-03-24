@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'base_order_edit.dart';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
@@ -29,8 +28,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -54,8 +53,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -79,8 +78,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -111,8 +110,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -139,8 +138,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -165,8 +164,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -193,8 +192,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -218,8 +217,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -243,8 +242,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -269,8 +268,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -299,8 +298,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -333,8 +332,8 @@ class OrderEditRepository extends BaseOrderEdit {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

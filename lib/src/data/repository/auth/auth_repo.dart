@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
 import 'base_auth.dart';
@@ -25,8 +24,7 @@ class AuthRepository extends BaseAuth {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
       rethrow;
     }
   }
@@ -47,8 +45,7 @@ class AuthRepository extends BaseAuth {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
       rethrow;
     }
   }
@@ -72,8 +69,7 @@ class AuthRepository extends BaseAuth {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
       rethrow;
     }
   }
@@ -93,8 +89,8 @@ class AuthRepository extends BaseAuth {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -114,8 +110,8 @@ class AuthRepository extends BaseAuth {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

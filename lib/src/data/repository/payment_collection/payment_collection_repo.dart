@@ -1,4 +1,3 @@
-import 'dart:developer';
 import '../../models/response_models/notification.dart';
 import '../../models/response_models/payment_collection.dart';
 import '../../models/store_models/payment_collection/index.dart';
@@ -28,8 +27,8 @@ class PaymentCollectionRepository extends BasePaymentCollection {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -53,8 +52,8 @@ class PaymentCollectionRepository extends BasePaymentCollection {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -80,8 +79,8 @@ class PaymentCollectionRepository extends BasePaymentCollection {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -112,8 +111,8 @@ class PaymentCollectionRepository extends BasePaymentCollection {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

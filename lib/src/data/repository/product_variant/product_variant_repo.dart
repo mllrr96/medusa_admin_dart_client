@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'base_product_variant.dart';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
@@ -23,8 +22,8 @@ class ProductVariantRepository extends BaseProductVariant {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -44,8 +43,8 @@ class ProductVariantRepository extends BaseProductVariant {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

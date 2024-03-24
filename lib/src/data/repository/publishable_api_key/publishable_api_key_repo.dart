@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'base_publishable_api_key.dart';
 import '../../models/index.dart';
@@ -35,8 +34,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -63,8 +62,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -88,8 +87,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -121,8 +120,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -146,8 +145,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -170,8 +169,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -196,8 +195,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -221,8 +220,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -250,8 +249,8 @@ class PublishableApiKeyRepository extends BasePublishableApiKey {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

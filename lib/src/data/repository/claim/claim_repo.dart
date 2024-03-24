@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
@@ -30,8 +29,8 @@ class ClaimRepository extends BaseClaim {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -56,8 +55,8 @@ class ClaimRepository extends BaseClaim {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -84,8 +83,8 @@ class ClaimRepository extends BaseClaim {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -112,8 +111,8 @@ class ClaimRepository extends BaseClaim {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -139,8 +138,8 @@ class ClaimRepository extends BaseClaim {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -167,8 +166,8 @@ class ClaimRepository extends BaseClaim {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

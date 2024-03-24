@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'base_sales_channel.dart';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
@@ -31,8 +30,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -56,8 +55,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -81,8 +80,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -106,8 +105,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -139,8 +138,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -168,8 +167,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -193,8 +192,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -217,8 +216,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -241,8 +240,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }
@@ -268,8 +267,8 @@ class SalesChannelRepository extends BaseSalesChannel {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+      
       rethrow;
     }
   }

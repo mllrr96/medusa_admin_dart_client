@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'base_shipping_options.dart';
 import '../../models/index.dart';
@@ -25,8 +24,8 @@ class ShippingOptionsRepository extends BaseShippingOptions {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -49,8 +48,8 @@ class ShippingOptionsRepository extends BaseShippingOptions {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -75,8 +74,8 @@ class ShippingOptionsRepository extends BaseShippingOptions {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -100,8 +99,8 @@ class ShippingOptionsRepository extends BaseShippingOptions {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -126,8 +125,8 @@ class ShippingOptionsRepository extends BaseShippingOptions {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

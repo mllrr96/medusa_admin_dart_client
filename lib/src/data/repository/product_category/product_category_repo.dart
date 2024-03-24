@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'base_product_category.dart';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
@@ -28,8 +27,8 @@ class ProductCategoryRepository extends BaseProductCategory {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -54,8 +53,8 @@ class ProductCategoryRepository extends BaseProductCategory {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -79,8 +78,8 @@ class ProductCategoryRepository extends BaseProductCategory {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -105,8 +104,8 @@ class ProductCategoryRepository extends BaseProductCategory {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -129,8 +128,8 @@ class ProductCategoryRepository extends BaseProductCategory {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -154,8 +153,8 @@ class ProductCategoryRepository extends BaseProductCategory {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -181,8 +180,8 @@ class ProductCategoryRepository extends BaseProductCategory {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'base_notification.dart';
 import 'package:dio/dio.dart';
 import '../../models/index.dart';
@@ -28,8 +27,8 @@ class NotificationRepository extends BaseNotification {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -53,8 +52,8 @@ class NotificationRepository extends BaseNotification {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'base_discount_condition.dart';
 import '../../models/index.dart';
@@ -31,8 +30,8 @@ class DiscountConditionRepository extends BaseDiscountCondition {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -57,8 +56,8 @@ class DiscountConditionRepository extends BaseDiscountCondition {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -86,8 +85,8 @@ class DiscountConditionRepository extends BaseDiscountCondition {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -111,8 +110,8 @@ class DiscountConditionRepository extends BaseDiscountCondition {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -137,8 +136,8 @@ class DiscountConditionRepository extends BaseDiscountCondition {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

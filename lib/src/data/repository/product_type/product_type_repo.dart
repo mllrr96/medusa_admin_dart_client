@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'base_product_type.dart';
 import '../../models/response_models/product_type.dart';
@@ -26,8 +25,8 @@ class ProductTypeRepository extends BaseProductType {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

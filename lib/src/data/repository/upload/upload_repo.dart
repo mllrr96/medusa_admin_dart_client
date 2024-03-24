@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'base_upload.dart';
@@ -27,8 +26,8 @@ class UploadRepository extends BaseUpload {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -51,8 +50,8 @@ class UploadRepository extends BaseUpload {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -89,8 +88,8 @@ class UploadRepository extends BaseUpload {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
@@ -127,8 +126,8 @@ class UploadRepository extends BaseUpload {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'base_product_tag.dart';
 import '../../models/index.dart';
@@ -26,8 +25,8 @@ class ProductTagRepository extends BaseProductTag {
       } else {
         throw response;
       }
-    } catch (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+    } catch (_) {
+
       rethrow;
     }
   }
