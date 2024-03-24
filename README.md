@@ -3,7 +3,7 @@
 ## Medusa Admin Dart Client
 
 ### Description
-An easy way to communicate with your [Medusa](https://medusajs.com/) server, this package is used in [Medusa Admin Flutter](https://github.com/mllrr96/Medusa-Admin-Flutter)
+An easy way to communicate with your [Medusa](https://medusajs.com/) server
 
 ## Set up Project
 
@@ -22,7 +22,7 @@ Add Dependency of the package in your pubspec.yaml file:
 ```bash
   medusa_admin_dart_client:
     git:
-      url: https://github.com/mllrr96/Medusa_Admin_API_Flutter.git
+      url: https://github.com/mllrr96/medusa_admin_dart_client.git
       ref: main
 ```
 
@@ -31,7 +31,7 @@ Add Dependency of the package in your pubspec.yaml file:
 Import MedusaAdmim package
 
 ```dart
-import 'package:medusa_admin_flutter/medusa_admin.dart';
+import 'package:medusa_admin_dart_client/medusa_admin.dart';
 ```
 
 Initialize it:
@@ -57,11 +57,11 @@ The example covers all of the methods
 
       //JWT
       String? result = await medusaAdmin.authRepository.signInJWT(
-          req: UserPostAuthReq(email: 'email', password: 'password'));
+          req: PostAuthReq(email: 'email', password: 'password'));
 
       // Or using cookie
       String? result = await medusaAdmin.authRepository.signInCookie(
-          req: UserPostAuthReq(email: 'email', password: 'password'));
+          req: PostAuthReq(email: 'email', password: 'password'));
 
       // save the result
       if (result != null) {
