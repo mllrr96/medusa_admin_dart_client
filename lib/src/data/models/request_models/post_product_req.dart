@@ -11,7 +11,7 @@ class PostProductReq {
 
     data['title'] = product.title;
     if (product.subtitle != null) {
-      data['title'] = product.subtitle;
+      data['subtitle'] = product.subtitle;
     }
 
     if (product.description != null) {
